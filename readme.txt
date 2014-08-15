@@ -120,6 +120,11 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 4. Shell
 5. Sandbox with live preview (jsFiddle your page:-)
 6. Search your files
+7. Press space for preview
+8. Press space for preview
+9. Press space for preview
+10. Manage pictures on your social accounts
+
 
 == Changelog ==
 
