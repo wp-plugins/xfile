@@ -1,0 +1,48 @@
+<div id="xFileRoot"  class="%BODY_PREFIX%"></div>
+
+<!--div id="lightbox" dojoType="dojox.image.LightboxDialog" group="flickrStore"></div-->
+
+<div dojoType="xfile.widgets.Toaster" id="errorToast"
+     positionDirection="br-left" duration="0"
+     messageTopic="errorMessageTopic"></div>
+
+<div dojoType="xfile.widgets.Toaster" id="statusToast"
+     positionDirection="br-left" duration="0"
+     messageTopic="statusMessageTopic"></div>
+
+<script type="text/javascript">
+
+    function JSCOMPILER_PRESERVE(){
+
+    }
+
+    var isMaster = true;
+    var debug=true;
+    var device=null;
+    var sctx=null;
+    var ctx=null;
+    var cctx=null;
+    var mctx=null;
+    var rtConfig="debug";
+    var returnUrl= "";
+    var dataHost ="";
+    var dojoConfig = {
+        async: true,
+        parseOnLoad: false,
+        isDebug: 0,
+        baseUrl: '%WP_PLUGIN%/xfile/',
+        tlmSiblingOfDojo: 0,
+        useCustomLogger:false,
+        packages: %DOJOPACKAGES%,
+        has:{
+            'dojo-undef-api': true,
+            'dojo-firebug': false
+        },
+        locale:'en'
+    };
+    /*data-dojo-config="baseUrl: '/',has:{'dojo-firebug': false}, parseOnLoad: false, async: 1"*/
+</script>
+
+<script type="text/javascript" src="%WP_PLUGIN%/xfile/dojo/dojowp.js"></script>
+<!-- Run main-->
+<script type="text/javascript" src="%WP_PLUGIN%/xfile/xwordpress/run.js"></script>

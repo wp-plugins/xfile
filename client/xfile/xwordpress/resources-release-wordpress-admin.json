@@ -1,0 +1,165 @@
+{
+    "class":"cmx.types.Resources",
+    "includes":[
+
+    ],
+    "items":[
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "url":"%XASWEB%/xfile/ext/xfileExternalsWP.js",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "url":"%XASWEB%/xfile/ext/cm/lib/codemirror.js",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "url":"%XASWEB%/xfile/ext/xfileExternalsWP.js",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/xfile/xwordpress/css/elusive-icons/elusive-webfont.css",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/xfile/xwordpress/css/elusive-icons/elusive-webfont-ie7.css",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/xfile/xwordpress/css/xfile/Icons.css",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/xfile/xwordpress/resources/app.css",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"HTML",
+            "url":"%XASWEB%/xfile/xwordpress/wordpressAdmin.html",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/ace.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-json.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-javascript.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-php.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-css.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-sh.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-less.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-xml.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-java.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-json.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-html.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/mode-html_completions.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/ace/ext-language_tools.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/xwordpress/css/ace/dark.css"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/xwordpress/css/font-awesome/css/font-awesome.css"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/jquery-1.9.1.min.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/jquery-ui-1.10.1.custom.min.js"
+        },
+        {
+
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/xwordpress/css/xfile/quicklook.css"
+        }
+    ]
+}
