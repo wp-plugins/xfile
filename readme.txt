@@ -122,10 +122,9 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 6. Search your files
 7. Press space for preview
 8. Press space for preview
-9. Press space for preview
+9. Preview mode
 10. Manage pictures on your social accounts
-
-
+11. Preview mode supports videos
 == Changelog ==
 
 
