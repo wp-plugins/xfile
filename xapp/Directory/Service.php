@@ -64,6 +64,11 @@ class XApp_Directory_Service extends XApp_Service
      */
     const VFS_CONFIG_PATH               = "XAPP_VFS_CONF_PATH";
 
+	/***
+	 * The path to the mappings for the VFS
+	 */
+	const VFS_CONFIG_PASSWORD           = "XAPP_VFS_CONF_PASSWORD";
+
     /***
      * The fields per node
      */
@@ -94,7 +99,8 @@ class XApp_Directory_Service extends XApp_Service
         self::VFS_CONFIG_PATH           => XAPP_TYPE_STRING,
         self::DEFAULT_NODE_FIELDS       => XAPP_TYPE_INT,
         self::AUTO_RENAME               => XAPP_TYPE_BOOL,
-        self::UPLOAD_EXTENSIONS         => XAPP_TYPE_STRING
+        self::UPLOAD_EXTENSIONS         => XAPP_TYPE_STRING,
+	    self::VFS_CONFIG_PASSWORD       => XAPP_TYPE_STRING
 
     );
     /**
@@ -112,7 +118,8 @@ class XApp_Directory_Service extends XApp_Service
         self::VFS_CONFIG_PATH           => 0,
         self::DEFAULT_NODE_FIELDS       => 0,
         self::AUTO_RENAME               => 0,
-        self::UPLOAD_EXTENSIONS         => 0
+        self::UPLOAD_EXTENSIONS         => 0,
+	    self::VFS_CONFIG_PASSWORD       => 0
     );
     /**
      * options default value array containing all class option default values
@@ -130,6 +137,7 @@ class XApp_Directory_Service extends XApp_Service
         self::VFS_CONFIG_PATH           => null,
         self::DEFAULT_NODE_FIELDS       => null,
         self::AUTO_RENAME               => true,
+	    self::VFS_CONFIG_PASSWORD       => null,
         self::UPLOAD_EXTENSIONS          => 'js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS'
     );
 
@@ -176,7 +184,11 @@ class XApp_Directory_Service extends XApp_Service
 			if(!xapp_has_option(XApp_VFS_Base::RESOURCES_DATA,$fsOptions) &&  xapp_has_option(self::VFS_CONFIG_PATH)){
 				$vfsMappingPath = xapp_get_option(self::VFS_CONFIG_PATH);
 				if(file_exists($vfsMappingPath)){
-					$vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true);
+					$pass = null;
+					if(xapp_has_option(self::VFS_CONFIG_PASSWORD)){
+						$pass = xapp_get_option(self::VFS_CONFIG_PASSWORD);
+					}
+					$vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true,$pass);
 					if($vfsMappingData){
 						$fsOptions[XApp_VFS_Base::RESOURCES_DATA]=$vfsMappingData;
 					}
@@ -195,7 +207,11 @@ class XApp_Directory_Service extends XApp_Service
 			if(!xapp_has_option(XApp_VFS_Base::RESOURCES_DATA,$fsOptions) &&  xapp_has_option(self::VFS_CONFIG_PATH)){
 				$vfsMappingPath = xapp_get_option(self::VFS_CONFIG_PATH);
 				if(file_exists($vfsMappingPath)){
-					$vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true);
+					$pass = null;
+					if(xapp_has_option(self::VFS_CONFIG_PASSWORD)){
+						$pass = xapp_get_option(self::VFS_CONFIG_PASSWORD);
+					}
+					$vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true,$pass);
 					if($vfsMappingData){
 						return $vfsMappingData;
 					}
@@ -299,7 +315,14 @@ class XApp_Directory_Service extends XApp_Service
                     if(!xapp_has_option(XApp_VFS_Base::RESOURCES_DATA,$fsOptions) &&  xapp_has_option(self::VFS_CONFIG_PATH)){
                         $vfsMappingPath = xapp_get_option(self::VFS_CONFIG_PATH);
                         if(file_exists($vfsMappingPath)){
-                            $vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true);
+
+	                        $pass = null;
+	                        if(xapp_has_option(self::VFS_CONFIG_PASSWORD)){
+		                        $pass = xapp_get_option(self::VFS_CONFIG_PASSWORD);
+	                        }else{
+
+	                        }
+                            $vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true,null,true,$pass);
                             if($vfsMappingData){
                                 $fsOptions[XApp_VFS_Base::RESOURCES_DATA]=$vfsMappingData;
                             }

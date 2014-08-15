@@ -41,6 +41,10 @@ class XApp_Store_Base
      *  File path
      */
     const CONF_FILE                         = "XAPP_STORE_CONF_FILE";
+	/***
+	 *  File path
+	 */
+	const CONF_PASSWORD                     = "XAPP_STORE_CONF_PASSWORD";
 
     /**
      * options dictionary for this class containing all data type values
@@ -55,7 +59,8 @@ class XApp_Store_Base
         self::IDENTIFIER                       => XAPP_TYPE_STRING,
         self::ID_PROPERTY                      => XAPP_TYPE_STRING,
         self::DATA_PROPERTY                    => XAPP_TYPE_STRING,
-        self::CONF_FILE                        => XAPP_TYPE_STRING
+        self::CONF_FILE                        => XAPP_TYPE_STRING,
+	    self::CONF_PASSWORD                    => XAPP_TYPE_STRING
 
     );
     /**
@@ -71,7 +76,8 @@ class XApp_Store_Base
         self::IDENTIFIER                       => 0,
         self::ID_PROPERTY                      => 0,
         self::DATA_PROPERTY                    => 0,
-        self::CONF_FILE                        => 0
+        self::CONF_FILE                        => 0,
+	    self::CONF_PASSWORD                    => 0
     );
     /**
      * options default value array containing all class option default values
@@ -86,7 +92,8 @@ class XApp_Store_Base
         self::IDENTIFIER                       => 'identifier',
         self::ID_PROPERTY                      => 'id',
         self::DATA_PROPERTY                    => 'data',
-        self::CONF_FILE                        => ''
+        self::CONF_FILE                        => '',
+	    self::CONF_PASSWORD                    => null
     );
 
 

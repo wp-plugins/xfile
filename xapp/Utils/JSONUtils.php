@@ -45,6 +45,57 @@ class XApp_Utils_JSONUtils{
      */
     protected static $_storageTypes = array('json', 'php');
 
+	/**
+	 *
+	 * encrypt string
+	 */
+
+	protected static function encrypt($string,$key)
+	{
+		$encrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $string, MCRYPT_MODE_CBC, md5(md5($key))));
+
+		return $encrypted;
+	}
+
+	/**
+	 * Returns an encrypted & utf8-encoded
+	 */
+	/*
+	public static function encrypt($pure_string, $encryption_key) {
+		$encryption_key=md5($encryption_key);
+		$iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
+		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+		$encrypted_string = mcrypt_encrypt(MCRYPT_BLOWFISH, $encryption_key, utf8_encode($pure_string), MCRYPT_MODE_ECB, $iv);
+		return md5($encrypted_string);
+	}
+	*/
+
+	/**
+	 * Returns decrypted original string
+	 */
+	/*
+	public  static function decrypt($encrypted_string, $encryption_key) {
+		$encryption_key=md5($encryption_key);
+		$iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
+		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+		$decrypted_string = mcrypt_decrypt(MCRYPT_BLOWFISH, $encryption_key, $encrypted_string, MCRYPT_MODE_ECB, $iv);
+		return $decrypted_string;
+	}*
+	*/
+
+	/**
+	 *
+	 * decrypt
+	 */
+
+	public static function decrypt($string,$key)
+	{
+		// clean url safe
+		$decrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode($string), MCRYPT_MODE_CBC, md5(md5($key))), "\0");
+
+		return $decrypted;
+	}
+
     /***
      * @param $storage
      * @param string $type
@@ -55,7 +106,7 @@ class XApp_Utils_JSONUtils{
      * @return mixed|null|string
      * @throws Xapp_Util_Exception_Storage
      */
-    public static  function  read_json($storage, $type = 'php',$writable=false,$decode=true,$input = array(),$assoc=true){
+    public static  function  read_json($storage, $type = 'php',$writable=false,$decode=true,$input = array(),$assoc=true,$pass=null){
 
             $storage = preg_replace("~\\\\+([\"\'\\x00\\\\])~", "$1", $storage);
 	        $storage = realpath($storage);
@@ -84,8 +135,18 @@ class XApp_Utils_JSONUtils{
                                 {
                                     case 'json':
                                     {
+	                                    //error_log('data : ' . $storage . ' :: ' . ' pass : ' . $pass .':: ' . self::encrypt($container,$pass). ' :: ');
+	                                    if(isset($pass) && strlen($pass) && strpos($container,'~~~~~')!==false){
+											$container = str_replace('~~~~~','',$container);
+											$container = self::decrypt($container,$pass);
+											error_log('decrypted data: ' . $storage . ' and pass : ' . $pass . ' : ' . $container);
+										}else{
+											error_log('plain data: ' . $storage . ' and pass : ' . $pass . ' : ' . $container);
+										}
 
 	                                    $container = str_replace('<?php','',$container);//JSON data might be in a PHP file.
+
+
                                         if($decode==false){
                                             $container = str_replace(array("\n", "\r","\t"), array('', '',''), $container);
                                             $container = preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $container);
@@ -137,7 +198,7 @@ class XApp_Utils_JSONUtils{
      * @return null
      * @throws Xapp_Util_Exception_Storage
      */
-    public static function write_json($storage,$data,$type = 'json',$pretty=false){
+    public static function write_json($storage,$data,$type = 'json',$pretty=false,$pass=null){
 
         $return = null;
 
@@ -148,6 +209,11 @@ class XApp_Utils_JSONUtils{
 				if(strpos($storage,'.php')!=-1){
 					$_dataStr = '<?php ' . PHP_EOL . $_dataStr;
 				}
+
+	            if(isset($pass) && strlen($pass)){
+		            $_dataStr = '~~~~~' . self::encrypt($_dataStr,$pass);
+	            }
+
                 if($pretty===true){
                     $return = file_put_contents($storage,  Xapp_Util_Json::prettify($_dataStr), LOCK_EX);
                 }else{
