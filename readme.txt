@@ -81,19 +81,6 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 
 * Simply drag files from your file manager into the file panel
 
-= Features =
-
- * Full keyboard support ala Midnight or Total-Commander
- * Multi view
- * Multi selection
- * Drag'n drop
- * Standard actions : Edit, Move, Rename, Info, Delete,Compress and Download
- * Sandbox modus for PHP and HTML files
- * Code editor with CSS hot reload
- * 2 image editors : Pixlr and Aviary
- * Built-in LESS compiler
- * Edit Word, Excel and Powerpoint files with Zoho
-
 == Installation ==
 
 = Automatic =
