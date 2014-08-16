@@ -24,20 +24,20 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 * Please find more information on www.xappcommander.com
 
 = Features =
-* Full keyboard support ala Midnight or Total-Commander <br/>
-* Multi tab<br/>
-* Code editor with auto-completion for CSS,PHP and Javascript<br/>
-* Multi selection<br/>
-* Advanced search<br/>
-* Drag'n drop for copy, move and upload into any panel<br/>
-* Standard actions : Edit, Move, Rename, Info, Delete,Compress and Download<br/>
-* Sandbox modus for PHP and HTML files<br/>
-* Code editor with CSS hot reload<br/>
-* 2 image editors : Pixlr and Aviary<br/>
-* View Word, Excel and Powerpoint files with Zoho<br/>
-* Enhanced security <br/>
-* Enhanced media preview <br/>
-* FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive<br/>
+* Full keyboard support ala Midnight or Total-Commander 
+* Multi tab
+* Code editor with auto-completion for CSS,PHP and Javascript
+* Multi selection
+* Advanced search
+* Drag'n drop for copy, move and upload into any panel
+* Standard actions : Edit, Move, Rename, Info, Delete,Compress and Download
+* Sandbox modus for PHP and HTML files
+* Code editor with CSS hot reload
+* 2 image editors : Pixlr and Aviary
+* View Word, Excel and Powerpoint files with Zoho
+* Enhanced security 
+* Enhanced media preview 
+* FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive
 
 = Controls : Keyboard =
 * SPACE : Open Preview
@@ -111,7 +111,6 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 == Frequently Asked Questions ==
 
 * Where to change remote sources : you can manage remote sites in wp-content/plugins/xfile/xapp/commander/vfs.php
-* Blank screen when opening : make sure this url  is accessible : http://yoursite.com/wordpress/wp-content/plugins/xfile/server/service/index_wordpress_admin.php
 
 == Screenshots ==
 1. Sample screenshot
@@ -120,6 +119,11 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 4. Shell
 5. Sandbox with live preview (jsFiddle your page:-)
 6. Search your files
+7. Press space for preview
+8. Press space for preview
+9. Preview mode
+10. Manage pictures on your social accounts
+11. Preview mode supports videos
 
 == Changelog ==
 
