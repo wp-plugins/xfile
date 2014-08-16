@@ -24,27 +24,36 @@ $XAPP_WP_NAME = 'xcom';
 $XAPP_APP_FOLDER            = "xfile";
 $XAPP_APP_NAME              = "xwordpress";
 
-$XAPP_WP_ROOT_PREFIX = DS."..". DS ."..".DS ."..".DS ."..".DS."../";
-require_once(realpath( dirname(__FILE__) .   $XAPP_WP_ROOT_PREFIX) . DS . "wp-load.php");
+$XAPP_WP_ROOT_PREFIX = DIRECTORY_SEPARATOR."..". DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."../";
+require_once(realpath( dirname(__FILE__) .   $XAPP_WP_ROOT_PREFIX) . DIRECTORY_SEPARATOR . "wp-load.php");
 
-$XCOM_ROOT = realpath( dirname(__FILE__) . DS . '..' . DS . '..' . DS) . DS;
-$XAPP_ROOT  = realpath($XCOM_ROOT . "xapp") . DS;
+$XCOM_ROOT = realpath( dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+$XAPP_ROOT  = realpath($XCOM_ROOT . "xapp") . DIRECTORY_SEPARATOR;
 $XAPP_PLUGIN_URL = plugins_url('',__FILE__);
+//http://mc007ibi.dyndns.org:81/wordpress/wp-admin/admin-ajax.php?action=xfile-rpc&service=XCOM_Directory_Service.put&callback=nada&mount=%2Froot&dstDir=.%2Ftest%2Ftest
+//
+//"empty or invalid request object
+//error_log('rpc url : ' . admin_url('admin-ajax.php'));
+//$fileVars = $_FILES;
+//error_log('files : ' . json_encode($fileVars));
+
 
 /***
  * XAPP PATHS
  */
 define('XAPPED', true);
-define("XAPP_BASEDIR",$XAPP_ROOT .DS);
-define("XAPP_LIB", XAPP_BASEDIR. DS . "lib" .DS);
-define("XAPP_ADMIN_SERVICE_ROOT", realpath(dirname(__FILE__)) . DS);
-define("XAPP_CONF_DIRECTORY", XAPP_ADMIN_SERVICE_ROOT . '..' . DS . '..' . DS . "conf" . DS);
+define("XAPP_BASEDIR",$XAPP_ROOT .DIRECTORY_SEPARATOR);
+define("XAPP_LIB", XAPP_BASEDIR. DIRECTORY_SEPARATOR . "lib" .DIRECTORY_SEPARATOR);
+define("XAPP_ADMIN_SERVICE_ROOT", realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
+define("XAPP_CONF_DIRECTORY", XAPP_ADMIN_SERVICE_ROOT . '..' . DIRECTORY_SEPARATOR. '..' . DIRECTORY_SEPARATOR. "conf" . DIRECTORY_SEPARATOR);
 
-/*http://mc007ibi.dyndns.org:81/wordpress/wp-content/plugins/xcom/server/service/index_wordpress_admin.php?view=upload&service=XCOM_Directory_Service.put&callback=nada&mount=%2Froot&dstDir=.%2Fwp-content%2Fadmin*/
 
 if(!class_exists('XApp_Service_Entry_Utils')){
 	include_once(XAPP_BASEDIR . 'XApp_Service_Entry_Utils.php');//conf data
 }
+define('XAPP_INDEX',xapp_fix_index());
+//error_log('xapp index : ' . XAPP_INDEX);
+
 XApp_Service_Entry_Utils::includeXAppCore();
 XApp_Service_Entry_Utils::includeXAppRPC();
 
@@ -171,6 +180,8 @@ $xFileRepositoryRoot = XApp_Variable_Mixin::replaceResourceVariables($repository
 	));
 
 
+$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc');
+
 //error_log('pass:  ' . $XAPP_VFS_CONFIG_PASSWORD);
 
 try{
@@ -211,7 +222,7 @@ try{
 			XAPP_CONF_HANDLE_EXCEPTION          => true
 		),
 		XApp_Commander_Bootstrap::AUTH_DELEGATE           =>  $authDelegate,
-		XApp_Commander_Bootstrap::RPC_TARGET              =>  $XAPP_PLUGIN_URL.'/index_wordpress_admin.php?view=smdCall',
+		XApp_Commander_Bootstrap::RPC_TARGET              =>  $XAPP_FILE_SERVICE .'&view=smdCall',
 		XApp_Commander_Bootstrap::SIGNING_KEY             =>  md5($authDelegate->getUserName()),
 		XApp_Commander_Bootstrap::SIGNING_TOKEN           =>  md5($authDelegate->getToken()),
 		XApp_Commander_Bootstrap::SIGNED_SERVICE_TYPES    =>  array(

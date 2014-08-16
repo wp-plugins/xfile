@@ -44,7 +44,7 @@ XApp_App_Commander::loadDependencies();
 
 $XAPP_CLIENT_DIRECTORY = $XAPP_SITE_DIRECTORY . DS . 'client';
 
-$XAPP_SERVICE_URL  = './admin.php?page=xfile?view=rpc';
+$XAPP_SERVICE_URL  = admin_url('admin-ajax.php?action=xfile-rpc');
 $XAPP_APP_URL = $XAPP_PLUGIN_URL . '/client/';
 $XAPP_SITE_URL= get_site_url();
 
@@ -124,7 +124,7 @@ $xappBootrapperOptions = array(
 );
 //create bootstrap
 $xappBootrapper = new XApp_Commander_Bootstrap($xappBootrapperOptions);
-
+//http://mc007ibi.dyndns.org:81/wordpress/wp-admin/admin-ajax.php?action=xfile-rpc&service=XCOM_Directory_Service.put&callback=nada&mount=%2Froot&dstDir=.%2Ftest
 //do the bootstrap
 $xappCommanderRenderer = $xappBootrapper->setup();
 
@@ -140,7 +140,12 @@ else{
 
 wp_enqueue_style(md5($jQueryThemeUrl),$jQueryThemeUrl);
 $XAPP_FILE_SERVICE = "../wp-content/plugins/".$XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php?view=rpc";
+$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc');
+
 $authDelegate = new XAppWordpressAuth();
+
+//http://mc007ibi.dyndns.org:81/wordpress/wp-content/plugins/xfile/server/service/index_wordpress_admin.php?service=XCOM_Directory_Service.get&path=./wp-activate.php&callback=asdf&mount=/root&raw=html&attachment=true&
+
 ?>
 
 
@@ -151,34 +156,33 @@ $authDelegate = new XAppWordpressAuth();
 				{
 					declaredClass:'xide.manager.ServerActionBase',
 					mixin:{
-						serviceUrl:"<?php echo $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc'?>",
+						serviceUrl:"<?php echo $XAPP_SERVICE_URL?>",
 						singleton:true
 					}
 				},
 				{
 					declaredClass:'xfile.manager.FileManager',
 					mixin:{
-						serviceUrl:"<?php echo $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc'?>",
+						serviceUrl:"<?php echo $XAPP_SERVICE_URL?>",
 						singleton:true
 					}
 				},
 				{
 					declaredClass:'xide.manager.SettingsManager',
 					mixin:{
-						serviceUrl:"<?php echo $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc'?>",
+						serviceUrl:"<?php echo $XAPP_SERVICE_URL?>",
 						singleton:true
 					}
 				}
 			],
-			FILES_STORE_URL2:"../wp-content/plugins/<?php echo $XAPP_PLUGIN_DIR_NAME?>/server/stores/cbtree/cbtreeFileStoreWordpress.php",
 			CODDE_MIRROR:"<?php echo $XAPP_APP_URL?>/xfile/ext/cm/",
 			THEME_ROOT:"<?php echo $XAPP_APP_URL?>/themes/",
 			WEB_ROOT:"<?php echo $XAPP_APP_URL?>",
 			FILE_SERVICE:"<?php echo $XAPP_FILE_SERVICE?>",
-			FILE_SERVICE_FULL:"<?php echo $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php'?>",
-			FILES_STORE_URL:"<?php echo $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc'?>",
-			DOWNLOAD_URL:"<?php echo $XAPP_SITE_URL .'/wp-content/plugins/' .$XAPP_PLUGIN_DIR_NAME .'/server/service/index_wordpress_admin.php?service=XCOM_Directory_Service.get'?>",
-			REPO_URL:"<?php echo $XAPP_SITE_URL .'/'. $XAPP_XFILE_CONFIG_ARRAY['XAPP_FILE_START_PATH']?>",
+			FILE_SERVICE_FULL:"<?php echo $XAPP_FILE_SERVICE?>",
+			FILES_STORE_URL:"<?php echo $XAPP_FILE_SERVICE?>",
+			DOWNLOAD_URL:"<?php echo $XAPP_FILE_SERVICE .'&service=XCOM_Directory_Service.get'?>",
+			REPO_URL:"<?php echo $XAPP_SITE_URL .'/'. $XAPP_XFILE_CONFIG_ARRAY['XAPP_FILE_START_PATH']?>",//obsolete
 			FILES_STORE_SERVICE_CLASS:'XCOM_Directory_Service',
 			RPC_PARAMS:{
 				rpcUserField:'user',

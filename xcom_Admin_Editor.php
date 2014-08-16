@@ -17,8 +17,9 @@ class xcom_Admin_Editor {
 	 */
 	public function __construct() {
 
-		add_action( 'admin_head', array( $this, 'add_shortcode_button' ) );
+		add_action('admin_head', array( $this, 'add_shortcode_button' ) );
 		add_action('wp_ajax_xfile-getpopup', array(&$this, 'UseyourDrive_GetPopup'));
+		///wordpress/wp-admin/admin-ajax.php?action=xfile-getpopup&type=imagePicker
 		//UseyourDrive_GetPopup
 
 

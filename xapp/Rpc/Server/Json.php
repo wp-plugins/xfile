@@ -230,7 +230,7 @@ class Xapp_Rpc_Server_Json extends Xapp_Rpc_Server
             return;
         }
 
-        if($this->request()->isPost())
+	    if($this->request()->isPost())
         {
             if($this->request()->getRaw() === "")
             {

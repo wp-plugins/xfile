@@ -139,9 +139,9 @@ class XApp_Utils_JSONUtils{
 	                                    if(isset($pass) && strlen($pass) && strpos($container,'~~~~~')!==false){
 											$container = str_replace('~~~~~','',$container);
 											$container = self::decrypt($container,$pass);
-											error_log('decrypted data: ' . $storage . ' and pass : ' . $pass . ' : ' . $container);
+											//error_log('decrypted data: ' . $storage . ' and pass : ' . $pass . ' : ' . $container);
 										}else{
-											error_log('plain data: ' . $storage . ' and pass : ' . $pass . ' : ' . $container);
+											//error_log('plain data: ' . $storage . ' and pass : ' . $pass . ' : ' . $container);
 										}
 
 	                                    $container = str_replace('<?php','',$container);//JSON data might be in a PHP file.

@@ -188,7 +188,7 @@ class XApp_Directory_Service extends XApp_Service
 					if(xapp_has_option(self::VFS_CONFIG_PASSWORD)){
 						$pass = xapp_get_option(self::VFS_CONFIG_PASSWORD);
 					}
-					$vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true,$pass);
+					$vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true,null,true,$pass);
 					if($vfsMappingData){
 						$fsOptions[XApp_VFS_Base::RESOURCES_DATA]=$vfsMappingData;
 					}
@@ -211,7 +211,7 @@ class XApp_Directory_Service extends XApp_Service
 					if(xapp_has_option(self::VFS_CONFIG_PASSWORD)){
 						$pass = xapp_get_option(self::VFS_CONFIG_PASSWORD);
 					}
-					$vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true,$pass);
+					$vfsMappingData = (object)XApp_Utils_JSONUtils::read_json($vfsMappingPath,'json',false,true,null,true,$pass);
 					if($vfsMappingData){
 						return $vfsMappingData;
 					}

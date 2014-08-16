@@ -308,10 +308,12 @@ class XApp_Path_Utils{
 	 */
 	public static function getMount($path){
 
-        $path_parts_0 = explode('://', $path);
-        if(count($path_parts_0)){
-            return $path_parts_0[0];
-        }
+		if(strpos($path,'://')!==false){
+	        $path_parts_0 = explode('://', $path);
+	        if(count($path_parts_0)){
+	            return $path_parts_0[0];
+	        }
+		}
 		$path = self::sanitizeEx(self::normalizePath($path,false,false));
 		$parsed = parse_url($path);
 		$path = $parsed['path'];
@@ -329,7 +331,7 @@ class XApp_Path_Utils{
 		$parsed = parse_url($path);
 		$path = $parsed['path'];
 		$path_parts = explode('/', $path);
-        error_log('parts : ' . json_encode($path_parts));
+        //error_log('parts : ' . json_encode($path_parts));
         if(!self::isWindows()){
 		  array_shift($path_parts);//remove first and empty element
         }

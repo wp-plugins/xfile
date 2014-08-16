@@ -1,7 +1,7 @@
 === xfile ===
 Contributors: xfile
 
-Tags: ftp, sftp, dropbox, filemanager, pictures, picture editor, change, delete, file, upload, sandbox, files, picture, editor, ace, pixrl, aviary
+Tags: ftp,sftp,dropbox,filemanager, pictures, picture editor, change, delete, file, management, organize, upload, sandbox, jsFiddle, files, picture, editor, codemirror
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.4.2
@@ -120,11 +120,6 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 4. Shell
 5. Sandbox with live preview (jsFiddle your page:-)
 6. Search your files
-7. Press space for preview
-8. Press space for preview
-9. Preview mode
-10. Manage pictures on your social accounts
-11. Preview mode supports videos
 
 == Changelog ==
 
@@ -134,3 +129,5 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 
 = 1.0 =
 * Initial Revision
+
+

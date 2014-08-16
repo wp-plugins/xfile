@@ -36,7 +36,6 @@ if(!function_exists('xapp_fix_index')){
 	function xapp_fix_index(){
 		$scriptParts = pathinfo($_SERVER['SCRIPT_FILENAME']);
 
-
 		if(strpos($_SERVER['REQUEST_URI'],$scriptParts['basename'])==false){
 			$newRequestUri = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
 			$newRequestUri.=$scriptParts['basename'];
@@ -739,6 +738,9 @@ class XApp_Service_Entry_Utils {
             if(strpos($pageURL,'view=upload')!==false){
                 return true;
             }
+	        if(strpos($pageURL,'.put')!==false){
+		        return true;
+	        }
         }
         return false;
     }

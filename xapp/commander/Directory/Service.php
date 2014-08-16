@@ -94,8 +94,8 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 	 */
 	public function putRemote($mount,$destination)
 	{
-
 		$vfs = $this->getFileSystem($mount);
+
 		$mountManager = $vfs->getMountManager();
 		$errors = array();
 
@@ -214,9 +214,10 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 		$destination = $vfs->toRealPath(XApp_Path_Utils::normalizePath($mount . DIRECTORY_SEPARATOR . $dstIn));
 		$errors = array();
 
-
 		if (!$this->isLocal($mount, $this->getFSResources())) {
 			return $this->putRemote($mount,$destination);
+		}else{
+
 		}
 
 		//writable check

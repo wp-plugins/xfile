@@ -1166,7 +1166,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
                 $gateway->run();
             }catch(Exception $e)
             {
-	            error_log('crash!');
+	            error_log('crash ! ' . $e->getMessage() . ' at ' . $_SERVER['REQUEST_URI']);
                 Xapp_Rpc_Server_Json::dump($e);
             }
         }

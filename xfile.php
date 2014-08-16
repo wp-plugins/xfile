@@ -9,7 +9,7 @@
    License: GPLv2
 */
 
-$xcom_minimalRequiredPhpVersion = '5.0';
+$xcom_minimalRequiredPhpVersion = '5.3';
 /**
  * Check the PHP version and give a useful error message if the user's version is less than the required version
  * @return boolean true if version check passed. If false, triggers an error which WP will handle, by displaying
@@ -63,22 +63,26 @@ if(!defined('DS')){
 function my_custom_js() {
     echo '<script type="text/javascript" src="myjsfile.js"></script>';
 }
-// Add hook for admin <head></head>
-
 function renderXCOMGUI(){
-    include(realpath(dirname(__FILE__).DS.'xcom_Renderer.php'));
+    include(realpath(dirname(__FILE__).'/xcom_Renderer.php'));
 }
 function renderXCOMGUI_HEAD(){
-    include(realpath(dirname(__FILE__).DS.'xcom_Head_Renderer.php'));
+    include(realpath(dirname(__FILE__).'/xcom_Head_Renderer.php'));
 }
+function renderRPC(){
+	include(realpath(dirname(__FILE__).'/server/service/index_wordpress_admin.php'));
+	die();
+}
+
 function xcom_admin_menu() {
     //add_menu_page('XCommander', 'Files', 8, 'xcommander','renderXCOMGUI');//
     add_menu_page('XFile', 'Files', 'administrator', 'xfile','renderXCOMGUI');
 }
 
-
 add_action('admin_menu', 'xcom_admin_menu');
 add_action('admin_head', 'renderXCOMGUI_HEAD');
+add_action('wp_ajax_xfile-rpc', 'renderRPC');//http://mc007ibi.dyndns.org:81/wordpress/wp-admin/admin-ajax.php?action=xfile-rpc
+
 
 
 if(file_exists(realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'xcom_Admin_Editor.php')){
