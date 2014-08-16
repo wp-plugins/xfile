@@ -125,6 +125,7 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 9. Preview mode
 10. Manage pictures on your social accounts
 11. Preview mode supports videos
+
 == Changelog ==
 
 
@@ -133,5 +134,3 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 
 = 1.0 =
 * Initial Revision
-
-
