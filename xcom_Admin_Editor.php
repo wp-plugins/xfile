@@ -112,5 +112,5 @@ class xcom_Admin_Editor {
 		return $ver;
 	}
 }
-new xcom_Admin_Editor();
+//new xcom_Admin_Editor();
 
