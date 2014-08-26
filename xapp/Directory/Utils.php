@@ -30,7 +30,7 @@ class XApp_Directory_Utils
         if (!isset($options[self::OPTION_ONLY_FILES])) $options[self::OPTION_ONLY_FILES]=false;
         if (!isset($options[self::OPTION_CLEAR_PATH])) $options[self::OPTION_CLEAR_PATH]=false;
 
-        $list=self::scanDirForList($path,$inclusionMask);
+	    $list=self::scanDirForList($path,$inclusionMask);
         if ($list===FALSE)
             return false;
         else {
@@ -70,6 +70,11 @@ class XApp_Directory_Utils
         }
     }
 
+	protected function glob_quote($str) {
+		$from = array( '[', '*', '?');
+		$to = array('[[]', '[*]', '[?]');
+		return str_replace($from, $to, $str);
+	}
     /**
      *
      *  Returns a list of files into a given path, filtered by a mask
@@ -89,7 +94,11 @@ class XApp_Directory_Utils
         }
         $groblist=Array();
         foreach($listmask as $globqry) {
-            $qryres=@glob($srcDir.DIRECTORY_SEPARATOR.$globqry);
+	        $from = array('[',']');
+	        $to   = array('\[','\]');
+	        $what = $srcDir.DIRECTORY_SEPARATOR.$globqry;
+	        $what = str_replace($from,$to,$what);
+	        $qryres=@glob($what);
             if ($qryres===FALSE)
                 $error_find=true;
             else
@@ -105,9 +114,9 @@ class XApp_Directory_Utils
                 $groblist=preg_grep($Mask,$groblist);
 
             // Normalize list
-            foreach($groblist as $n=>$path)
+            foreach($groblist as $n=>$path){
                 $groblist[$n]=self::normalizePath($path); // deal with windows C:/
-
+            }
             return $groblist;
         }
 

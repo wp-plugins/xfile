@@ -32,6 +32,13 @@ class XIDE_Resource_Renderer extends XApp_Resource_Renderer
         parent::registerDefault();
     }
 
+
+	/**
+	 * Renders all resource variables as script tag, this goes in xide.manager.ResourceManager
+	 */
+	public function renderResourceVariables(){
+
+	}
     /**
      * @param bool $print
      * @return null|string|void

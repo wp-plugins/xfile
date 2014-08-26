@@ -111,7 +111,7 @@ class XApp_Shell_Utils
 
         if (xo_has(self::OPTION_WORKING_PATH, $options)) {
             $working_path = xo_get(self::OPTION_WORKING_PATH, $options);
-	        error_log('working path : ' . $working_path);
+	        //error_log('working path : ' . $working_path);
 	        if(!$isWindows){
                 $command = "cd $working_path ; " . $command;
 	        }else{
@@ -167,7 +167,7 @@ class XApp_Shell_Utils
      */
     public static function __exec($command)
     {
-        error_log(' running : ' . $command);
+        //error_log(' running : ' . $command);
 	    /*
 	    if(self::isWindows() && is_callable('shell_exec')){
 

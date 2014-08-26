@@ -3,7 +3,7 @@ define([
     'xide/utils',
     'xide/factory',
     'xide/types',
-    'xapp/manager/ManagerBase',
+    'xide/manager/ManagerBase',
     'xfile/views/RemoteEditor'
 
 ], function (declare,
@@ -24,6 +24,7 @@ define([
             imageEditorPane:null,
             imageEditorPaneContainer:null,
             featherEditor:null,
+            didRegister:false,
             onEditorClose:function(editor){
                 this.featherEditor=editor;
                 //this.imageEditorPaneContainer.removeChild(this.imageEditorPane);
@@ -173,9 +174,15 @@ define([
                 this.imageEditView.startup();
 
             },
-            onMainViewReady:function(){
+            onMainViewReady:function(evt){
+
+                if(this.didRegister){
+                    console.error('already registred');
+                    return;
+                }
+                console.error('img : main view ready! ' + this.id);
                 var thiz=this;
-                factory.publish(types.EVENTS.REGISTER_EDITOR,{
+                this.publish(types.EVENTS.REGISTER_EDITOR,{
                     name:'Aviary',
                     extensions:'jpeg|jpg|gif|png',
                     onEdit:function(){thiz.openEditor(thiz.currentItem)},
@@ -183,20 +190,26 @@ define([
                     owner:thiz
                 },thiz);
 
-                factory.publish(types.EVENTS.REGISTER_EDITOR,{
+                this.publish(types.EVENTS.REGISTER_EDITOR,{
                     name:'Pixlr',
                     extensions:'jpeg|jpg|gif|png',
                     onEdit:function(){thiz.openPixlrEditor(thiz.currentItem)},
                     iconClass:'el-icon-brush',
                     owner:thiz
                 },thiz);
+
+                this.didRegister=true;
+
             },
             _registerListeners:function () {
                 this.inherited(arguments);
-                factory.subscribe(types.EVENTS.ITEM_SELECTED,this.onItemSelected,this);
-                factory.subscribe(types.EVENTS.ON_MAIN_VIEW_READY,this.onMainViewReady,this);
+                this.subscribe(types.EVENTS.ITEM_SELECTED,this.onItemSelected,this);
+                this.subscribe(types.EVENTS.ON_MAIN_VIEW_READY,this.onMainViewReady,this);
+                //this.onMainViewReady();
+                //console.error('register plugins');
             },
             constructor:function () {
+                this.id=utils.createUUID();
                 this._registerListeners();
             }
         });

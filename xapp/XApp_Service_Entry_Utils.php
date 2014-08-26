@@ -936,3 +936,30 @@ class XApp_Service_Entry_Utils {
         return null;
     }
 }
+
+if(!function_exists('xcom_event')){
+
+	/**
+	 * @param $operation
+	 * @param string $suffix
+	 * @param $args
+	 * @param null $callee
+	 */
+	function xcom_event($operation,$suffix='',$args,$callee=null){
+		if($callee!==null && $args!==null){
+			$args[XAPP_EVENT_KEY_CALLEE]=$callee;
+		}
+		xapp_event(XAPP_EVENT_PREFIX . $suffix . $operation,array($args));
+	}
+}
+if(!function_exists('xcom_subscribe')){
+
+	/**
+	 * @param $operation
+	 * @param $mixed
+	 * @param string $suffix
+	 */
+	function xcom_subscribe($operation,$mixed,$suffix=''){
+		Xapp_Event::listen(XAPP_EVENT_PREFIX . $operation . $suffix, $mixed);
+	}
+}

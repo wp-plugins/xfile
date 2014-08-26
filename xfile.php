@@ -81,7 +81,8 @@ function xcom_admin_menu() {
 
 add_action('admin_menu', 'xcom_admin_menu');
 add_action('admin_head', 'renderXCOMGUI_HEAD');
-add_action('wp_ajax_xfile-rpc', 'renderRPC');//http://mc007ibi.dyndns.org:81/wordpress/wp-admin/admin-ajax.php?action=xfile-rpc
+add_action('wp_ajax_xfile-rpc', 'renderRPC');//http://localhost:81/wordpress/wp-admin/admin-ajax.php?action=xfile-rpc
+
 
 
 

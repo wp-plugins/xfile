@@ -735,10 +735,14 @@ class XApp_Bootstrap
 				if (!$xComPluginManager) {
 					$xComPluginManager = new XApp_Commander_PluginManager();
 				}
+
+
 				$plugins = $xComPluginManager->getPlugins(
 					xapp_get_option(self::PLUGIN_DIRECTORY, $this),
 					xapp_get_option(self::PLUGIN_MASK, $this)
 				);
+			}else{
+
 			}
 		}
 
@@ -941,6 +945,7 @@ class XApp_Bootstrap
 		) {
 			//pull in registry of xapp core framework
 			XApp_Service_Entry_Utils::includeXAppRegistry();
+
 			$this->registerServices(xapp_get_option(self::SERIVCE_CONF), xapp_get_option(self::RPC_SERVER));
 		}
 
@@ -1586,9 +1591,10 @@ class XApp_Bootstrap
 			$dojoPackagesStr .= "{name:" . "'" . $package['name'] . "',";
 			$dojoPackagesStr .= "location:" . "'" . $prefix . $package['location'] . "'}";
 			$pIdx++;
-			if ($pIdx < count($packages) - 1) {
+
+			/*if ($pIdx < count($packages) - 1) {
 				$dojoPackagesStr .= ',';
-			}
+			}*/
 
 		}
 		$dojoPackagesStr .= ']';

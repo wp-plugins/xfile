@@ -160,6 +160,18 @@
             "type":"CSS",
             "enabled": true,
             "url":"%XASWEB%/xfile/xwordpress/css/xfile/quicklook.css"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "enabled": true,
+            "url":"%XASWEB%/xfile/ext/cflow/cflow.js"
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/xfile/ext/cflow/skin_allsizes_white.css",
+            "enabled":true
         }
     ]
 }

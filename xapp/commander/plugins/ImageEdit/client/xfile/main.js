@@ -19,6 +19,8 @@ define([ 'dojo/has', 'require' ], function (has, require) {
         {
             var _init = function(eventData){
 
+                try{
+                    console.log('plugin ready : ' +eventData.name);
                 if(eventData.name!=='ImageEdit'){//not for us
                     return;
                 }
@@ -30,6 +32,9 @@ define([ 'dojo/has', 'require' ], function (has, require) {
                 }
 
                 var imgManager =new ImageEditManager(ctrArgs);
+                }catch(e){
+                    debugger;
+                }
 
 
             };

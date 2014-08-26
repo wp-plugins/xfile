@@ -521,6 +521,7 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 			$basePath = 'root';
 		}
 		$path = XApp_Path_Utils::normalizePath($path, false, false);
+
 		$scanPath = $basePath . DIRECTORY_SEPARATOR . $path;
 		$scanPath = XApp_Path_Utils::normalizePath($scanPath, false, false);
 
@@ -568,7 +569,7 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 			)
 		);
 		$result = null;
-		try{
+	    try{
 			$result = $vfs->ls(XApp_Path_Utils::normalizePath($scanPath, false), $recursive, $options);
 		}catch (Exception $e){
 			return $this->toRPCError(1, $e->getMessage());

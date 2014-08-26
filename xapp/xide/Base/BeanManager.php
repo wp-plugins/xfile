@@ -277,7 +277,8 @@ class XIDE_BeanManager extends XIDE_Manager
             XApp_Store::WRITER_CLASS            =>'XIDE_CIStore_Delegate',
             XApp_Store::PRIMARY_KEY             =>'inputs',
             XApp_Store::IDENTIFIER              =>'',
-            XApp_Store::CONF_FILE               =>$storePath);
+            XApp_Store::CONF_FILE               =>$storePath,
+	        XApp_Store::CONF_PASSWORD           =>'');
 
         $store = new XApp_Store($storeOptions);
         $data = $store->set('',$dataPath,$dataQuery,$newValue);
@@ -295,7 +296,8 @@ class XIDE_BeanManager extends XIDE_Manager
         $root = $scope->resolveAbsolute('__ROOT__') .  DIRECTORY_SEPARATOR;
         $filePath = $root . $path;
 
-        $metaContent = XApp_Utils_JSONUtils::read_json( $filePath ,'json',false,true);
+	    //($storage, $type = 'php',$writable=false,$decode=true,$input = array(),$assoc=true,$pass=null){
+        $metaContent = XApp_Utils_JSONUtils::read_json( $filePath ,'json',false,true,null,true,null);
         if($metaContent){
             return array(
                 'path'=>$filePath,
