@@ -24,7 +24,7 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 * Please find more information on www.xappcommander.com
 
 = Features =
-* Full keyboard support ala Midnight or Total-Commander 
+* Full keyboard support ala Midnight or Total-Commander
 * Multi tab
 * Code editor with auto-completion for CSS,PHP and Javascript
 * Multi selection
@@ -35,8 +35,8 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 * Code editor with CSS hot reload
 * 2 image editors : Pixlr and Aviary
 * View Word, Excel and Powerpoint files with Zoho
-* Enhanced security 
-* Enhanced media preview 
+* Enhanced security
+* Enhanced media preview
 * FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive
 
 = Controls : Keyboard =
@@ -111,8 +111,17 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 9. Preview mode
 10. Manage pictures on your social accounts
 11. Preview mode supports videos
+12. Split View with Video preview
+13. Split View with Coverflow ala Mac for images (experimental)
+
 
 == Changelog ==
+
+
+= 1.3 =
+* Fixes and some plugins included
+* Split view added
+* Coverflow added
 
 
 = 1.2 =
@@ -120,5 +129,4 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 
 = 1.0 =
 * Initial Revision
-
 
