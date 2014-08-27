@@ -271,7 +271,7 @@ if (!function_exists('redux_init')) :
                     'id'=>'PATH',
                     'type' => 'text',
                     'title' => __('Start path', 'redux-framework-demo'),
-                    'desc' => __('Set the relative path to your Wordpress installation. You can use also : wp-content/%user%/ to have user folders!', 'redux-framework-demo'),
+                    'desc' => __('Set the relative path to your Wordpress installation. For instance wp-content or wp-content/uploads. You can use also : wp-content/%user%/ to have user folders!', 'redux-framework-demo'),
                     'msg' => 'custom error message',
                     'default' => ''
                 ),
@@ -280,7 +280,7 @@ if (!function_exists('redux_init')) :
                     'type' => 'textarea',
                     'title' => __('Allowed upload extensions', 'redux-framework-demo'),
                     'desc' => __('Place here a comma separated list of file extensions', 'redux-framework-demo'),
-                    'default' => 'js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS'
+                    'default' => 'js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls'
                 )
             )
         );
@@ -304,7 +304,7 @@ if (!function_exists('redux_init')) :
                 array(
                     'id'=>'PANELOPTIONS',
                     'type' => 'checkbox',
-                    'title' => __('Allowed Panels', 'redux-framework-demo'),
+                    'title' => __('Panel Options', 'redux-framework-demo'),
                     'options' => array(
                         '0' => 'Allow new tabs',
                         '1' => 'Allow info view',
@@ -312,7 +312,10 @@ if (!function_exists('redux_init')) :
                         '3' => 'Allow log view (upload progress)',
                         '4' => 'Allow context menu',
                         '5' => 'Allow source selector',
-                        '6' => 'Allow layout selector'),
+                        '6' => 'Allow layout selector',
+	                    '7' => 'Allow Column Resize',
+	                    '8' => 'Allow Column Reorder',
+	                    '9' => 'Allow Column Hide'),
                     'default' => array(
                         '0' => '1',
                         '1' => '1',
@@ -327,14 +330,14 @@ if (!function_exists('redux_init')) :
 	                    'black-tie'=>'black-tie',
                         'cupertino'=>'cupertino',
                         'dot-luv'=>'dot-luv',
-                        'excite-bike'=>'excite-bike',
+	                    'excite-bike'=>'excite-bike',
                         'hot-sneaks'=>'hot-sneaks',
                         'le-frog'=>'le-frog',
                         'overcast'=>'redmond',
                         'south-street'=>'south-street',
                         'sunny'=>'trontastic',
                         'ui-lightness'=>'ui-lightness',
-                        'blitzer'=>'dark-hive',
+                        'blitzer'=>'blitzer',
                         'eggplant'=>'eggplant',
                         'flick'=>'flick',
                         'humanity'=>'humanity',
@@ -402,28 +405,28 @@ if (!function_exists('redux_init')) :
                 array(
                     'id'=>'RPC_GATEWAY_ALLOW_IP',
                     'type' => 'textarea',
-                    'title' => __('Allowed IP addresses', 'redux-framework-demo'),
+                    'title' => __('Allowed IP addresses (Optional)', 'redux-framework-demo'),
                     'desc' => __('Place here a comma separated list of IP adresses', 'redux-framework-demo'),
                     'default' => ''
                 ),
                 array(
                     'id'=>'RPC_GATEWAY_DENY_IP',
                     'type' => 'textarea',
-                    'title' => __('Denied IP addresses', 'redux-framework-demo'),
+                    'title' => __('Denied IP addresses (Optional)', 'redux-framework-demo'),
                     'desc' => __('Place here a comma separated list of IP adresses', 'redux-framework-demo'),
                     'default' => ''
                 ),
                 array(
                     'id'=>'RPC_GATEWAY_ALLOW_HOST',
                     'type' => 'textarea',
-                    'title' => __('Allowed host names', 'redux-framework-demo'),
+                    'title' => __('Allowed host names (Optional)', 'redux-framework-demo'),
                     'desc' => __('Place here a comma separated list of host names', 'redux-framework-demo'),
                     'default' => ''
                 ),
                 array(
                     'id'=>'RPC_GATEWAY_DENY_HOST',
                     'type' => 'textarea',
-                    'title' => __('Denied host names', 'redux-framework-demo'),
+                    'title' => __('Denied host names (Optional)', 'redux-framework-demo'),
                     'desc' => __('Place here a comma separated list of host names', 'redux-framework-demo'),
                     'default' => ''
                 )
