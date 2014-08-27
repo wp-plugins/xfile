@@ -17,6 +17,12 @@ Stable tag: trunk
 
 Please leave us here a comment or some suggestion. Changing this or that is not a problem at all.
 
+
+== Problems ==
+* In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your wordpress site. The stand-alone version has usually less problems. You can buy it from here : http://www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4&Itemid=189
+
+
+
 = Required =
 * PHP 5.3
 * Linux based server, no Windows support right now.
@@ -80,6 +86,7 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 = Uploading =
 
 * Simply drag files from your file manager into the file panel
+
 
 == Installation ==
 
