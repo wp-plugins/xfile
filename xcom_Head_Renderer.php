@@ -13,6 +13,8 @@ if($screen['base']==='toplevel_page_xfile'){
 	return;
 }
 
+
+
 $XAPP_WP_NAME = 'xfile';
 $XAPP_APP_FOLDER            = "xfile";
 $XAPP_APP_NAME              = "xwordpress";
@@ -130,6 +132,7 @@ if(!XApp_Service_Entry_Utils::isDebug()){
 }
 ?>
 
+
 <?php
 
 /***
@@ -162,7 +165,7 @@ if($javascriptPlugins && count($javascriptPlugins)){
 <script type="text/javascript">
 	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
 		d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
 		$.src='//v2.zopim.com/?2NTMTET7LTUMmledW9IT55fQkq6DeptG';z.t=+new Date;$.
 			type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 </script>

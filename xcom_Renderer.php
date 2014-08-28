@@ -44,7 +44,8 @@ XApp_App_Commander::loadDependencies();
 
 $XAPP_CLIENT_DIRECTORY = $XAPP_SITE_DIRECTORY . DS . 'client';
 
-$XAPP_SERVICE_URL  = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
+//$XAPP_SERVICE_URL  = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
+$XAPP_SERVICE_URL  = './admin.php?page=xcommander?view=rpc';
 $XAPP_APP_URL = $XAPP_PLUGIN_URL . '/client/';
 $XAPP_SITE_URL= get_site_url();
 
@@ -140,9 +141,10 @@ else{
 
 wp_enqueue_style(md5($jQueryThemeUrl),$jQueryThemeUrl);
 $XAPP_FILE_SERVICE = "../wp-content/plugins/".$XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php?view=rpc";
-$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
+//$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
 
 $authDelegate = new XAppWordpressAuth();
+$XAPP_SERVICE_URL_MIXIN = $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc';
 
 //http://mc007ibi.dyndns.org:81/wordpress/wp-content/plugins/xfile/server/service/index_wordpress_admin.php?service=XCOM_Directory_Service.get&path=./wp-activate.php&callback=asdf&mount=/root&raw=html&attachment=true&
 
@@ -156,21 +158,21 @@ $authDelegate = new XAppWordpressAuth();
 		    {
 			    declaredClass:'xide.manager.ServerActionBase',
 			    mixin:{
-				    serviceUrl:"<?php echo $XAPP_SERVICE_URL?>",
+				    serviceUrl:"<?php echo $XAPP_SERVICE_URL_MIXIN?>",
 				    singleton:true
 			    }
 		    },
 		    {
 			    declaredClass:'xfile.manager.FileManager',
 			    mixin:{
-				    serviceUrl:"<?php echo $XAPP_SERVICE_URL?>",
+				    serviceUrl:"<?php echo $XAPP_SERVICE_URL_MIXIN?>",
 				    singleton:true
 			    }
 		    },
 		    {
 			    declaredClass:'xide.manager.SettingsManager',
 			    mixin:{
-				    serviceUrl:"<?php echo $XAPP_SERVICE_URL?>",
+				    serviceUrl:"<?php echo $XAPP_SERVICE_URL_MIXIN?>",
 				    singleton:true
 			    }
 		    }
@@ -180,8 +182,9 @@ $authDelegate = new XAppWordpressAuth();
         WEB_ROOT:"<?php echo $XAPP_APP_URL?>",
         FILE_SERVICE:"<?php echo $XAPP_FILE_SERVICE?>",
         FILE_SERVICE_FULL:"<?php echo $XAPP_FILE_SERVICE?>",
-        FILES_STORE_URL:"<?php echo $XAPP_FILE_SERVICE?>",
-        DOWNLOAD_URL:"<?php echo $XAPP_FILE_SERVICE .'&service=XCOM_Directory_Service.get'?>",
+        FILES_STORE_URL:"<?php echo $XAPP_SERVICE_URL_MIXIN?>",
+        DOWNLOAD_URL2:"<?php echo $XAPP_FILE_SERVICE .'&service=XCOM_Directory_Service.get'?>",
+	    DOWNLOAD_URL:"<?php echo $XAPP_SITE_URL .'/wp-content/plugins/' .$XAPP_PLUGIN_DIR_NAME .'/server/service/index_wordpress_admin.php?service=XCOM_Directory_Service.get'?>",
         REPO_URL:"<?php echo $XAPP_SITE_URL .'/'. $XAPP_XFILE_CONFIG_ARRAY['XAPP_FILE_START_PATH']?>",//obsolete
         FILES_STORE_SERVICE_CLASS:'XCOM_Directory_Service',
         RPC_PARAMS:{

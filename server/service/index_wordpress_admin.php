@@ -100,23 +100,19 @@ include_once ($XCOM_ROOT . 'class-recursive-arrayaccess.php');
 include_once ($XCOM_ROOT . 'class-wp-session.php');
 $XAPP_WP_SESSION = XApp_WP_Session::get_instance();
 $XAPP_PARAMETERS = null;
-
-
-//error_log('req  :  '  . $_SERVER['REQUEST_METHOD']  . ' : '   . $_SERVER['REQUEST_URI']);
-
 /**
  * take care about Aviary & Pixrl
  */
 if(XApp_Service_Entry_Utils::isPictureService()){
 
+	error_log('is picture service');
 	xapp_import('xapp.Utils.Strings');
 	$XAPP_WP_SESSION=array(
 		'XAPP_PARAMETERS'=>array('
-			XAPP_FILE_START_PATH'=>'/tmp/',
+			XAPP_FILE_START_PATH'=>'',
 			'XAPP_UPLOAD_EXTENSIONS'=>''
 		)
 	);
-}else{
 }
 //kill switch for non - authorized requests
 if($XAPP_WP_SESSION==null){
@@ -129,8 +125,13 @@ if($XAPP_PARAMETERS==null){
 /***
  * Now transfer settings
  */
-$XAPP_FILE_START_PATH=$XAPP_PARAMETERS['XAPP_FILE_START_PATH'];
+$XAPP_FILE_START_PATH='';
+if(array_key_exists('XAPP_FILE_START_PATH',$XAPP_PARAMETERS)){
+	$XAPP_FILE_START_PATH = $XAPP_PARAMETERS['XAPP_FILE_START_PATH'];
+}
+
 $XAPP_UPLOAD_EXTENSIONS=$XAPP_PARAMETERS['XAPP_UPLOAD_EXTENSIONS'];
+
 
 //Setup Wordpress Auth delegate for the file service
 $authDelegate = new XAppWordpressAuth();
@@ -210,6 +211,7 @@ try{
             XAPP_BOOTSTRAP_SETUP_SERVICES           //setup a logger
 
         ),
+
         XApp_Commander_Bootstrap::XAPP_CONF               => array(
             XAPP_CONF_DEBUG_MODE                => null,
             XAPP_CONF_AUTOLOAD                  => false,
@@ -222,7 +224,8 @@ try{
             XAPP_CONF_HANDLE_EXCEPTION          => true
         ),
         XApp_Commander_Bootstrap::AUTH_DELEGATE           =>  $authDelegate,
-        XApp_Commander_Bootstrap::RPC_TARGET              =>  $XAPP_FILE_SERVICE .'&view=smdCall',
+        //XApp_Commander_Bootstrap::RPC_TARGET              =>  $XAPP_FILE_SERVICE .'&view=smdCall',
+	    XApp_Commander_Bootstrap::RPC_TARGET              =>  $XAPP_PLUGIN_URL.'/index_wordpress_admin.php?view=smdCall',
         XApp_Commander_Bootstrap::SIGNING_KEY             =>  md5($authDelegate->getUserName()),
         XApp_Commander_Bootstrap::SIGNING_TOKEN           =>  md5($authDelegate->getToken()),
         XApp_Commander_Bootstrap::SIGNED_SERVICE_TYPES    =>  array(
