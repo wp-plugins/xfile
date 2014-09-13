@@ -15,11 +15,6 @@ Stable tag: trunk
 
 * XFile is a multi-talent file manager. Perfect for quick editing and managing files.
 
-== Problems ==
-* In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your wordpress site. The stand-alone version has usually less problems. You can buy it from here : http://www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4&Itemid=189
-
-
-
 = Required =
 * PHP 5.3
 * Linux based server, no Windows support right now.
@@ -102,6 +97,7 @@ Stable tag: trunk
 == Frequently Asked Questions ==
 
 * Where to change remote sources : you can manage remote sites in wp-content/plugins/xfile/xapp/commander/vfs.php
+* In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your Wordpress site. The stand-alone version has usually less problems. You can buy it from here : http://www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4&Itemid=189
 
 == Screenshots ==
 1. Sample screenshot
