@@ -115,7 +115,7 @@ class XApp_Store extends XApp_Store_Base
      * @return mixed
      */
     public function set($section,$path='.',$query=null,$value=null,$decodeValue=true){
-        $writer = $this->getWriter();
+	    $writer = $this->getWriter();
         if($writer){
             return $writer->set($section,$path,$query,$value,$decodeValue);
         }

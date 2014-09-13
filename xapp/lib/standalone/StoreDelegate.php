@@ -22,14 +22,16 @@ class XApp_Store_Delegate extends XApp_Store_Base implements Xapp_Store_Interfac
     public function __construct($options = null)
     {
         xapp_set_options($options, $this);
+
     }
 
     protected  function getData(){
 
+
         $path = xapp_get_option(self::CONF_FILE,$this);
         $data = null;
         if(file_exists($path)){
-            $data  = (object)XApp_Utils_JSONUtils::read_json($path,'json',false,true,null,false);
+            $data  = (object)XApp_Utils_JSONUtils::read_json($path,'json',false,true,null,false,null);
             if($data==null){
                 $data = new stdClass();
             }
@@ -74,12 +76,14 @@ class XApp_Store_Delegate extends XApp_Store_Base implements Xapp_Store_Interfac
     /**
      * @return mixed
      */
-    public function read(){}
+    public function read(){
+	    return $this->getData();
+    }
 
     /***
      * @return mixed
      */
     public function write($data){
-
+	    return $this->setData($data);
     }
 }

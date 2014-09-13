@@ -857,7 +857,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
          */
         if( in_array(XAPP_BOOTSTRAP_SETUP_STORE,$flags) && xapp_has_option(self::STORE_CONF,$this)){
             $storeService=$this->setupStore(xapp_get_option(self::STORE_CONF,$this));
-            $this->testStore($storeService);
+            //$this->testStore($storeService);
             xapp_set_option(self::STORE,$storeService,$this);
         }
 
@@ -927,9 +927,6 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
             in_array(XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS,$flags)) //yes, we want plugins
 
         {
-	        //error_log('stype ' . XApp_Service_Entry_Utils::getServiceType());
-
-
             switch(XApp_Service_Entry_Utils::getServiceType()){
 
                 /***
@@ -1041,6 +1038,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
                         //show only if the plugins wants to be exposed!
                         if( property_exists($pluginConfig,'showSMD')  && $pluginConfig->showSMD==true){
 
+
                             if(!class_exists($pluginConfig->name)){
 
                                 $pluginPath = xapp_get_option(self::PLUGIN_DIRECTORY,$this) . DIRECTORY_SEPARATOR . $pluginConfig->location . DIRECTORY_SEPARATOR . $pluginConfig->name . '.php';
@@ -1066,6 +1064,8 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
                     break;
                 }
             }
+        }else{
+
         }
 
         $xappFileService =null;

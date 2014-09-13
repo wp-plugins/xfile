@@ -1,18 +1,8 @@
 define([
-    "dojo/_base/array",
     "dojo/_base/declare",
-    "dojo/_base/html",
-    "dojo/dom-style",
-    "dojo/on",
-    "dijit/Dialog",
-    'xas/views/Dialog',
-    'xapp/utils',
-    'dojo/dom-attr',
-    'xide/widgets/_InsertionMixin',
-    'xfile/views/ActionDialog',
-    "dojo/dom-geometry"
+    'xfile/views/ActionDialog'
 ],
-    function (array, declare, html, domStyle, on, dDialog, Dialog, utils, domAttr, InsertionMixin, ActionDialog, domGeometry) {
+    function (declare, ActionDialog) {
         return declare("HTMLEditor.xfile.views.UrlParameterDialog", [ActionDialog],
             {
 

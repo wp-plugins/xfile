@@ -11,8 +11,6 @@
 /*echo(realpath(ABSPATH . DIRECTORY_SEPARATOR));*/
 /*$htaccess = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR .'..' . DIRECTORY_SEPARATOR . '..') . DIRECTORY_SEPARATOR . 'wp-admin' . DIRECTORY_SEPARATOR . '.htaccess';
 echo(file_get_contents($htaccess));*/
-
-
 /***
  * Function to get plugin descriptions
  * @param string $type
@@ -310,6 +308,7 @@ class XApp_Service_Entry_Utils {
     const DOWNLOAD   = "XAPP_SERVICE_TYPE_DOWNLOAD";
     const CBTREE   = "XAPP_SERVICE_TYPE_CBTREE";
     const UNKNOWN   = "XAPP_SERVICE_TYPE_UNKNOWN";
+	const LOGIN   = "XAPP_SERVICE_TYPE_LOGIN";
 
 
     /***
@@ -390,6 +389,8 @@ class XApp_Service_Entry_Utils {
             return self::DOWNLOAD;
         }elseif(XApp_Service_Entry_Utils::isUpload()){
             return self::UPLOAD;
+        }elseif(XApp_Service_Entry_Utils::isLogin()){
+	        return self::LOGIN;
         }elseif(XApp_Service_Entry_Utils::isSMDGet()){
             return self::SMD_GET;
         }elseif(XApp_Service_Entry_Utils::isSMDCall()){
@@ -730,6 +731,18 @@ class XApp_Service_Entry_Utils {
         }
         return false;
     }
+	/***
+	 * Return whether the request is a RPC call
+	 * @return bool
+	 */
+	public static function isLogin(){
+
+		if(self::isSMDCall() && self::getSMDMethod()==='XApp_XIDE_Controller_UserService.login'){
+			return true;
+		}
+		return false;
+	}
+
     public static function isUpload(){
 
         $method = $_SERVER['REQUEST_METHOD'];
@@ -746,14 +759,22 @@ class XApp_Service_Entry_Utils {
     }
 	public static function isPictureService(){
 
+
+
 		$domain = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 		$referer = XApp_Service_Entry_Utils::getReferer(false);
 		$pageURL = self::getUrl();
 		if(self::isDownload() || strpos($pageURL,'fileUpdate')!==false){
 			xapp_import('xapp.Utils.Strings');
+
 			if($domain==='ec2-75-101-241-140.compute-1.amazonaws.com'){
 				return true;
 			}
+
+			if($domain==='ec2-50-19-185-53.compute-1.amazonaws.com'){
+				return true;
+			}
+
 			if(XApp_Utils_Strings::startsWith($referer,'http://cdn.pixlr.com/editor/')){
 				return true;
 			}
@@ -878,10 +899,6 @@ class XApp_Service_Entry_Utils {
         return false;
     }
 
-    /***
-     * Little helper to determine debug config
-     * @return null
-     */
     public static function isRaw(){
         $pageURL = self::getUrl();
         if(strpos($pageURL,'raw=html')!==false){
@@ -938,7 +955,6 @@ class XApp_Service_Entry_Utils {
 }
 
 if(!function_exists('xcom_event')){
-
 	/**
 	 * @param $operation
 	 * @param string $suffix

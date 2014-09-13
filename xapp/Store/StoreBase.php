@@ -93,7 +93,7 @@ class XApp_Store_Base
         self::ID_PROPERTY                      => 'id',
         self::DATA_PROPERTY                    => 'data',
         self::CONF_FILE                        => '',
-	    self::CONF_PASSWORD                    => null
+	    self::CONF_PASSWORD                    => ''
     );
 
 
@@ -213,7 +213,8 @@ class XApp_Store_Base
      */
     public function set($section,$path='.',$searchQuery=null,$value=null,$decodeValue=true){
         $dataAll = $this->read();
-        $userData= null;
+
+	    $userData= null;
         if($dataAll){
             $primKey = xapp_get_option(self::PRIMARY_KEY,$this);
             if(!property_exists($dataAll,$primKey)){
@@ -229,19 +230,20 @@ class XApp_Store_Base
         $storeData = json_encode($userData);
         $store = new Xapp_Util_Json_Query($storeData);
         $value = is_string($value) ? json_decode($value) : $value;
-        if($decodeValue===false && (is_array($value)|| is_object($value))){
+
+	    if($decodeValue===false && (is_array($value)|| is_object($value))){
             $value = json_encode($value,true);
         }
         if(!$value){
             return false;
         }
 
+
         $success=false;
         $stdQuery = null;
+	    if($searchQuery){
 
-        if($searchQuery){
-            $stdQuery=$this->toStdQuery(is_string($searchQuery) ? json_decode($searchQuery,true) : $searchQuery);
-
+		    $stdQuery=$this->toStdQuery(is_string($searchQuery) ? json_decode($searchQuery,true) : $searchQuery);
             $queryResult = $store->query($path,$stdQuery)->get();
             if($queryResult!=null&& count($queryResult)==1){
                 $queryResult[0]->{xapp_get_option(self::DATA_PROPERTY,$this)}=$value;
@@ -259,13 +261,19 @@ class XApp_Store_Base
                         break;
                     }
                 }
-                if($found){
-                    $userData->{$section}->{$dataProp}=$value[$dataProp];
+
+	            $value  = (object)$value;
+	            if(is_string($value->{$dataProp})){
+		            $value->{$dataProp}=json_decode($value->{$dataProp});
+	            }
+	            if($found){
+		            $userData->{$section}[0]->{$dataProp}=$value->{$dataProp};
                 }else{
-                    $userData->{$section}[]=$value;
+                    $userData->{$section}[]=$value;//implicit
                 }
-                $dataAll->{$primKey}= $userData;
+	            $dataAll->{$primKey}= $userData;
                 $this->write(json_encode($dataAll));
+
             }
         }
         if($success){

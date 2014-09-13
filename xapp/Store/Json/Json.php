@@ -41,7 +41,7 @@ class XApp_Store_Json extends XApp_Store_Base implements Xapp_Store_Interface {
 	    if(xapp_has_option(self::CONF_PASSWORD)){
 		    $pass = xapp_get_option(self::CONF_PASSWORD);
 	    }
-        return XApp_Utils_JSONUtils::read_json( xo_get(self::CONF_FILE,$this),'json',false,true,null,true,$pass);
+	    return XApp_Utils_JSONUtils::read_json( xo_get(self::CONF_FILE,$this),'json',false,true,null,true,$pass);
     }
 
     /***

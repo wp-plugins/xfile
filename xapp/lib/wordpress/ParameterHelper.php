@@ -18,7 +18,7 @@ class XApp_Wordpress_Parameter_Helper
     protected static $panelOptionKeys = array(
         'ALLOW_NEW_TABS', 'ALLOW_INFO_VIEW', 'ALLOW_BREADCRUMBS',
  	    'ALLOW_LOG_VIEW', 'ALLOW_CONTEXT_MENU', 'ALLOW_SOURCE_SELECTOR',
- 	    'ALLOW_LAYOUT_SELECTOR',
+ 	    'ALLOW_LAYOUT_SELECTOR','ALLOW_COLUMN_RESIZE','ALLOW_COLUMN_REORDER','ALLOW_COLUMN_HIDE'
  	);
 
     public static  function getComponentParameters(){

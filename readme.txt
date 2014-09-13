@@ -5,7 +5,7 @@ Tags: ftp,sftp,dropbox,filemanager, pictures, picture editor, change, delete, fi
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.4.2
-Tested up to: 3.8
+Tested up to: 4.0
 Stable tag: trunk
 
 !XFile, the must have file manager for your Wordpress
@@ -16,6 +16,11 @@ Stable tag: trunk
 * XFile is a multi-talent file managers. Perfect for quick editing and managing files. There are also top-notch picture editors.
 
 Please leave us here a comment or some suggestion. Changing this or that is not a problem at all.
+
+
+== Problems ==
+* In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your wordpress site. The stand-alone version has usually less problems. You can buy it from here : http://www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4&Itemid=189
+
 
 
 = Required =
@@ -100,7 +105,6 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 == Frequently Asked Questions ==
 
 * Where to change remote sources : you can manage remote sites in wp-content/plugins/xfile/xapp/commander/vfs.php
-* In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your wordpress site. The stand-alone version has usually less problems. You can buy it from here www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4
 
 == Screenshots ==
 1. Sample screenshot

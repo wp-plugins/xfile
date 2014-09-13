@@ -180,7 +180,6 @@ define([
                     console.error('already registred');
                     return;
                 }
-                console.error('img : main view ready! ' + this.id);
                 var thiz=this;
                 this.publish(types.EVENTS.REGISTER_EDITOR,{
                     name:'Aviary',

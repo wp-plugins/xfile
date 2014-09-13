@@ -1,7 +1,6 @@
 <?php
 /**
  * Service entry point, uses Wordpress session manager to get some parameters
- * @author mc007
  */
 
 error_reporting(E_ALL);
@@ -182,6 +181,9 @@ $xFileRepositoryRoot = XApp_Variable_Mixin::replaceResourceVariables($repository
 
 
 $XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc');
+$XAPP_SETTINGS_FILE  = XAPP_CONF_DIRECTORY . DIRECTORY_SEPARATOR . 'settings.json';
+
+require_once(XAPP_BASEDIR. 'lib/standalone/StoreDelegate.php');
 
 //error_log('pass:  ' . $XAPP_VFS_CONFIG_PASSWORD);
 
@@ -208,11 +210,10 @@ try{
             XAPP_BOOTSTRAP_SETUP_RPC,               //the RPC server
             //XAPP_BOOTSTRAP_SETUP_XFILE,             //the File-I/O service class
             XAPP_BOOTSTRAP_SETUP_GATEWAY,           //is our firewall
-            XAPP_BOOTSTRAP_SETUP_SERVICES           //setup a logger
-
+            XAPP_BOOTSTRAP_SETUP_SERVICES,           //setup a logger,
+	        XAPP_BOOTSTRAP_SETUP_STORE             //setup a settings store
         ),
-
-        XApp_Commander_Bootstrap::XAPP_CONF               => array(
+	    XApp_Commander_Bootstrap::XAPP_CONF               => array(
             XAPP_CONF_DEBUG_MODE                => null,
             XAPP_CONF_AUTOLOAD                  => false,
             XAPP_CONF_DEV_MODE                  => true,//XApp_Service_Entry_Utils::isDebug(),
@@ -245,7 +246,14 @@ try{
             Xapp_FileService::AUTH_DELEGATE     => $authDelegate,                   // needed!
             Xapp_FileService::UPLOAD_EXTENSIONS => $XAPP_UPLOAD_EXTENSIONS          // allowed upload extensions
         ),*/
-        XApp_Commander_Bootstrap::SERIVCE_CONF             => array(
+	    XApp_Commander_Bootstrap::STORE_CONF                   => array(
+		    XApp_Store::READER_CLASS            =>'XApp_Store_Delegate',
+		    XApp_Store::WRITER_CLASS            =>'XApp_Store_Delegate',
+		    XApp_Store::PRIMARY_KEY             =>trim(preg_replace( '/\s+/', '',$authDelegate->getUserName())),
+		    XApp_Store::IDENTIFIER              =>'',
+		    XApp_Store::CONF_FILE               =>$XAPP_SETTINGS_FILE
+	    ),
+	    XApp_Commander_Bootstrap::SERIVCE_CONF             => array(
 
             XApp_Service::factory('XCOM_Directory_Service',array(
 

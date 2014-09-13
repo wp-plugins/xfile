@@ -36,8 +36,9 @@ class XApp_Resource_Service extends XApp_Service
 		return $res;
 	}
 
-    public function ls(){
-        $error = array();
+
+	public function ls(){
+	    $error = array();
         $res = $this->getObject()->ls($error);
         if(count($error)){
             return $this->toRPCError(1,$error);

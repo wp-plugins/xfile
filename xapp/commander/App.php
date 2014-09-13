@@ -74,11 +74,10 @@ function xapp_commander_render_app(
 
 	$XAPP_USER_CONFIG_PATH =     realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'Users.php';
 
-
-    $_IS_RPC        = $_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_CALL ||
+	$_IS_RPC        = $_REQUEST_TYPE == XApp_Service_Entry_Utils::LOGIN ||
+	                  $_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_CALL ||
                       $_REQUEST_TYPE == XApp_Service_Entry_Utils::SMD_GET ||
                       $_REQUEST_TYPE == XApp_Service_Entry_Utils::UPLOAD ||
-                      $_REQUEST_TYPE == XApp_Service_Entry_Utils::CBTREE ||
                       $_REQUEST_TYPE == XApp_Service_Entry_Utils::DOWNLOAD;
 
     if($_IS_RPC)
@@ -146,7 +145,8 @@ function xapp_commander_render_app(
          */
         switch(XApp_Service_Entry_Utils::getServiceType()){
 
-            case XApp_Service_Entry_Utils::SMD_CALL:
+	        case XApp_Service_Entry_Utils::LOGIN:
+	        case XApp_Service_Entry_Utils::SMD_CALL:
             case XApp_Service_Entry_Utils::SMD_GET:
             case XApp_Service_Entry_Utils::UPLOAD:
             case XApp_Service_Entry_Utils::DOWNLOAD://RPC call
@@ -187,8 +187,7 @@ function xapp_commander_render_app(
 
 	            $authDelegate = new $XAPP_AUTH_DELEGATE();
                 $SYSTEM_ROOT                = realpath('/PMaster/') . DIRECTORY_SEPARATOR;
-
-                /***
+	            /***
                  * Build bootstrap config for the RPC service
                  */
                 $opt = array(
@@ -199,7 +198,7 @@ function xapp_commander_render_app(
                     XApp_Commander_Bootstrap::RESOURCE_CONFIG_SUFFIX  =>  '',
                     XApp_Commander_Bootstrap::RESOURCE_RENDERER_PREFIX=>  $RESOURCE_PREFIX,
                     XApp_Commander_Bootstrap::RESOURCE_RENDERER_CLZ   =>  $RESOURCE_RENDERER,
-                    XApp_Commander_Bootstrap::PLUGIN_DIRECTORY        =>  XAPP_BASEDIR . DS . 'commander' . DS . 'plugins' .DS,
+                    XApp_Commander_Bootstrap::PLUGIN_DIRECTORY        =>  XAPP_BASEDIR . DIRECTORY_SEPARATOR . 'commander' . DIRECTORY_SEPARATOR . 'plugins' .DIRECTORY_SEPARATOR,
                     XApp_Commander_Bootstrap::PLUGIN_MASK             =>  'XCOM',
                     XApp_Commander_Bootstrap::ALLOW_PLUGINS           =>  true,//$XAPP_AUTH_DELEGATE::authorize('xcom.'. XC_OPERATION_PLUGINS_STR),
                     XApp_Commander_Bootstrap::PROHIBITED_PLUGINS      =>  $PROHIBITED_PLUGINS,
@@ -210,7 +209,7 @@ function xapp_commander_render_app(
                         XAPP_BOOTSTRAP_SETUP_XAPP,              //takes care about output encoding and compressing
                         XAPP_BOOTSTRAP_SETUP_RPC,               //setup a RPC server
                         //XAPP_BOOTSTRAP_SETUP_XFILE,             //setup a File-I/O service class
-                        //XAPP_BOOTSTRAP_SETUP_STORE,             //setup a settings store
+                        XAPP_BOOTSTRAP_SETUP_STORE,             //setup a settings store
                         XAPP_BOOTSTRAP_SETUP_GATEWAY,           //setup a firewall
                         //XAPP_BOOTSTRAP_SETUP_LOGGER,            //setup a logger,
                         XAPP_BOOTSTRAP_SETUP_SERVICES,            //setup a logger
@@ -222,7 +221,7 @@ function xapp_commander_render_app(
                     XApp_Commander_Bootstrap::SIGNING_TOKEN           =>  md5($authDelegate->getToken()),
                     XApp_Commander_Bootstrap::SIGNED_SERVICE_TYPES    =>  array(
 
-                        //XAPP_SERVICE_TYPE_SMD_CALL,  //client must sign any RPC call
+                        XAPP_SERVICE_TYPE_SMD_CALL,  //client must sign any RPC call
                         /*XAPP_SERVICE_TYPE_DOWNLOAD*/
                     ),
                     XApp_Commander_Bootstrap::GATEWAY_CONF            =>  array(
@@ -311,15 +310,6 @@ function xapp_commander_render_app(
                 $xappBootrapper->setupService();
                 break;//over and out
 
-            }
-            case XApp_Service_Entry_Utils::CBTREE://file enumeration
-            {
-
-                include($XAPP_SERVICE_DIRECTORY . 'server' .DIRECTORY_SEPARATOR . 'stores' . DIRECTORY_SEPARATOR . 'cbtree' . DIRECTORY_SEPARATOR .  'cbtreeFileStoreJoomla.php');
-                $output = ob_get_contents();
-                ob_end_clean();
-                echo $output;
-                exit;
             }
         }
         exit;
@@ -505,7 +495,7 @@ function xapp_commander_render_standalone(
         null,
         null,
 		XAPP_INDEX .'?view=smdCall',
-		XAPP_INDEX . '?view=rpc',
+		XAPP_INDEX .'?view=rpc',
         'XApp_Store_Delegate',
         $CONF_FILE
     );
