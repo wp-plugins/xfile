@@ -13,10 +13,7 @@ Stable tag: trunk
 
 == Description ==
 
-* XFile is a multi-talent file managers. Perfect for quick editing and managing files. There are also top-notch picture editors.
-
-Please leave us here a comment or some suggestion. Changing this or that is not a problem at all.
-
+* XFile is a multi-talent file manager. Perfect for quick editing and managing files.
 
 == Problems ==
 * In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your wordpress site. The stand-alone version has usually less problems. You can buy it from here : http://www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4&Itemid=189
@@ -123,6 +120,11 @@ Please leave us here a comment or some suggestion. Changing this or that is not 
 
 
 == Changelog ==
+
+= 1.4 =
+* Drag'n drop operations within a panel fixed
+* Some tiny improvements
+* Toggle splitter states are saved now
 
 
 = 1.3 =
