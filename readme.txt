@@ -117,6 +117,11 @@ Stable tag: trunk
 
 == Changelog ==
 
+= 1.5 =
+* Performance issues solved with multiple file panels
+* Quick perspective switch added
+* Minor fixes about selection and other things
+
 = 1.4 =
 * Drag'n drop operations within a panel fixed
 * Some tiny improvements
@@ -134,4 +139,3 @@ Stable tag: trunk
 
 = 1.0 =
 * Initial Revision
-
