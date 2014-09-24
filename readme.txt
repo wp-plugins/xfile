@@ -117,7 +117,7 @@ Stable tag: trunk
 
 == Changelog ==
 
-= 1.5 =
+= 1.5 (24.09.2014) =
 * Performance issues solved with multiple file panels
 * Quick perspective switch added
 * Minor fixes about selection and other things
