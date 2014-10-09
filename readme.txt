@@ -117,6 +117,12 @@ Stable tag: trunk
 
 == Changelog ==
 
+
+= 1.5 (09.10.2014) =
+* Lots of bugfixes for tiny issues
+* Text editor has now its own set of actions : Switch mode or theme, reload and save
+* Action toolbar behaviour re-worked
+
 = 1.5 (24.09.2014) =
 * Performance issues solved with multiple file panels
 * Quick perspective switch added

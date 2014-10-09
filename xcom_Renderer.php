@@ -146,10 +146,18 @@ $XAPP_FILE_SERVICE = "../wp-content/plugins/".$XAPP_PLUGIN_DIR_NAME . "/server/s
 $authDelegate = new XAppWordpressAuth();
 $XAPP_SERVICE_URL_MIXIN = $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc';
 
+$xappResourceRender->registerRelative('APP_URL',$XAPP_APP_URL);
+$resourceVariables = (array)$xappResourceRender->registryToKeyValues(xapp_get_option(XApp_Resource_Renderer::RELATIVE_REGISTRY_NAMESPACE,$xappResourceRender));
+$resourceVariables['HTML_HEADER']=array();
+$resourceVariables['XAPP_PLUGIN_RESOURCES']=array();
+$resourceVariables['DOJOPACKAGES']=array();
+$resourceVariables['XFILE_CONFIG_MIXIN']=array();
+$resourceVariables['RESOURCE_VARIABLES']=array();
+$xappResourceRender->registerRelative('RESOURCE_VARIABLES',json_encode($resourceVariables,true));
+
 //http://mc007ibi.dyndns.org:81/wordpress/wp-content/plugins/xfile/server/service/index_wordpress_admin.php?service=XCOM_Directory_Service.get&path=./wp-activate.php&callback=asdf&mount=/root&raw=html&attachment=true&
 
 ?>
-
 
 <script type="application/javascript">
     var xFileConfigMixin =<?php echo $XAPP_XFILE_CONFIG?>;
@@ -175,6 +183,14 @@ $XAPP_SERVICE_URL_MIXIN = $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_
 				    serviceUrl:"<?php echo $XAPP_SERVICE_URL_MIXIN?>",
 				    singleton:true
 			    }
+		    },
+		    {
+			    declaredClass:'xide.manager.ResourceManager',
+			    mixin: {
+				    serviceUrl:"<?php echo $XAPP_SERVICE_URL_MIXIN?>",
+				    singleton: true,
+				    resourceVariables: <?php echo json_encode($resourceVariables,true)?>
+				}
 		    }
 	    ],
         CODDE_MIRROR:"<?php echo $XAPP_APP_URL?>/xfile/ext/cm/",
@@ -264,6 +280,8 @@ if($javascriptPlugins && count($javascriptPlugins)){
         $XAPP_DOJO_PACKAGES=json_encode($dojoPackages);
     }
 }
+
+
 
 $xappResourceRender->registerRelative('DOJOPACKAGES',$XAPP_DOJO_PACKAGES);
 

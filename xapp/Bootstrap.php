@@ -1634,6 +1634,7 @@ class XApp_Bootstrap
 				array_push($dojoPackages, array('name' => 'dojo', 'location' => 'dojo'));
 				array_push($dojoPackages, array('name' => 'dojox', 'location' => 'dojox'));
 				array_push($dojoPackages, array('name' => 'dijit', 'location' => 'dijit'));
+				array_push($dojoPackages, array('name' => 'orion', 'location' => 'orion-release/orion'));
 				array_push($dojoPackages, array('name' => 'cbtree', 'location' => 'cbtree'));
 				array_push($dojoPackages, array('name' => 'xfile', 'location' => 'xfile'));
 				array_push($dojoPackages, array('name' => 'xide', 'location' => 'xide'));

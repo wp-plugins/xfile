@@ -515,7 +515,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
     }
 
     /***
-     *
+     *  Setup RPC-Endpoint
      */
     private function setupRPC(){
 
@@ -1201,6 +1201,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
     }
 
     /***
+     * Setup client rendering
      * @return null|XApp_App_Commander
      */
     public function setup(){
@@ -1418,9 +1419,20 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
             $javaScriptHeaderStr.= '';
             $xappResourceRenderer->registerRelative('XAPP_PLUGIN_RESOURCES',json_encode($javascriptPlugins));
 
+	        //important: get the resource variables before adding 'head' otherwise it breaks the JSON structure!
+	        $resourceVariables = (array)$xappResourceRenderer->registryToKeyValues(xapp_get_option(XApp_Resource_Renderer::RELATIVE_REGISTRY_NAMESPACE,$xappResourceRenderer));
+	        $resourceVariables['HTML_HEADER']=array();
+	        $resourceVariables['XAPP_PLUGIN_RESOURCES']=array();
+	        $resourceVariables['DOJOPACKAGES']=array();
+	        $resourceVariables['XFILE_CONFIG_MIXIN']=array();
+	        $resourceVariables['RESOURCE_VARIABLES']=array();
+	        $xappResourceRenderer->registerRelative('RESOURCE_VARIABLES',json_encode($resourceVariables,true));
+
+
         }
 
         $xappResourceRenderer->registerRelative('DOJOPACKAGES',$XAPP_DOJO_PACKAGES);
+
 
         /****
          * Build XApp-App-Renderer - Config

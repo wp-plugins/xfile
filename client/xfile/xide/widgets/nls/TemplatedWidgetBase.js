@@ -27,6 +27,7 @@ define({ root://begin v1.x content
         external_link:"External Link",
         rss:"RSS",
         file:"File",
+        folder:"Folder",
         radio_stream:"Radio Stream",
         upload:"Upload",
         register_joomla:"Register Joomla",

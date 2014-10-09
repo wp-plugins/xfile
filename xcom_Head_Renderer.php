@@ -145,6 +145,17 @@ $xappResourceRender->registerRelative('XCOM_ROOT',$XAPP_PLUGIN_URL);
 $xappResourceRender->registerRelative('SITEURL',$XAPP_SITE_URL.'/');
 $xappResourceRender->registerRelative('XCOM_PLUGINS_WEB_URL',$XAPP_PLUGIN_URL . '/xapp/commander/plugins/');
 
+/*
+$resourceVariables = (array)$xappResourceRender->registryToKeyValues(xapp_get_option(XApp_Resource_Renderer::RELATIVE_REGISTRY_NAMESPACE,$xappResourceRender));
+$resourceVariables['HTML_HEADER']=array();
+$resourceVariables['XAPP_PLUGIN_RESOURCES']=array();
+$resourceVariables['DOJOPACKAGES']=array();
+$resourceVariables['XFILE_CONFIG_MIXIN']=array();
+$resourceVariables['RESOURCE_VARIABLES']=array();
+$xappResourceRender->registerRelative('RESOURCE_VARIABLES',json_encode($resourceVariables,true));
+*/
+
+
 $javaScriptHeader = '<script type="application/javascript">';
 $javaScriptHeader.=$xappResourceRender->renderJavascriptHeaderTags();
 $javaScriptHeader.= '</script>';
