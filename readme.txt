@@ -1,7 +1,8 @@
 === xfile ===
 Contributors: xfile
 
-Tags: ftp, sftp, dropbox, picture, editor, change, file, manager, upload, ace, aviary, pixrl, image, backup, shell, bash
+Tags: ftp, sftp, dropbox, picture, editor, change, file manager, upload, ace, aviary, pixrl, image, backup, shell, bash
+
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.4.2
