@@ -1,8 +1,7 @@
 === xfile ===
 Contributors: xfile
 
-Tags: ftp, sftp, dropbox, picture, editor, change, file manager, upload, ace, aviary, pixrl, image, backup, shell, bash
-
+Tags: ftp,sftp,dropbox,filemanager, pictures, picture editor, change, delete, file, management, organize, upload, sandbox, jsFiddle, files, picture, editor, codemirror
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.4.2
@@ -118,11 +117,8 @@ Stable tag: trunk
 
 == Changelog ==
 
-
-= 1.5 (09.10.2014) =
-* Lots of bugfixes for tiny issues
-* Text editor has now its own set of actions : Switch mode or theme, reload and save
-* Action toolbar behaviour re-worked
+= 1.5 (13.10.2014) =
+* Text-Editor fix : didn't load themes or modes
 
 = 1.5 (24.09.2014) =
 * Performance issues solved with multiple file panels
