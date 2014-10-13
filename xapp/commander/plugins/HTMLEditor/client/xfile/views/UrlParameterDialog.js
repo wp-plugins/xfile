@@ -1,8 +1,9 @@
 define([
     "dojo/_base/declare",
-    'xfile/views/ActionDialog'
+    'xfile/views/ActionDialog',
+    'xide/factory'
 ],
-    function (declare, ActionDialog) {
+    function (declare, ActionDialog,factory) {
         return declare("HTMLEditor.xfile.views.UrlParameterDialog", [ActionDialog],
             {
 
@@ -51,7 +52,7 @@ define([
                 },
                 startup: function () {
                     this.inherited(arguments);
-                    this.editBox = xas.factory.createValidationTextBox(this.containerNode, "float:left;", "Parameters", this.urlParams, this.fileNameValidator, this.delegate, 'Not a real url!', 'I need some input');
+                    this.editBox = factory.createValidationTextBox(this.containerNode, "float:left;", "Parameters", this.urlParams, this.fileNameValidator, this.delegate, 'Not a real url!', 'I need some input');
                     this.editBox.owner = this;
                     this.addActionButtons();
                 }

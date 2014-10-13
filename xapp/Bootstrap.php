@@ -83,6 +83,11 @@ define('XAPP_BOOTSTRAP_RENDER_BODY', 55035);
  * Processing Flag 'Render Body'
  */
 define('XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION', 55036);
+
+/***
+ * Processing Flag 'Enable Google Analytics' instructs the bootstrapper to load Google Analytics
+ */
+define('XAPP_BOOTSTRAP_ENABLE_GOOGLE_ANALYTICS', 55037);
 /***
  * Logging
  */

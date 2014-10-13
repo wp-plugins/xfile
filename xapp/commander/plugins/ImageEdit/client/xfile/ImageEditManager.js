@@ -176,6 +176,7 @@ define([
             },
             onMainViewReady:function(evt){
 
+                console.error('#### imageedit : mainview ready');
                 if(this.didRegister){
                     console.error('already registred');
                     return;
@@ -202,6 +203,7 @@ define([
             },
             _registerListeners:function () {
                 this.inherited(arguments);
+                console.error('#### imageedit : register!');
                 this.subscribe(types.EVENTS.ITEM_SELECTED,this.onItemSelected,this);
                 this.subscribe(types.EVENTS.ON_MAIN_VIEW_READY,this.onMainViewReady,this);
                 //this.onMainViewReady();

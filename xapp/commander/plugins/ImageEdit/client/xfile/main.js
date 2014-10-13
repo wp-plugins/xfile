@@ -38,6 +38,7 @@ define([ 'dojo/has', 'require' ], function (has, require) {
 
 
             };
+            console.error('##########   plugin boot loaded!');
             factory.subscribe(types.EVENTS.ON_PLUGIN_READY,_init,this);
             factory.publish(types.EVENTS.ON_PLUGIN_LOADED,{
                 name:'ImageEdit'

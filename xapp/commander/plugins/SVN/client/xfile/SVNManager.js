@@ -1,15 +1,8 @@
 define([
     'dojo/_base/declare',
-    'dojo/_base/connect',
-    "dojo/_base/lang",
-    'xapp/factory',
     'xide/types',
-    'xapp/manager/ManagerBase',
-    'xfile/views/RemoteEditor',
-    'dojo/cookie',
-    'dojox/encoding/digests/MD5',
-    'dojo/json'
-], function (declare, connect, lang, eventFactory, types, ManagerBase, RemoteEditor, cookie, MD5, json,SVN) {
+    'xapp/manager/ManagerBase'
+], function (declare, types, ManagerBase) {
 
     return declare("SVN.xfile.SVNManager", [ManagerBase],
         {
@@ -42,7 +35,7 @@ define([
             onMainViewReady: function () {
                 var thiz = this;
 
-                eventFactory.createEvent(types.EVENTS.REGISTER_ACTION, {
+                this.publish(types.EVENTS.REGISTER_ACTION, {
                     name: 'Subversion',
                     extensions: '*',
                     onEdit: function () {
@@ -78,9 +71,8 @@ define([
             _registerListeners: function () {
                 this.inherited(arguments);
                 var thiz=this;
-                eventFactory.subscribe(types.EVENTS.ITEM_SELECTED, this.onItemSelected, this);
-
-                eventFactory.subscribe(types.EVENTS.ON_MAIN_VIEW_READY, function () {
+                this.subscribe(types.EVENTS.ITEM_SELECTED, this.onItemSelected);
+                this.subscribe(types.EVENTS.ON_MAIN_VIEW_READY, function () {
                     thiz.onMainViewReady();
                 }, thiz);
 

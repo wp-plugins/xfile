@@ -416,6 +416,7 @@ class XApp_File_Utils
             $mime="application/zip";
         } else{
             $mime=self::getMime($target_file);
+
         }
 
         if ($options[self::OPTION_SEND]===true) {
@@ -508,6 +509,12 @@ class XApp_File_Utils
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $mime = finfo_file($finfo, $filepath);
             finfo_close($finfo);
+
+	        //php bug
+	        if(strpos($filepath,'.css')!==false){
+		        $mime = 'text/css';
+	        }
+
         } else if (function_exists("mime_content_type")) {
             $mime=mime_content_type($filepath);
         } else if (!stristr(ini_get("disable_functions"), "shell_exec")) {  // Unix systems

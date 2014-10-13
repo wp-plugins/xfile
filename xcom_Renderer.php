@@ -119,8 +119,11 @@ $xappBootrapperOptions = array(
     XApp_Commander_Bootstrap::RESOURCE_CONFIG_SUFFIX  =>  '-wordpress-admin',
     XApp_Commander_Bootstrap::RESOURCE_RENDERER_PREFIX=>  'wordpress',
     XApp_Commander_Bootstrap::RESOURCE_RENDERER_CLZ   =>  'XApp_Wordpress_Resource_Renderer',
-    XApp_Commander_Bootstrap::PLUGIN_DIRECTORY        =>  $XAPP_BASE_DIRECTORY . DS . 'commander' . DS . 'plugins' .DS,
-    XApp_Commander_Bootstrap::PLUGIN_MASK             =>  XAPP_PLUGIN_TYPE
+    XApp_Commander_Bootstrap::PLUGIN_DIRECTORY        =>  $XAPP_BASE_DIRECTORY . DIRECTORY_SEPARATOR . 'commander' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR,
+    XApp_Commander_Bootstrap::PLUGIN_MASK             =>  XAPP_PLUGIN_TYPE,
+	XApp_Commander_Bootstrap::FLAGS                   => array(
+		XAPP_BOOTSTRAP_ENABLE_GOOGLE_ANALYTICS
+	)
 
 );
 //create bootstrap

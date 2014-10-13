@@ -433,7 +433,7 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 				$this->getFSResources()
 			) ? XApp_Path_Utils::getMount($selection[0]) : XApp_Path_Utils::getMount($dst);
 
-			error_log('is remote transfert ! remote mount :  ' . $remoteMount . ' lmount : ' . $localMount);
+			//error_log('is remote transfert ! remote mount :  ' . $remoteMount . ' lmount : ' . $localMount);
 
 			$incoming = $this->isLocal(XApp_Path_Utils::getMount($dst), $this->getFSResources()) ? true : false;
 

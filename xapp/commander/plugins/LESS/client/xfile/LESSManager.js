@@ -1,14 +1,8 @@
 define([
     'dojo/_base/declare',
-    'dojo/_base/connect',
-    "dojo/_base/lang",
-    'xapp/factory',
     'xide/types',
-    'xapp/manager/ManagerBase',
-    'dojo/cookie',
-    'dojox/encoding/digests/MD5',
-    'dojo/json'
-], function (declare, connect, lang, eventFactory, types, ManagerBase,cookie, MD5, json,LESS) {
+    'xide/manager/ManagerBase'
+], function (declare, types, ManagerBase) {
 
     return declare("LESS.xfile.LESSManager", [ManagerBase],
         {
@@ -26,7 +20,7 @@ define([
             },
             _registerListeners: function () {
                 this.inherited(arguments);
-                eventFactory.subscribe(types.EVENTS.ITEM_SELECTED, this.onItemSelected, this);
+                this.subscribe(types.EVENTS.ITEM_SELECTED, this.onItemSelected, this);
             },
             constructor: function (ctorArgs) {
                 this.ctorArgs=ctorArgs;

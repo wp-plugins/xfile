@@ -5,7 +5,7 @@ define([
     'xide/factory',
     'xide/utils',
     'xide/types',
-    'xapp/manager/ManagerBase',
+    'xide/manager/ManagerBase',
     'xfile/views/RemoteEditor',
     'dojo/cookie',
     'dojox/encoding/digests/MD5',

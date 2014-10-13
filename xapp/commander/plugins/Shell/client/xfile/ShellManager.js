@@ -4,7 +4,7 @@ define([
     "dojo/_base/lang",
     'xide/factory',
     'xide/types',
-    'xapp/manager/ManagerBase',
+    'xide/manager/ManagerBase',
     'dojo/cookie',
     'dojox/encoding/digests/MD5',
     'dojo/json',

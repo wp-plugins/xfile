@@ -6,6 +6,7 @@ define([
     "xide/widgets/_StyleMixin",
     "xide/widgets/_InsertionMixin",
     "xide/widgets/_HTMLTemplateMixin",
+    "xide/mixins/EventedMixin",
     "xide/utils",
     'xide/types',
     'dojox/encoding/digests/MD5',
@@ -15,9 +16,9 @@ define([
     'xide/factory'
 ],
     function (declare, lang,TemplatedWidgetBase,CSSMixin,_StyleMixin,
-              _InsertionMixin,HTMLTemplateMixin,utils,types,MD5,cookie,json,CKEditor,factory)
+              _InsertionMixin,HTMLTemplateMixin,EventedMixin,utils,types,MD5,cookie,json,CKEditor,factory)
     {
-        return declare("HTMLEditor.xfile.views.HTMLEditor", [TemplatedWidgetBase,CSSMixin,_StyleMixin,HTMLTemplateMixin,_InsertionMixin],
+        return declare("HTMLEditor.xfile.views.HTMLEditor", [TemplatedWidgetBase,CSSMixin,_StyleMixin,HTMLTemplateMixin,EventedMixin,_InsertionMixin],
             {
                 config:null,
                 ctx:null,
@@ -158,27 +159,6 @@ define([
                     this.layoutCenter.containerNode.appendChild(editor.domNode);
                     editor.startup();
                     this.editor=editor;
-                    /*
-                    var preview =  RemoteEditor({
-                        selected: true,
-                        delegate: this,
-                        options: {},
-                        config: this.config,
-                        frameUrl: this.frameUrl,
-                        editUrl: this.editUrl,
-                        parentContainer: this.layoutCenter,
-                        style:'padding:0px;',
-                        path:'' + this.item.path
-                    }, dojo.doc.createElement('div'));
-                    this.layoutCenter.containerNode.appendChild(preview.domNode);
-                    preview.startup();
-                    */
-
-                    /*
-                    this.centerPanel=preview;
-                    this.preview=preview;
-                    */
-
 
                 },
                 getPanelManager:function(){
@@ -311,7 +291,7 @@ define([
                     utils.destroyWidget(this.preview);
                     utils.destroyWidget(this.leftPanel);
                     this.preview=null;
-                    dojo.forEach(this.topics, dojo.unsubscribe);
+                    this.inherited(arguments);
                 },
                 startup:function(){
                     this.inherited(arguments);
@@ -320,10 +300,8 @@ define([
                     if(this.toolbar){
                         this.toolbar.delegate=this;
                     }
+                    this.subscribe(types.EVENTS.ON_FILE_CONTENT_CHANGED,this.onFileContentChanged,this)
 
-                    this.topics = [
-                        factory.subscribe(types.EVENTS.ON_FILE_CONTENT_CHANGED,this.onFileContentChanged,this)
-                    ];
 
                 },
                 /***

@@ -204,16 +204,17 @@ function xapp_commander_render_app(
                     XApp_Commander_Bootstrap::PROHIBITED_PLUGINS      =>  $PROHIBITED_PLUGINS,
                     XApp_Commander_Bootstrap::FLAGS                   =>  array(
 
-                        XAPP_BOOTSTRAP_LOAD_PLUGIN_RESOURCES,   //ignored when XApp_Commander_Bootstrap::ALLOW_PLUGINS is off
-                        XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS, //ignored when XApp_Commander_Bootstrap::ALLOW_PLUGINS is off
-                        XAPP_BOOTSTRAP_SETUP_XAPP,              //takes care about output encoding and compressing
-                        XAPP_BOOTSTRAP_SETUP_RPC,               //setup a RPC server
-                        //XAPP_BOOTSTRAP_SETUP_XFILE,             //setup a File-I/O service class
-                        XAPP_BOOTSTRAP_SETUP_STORE,             //setup a settings store
-                        XAPP_BOOTSTRAP_SETUP_GATEWAY,           //setup a firewall
-                        //XAPP_BOOTSTRAP_SETUP_LOGGER,            //setup a logger,
-                        XAPP_BOOTSTRAP_SETUP_SERVICES,            //setup a logger
-	                    XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION         //needs auth!
+                        XAPP_BOOTSTRAP_LOAD_PLUGIN_RESOURCES,       //ignored when XApp_Commander_Bootstrap::ALLOW_PLUGINS is off
+                        XAPP_BOOTSTRAP_REGISTER_SERVER_PLUGINS,     //ignored when XApp_Commander_Bootstrap::ALLOW_PLUGINS is off
+                        XAPP_BOOTSTRAP_SETUP_XAPP,                  //takes care about output encoding and compressing
+                        XAPP_BOOTSTRAP_SETUP_RPC,                   //setup a RPC server
+                        //XAPP_BOOTSTRAP_SETUP_XFILE,               //setup a File-I/O service class
+                        XAPP_BOOTSTRAP_SETUP_STORE,                 //setup a settings store
+                        XAPP_BOOTSTRAP_SETUP_GATEWAY,               //setup a firewall
+                        //XAPP_BOOTSTRAP_SETUP_LOGGER,              //setup a logger,
+                        XAPP_BOOTSTRAP_SETUP_SERVICES,              //setup a logger
+	                    XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION        //needs auth
+
                     ),
                     XApp_Commander_Bootstrap::AUTH_DELEGATE           =>  $authDelegate,
                     XApp_Commander_Bootstrap::RPC_TARGET              =>  $RPC_TARGET,
@@ -369,7 +370,8 @@ function xapp_commander_render_app(
 
         ),
 	    XApp_Commander_Bootstrap::FLAGS                   =>  array(
-		    XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION
+		    XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION,
+		    XAPP_BOOTSTRAP_ENABLE_GOOGLE_ANALYTICS
 	    ),
 	    XApp_Commander_Bootstrap::USER_CONF                 => $XAPP_USER_CONFIG_PATH
     );
