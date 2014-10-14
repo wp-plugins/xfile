@@ -100,6 +100,7 @@ Stable tag: trunk
 * In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your Wordpress site. The stand-alone version has usually less problems. You can buy it from here : http://www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4&Itemid=189
 
 == Screenshots ==
+
 1. Sample screenshot
 2. Picture editors
 3. Pixrl
@@ -117,8 +118,14 @@ Stable tag: trunk
 
 == Changelog ==
 
-= 1.5 (13.10.2014) =
-* Text-Editor fix : didn't load themes or modes
+= 1.5 (14.10.2014) =
+* Tab styling improved
+* Shell didnt return results anymore
+
+= 1.5 (09.10.2014) =
+* Lots of bugfixes for tiny issues
+* Text editor has now its own set of actions : Switch mode or theme, reload and save
+* Action toolbar behaviour re-worked
 
 = 1.5 (24.09.2014) =
 * Performance issues solved with multiple file panels

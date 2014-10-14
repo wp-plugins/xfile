@@ -1,6 +1,7 @@
 define([
     "../widgets/Console",
-    "dojo/_base/lang",// lang.mixin lang.hitch
+    "dojo/_base/lang",// lang.mixin lang.hitc
+    "dojo/_base/declare",// lang.mixin lang.hitch
     "dojo/dom-geometry",// domGeometry.position
     "dojo/dom-style",
     "xfile/widgets/ProgressItem",
@@ -11,12 +12,13 @@ define([
     "xide/widgets/_HTMLTemplateMixin",
     "xide/widgets/_InsertionMixin",
     "xide/widgets/_StyleMixin",
-    "xide/widgets/TemplatedWidgetBase"
+    "xide/widgets/TemplatedWidgetBase",
+    'dojox/fx/scroll'
 ],
-    function (Console, lang,domGeometry,domStyle,ProgressItem,factory,
-              types,utils,CSSMixin,HTMLTemplateMixin,_InsertionMixin,_StyleMixin,TemplatedWidgetBase)
+    function (Console, lang,declare,domGeometry,domStyle,ProgressItem,factory,
+              types,utils,CSSMixin,HTMLTemplateMixin,_InsertionMixin,_StyleMixin,TemplatedWidgetBase,scroll)
     {
-        return dojo.declare("Shell.xfile.views.ShellRunView", [TemplatedWidgetBase,CSSMixin,_StyleMixin,HTMLTemplateMixin,_InsertionMixin],
+        return declare("Shell.xfile.views.ShellRunView", [TemplatedWidgetBase,CSSMixin,_StyleMixin,HTMLTemplateMixin,_InsertionMixin],
             {
                 delegate:null,
                 value:null,
@@ -114,6 +116,13 @@ define([
                         win: this.logView.domNode
                     }).play();
 
+
+                    /*
+                    scroll({
+                        node: dojo.query('.logPane :last-child')[0],
+                        win: this.logView.domNode
+                    }).play();
+                    */
                 },
                 onServerResponse:function(theConsole,data){
                     this.log(data);

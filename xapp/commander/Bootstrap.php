@@ -723,37 +723,38 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		 */
 		if ($flags & XAPP_BOOTSTRAP_ENABLE_GOOGLE_ANALYTICS) {
 
-			include_once(XAPP_BASEDIR . '/lib/google/autoload.php');
+			try {
+				include_once(XAPP_BASEDIR . '/lib/google/autoload.php');
 
-			error_log('ggggg');
+				$trackerClass = '\\UnitedPrototype\\GoogleAnalytics\\Tracker';
 
-
-			$trackerClass = '\\UnitedPrototype\\GoogleAnalytics\\Tracker';
-
-			// Initilize GA Tracker
-			$tracker = new $trackerClass('UA-3652513-13', 'xappcommander.com');
+				// Initilize GA Tracker
+				$tracker = new $trackerClass('UA-3652513-13', 'xappcommander.com');
 
 
-			// Assemble Visitor information
-			// (could also get unserialized from database)
-			$visitorClass = '\\UnitedPrototype\\GoogleAnalytics\\Visitor';
-			$visitor = new  $visitorClass();
-			$visitor->setIpAddress($_SERVER['REMOTE_ADDR']);
-			$visitor->setUserAgent($_SERVER['HTTP_USER_AGENT']);
-			$visitor->setScreenResolution('1024x768');
+				// Assemble Visitor information
+				// (could also get unserialized from database)
+				$visitorClass = '\\UnitedPrototype\\GoogleAnalytics\\Visitor';
+				$visitor = new  $visitorClass();
+				$visitor->setIpAddress($_SERVER['REMOTE_ADDR']);
+				$visitor->setUserAgent($_SERVER['HTTP_USER_AGENT']);
+				$visitor->setScreenResolution('1024x768');
 
 // Assemble Session information
 // (could also get unserialized from PHP session)
-			$sessionClass = '\\UnitedPrototype\\GoogleAnalytics\\Session';
-			$session = new $sessionClass();
+				$sessionClass = '\\UnitedPrototype\\GoogleAnalytics\\Session';
+				$session = new $sessionClass();
 
 // Assemble Page information
-			$pageClass = '\\UnitedPrototype\\GoogleAnalytics\\Page';
-			$page = new $pageClass('/client.html');
-			$page->setTitle('XApp-Commander-Client-Page');
+				$pageClass = '\\UnitedPrototype\\GoogleAnalytics\\Page';
+				$page = new $pageClass('/client.html');
+				$page->setTitle('XApp-Commander-Client-Page');
 
 // Track page view
-			$tracker->trackPageview($page, $session, $visitor);
+				$tracker->trackPageview($page, $session, $visitor);
+			}catch (Exception $e){
+
+			}
 
 
 		}
