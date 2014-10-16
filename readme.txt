@@ -100,7 +100,6 @@ Stable tag: trunk
 * In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your Wordpress site. The stand-alone version has usually less problems. You can buy it from here : http://www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4&Itemid=189
 
 == Screenshots ==
-
 1. Sample screenshot
 2. Picture editors
 3. Pixrl
@@ -117,6 +116,12 @@ Stable tag: trunk
 
 
 == Changelog ==
+
+= 1.5 (16.10.2014) =
+* Drag'n drop issue fixed weird
+* Download action fixed : download did lead always to corrupt files!
+* Support for resumed downloads added
+* All media files but also PDF can be opened now in a separate 'Preview' panel. This is the default action now!
 
 = 1.5 (14.10.2014) =
 * Tab styling improved
