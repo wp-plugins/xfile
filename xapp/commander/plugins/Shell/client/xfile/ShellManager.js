@@ -39,6 +39,9 @@ define([
                 return this.mainView || this.panelManager.rootView;
             },
             onItemSelected: function (eventData) {
+                if(!eventData.item._S){
+                    return;
+                }
                 this.currentItem = eventData.item;
             },
             _getUrl: function (item) {

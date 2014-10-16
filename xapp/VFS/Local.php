@@ -10,6 +10,8 @@ xapp_import('xapp.VFS.Base');
 xapp_import('xapp.VFS.Interface.Access');
 xapp_import('xapp.Utils.Strings');
 xapp_import('xapp.Utils.SystemTextEncoding');
+xapp_import('xapp.File.FileException');
+
 /*
 spl_autoload_register(function($class) {
 
@@ -428,6 +430,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
             $itemPath = $this->toRealPath($selectedFile);
 
             if(is_dir($itemPath)){
+
 
                 $dstFile = $dstDirectory.DIRECTORY_SEPARATOR.basename($itemPath);
 

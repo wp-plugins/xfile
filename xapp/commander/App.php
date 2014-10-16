@@ -370,8 +370,8 @@ function xapp_commander_render_app(
 
         ),
 	    XApp_Commander_Bootstrap::FLAGS                   =>  array(
-		    XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION,
-		    XAPP_BOOTSTRAP_ENABLE_GOOGLE_ANALYTICS
+		    XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION
+		    //XAPP_BOOTSTRAP_ENABLE_GOOGLE_ANALYTICS
 	    ),
 	    XApp_Commander_Bootstrap::USER_CONF                 => $XAPP_USER_CONFIG_PATH
     );

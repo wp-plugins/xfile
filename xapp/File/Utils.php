@@ -395,9 +395,10 @@ class XApp_File_Utils
      * @param array|string $exclusionMask : null means all, otherwise it must compatible to a scandir query,if its a string its a regular expression. This is a blacklist.
      */
     public static function get($basePath,$relativePath,$options=Array(),$exclusionMask=Array()) {
-        ini_set('memory_limit', '128M');
 
-        if (!isset($options[self::OPTION_SIZE_LIMIT])) $options[self::OPTION_SIZE_LIMIT]=self::GET_FILE_SIZE_LIMIT;
+	    ini_set('memory_limit', '128M');
+
+	    if (!isset($options[self::OPTION_SIZE_LIMIT])) $options[self::OPTION_SIZE_LIMIT]=self::GET_FILE_SIZE_LIMIT;
         if (!isset($options[self::OPTION_CHUNK_SIZE])) $options[self::OPTION_CHUNK_SIZE]=self::GET_FILE_CHUNK_SIZE;
         if (!isset($options[self::OPTION_TEMP_PATH])) $options[self::OPTION_TEMP_PATH]=sys_get_temp_dir();
         if (!isset($options[self::OPTION_AS_ATTACHMENT])) $options[self::OPTION_AS_ATTACHMENT]=false;
@@ -422,33 +423,119 @@ class XApp_File_Utils
         if ($options[self::OPTION_SEND]===true) {
             if (!$options[self::OPTION_TEST]) {
 
-               self::sendHeader($mime,($options[self::OPTION_AS_ATTACHMENT] ? $target_file:''), basename($target_file));
-               if (strpos($mime,"text")!==FALSE)
-                    if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) ob_start("ob_gzhandler"); else ob_start();
-            }
-            $limit=intval($options[self::OPTION_SIZE_LIMIT])*1024*1024; // Convert limit to bytes
-
-	        if (filesize($target_file)>$limit) {
-                // chunk file
-                $chunk_size=intval($options[self::OPTION_CHUNK_SIZE])*1024*1024; // Convert chunk size to bytes
-                $handle = fopen($target_file, 'rb');
-                while (!feof($handle)) {
-                    $buffer = fread($handle, $chunk_size);
-                    echo $buffer;
-                    set_time_limit(50);
-                    ob_flush();
-                    flush();
-                }
-                fclose($handle);
-
-            } else {
 	            self::sendHeader($mime,($options[self::OPTION_AS_ATTACHMENT] ? $target_file:''), basename($target_file));
-                $content=file_get_contents($target_file);
-                echo $content;
+               if (strpos($mime,"text")!==FALSE) {
+	               if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
+		               ob_start("ob_gzhandler");
+	               } else {
+		               ob_start();
+	               }
+               }
             }
+
+	        /**
+	         * take care about resumed downloads
+	         */
+	        $file_size  = filesize($target_file);
+	        if(isset($_SERVER['HTTP_RANGE'])){
+
+		        $file = @fopen($target_file,"rb");
+		        list($size_unit, $range_orig) = explode('=', $_SERVER['HTTP_RANGE'], 2);
+		        if ($size_unit == 'bytes')
+		        {
+			        //multiple ranges could be specified at the same time, but for simplicity only serve the first range
+			        //http://tools.ietf.org/id/draft-ietf-http-range-retrieval-00.txt
+			        if(strpos($range_orig,',')!==false) {
+				        list($range, $extra_ranges) = explode(',', $range_orig, 2);
+			        }else{
+				        $range = $range_orig;
+			        }
+		        }
+		        else
+		        {
+			        $range = '';
+			        header('HTTP/1.1 416 Requested Range Not Satisfiable');
+			        exit;
+		        }
+		        //figure out download piece from range (if set)
+		        list($seek_start, $seek_end) = explode('-', $range, 2);
+
+		        //set start and end based on range (if set), else set defaults
+		        //also check for invalid ranges.
+		        $seek_end   = (empty($seek_end)) ? ($file_size - 1) : min(abs(intval($seek_end)),($file_size - 1));
+		        $seek_start = (empty($seek_start) || $seek_end < abs(intval($seek_start))) ? 0 : max(abs(intval($seek_start)),0);
+
+		        //Only send partial content header if downloading a piece of the file (IE workaround)
+		        if ($seek_start > 0 || $seek_end < ($file_size - 1))
+		        {
+			        header('HTTP/1.1 206 Partial Content');
+			        header('Content-Range: bytes '.$seek_start.'-'.$seek_end.'/'.$file_size);
+			        header('Content-Length: '.($seek_end - $seek_start + 1));
+		        }
+		        else
+
+			        header("Content-Length: $file_size");
+
+		        header('Accept-Ranges: bytes');
+
+		        set_time_limit(0);
+		        fseek($file, $seek_start);
+
+		        while(!feof($file))
+		        {
+			        print(@fread($file, 1024*8));
+			        ob_flush();
+			        flush();
+			        if (connection_status()!=0)
+			        {
+				        @fclose($file);
+				        exit;
+			        }
+		        }
+
+		        // file save was a success
+		        @fclose($file);
+
+	        }else {
+
+		        // send streamed or complete
+		        $limit = intval($options[self::OPTION_SIZE_LIMIT]) * 1024 * 1024; // Convert limit to bytes
+		        if (filesize($target_file) > $limit) {
+
+
+			        // chunk file
+			        $chunk_size = intval(
+					        $options[self::OPTION_CHUNK_SIZE]
+				        ) * 1024 * 1024; // Convert chunk size to bytes
+			        $handle = fopen($target_file, 'rb');
+			        while (!feof($handle)) {
+				        $buffer = fread($handle, $chunk_size);
+				        echo $buffer;
+				        set_time_limit(50);
+				        ob_flush();
+				        flush();
+			        }
+			        fclose($handle);
+
+		        } else {
+			        self::sendHeader(
+				        $mime,
+				        ($options[self::OPTION_AS_ATTACHMENT] ? $target_file : ''),
+				        basename($target_file)
+			        );
+			        $content = file_get_contents($target_file);
+			        echo $content;
+		        }
+
+	        }
+
+
         }else{
+
+	        // send streamed or complete
 	        $limit=intval($options[self::OPTION_SIZE_LIMIT])*1024*1024; // Convert limit to bytes
 	        if (filesize($target_file)>$limit) {
+
 		        self::sendHeader($mime,false, basename($target_file));
 		        // chunk file
 		        $chunk_size=intval($options[self::OPTION_CHUNK_SIZE])*1024*1024; // Convert chunk size to bytes
@@ -462,7 +549,6 @@ class XApp_File_Utils
 		        }
 		        fclose($handle);
 	        }else{
-
 		        self::sendHeader($mime,false, basename($target_file));
 	            return file_get_contents($target_file);
 	        }

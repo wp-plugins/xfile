@@ -721,8 +721,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		/***
 		 * Load google analytics
 		 */
-		if ($flags & XAPP_BOOTSTRAP_ENABLE_GOOGLE_ANALYTICS) {
-
+		if (in_array(XAPP_BOOTSTRAP_ENABLE_GOOGLE_ANALYTICS, $flags)) {
 			try {
 				include_once(XAPP_BASEDIR . '/lib/google/autoload.php');
 
