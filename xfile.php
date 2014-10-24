@@ -2,7 +2,7 @@
 /*
    Plugin Name: xfile
    Plugin URI: http://wordpress.org/plugins/xfile/
-   Version: 1.0
+   Version: 1.6
    Author: xfile
    Description: simple file manger
    Author URI: http://www.xappcommander.com

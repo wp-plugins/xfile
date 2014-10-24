@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 1.0
+ * @version 1.6
  * @link http://www.xapp-studio.com
  * @author XApp-Studio.com support@xapp-studio.com
  * @Author:      Eric Mann
