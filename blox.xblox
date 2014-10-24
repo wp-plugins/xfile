@@ -1,0 +1,178 @@
+{
+  "blocks": [
+    {
+      "_containsChildrenIds": [
+        "items"
+      ],
+      "group": "Events",
+      "id": "59b0abdb-9fa2-e6ae-0ede-a6c3fadd99f4",
+      "deferred": false,
+      "declaredClass": "xblox.model.code.RunScript",
+      "name": "Run Script",
+      "method": "console.dir(this);",
+      "args": "",
+      "serializeMe": true,
+      "description": "plenty of shit!\n",
+      "enabled": false,
+      "canDelete": true,
+      "renderBlockIcon": true,
+      "order": 0,
+      "items": [
+        "753dd2b3-7a3b-0ce1-699d-2ce4b2342958"
+      ]
+    },
+    {
+      "_containsChildrenIds": [],
+      "parentId": "59b0abdb-9fa2-e6ae-0ede-a6c3fadd99f4",
+      "id": "753dd2b3-7a3b-0ce1-699d-2ce4b2342958",
+      "method": "return true;",
+      "_lastResult": true,
+      "declaredClass": "xblox.model.code.RunScript",
+      "name": "Run Script",
+      "args": "",
+      "deferred": false,
+      "serializeMe": true,
+      "description": "No Description",
+      "enabled": false,
+      "canDelete": true,
+      "renderBlockIcon": true,
+      "order": 0
+    },
+    {
+      "_containsChildrenIds": [],
+      "id": "caaa26d4-8422-956c-41a3-f6625dac825f",
+      "method": "return true;",
+      "_lastResult": true,
+      "declaredClass": "xblox.model.code.RunScript",
+      "name": "Run Script",
+      "args": "",
+      "deferred": false,
+      "serializeMe": true,
+      "description": "No Description",
+      "enabled": true,
+      "canDelete": true,
+      "renderBlockIcon": true,
+      "order": 0
+    },
+    {
+      "_containsChildrenIds": [],
+      "group": "On Load",
+      "id": "e08c9ce7-83de-7d5f-7662-08f4d5dc4b9a",
+      "name": "Log Message",
+      "level": "warning",
+      "message": "console.dir(arguments);\nreturn 'on upload finish';",
+      "type": "event onviewshow",
+      "host": "this host",
+      "declaredClass": "xblox.model.logging.Log",
+      "serializeMe": true,
+      "description": "No Description asdf asdf asdf ",
+      "enabled": true,
+      "canDelete": true,
+      "renderBlockIcon": true,
+      "order": 0,
+      "parentId": "a33820d0-576d-c812-112a-57042789bf03"
+    },
+    {
+      "_containsChildrenIds": [
+        "items"
+      ],
+      "group": "On Load",
+      "id": "a33820d0-576d-c812-112a-57042789bf03",
+      "event": "onCIUpdate",
+      "declaredClass": "xblox.model.events.OnEvent",
+      "name": "On Event",
+      "serializeMe": true,
+      "description": "No Description",
+      "enabled": true,
+      "canDelete": true,
+      "renderBlockIcon": true,
+      "order": 0,
+      "items": [
+        "e08c9ce7-83de-7d5f-7662-08f4d5dc4b9a",
+        "7d1f89cd-1e82-024c-1dfc-062695bd3b79"
+      ]
+    },
+    {
+      "_containsChildrenIds": [
+        "items"
+      ],
+      "parentId": "a33820d0-576d-c812-112a-57042789bf03",
+      "id": "7d1f89cd-1e82-024c-1dfc-062695bd3b79",
+      "items": [
+        "0ef0540d-4a58-681c-7c70-892f1cc72747"
+      ],
+      "method": "runBlock('serverUpdate');",
+      "name": "Run Script",
+      "args": "",
+      "deferred": false,
+      "declaredClass": "xblox.model.code.RunScript",
+      "serializeMe": true,
+      "description": "No Description",
+      "enabled": true,
+      "canDelete": true,
+      "renderBlockIcon": true,
+      "order": 0
+    },
+    {
+      "_containsChildrenIds": [],
+      "parentId": "7d1f89cd-1e82-024c-1dfc-062695bd3b79",
+      "id": "0ef0540d-4a58-681c-7c70-892f1cc72747",
+      "method": "return false;",
+      "_lastResult": false,
+      "enabled": true,
+      "name": "Run Script",
+      "args": "",
+      "deferred": false,
+      "declaredClass": "xblox.model.code.RunScript",
+      "serializeMe": true,
+      "description": "No Description",
+      "canDelete": true,
+      "renderBlockIcon": true,
+      "order": 0
+    }
+  ],
+  "variables": [
+    {
+      "title": "value",
+      "type": 13,
+      "value": "1001212",
+      "enumType": "VariableType",
+      "save": false,
+      "initialize": "",
+      "group": "Variables",
+      "id": "41648e42-f816-e614-e0fc-6f6196a98881",
+      "declaredClass": "xblox.model.variables.Variable",
+      "register": true,
+      "serializeMe": true,
+      "enabled": true,
+      "renderBlockIcon": true,
+      "order": 0,
+      "readOnly": false,
+      "canDelete": true,
+      "_currentIndex": 0,
+      "description": "No Description",
+      "_onLoaded": false
+    },
+    {
+      "title": "test",
+      "type": 13,
+      "value": "[value] + 32342323",
+      "enumType": "VariableType",
+      "save": false,
+      "initialize": "",
+      "group": "Variables",
+      "id": "f3700684-f18c-79af-377c-586876bd7d3a",
+      "declaredClass": "xblox.model.variables.Variable",
+      "register": true,
+      "serializeMe": true,
+      "enabled": true,
+      "renderBlockIcon": true,
+      "order": 0,
+      "readOnly": false,
+      "canDelete": true,
+      "_currentIndex": 0,
+      "description": "No Description",
+      "_onLoaded": false
+    }
+  ]
+}
