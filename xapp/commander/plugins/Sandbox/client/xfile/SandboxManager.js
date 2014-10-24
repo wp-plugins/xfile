@@ -47,7 +47,7 @@ define([
                 return this.mainView || this.panelManager.rootView;
             },
             onItemSelected: function (eventData) {
-                if(!eventData.item._S){
+                if(!eventData || !eventData.item || !eventData.item._S){
                     return;
                 }
                 this.currentItem = eventData.item;

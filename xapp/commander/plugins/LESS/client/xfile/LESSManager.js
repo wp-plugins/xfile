@@ -16,6 +16,9 @@ define([
             cookiePrefix: 'XLESS',
             ctorArgs:null,
             onItemSelected: function (eventData) {
+                if(!eventData || !eventData.item || !eventData.item._S){
+                    return;
+                }
                 this.currentItem = eventData.item;
             },
             _registerListeners: function () {

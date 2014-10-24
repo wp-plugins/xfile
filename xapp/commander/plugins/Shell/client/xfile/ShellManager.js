@@ -4,12 +4,13 @@ define([
     "dojo/_base/lang",
     'xide/factory',
     'xide/types',
+    'xide/utils',
     'xide/manager/ManagerBase',
     'dojo/cookie',
     'dojox/encoding/digests/MD5',
     'dojo/json',
     './views/ShellView'
-], function (declare, connect, lang, factory, types, ManagerBase, cookie, MD5,json,ShellView) {
+], function (declare, connect, lang, factory, types,utils, ManagerBase, cookie, MD5,json,ShellView) {
 
     return declare("Shell.xfile.ShellManager", [ManagerBase],
         {
@@ -39,7 +40,7 @@ define([
                 return this.mainView || this.panelManager.rootView;
             },
             onItemSelected: function (eventData) {
-                if(!eventData.item._S){
+                if(!eventData || !eventData.item || !eventData.item._S){
                     return;
                 }
                 this.currentItem = eventData.item;
@@ -183,14 +184,21 @@ define([
                 */
             },
             getCurrentPath:function(){
-                if(this.currentItem && this.panelManager){
-                    if(this.currentItem.name==='..'){
-                        return this.currentItem.path;
-                    }
-                    var pathItem = this.panelManager.getStore(this.currentItem.mount).getParents(this.currentItem,true)[0];
-                    if(pathItem && pathItem.directory===true){
 
-                        return pathItem.path;
+                if(this.currentItem && this.panelManager){
+
+                    /*if(this.currentItem.name==='..'){
+                        return this.currentItem.path;
+                    }*/
+                    /*var pathItem = this.panelManager.getStore(this.currentItem.mount).getParents(this.currentItem,true)[0];*/
+                    var item = this.currentItem;
+                    if(this.currentItem.directory===true){
+                        item = this.currentItem;
+                    }else{
+                        item = this.currentItem._S.getParents(this.currentItem,true)[0];
+                    }
+                    if(item && item.directory===true){
+                        return utils.buildPath(item.mount,item.path,false);
                     }
                 }
                 return null;

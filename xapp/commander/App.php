@@ -172,9 +172,21 @@ function xapp_commander_render_app(
                 xapp_import('xapp.Resource.Service');
                 xapp_import('xapp.Resource.ResourceManager');
 
+	            /**
+	             * Logging Imports
+	             */
+	            xapp_import('xapp.xide.Logging.Service');
+	            xapp_import('xapp.xide.Logging.LogManager');
+
 
                 $XAPP_VFS_CONFIG_PATH =     realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'vfs.php';
 	            $XAPP_USER_CONFIG_PATH =     realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'Users.php';
+
+	            /***
+	             * The path to the virtual file system configuration for Maqetta, holding all mounted resources
+	             */
+	            $XIDE_LOG_PATH = realpath(XAPP_BASEDIR . '..' . DIRECTORY_SEPARATOR . 'logs'. DIRECTORY_SEPARATOR . 'all.log');
+
 
                 $REPOSITORY_ROOT = str_replace('administrator','',$REPOSITORY_ROOT);//no idea why
                 if($REPOSITORY_START_PATH!=null){
@@ -222,7 +234,7 @@ function xapp_commander_render_app(
                     XApp_Commander_Bootstrap::SIGNING_TOKEN           =>  md5($authDelegate->getToken()),
                     XApp_Commander_Bootstrap::SIGNED_SERVICE_TYPES    =>  array(
 
-                        XAPP_SERVICE_TYPE_SMD_CALL,  //client must sign any RPC call
+                        //XAPP_SERVICE_TYPE_SMD_CALL,  //client must sign any RPC call
                         /*XAPP_SERVICE_TYPE_DOWNLOAD*/
                     ),
                     XApp_Commander_Bootstrap::GATEWAY_CONF            =>  array(
@@ -301,6 +313,16 @@ function xapp_commander_render_app(
 			                    XApp_UserManager::STORE_CONF => array(
 				                    XApp_Store_JSON::CONF_FILE => $XAPP_USER_CONFIG_PATH
 			                    )
+		                    )
+	                    )),
+	                    /***
+	                     * XIDE Logging service
+	                     */
+	                    XApp_Service::factoryEx('XIDE_Log_Service',array(
+
+							XApp_Service::MANAGED_CLASS         => 'XIDE_Log_Manager',
+		                    XApp_Service::MANAGED_CLASS_OPTIONS => array(
+			                    XIDE_Log_Manager::LOG_PATH=>$XIDE_LOG_PATH
 		                    )
 	                    ))
                     ),

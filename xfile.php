@@ -60,9 +60,7 @@ if (xcom_PhpVersionCheck()) {
 if(!defined('DS')){
     define('DS',DIRECTORY_SEPARATOR);
 }
-function my_custom_js() {
-    echo '<script type="text/javascript" src="myjsfile.js"></script>';
-}
+
 function renderXCOMGUI(){
     include(realpath(dirname(__FILE__).'/xcom_Renderer.php'));
 }
@@ -75,15 +73,12 @@ function renderRPC(){
 }
 
 function xcom_admin_menu() {
-    //add_menu_page('XCommander', 'Files', 8, 'xcommander','renderXCOMGUI');//
     add_menu_page('XFile', 'Files', 'administrator', 'xfile','renderXCOMGUI');
 }
 
 add_action('admin_menu', 'xcom_admin_menu');
 add_action('admin_head', 'renderXCOMGUI_HEAD');
 add_action('wp_ajax_xfile-rpc', 'renderRPC');//http://localhost:81/wordpress/wp-admin/admin-ajax.php?action=xfile-rpc
-
-
 
 
 if(file_exists(realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'xcom_Admin_Editor.php')){

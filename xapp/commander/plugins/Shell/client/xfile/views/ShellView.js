@@ -42,7 +42,7 @@ define([
                 panels:null,
                 templateString:
                     "<div>"+
-                        "<div data-dojo-attach-point='layoutMain' data-dojo-type='xfile.layout.BorderContainer' data-dojo-props=\"design:'sidebar',cookieName:'${!cookieName}'\" class='layoutMain '>"+
+                        "<div data-dojo-attach-point='layoutMain' data-dojo-type='xfile.layout.BorderContainer' data-dojo-props=\"design:'sidebar',cookieName:'${!cookieName}'\" class='layoutMain ui-widget-content'>"+
                         "<div data-dojo-attach-point='layoutCenter' style='padding:0px;' data-dojo-type='dijit.layout.ContentPane' data-dojo-props=\"region:'center',splitter:'false'\" class='layoutCenter'></div>"+
                         "<div data-dojo-attach-point='layoutRight' data-dojo-type='dijit.layout.ContentPane' data-dojo-props=\"region:'right',splitter:'true',minSize:'200',toggleSplitterState:'full',toggleSplitterFullSize:'200px' \" class='layoutRight filePropertyPanel ui-state-default'></div>"+
                         "<div data-dojo-attach-point='layoutBottom' data-dojo-type='dijit.layout.ContentPane' data-dojo-props=\"region:'bottom',splitter:'true',toggleSplitterState:'closed',toggleSplitterClosedSize:'0px',toggleSplitterFullSize:'150px'\" class='layoutBottom ui-state-default'></div>"+

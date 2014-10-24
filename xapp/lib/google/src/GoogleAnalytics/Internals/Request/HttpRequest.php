@@ -179,10 +179,14 @@ abstract class HttpRequest {
 		// Do not actually send the request if endpoint host is set to null
 		if($this->config->getEndpointHost() !== null) {
 			$timeout = $this->config->getRequestTimeout();
-			
-			$socket = fsockopen($this->config->getEndpointHost(), 80, $errno, $errstr, $timeout);
-			if(!$socket) return false;
-			
+			$socket=null;
+			try {
+				$socket = fsockopen($this->config->getEndpointHost(), 80, $errno, $errstr, $timeout);
+				if(!$socket) return false;
+			}catch (Exception $e){
+
+			}
+
 			if($this->config->getFireAndForget()) {
 				stream_set_blocking($socket, false);
 			}

@@ -911,7 +911,6 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 				function xp_log($message)
 				{
 					$bootstrap = XApp_Commander_Bootstrap::instance();
-
 					$log = xapp_get_option(XApp_Commander_Bootstrap::LOGGER, $bootstrap);
 					$log->log($message);
 				}
@@ -921,11 +920,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 
 			if (!function_exists('xp_log')) {
 				//fake logger
-				function xp_log($message)
-				{
-				}
-
-				;
+				function xp_log($message){};
 			}
 		}
 
@@ -1213,11 +1208,13 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		}
 
 		/***
-		 * Setup store service
+		 * Register store service
 		 */
 		if ($storeService) {
 			xapp_get_option(self::RPC_SERVER)->register($storeService);
 		}
+
+		$serviceConfigurations = xapp_get_option(self::SERIVCE_CONF);
 
 		/***
 		 * More services
@@ -1228,7 +1225,23 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		) {
 			//pull in registry of xapp core framework
 			XApp_Service_Entry_Utils::includeXAppRegistry();
-			$this->registerServices(xapp_get_option(self::SERIVCE_CONF), xapp_get_option(self::RPC_SERVER));
+			$serviceConfigurations = $this->registerServices($serviceConfigurations, xapp_get_option(self::RPC_SERVER));
+		}
+
+		//Pick directory service instance
+		$directoryServiceInstance = null;
+		foreach($serviceConfigurations as $service){
+			if($service[XApp_Service::XAPP_SERVICE_CLASS]==='XCOM_Directory_Service'){
+				$directoryServiceInstance  = $service[XApp_Service::XAPP_SERVICE_INSTANCE];
+				break;
+			}
+		}
+
+		//share directory service instance in plugins
+		if($directoryServiceInstance){
+			foreach ($pluginInstances as $plugin) {
+				$plugin->directoryService = $directoryServiceInstance;
+			}
 		}
 
 		/***
@@ -1241,6 +1254,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 
 			try {
 				$needsSigning = false;
+
 				$opt = xapp_has_option(self::GATEWAY_CONF) ? xapp_get_option(self::GATEWAY_CONF) : array();
 				/***
 				 * Raise security and demand that the client did sign its request
@@ -1287,7 +1301,6 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 
 				$gateway->run();
 			} catch (Exception $e) {
-				error_log('crash ! ' . $e->getMessage() . ' at ' . $_SERVER['REQUEST_URI']);
 				Xapp_Rpc_Server_Json::dump($e);
 			}
 		}

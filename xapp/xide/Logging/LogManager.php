@@ -11,10 +11,8 @@ xapp_import('xapp.Utils.Strings');
 xapp_import('xapp.Utils.Shell');
 xapp_import('xapp.xide.Base.Manager');
 
-/***
- * Class XIDE_NodeJS_Service_Manager provides a useful set of NodeJS related functions like :
- * -start, stop, kill and also debug (uses and starts a 'node-inspector', needs Chrome on the clients side)!
- * -enumerate running services, as well its child processes ('spawned')
+/**
+ * Class XIDE_Log_Manager
  */
 class XIDE_Log_Manager extends XIDE_Manager{
 
@@ -73,6 +71,7 @@ class XIDE_Log_Manager extends XIDE_Manager{
 
 	    $path       = realpath(xo_get(self::LOG_PATH,$this));
 	    if(!file_exists($path)){
+		    $this->log('log file path : ' . xo_get(self::LOG_PATH,$this)  .' doesnt exists');
 		    return '{}';
 	    }
 	    $result = array();
@@ -85,15 +84,6 @@ class XIDE_Log_Manager extends XIDE_Manager{
 		    // error opening the file.
 	    }
 	    fclose($handle);
-	    /*
-	    $raw = file_get_contents($path);
-
-	    $logList = preg_split('/\r\n|\r|\n/', $raw,-1,PREG_SPLIT_NO_EMPTY);//winston logger doesn't write valid json
-	    $result = array();
-	    foreach($logList as $item){
-		    $result[]=json_decode($item);
-	    }
-	    */
 	    return $result;
     }
 

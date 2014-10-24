@@ -24,18 +24,24 @@ Stable tag: trunk
 = Features =
 * Full keyboard support ala Midnight or Total-Commander
 * Multi tab
-* Code editor with auto-completion for CSS,PHP and Javascript
+* Advanced code editor with auto-completion for CSS, PHP and Javascript
 * Multi selection
 * Advanced search
 * Drag'n drop for copy, move and upload into any panel
 * Standard actions : Edit, Move, Rename, Info, Delete,Compress and Download
-* Sandbox modus for PHP and HTML files
-* Code editor with CSS hot reload
 * 2 image editors : Pixlr and Aviary
-* View Word, Excel and Powerpoint files with Zoho
 * Enhanced security
-* Enhanced media preview
-* FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive
+* Enhanced media preview as cover flow like on Macintosh or simple preview panel for whatever content & media
+* Mount external FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive
+* 5 display modes for file panels : Thumbnails, List, Preview, Cover-Flow, Split-Horizontal, Split-Vertical
+* 3 main layouts : Dual panel, single panel and 'preview', ideal for media browsing
+* Visual programming language for extending the plugin easier (see screenshot 4). Open wp-content/plugins/xcom/blox.xblox!
+* Logging panel with filters
+* built-in Javascript and Bash shell
+* probably lots of more features i cant remember, in short : this is the hottest file manager you've ever seen.
+* over 25 themes and 20 editor themes
+* user folders: simple put wp-content/%user%/ in the start path settings
+
 
 = Controls : Keyboard =
 * SPACE : Open Preview
@@ -100,22 +106,31 @@ Stable tag: trunk
 * In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your Wordpress site. The stand-alone version has usually less problems. You can buy it from here : http://www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4&Itemid=189
 
 == Screenshots ==
-1. Sample screenshot
-2. Picture editors
-3. Pixrl
-4. Shell
-5. Sandbox with live preview (jsFiddle your page:-)
-6. Search your files
+1. More recent screenshot of the coding utils. The editor understands lots of languages and has auto-completion by default.
+2. More recent screenshot of the browsing and multi-media possibilities. The file manager comes also with an advanced logging system.
+3. Pixrl (outdated)
+4. More recent screenshot of the internal scripting system. This visual programming language helps you to extend the file manager with your own scripts. Its currently in alpha but it works pretty well already.
+5. Sandbox with live preview (jsFiddle your page:-) (outdated)
+6. Search your files (outdated)
 7. Press space for preview
 8. Press space for preview
-9. Preview mode
-10. Manage pictures on your social accounts
-11. Preview mode supports videos
+9. Preview mode (outdated)
+10. Manage pictures on your social accounts (outdated)
+11. Preview mode supports videos (outdated)
 12. Split View with Video preview
 13. Split View with Coverflow ala Mac for images (experimental)
 
 
 == Changelog ==
+
+= 1.6 (24.10.2014) =
+* Lots of minor issues fixed
+* Editor improved
+* HOT : Visual programming language added for extending the file manager. Open wp-content/xcom/blox.xblox or see screenshot nr. 4
+* Visuals improved
+* New and advanced logging system added. Its now more accurate and the log panel is more polished .
+* Shell commands are now executed in the current folder
+
 
 = 1.5 (16.10.2014) =
 * Drag'n drop issue fixed weird

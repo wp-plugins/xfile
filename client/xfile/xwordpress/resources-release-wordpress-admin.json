@@ -25,6 +25,7 @@
         {
             "class":"cmx.types.Resource",
             "type":"CSS",
+            "type":"CSS",
             "url":"%XASWEB%/xfile/xwordpress/css/elusive-icons/elusive-webfont.css",
             "enabled":true
         },
@@ -171,6 +172,24 @@
             "class":"cmx.types.Resource",
             "type":"CSS",
             "url":"%XASWEB%/xfile/ext/cflow/skin_allsizes_white.css",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"CSS",
+            "url":"%XASWEB%/xfile/ext/jsoneditor/jsoneditor.css",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "url":"%XASWEB%/xfile/ext/jsoneditor/jsoneditor.js",
+            "enabled":true
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
+            "url":"%XASWEB%/xfile/ext/stacktrace.js",
             "enabled":true
         }
     ]

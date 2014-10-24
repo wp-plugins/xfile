@@ -63,8 +63,6 @@ define("XAPP_PLUGIN_TYPE", 'XCOM');
 /***
  * Minimal bootrap
  */
-
-
 define('XAPP_BASEDIR',$XAPP_BASE_DIRECTORY);
 include_once XAPP_BASEDIR . '/XApp_Service_Entry_Utils.php';
 XApp_Service_Entry_Utils::includeXAppCore();
@@ -75,9 +73,7 @@ require_once(XAPP_BASEDIR . '/commander/Commander.php');
 XApp_App_Commander::loadDependencies();
 
 include(XAPP_BASEDIR . 'lib/wordpress/ParameterHelper.php');//auth checker
-
 $xappServicePath=  $XAPP_SITE_DIRECTORY . 'server' .DIRECTORY_SEPARATOR . 'service' . DIRECTORY_SEPARATOR . 'index_wordpress_admin.php';
-
 /***
  * Pick up options
  */

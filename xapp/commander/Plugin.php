@@ -86,6 +86,11 @@ class Xapp_Commander_Plugin implements Xapp_Singleton_Interface
      */
     public $xfile=null;
 
+	/***
+	 * @var XCOM_Directory_Service
+	 */
+	public $directoryService=null;
+
 
     /**
      * options dictionary for this class containing all data type values

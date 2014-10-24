@@ -330,7 +330,7 @@ class XApp_Bootstrap
 		self::GATEWAY => XAPP_TYPE_OBJECT,
 		self::SERIVCE_CONF => XAPP_TYPE_ARRAY,
 		self::USER_CONF => array(XAPP_TYPE_ARRAY, XAPP_TYPE_STRING, XAPP_TYPE_OBJECT),
-		self::RESOURCE_CONFIG_PREFIX=>XAPP_TYPE_STRING
+		self::RESOURCE_CONFIG_PREFIX => XAPP_TYPE_STRING
 	);
 
 	/**
@@ -375,7 +375,7 @@ class XApp_Bootstrap
 		self::GATEWAY => 0,
 		self::SERIVCE_CONF => 0,
 		self::USER_CONF => 0,
-		self::RESOURCE_CONFIG_PREFIX=>0
+		self::RESOURCE_CONFIG_PREFIX => 0
 	);
 	/**
 	 * contains the singleton instance for this class
@@ -425,7 +425,7 @@ class XApp_Bootstrap
 		self::GATEWAY => null,
 		self::SERIVCE_CONF => null,
 		self::USER_CONF => 0,
-		self::RESOURCE_CONFIG_PREFIX=>''
+		self::RESOURCE_CONFIG_PREFIX => ''
 	);
 	/***
 	 * @var null|XApp_App_Renderer
@@ -746,7 +746,7 @@ class XApp_Bootstrap
 					xapp_get_option(self::PLUGIN_DIRECTORY, $this),
 					xapp_get_option(self::PLUGIN_MASK, $this)
 				);
-			}else{
+			} else {
 
 			}
 		}
@@ -772,8 +772,7 @@ class XApp_Bootstrap
 				/***
 				 * JSON-RPC-2.0 call. In this case we are only loading the plugin which has been specified in the RPC call('service')
 				 */
-				case XApp_Service_Entry_Utils::SMD_CALL:
-				{
+				case XApp_Service_Entry_Utils::SMD_CALL: {
 
 					/***
 					 * Load the plugin by its service class name. A RPC POST request looks like this :
@@ -862,8 +861,7 @@ class XApp_Bootstrap
 				/***
 				 * JSON-RPC-2.0 Service Introspection. That means we expose all plugins as Dojo SMD! You can see the full RPC class by opening http://localhost/joomla251/administrator/index.php?option=com_xappcommander&view=rpc
 				 */
-				case XApp_Service_Entry_Utils::SMD_GET:
-				{
+				case XApp_Service_Entry_Utils::SMD_GET: {
 
 
 					foreach ($plugins as $pluginConfig) {
@@ -1363,17 +1361,16 @@ class XApp_Bootstrap
 	public function registerServices($serviceList, $rpcServer, $logger = null)
 	{
 
-		$logger = $logger ? : xapp_get_option(XApp_Bootstrap::LOGGER, $bootstrap);
+		$logger = $logger ?: xapp_get_option(XApp_Bootstrap::LOGGER, $bootstrap);
 
 		$shareLogger = in_array(XAPP_LOG_SHARED_LOGGER_SERVICES, xo_get(self::LOGGING_FLAGS));
 
-		foreach ($serviceList as $serviceConf) {
+
+		foreach ($serviceList as &$serviceConf) {
 
 			$instance = $serviceConf[XApp_Service::XAPP_SERVICE_INSTANCE];
 			$className = $serviceConf[XApp_Service::XAPP_SERVICE_CLASS];
 			$classConf = $serviceConf[XApp_Service::XAPP_SERVICE_CONF];
-
-
 			//no instance yet, create one
 			if ($instance == null) {
 
@@ -1381,6 +1378,7 @@ class XApp_Bootstrap
 					$this->log('service class : ' . $className . ' doesnt exists');
 					continue;
 				}
+
 				if (array_key_exists(XApp_Service::PUBLISH_METHODS, $classConf)) {
 					//determine we have 'publish methods'
 					$publishedMethods = $classConf[XApp_Service::PUBLISH_METHODS];
@@ -1420,7 +1418,6 @@ class XApp_Bootstrap
 
 				if (method_exists($instance, 'getObject')) {
 
-
 					$serviceObject = $instance->getObject();
 					if ($serviceObject) {
 						$serviceObject->logger = $logger;
@@ -1429,6 +1426,8 @@ class XApp_Bootstrap
 			}
 			$rpcServer->register($instance);
 		}
+
+		return $serviceList;
 	}
 
 	/**
@@ -1469,11 +1468,13 @@ class XApp_Bootstrap
 			self::loadXAppJSONStoreClasses();
 			xapp_import('xapp.Store.Json.Json');
 
-			$userMgr = new XApp_UserManager(Array(
-				XApp_UserManager::STORE_CONF => array(
-					XApp_Store_JSON::CONF_FILE => xapp_get_option(self::USER_CONF, $this)
+			$userMgr = new XApp_UserManager(
+				Array(
+					XApp_UserManager::STORE_CONF => array(
+						XApp_Store_JSON::CONF_FILE => xapp_get_option(self::USER_CONF, $this)
+					)
 				)
-			));
+			);
 
 			$userMgr->init();
 
@@ -1492,7 +1493,7 @@ class XApp_Bootstrap
 
 	public static function loadJSONTools()
 	{
-		if(!class_exists('XApp_Utils_JSONUtils')){
+		if (!class_exists('XApp_Utils_JSONUtils')) {
 			xapp_import('xapp.Utils.JSONUtils');
 		}
 	}
@@ -1538,11 +1539,13 @@ class XApp_Bootstrap
 			self::loadXAppJSONStoreClasses();
 			xapp_import('xapp.Store.Json.Json');
 
-			$userMgr = new XApp_UserManager(Array(
-				XApp_UserManager::STORE_CONF => array(
-					XApp_Store_JSON::CONF_FILE => xapp_get_option(self::USER_CONF, $this)
+			$userMgr = new XApp_UserManager(
+				Array(
+					XApp_UserManager::STORE_CONF => array(
+						XApp_Store_JSON::CONF_FILE => xapp_get_option(self::USER_CONF, $this)
+					)
 				)
-			));
+			);
 
 			$userMgr->init();
 			$userMgr->initSessionStorage();
@@ -1564,17 +1567,19 @@ class XApp_Bootstrap
 	{
 		$flags = xapp_get_option(self::FLAGS);
 		if (in_array(XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION, $flags) &&
-			xapp_get_option(self::USER_CONF,$this)
+			xapp_get_option(self::USER_CONF, $this)
 		) {
 			self::loadJSONTools();
 			self::loadXAppJSONStoreClasses();
 			xapp_import('xapp.Store.Json.Json');
 
-			$userMgr = new XApp_UserManager(Array(
-				XApp_UserManager::STORE_CONF => array(
-					XApp_Store_JSON::CONF_FILE => xapp_get_option(self::USER_CONF, $this)
+			$userMgr = new XApp_UserManager(
+				Array(
+					XApp_UserManager::STORE_CONF => array(
+						XApp_Store_JSON::CONF_FILE => xapp_get_option(self::USER_CONF, $this)
+					)
 				)
-			));
+			);
 
 			$userMgr->init();
 			$userMgr->initSessionStorage();

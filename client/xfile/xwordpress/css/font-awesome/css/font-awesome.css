@@ -23,7 +23,7 @@
 
 [class*="fa-"] {
     display: inline-block;
-    font-family: FontAwesome;
+    font-family: FontAwesome !important;
     font-style: normal;
     font-weight: normal;
     line-height: 1;
