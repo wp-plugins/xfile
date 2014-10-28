@@ -6,6 +6,7 @@
  * @license : GPL v2. http://www.gnu.org/licenses/gpl-2.0.html
  */
 
+
 $screen=(array)get_current_screen();
 
 $XAPP_WP_NAME = 'xcom';
@@ -100,6 +101,9 @@ if($xcomParameters){
     $XAPP_WP_SESSION['XAPP_PARAMETERS'] = $XAPP_XFILE_CONFIG_ARRAY;
 
 }
+
+XAppWordpressAuth::setSalt($wp_default_secret_key);//important
+
 /***
  * Setup xapp app bootstrapper
  */

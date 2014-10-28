@@ -781,12 +781,29 @@ class XApp_Service_Entry_Utils {
 		}
 		return false;
 	}
+
+	public static function isPictureService2(){
+
+		$method = $_SERVER['REQUEST_METHOD'];
+		if($method==='GET'){
+			$pageURL = self::getUrl();
+			if(strpos($pageURL,'service=XCOM_Directory_Service.download')!==false){
+				return true;
+			}
+
+			if(strpos($pageURL,'service=XCOM_Directory_Service.get')!==false){
+				return true;
+			}
+		}
+		return false;
+	}
+
     public static function isDownload(){
 
         $method = $_SERVER['REQUEST_METHOD'];
         if($method==='GET'){
             $pageURL = self::getUrl();
-            if(strpos($pageURL,'service=Xapp_FileService.download')!==false){
+            if(strpos($pageURL,'service=XCOM_Directory_Service.download')!==false){
                 return true;
             }
 

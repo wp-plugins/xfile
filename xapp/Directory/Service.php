@@ -77,7 +77,12 @@ class XApp_Directory_Service extends XApp_Service
     /***
      * Allowed upload extensions
      */
-    const UPLOAD_EXTENSIONS         = "XAPP_FILE_UPLOAD_EXTENSIONS";
+    const UPLOAD_EXTENSIONS             = "XAPP_FILE_UPLOAD_EXTENSIONS";
+
+	/***
+	 * Auth Delegate
+	 */
+	const AUTH_DELEGATE                 = "XAPP_AUTH_DELEGATE";
 
     /*******************************************************************************/
     /*  XApp options
@@ -100,7 +105,8 @@ class XApp_Directory_Service extends XApp_Service
         self::DEFAULT_NODE_FIELDS       => XAPP_TYPE_INT,
         self::AUTO_RENAME               => XAPP_TYPE_BOOL,
         self::UPLOAD_EXTENSIONS         => XAPP_TYPE_STRING,
-	    self::VFS_CONFIG_PASSWORD       => XAPP_TYPE_STRING
+	    self::VFS_CONFIG_PASSWORD       => XAPP_TYPE_STRING,
+	    self::AUTH_DELEGATE             => XAPP_TYPE_OBJECT
 
     );
     /**
@@ -119,7 +125,8 @@ class XApp_Directory_Service extends XApp_Service
         self::DEFAULT_NODE_FIELDS       => 0,
         self::AUTO_RENAME               => 0,
         self::UPLOAD_EXTENSIONS         => 0,
-	    self::VFS_CONFIG_PASSWORD       => 0
+	    self::VFS_CONFIG_PASSWORD       => 0,
+	    self::AUTH_DELEGATE             => 0,
     );
     /**
      * options default value array containing all class option default values
@@ -138,7 +145,8 @@ class XApp_Directory_Service extends XApp_Service
         self::DEFAULT_NODE_FIELDS       => null,
         self::AUTO_RENAME               => true,
 	    self::VFS_CONFIG_PASSWORD       => null,
-        self::UPLOAD_EXTENSIONS          => 'js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS'
+        self::UPLOAD_EXTENSIONS          => 'js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS',
+	    self::AUTH_DELEGATE             => null
     );
 
     protected $_vfs;
@@ -500,5 +508,19 @@ class XApp_Directory_Service extends XApp_Service
         $error=array();
         $vfs->deleteFile(XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath($path,true,false)),null,$error,$success);
     }
+
+	public function createToken($what){
+
+		$authDelegate = xapp_has_option(self::AUTH_DELEGATE) ? xapp_get_option(self::AUTH_DELEGATE) : null;
+		$result = '';
+		if($authDelegate){
+			$result =  $authDelegate->createToken($what);
+		}
+
+
+		return $result;
+
+
+	}
 
 }

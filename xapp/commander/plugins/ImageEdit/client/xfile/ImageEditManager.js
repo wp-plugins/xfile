@@ -4,13 +4,18 @@ define([
     'xide/factory',
     'xide/types',
     'xide/manager/ManagerBase',
-    'xfile/views/RemoteEditor'
+    'xide/layout/ContentPane',
+    'xfile/views/RemoteEditor',
+    'dojox/encoding/digests/SHA1'
 
 ], function (declare,
              utils,
              factory,
              types,
-             ManagerBase,RemoteEditor)
+             ManagerBase,
+             ContentPane,
+             RemoteEditor,
+             SHA1)
 {
     return declare("ImageEdit.xfile.ImageEditManager", [ManagerBase],
         {
@@ -27,8 +32,13 @@ define([
             didRegister:false,
             onEditorClose:function(editor){
                 this.featherEditor=editor;
+                if(editor && editor.parentContainer){
+                    //editor.parentContainer.removeChild(editor);
+                }
                 //this.imageEditorPaneContainer.removeChild(this.imageEditorPane);
+                //this.ctx.getPanelManager().onClosePanel(editor);
                 this.ctx.getPanelManager().onClosePanel(editor);
+
             },
             onImageSaved:function(newUrl){
                 var fileManager = this.fileManager || xfile.getContext().getFileManager();
@@ -68,118 +78,181 @@ define([
                 this.imageEditorPaneContainer=dstContainer;
 
                 var fileManager = this.ctx.getFileManager();
+                var config = fileManager.config;
                 var imageUrl = fileManager.getImageUrl(item);
                 if(imageUrl.indexOf('http')==-1){
                     imageUrl = this.config.REPO_URL + '/' + fileManager.getImageUrl(item);
                 }
-                var _container = new dijit.layout.ContentPane({
-                    title:item.name,
-                    closable:true,
-                    style:'padding:0px;margin:0px;overflow:hidden;',
-                    onClose: function () {
-                        thiz.onEditorClose(this);
+
+
+                var _openEditor = function(imageUrl) {
+
+                    var _container = utils.addWidget(ContentPane, {
+                        title: item.name,
+                        closable: true,
+                        style: 'padding:0px;margin:0px;overflow:hidden;',
+                        parentContainer: dstContainer,
+                        onClose: function () {
+                            thiz.onEditorClose(this);
+                        }
+                    }, null, dstContainer, true);
+
+                    dstContainer.resize();
+                    mainView.resize();
+                    dstContainer = _container;
+
+                    thiz.imageEditorPane = _container;
+
+                    if (thiz.imageEditView) {
+                        utils.destroyWidget(thiz.imageEditView);
+                        thiz.imageEditView = null;
                     }
-                },dojo.doc.createElement('div'));
 
-                dstContainer.addChild(_container);
-                dstContainer.selectChild(_container);
-                dstContainer.resize();
-                mainView.resize();
-                dstContainer=_container;
+                    if (!thiz.imageEditView) {
+                        console.log('open image editor with image url ' + imageUrl);
+                        thiz.imageEditView = new RemoteEditor({
+                            selected: true,
+                            delegate: thiz,
+                            options: {},
+                            config: thiz.config,
+                            frameUrl: require.toUrl("ImageEdit/xfile/templates/Aviary.html"),
+                            editUrl: imageUrl,
+                            parentContainer: dstContainer
+                        }, dojo.doc.createElement('div'));
 
-                this.imageEditorPane=_container;
+                        dstContainer.containerNode.appendChild(thiz.imageEditView.domNode);
+                    }
+                    thiz.imageEditView.startup();
 
-                if (this.imageEditView){
-                    utils.destroyWidget(this.imageEditView);
-                    this.imageEditView=null;
+                };
+
+
+                if(config.NEEDS_TOKEN==1){
+
+                    var _tokenReady = function(result){
+
+                        imageUrl+='&xfToken='+result;
+                        _openEditor(imageUrl);
+                    };
+                    return fileManager.callMethod('createToken','xfToken',_tokenReady,false);
+
+                }else{
+                    _openEditor(imageUrl,saveUrl);
                 }
-                if (!this.imageEditView) {
-                    console.log('open image editor with image url ' + imageUrl);
-                    this.imageEditView = new RemoteEditor({
-                        selected:true,
-                        delegate:this,
-                        options:{},
-                        config:this.config,
-                        frameUrl:require.toUrl("ImageEdit/xfile/templates/Aviary.html"),
-                        editUrl:imageUrl,
-                        parentContainer:dstContainer
-                    },dojo.doc.createElement('div'));
 
-                    dstContainer.containerNode.appendChild(this.imageEditView.domNode);
-                }
-                this.imageEditView.startup();
+
             },
             openPixlrEditor:function(item){
 
-                var mainView = this.getMainView();
-                var thiz=this;
+                var mainView = this.getMainView(),
+                    thiz=this;
+
                 if(!mainView){
                     return;
                 }
-                var dstContainer = mainView.getNewAlternateTarget();
-                if(!dstContainer){
-                    return;
-                }
-                this.imageEditorPaneContainer=dstContainer;
+
 
                 var fileManager = this.ctx.getFileManager();
+                var config = fileManager.config;
+
+
                 var imageUrl = fileManager.getImageUrl(item);
                 if(imageUrl.indexOf('http')==-1){
                     imageUrl = this.config.REPO_URL + '/' + fileManager.getImageUrl(item);
                 }
 
-                var _container = new dijit.layout.ContentPane({
-                    title:item.name,
-                    closable:true,
-                    style:'padding:0px;margin:0px;overflow:hidden;',
-                    onClose: function () {
-                        thiz.onEditorClose(this);
+                var saveUrl = thiz.config.FILE_SERVICE_FULL;
+                var mount = item.mount.replace('/', '');
+                if (saveUrl.indexOf('?') == -1) {
+                    saveUrl += '?service=XCOM_Directory_Service.fileUpdate&view=smdCall&callback=asdf&mount=' + mount + '&srcPath=' + item.path;
+                } else {
+                    saveUrl += '&service=XCOM_Directory_Service.fileUpdate&view=smdCall&callback=asdf&mount=' + mount + '&srcPath=' + item.path;
+                }
+
+                /**
+                 * calc signature
+                 * @type {{service: string, mount: *, srcPath: (item.path|*), callback: string, user: (xFileConfig.RPC_PARAMS.rpcUserValue|*|a.RPC_PARAMS.rpcUserValue)}}
+                 */
+                var aParams = {
+                    "service": "XCOM_Directory_Service.fileUpdate",
+                    "mount": mount,
+                    'srcPath':item.path,
+                    "callback":"asdf",
+                    "title":item.name,
+                    "user":this.config.RPC_PARAMS.rpcUserValue
+                };
+
+                var pStr  =  dojo.toJson(aParams);
+                var signature = SHA1._hmac(pStr, this.config.RPC_PARAMS.rpcSignatureToken, 1);
+                saveUrl+='&' + this.config.RPC_PARAMS.rpcUserField + '=' + this.config.RPC_PARAMS.rpcUserValue;
+                saveUrl+='&' + this.config.RPC_PARAMS.rpcSignatureField + '=' + signature;
+
+
+                var _openEditor = function(imageUrl,saveUrl) {
+
+                    var dstContainer = mainView.getNewAlternateTarget();
+                    if(!dstContainer){
+                        return;
                     }
-                },dojo.doc.createElement('div'));
 
-                dstContainer.addChild(_container);
-                dstContainer.selectChild(_container);
-                dstContainer.resize();
-                mainView.resize();
+                    thiz.imageEditorPaneContainer=dstContainer;
 
-                dstContainer=_container;
-                this.imageEditorPane=_container;
-
-                if (this.imageEditView){
-                    utils.destroyWidget(this.imageEditView);
-                    this.imageEditView=null;
-                }
-                //console.log('save url ' + this.config.FILE_SERVICE_FULL;
-                //'?service=XCOM_Directory_Service.fileUpdate&callback=asdf&mount='+item.mount +'&srcPath='+item.path);
-                var saveUrl = this.config.FILE_SERVICE_FULL;
-                var mount=item.mount.replace('/','');
-                if(saveUrl.indexOf('?')==-1){
-                    saveUrl+='?service=XCOM_Directory_Service.fileUpdate&view=smdCall&callback=asdf&mount='+mount +'&srcPath='+item.path;
-                }else{
-                    saveUrl+='&service=XCOM_Directory_Service.fileUpdate&view=smdCall&callback=asdf&mount='+mount +'&srcPath='+item.path;
-                }
-                console.log('save url ' + saveUrl);
-                if (!this.imageEditView) {
-                    this.imageEditView = new RemoteEditor({
-                        selected:true,
-                        delegate:this,
-                        options:{},
-                        config:this.config,
-                        frameUrl:require.toUrl("ImageEdit/xfile/templates/Pixlr.html"),
-                        editUrl:imageUrl,
-                        saveUrl:saveUrl,
+                    var _container = utils.addWidget(ContentPane,{
+                        title: item.name,
+                        closable: true,
+                        style: 'padding:0px;margin:0px;overflow:hidden;',
                         parentContainer:dstContainer,
-                        title:item.name
-                    },dojo.doc.createElement('div'));
+                        onClose: function () {
+                            thiz.onEditorClose(this);
+                        }
+                    },null, dstContainer,true);
+                    dstContainer.resize();
+                    mainView.resize();
 
-                    dstContainer.containerNode.appendChild(this.imageEditView.domNode);
+                    dstContainer = _container;
+                    thiz.imageEditorPane = _container;
+
+                    if (thiz.imageEditView) {
+                        utils.destroyWidget(thiz.imageEditView);
+                        thiz.imageEditView = null;
+                    }
+
+                    if (!thiz.imageEditView) {
+                        thiz.imageEditView = new RemoteEditor({
+                            selected: true,
+                            delegate: thiz,
+                            options: {},
+                            config: thiz.config,
+                            frameUrl: require.toUrl("ImageEdit/xfile/templates/Pixlr.html"),
+                            editUrl: imageUrl,
+                            saveUrl: saveUrl,
+                            parentContainer: dstContainer,
+                            title: item.name
+                        }, dojo.doc.createElement('div'));
+
+                        dstContainer.containerNode.appendChild(thiz.imageEditView.domNode);
+                    }
+                    thiz.imageEditView.startup();
+
+                };
+                if(config.NEEDS_TOKEN==1){
+
+                    var _tokenReady = function(result){
+
+                        imageUrl+='&xfToken='+result;
+                        saveUrl+='&xfToken='+result;
+                        _openEditor(imageUrl,saveUrl);
+                    };
+                    return fileManager.callMethod('createToken','xfToken',_tokenReady,false);
+
+                }else{
+                    _openEditor(imageUrl,saveUrl);
                 }
-                this.imageEditView.startup();
+
 
             },
             onMainViewReady:function(evt){
 
-                console.error('#### imageedit : mainview ready');
                 if(this.didRegister){
                     console.error('already registred');
                     return;
@@ -206,11 +279,8 @@ define([
             },
             _registerListeners:function () {
                 this.inherited(arguments);
-                console.error('#### imageedit : register!');
                 this.subscribe(types.EVENTS.ITEM_SELECTED,this.onItemSelected,this);
                 this.subscribe(types.EVENTS.ON_MAIN_VIEW_READY,this.onMainViewReady,this);
-                //this.onMainViewReady();
-                //console.error('register plugins');
             },
             constructor:function () {
                 this.id=utils.createUUID();

@@ -67,7 +67,7 @@ class XIDE_Log_Manager extends XIDE_Manager{
        self::LOG_PATH              => 'logs/all.log'
     );
 
-    public function ls(){
+    public function ls($which=''){
 
 	    $path       = realpath(xo_get(self::LOG_PATH,$this));
 	    if(!file_exists($path)){

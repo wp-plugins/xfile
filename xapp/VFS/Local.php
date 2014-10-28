@@ -378,6 +378,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 
     public function delete($selection,$options=Array(),$inclusionMask = Array(),$exclusionMask = Array(),&$error,&$success){
 
+
         $log = array();
         foreach ($selection as $selectedFile)
         {
@@ -389,13 +390,15 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
             }
 
             $fileToDelete=$this->toRealPath($selectedFile);
-            if(!file_exists($fileToDelete))
+	        if(!file_exists($fileToDelete))
             {
-                $log[] = XAPP_TEXT_FORMATTED('FAILED_TO_DELETE',array(XApp_SystemTextEncoding::toUTF8($selectedFile)));
+	            error_log('delete file :1 ' . $fileToDelete . ' doesn exists');
+                $error[] = XAPP_TEXT_FORMATTED('FAILED_TO_DELETE',array(XApp_SystemTextEncoding::toUTF8($selectedFile)));
                 continue;
             }
 
             if(is_file($fileToDelete)){
+
                 $this->deleteFile($selectedFile,$options,$error,$success);
             }elseif (is_dir($fileToDelete)){
                 $this->deleteDirectory($selectedFile,$options,$inclusionMask,$exclusionMask,$error,$success);

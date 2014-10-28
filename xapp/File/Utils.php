@@ -312,7 +312,8 @@ class XApp_File_Utils
      * @param $success              : track all copied items here
      */
     public static function deleteFile($path,$options=Array(),&$error,&$success){
-        if(!self::$_tmpSrcRootPath){
+        error_log('del file ' .$path);
+	    if(!self::$_tmpSrcRootPath){
             self::$_tmpSrcRootPath=realpath($path . DIRECTORY_SEPARATOR . '..');
         }
 

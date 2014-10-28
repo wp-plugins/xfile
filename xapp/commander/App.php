@@ -182,10 +182,10 @@ function xapp_commander_render_app(
                 $XAPP_VFS_CONFIG_PATH =     realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'vfs.php';
 	            $XAPP_USER_CONFIG_PATH =     realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'Users.php';
 
-	            /***
-	             * The path to the virtual file system configuration for Maqetta, holding all mounted resources
-	             */
 	            $XIDE_LOG_PATH = realpath(XAPP_BASEDIR . '..' . DIRECTORY_SEPARATOR . 'logs'. DIRECTORY_SEPARATOR . 'all.log');
+				if(!$XIDE_LOG_PATH){
+					$XIDE_LOG_PATH='';
+				}
 
 
                 $REPOSITORY_ROOT = str_replace('administrator','',$REPOSITORY_ROOT);//no idea why
@@ -234,8 +234,9 @@ function xapp_commander_render_app(
                     XApp_Commander_Bootstrap::SIGNING_TOKEN           =>  md5($authDelegate->getToken()),
                     XApp_Commander_Bootstrap::SIGNED_SERVICE_TYPES    =>  array(
 
-                        //XAPP_SERVICE_TYPE_SMD_CALL,  //client must sign any RPC call
-                        /*XAPP_SERVICE_TYPE_DOWNLOAD*/
+                        XAPP_SERVICE_TYPE_SMD_CALL,  //client must sign any RPC call
+                        XAPP_SERVICE_TYPE_DOWNLOAD,
+	                    XAPP_SERVICE_TYPE_SMD_GET
                     ),
                     XApp_Commander_Bootstrap::GATEWAY_CONF            =>  array(
 

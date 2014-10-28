@@ -508,14 +508,14 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
 
     /**
      * create api or gateway key with this method passing user id as first parameter and preferably
-     * referer value as second parameter. refere could be anything that can be found in request header
-     * , e.g. host, referer, user agent etc. with the user id and referer a signed request can be validated
+     * referrer value as second parameter. referrer could be anything that can be found in request header
+     * , e.g. host, referer, user agent etc. with the user id and referrer a signed request can be validated
      * as being valid. the function will return a 22 char long key the can be reproduced when passing the
      * exact same parameters
      *
      * @error 14012
      * @param mixed $id expects the user id
-     * @param null|string $referer expects variable referer string
+     * @param null|string $referrer expects variable referrer string
      * @param null|string $salt expects optional custom salt
      * @return string
      */
@@ -531,6 +531,13 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
     }
 
 
+	/**
+	 * Salt setter
+	 * @param $salt
+	 */
+	public static function setSalt($salt){
+		self::$_salt = $salt;
+	}
     /**
      * basic data sign method converting an array/object to string to be hashed and signed with key passed in second
      * parameter using the algorithm in third parameter. the same function must be used server and client side.
@@ -558,13 +565,21 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
         {
             throw new Xapp_Rpc_Gateway_Exception("passed hashing algorithm is not recognized", 1401301);
         }
+
+	    /*
+	    $_data = json_encode($data);
+	    $_data = str_replace('\\/', '/',$_data);
+	    error_log('     xdata to hash :  ' . $_data . ' with key : ' . $key . '  = ' . hash_hmac((string)$algo, $_data, (string)$key));
+	    */
+
         if(!function_exists('xapp_rpc_sign'))
         {
             function xapp_rpc_sign($data, $key, $algo = 'sha1')
             {
                 $data = json_encode($data);
                 $data = str_replace('\\/', '/',$data);
-                /*error_log(' data to hash :  ' . $data . ' with key : ' . $key);*/
+                //error_log(' data to hash :  ' . $data . ' with key : ' . $key . '  = ' . hash_hmac((string)$algo, $data, (string)$key));
+
                 if($data !== false)
                 {
                     return hash_hmac((string)$algo, $data, (string)$key);
@@ -799,11 +814,19 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                             Xapp_Rpc_Fault::t(vsprintf("signed request value for: %s not found in request", array(xapp_get_option(self::SIGNED_REQUEST_SIGN_PARAM, $this))), array(1401513, -32011));
                         }
 
-                        $key = $this->getKey($user, null);
-                        $params = $this->request()->getParams();
+	                    $key = $this->getKey($user, null);
+
+	                    $params = $this->request()->getParams();
+
                         if(array_key_exists('xdmTarget',$params)){
                             unset($params['xdmTarget']);
                         }
+	                    if(array_key_exists('xfToken',$params)){
+		                    unset($params['xfToken']);
+	                    }
+	                    if(array_key_exists('time',$params)){
+		                    unset($params['time']);
+	                    }
                         if(array_key_exists('xdm_e',$params)){
                             unset($params['xdm_e']);
                         }
@@ -832,7 +855,7 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                                     Xapp_Rpc_Fault::t("verifying signed request failed", array(1401510, -32010));
                                 }
                             }else{
-                                throw new Xapp_Rpc_Gateway_Exception("user identification key must be set when using internal signed request verification", 1401511);
+	                            throw new Xapp_Rpc_Gateway_Exception("user identification key must be set when using internal signed request verification", 1401511);
                             }
                         }
                     }

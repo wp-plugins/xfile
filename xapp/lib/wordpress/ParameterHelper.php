@@ -87,6 +87,8 @@ class XApp_Wordpress_Parameter_Helper
 
         $result['LAYOUT_PRESET']=1;
 
+	    $result['NEEDS_TOKEN']=1;
+
         $result['PANEL_OPTIONS'] = array_fill_keys(self::$panelOptionKeys, $defaultPanelOption);
 
         $result['PANEL_OPTIONS']['ALLOW_MULTI_TAB']=false;
@@ -113,7 +115,7 @@ class XApp_Wordpress_Parameter_Helper
 	        XC_OPERATION_PLUGINS=>1,
 	        XC_OPERATION_ADD_MOUNT=>1,
 	        XC_OPERATION_REMOVE_MOUNT=>1,
-	        XC_OPERATION_EDIT_MOUNT=>1,
+	        XC_OPERATION_EDIT_MOUNT=>1
 
         );
         $result['ALLOWED_ACTIONS']=$XCOM__DEFAULT_ACTIONS;

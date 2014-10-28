@@ -1261,8 +1261,8 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 				 */
 				$signServiceTypes = xapp_get_option(self::SIGNED_SERVICE_TYPES, $this);
 				if (in_array(XApp_Service_Entry_Utils::getServiceType(), $signServiceTypes)) {
-					$needsSigning = true;
 
+					$needsSigning = true;
 
 					//set signed
 					$opt[Xapp_Rpc_Gateway::SIGNED_REQUEST] = true;
