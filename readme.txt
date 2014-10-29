@@ -13,9 +13,17 @@ Stable tag: 1.6
 
 == Description ==
 
-* XFile is a multi-talent file manager. Perfect for quick editing and managing files.
+* XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client. Simply install and access your files with a browser.
+
+
+= External Reviews =
+
+* [Wordpress plugins will make your life easier](http://www.semgeeks.com/blog/free-wordpress-plugins-will-make-your-life-easier)
+* [the-best-free-wordpress-plugins-for-september-2014](http://www.webdesignerdepot.com/2014/08/the-best-free-wordpress-plugins-for-september-2014/)
+
 
 = Required =
+
 * PHP 5.3
 * Linux based server, no Windows support right now.
 * Supported browsers : Chrome, Firefox and maybe Opera.
@@ -38,6 +46,7 @@ Stable tag: 1.6
 * Visual programming language for extending the plugin easier (see screenshot 4). Open wp-content/plugins/xcom/blox.xblox!
 * Logging panel with filters
 * built-in Javascript and Bash shell
+* probably lots of more features i cant remember, in short : this is the hottest file manager you've ever seen.
 * over 25 themes and 20 editor themes
 * user folders: simple put wp-content/%user%/ in the start path settings
 
@@ -121,13 +130,6 @@ Stable tag: 1.6
 
 
 == Changelog ==
-
-
-= 1.6.2 (29.10.2014) =
-* Security level raised. All RPC need to be HMAC-SHA1 signed now.
-* Aviary & Pixrl editor save and load issue fixed. Security added.
-
-
 
 = 1.6 (24.10.2014) =
 * Lots of minor issues fixed
