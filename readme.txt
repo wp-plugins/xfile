@@ -38,7 +38,6 @@ Stable tag: 1.6
 * Visual programming language for extending the plugin easier (see screenshot 4). Open wp-content/plugins/xcom/blox.xblox!
 * Logging panel with filters
 * built-in Javascript and Bash shell
-* probably lots of more features i cant remember, in short : this is the hottest file manager you've ever seen.
 * over 25 themes and 20 editor themes
 * user folders: simple put wp-content/%user%/ in the start path settings
 
