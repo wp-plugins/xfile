@@ -197,6 +197,9 @@ $xFileRepositoryRoot = XApp_Variable_Mixin::replaceResourceVariables($repository
 $XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc');//not used anymore, to slow!!!
 $XAPP_SETTINGS_FILE  = XAPP_CONF_DIRECTORY . DIRECTORY_SEPARATOR . 'settings.json';
 $XIDE_LOG_PATH = realpath(XAPP_BASEDIR . '..' . DIRECTORY_SEPARATOR . 'logs'. DIRECTORY_SEPARATOR . 'all.log');
+if(!$XIDE_LOG_PATH){
+	$XIDE_LOG_PATH ='';
+}
 
 require_once(XAPP_BASEDIR. 'lib/standalone/StoreDelegate.php');
 try{
