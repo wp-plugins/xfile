@@ -125,8 +125,9 @@ Stable tag: 1.6
 
 
 = 1.6.2 (29.10.2014) =
-* Security level raised. All RPC need to be signed now.
+* Security level raised. All RPC need to be HMAC-SHA1 signed now.
 * Aviary & Pixrl editor save and load issue fixed. Security added.
+
 
 
 = 1.6 (24.10.2014) =
