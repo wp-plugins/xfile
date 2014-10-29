@@ -123,6 +123,9 @@ Stable tag: 1.6
 
 == Changelog ==
 
+= 1.6.2 (24.10.2014) =
+* Security level raised. All RPC need to be signed now.
+
 = 1.6 (24.10.2014) =
 * Lots of minor issues fixed
 * Editor improved
