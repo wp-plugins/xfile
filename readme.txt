@@ -127,6 +127,7 @@ Stable tag: 1.6
 11. Preview mode supports videos (outdated)
 12. Split View with Video preview
 13. Split View with Coverflow ala Mac for images (experimental)
+14. Aviary picture editor
 
 
 == Changelog ==
