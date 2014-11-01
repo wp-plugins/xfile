@@ -196,7 +196,7 @@ $XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc');//not used any
 $XAPP_SETTINGS_FILE  = XAPP_CONF_DIRECTORY . DIRECTORY_SEPARATOR . 'settings.json';
 $XIDE_LOG_PATH = realpath(XAPP_BASEDIR . '..' . DIRECTORY_SEPARATOR . 'logs'. DIRECTORY_SEPARATOR . 'all.log');
 if(!$XIDE_LOG_PATH){
-	$XIDE_LOG_PATH='';
+	$XIDE_LOG_PATH='nada';
 }
 
 
