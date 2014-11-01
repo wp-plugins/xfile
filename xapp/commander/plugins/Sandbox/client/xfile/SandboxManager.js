@@ -370,7 +370,7 @@ define([
 
                 factory.publish(types.EVENTS.REGISTER_EDITOR, {
                     name: 'Browser',
-                    extensions: 'php|html|mp4|doc|xls|pdf|zip|tar|iso|avi|gz|mp3|mkv|ogg',
+                    extensions: 'php|html|mp4|doc|xls|pdf|zip|tar|iso|avi|gz|mp3|mkv|ogg|png|jpg',
                     onEdit: function () {
                         thiz.openEditor(thiz.currentItem)
                     },
@@ -380,7 +380,7 @@ define([
 
                 factory.publish(types.EVENTS.REGISTER_EDITOR, {
                     name: 'New Window',
-                    extensions: 'php|html|mp4|doc|xls|pdf|zip|tar|iso|avi|gz|mp3|mkv|ogg',
+                    extensions: 'php|html|mp4|doc|xls|pdf|zip|tar|iso|avi|gz|mp3|mkv|ogg|png|jpg',
                     onEdit: function () {
                         thiz.openWindow(thiz.currentItem)
                     },

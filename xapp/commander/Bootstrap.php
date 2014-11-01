@@ -1294,7 +1294,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 				 */
 				if ($needsSigning) {
 
-					error_log('add key ' . xapp_get_option(self::SIGNING_KEY, $this) . ' and token : ' . xapp_get_option(self::SIGNING_TOKEN, $this));
+					//error_log('add key ' . xapp_get_option(self::SIGNING_KEY, $this) . ' and token : ' . xapp_get_option(self::SIGNING_TOKEN, $this));
 					$gateway->addKey(
 						xapp_get_option(self::SIGNING_KEY, $this),
 						xapp_get_option(self::SIGNING_TOKEN, $this)
