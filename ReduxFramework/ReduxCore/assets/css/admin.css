@@ -10,27 +10,38 @@ a {
 .redux-container {
   background-color: #eeeeee;
   /* Old browsers */
+
   background-repeat: repeat-x;
   /* Repeat the gradient */
+
   background-image: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
   /* FF3.6+ */
+
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
   /* Chrome,Safari4+ */
+
   background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
   /* Chrome 10+,Safari 5.1+ */
+
   background-image: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
   /* IE10+ */
+
   background-image: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
   /* Opera 11.10+ */
+
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
   /* IE6-9 */
+
   background-image: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
   /* W3C */
+
   border: 1px solid #e5e5e5;
   -moz-border-radius: 10px;
   /* Firefox */
+
   -webkit-border-radius: 10px;
   /* Safari, Chrome */
+
   border-radius: 10px;
   -moz-box-shadow: 0 1px 0 #ffffff inset, 0 1px 5px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0 1px 0 #ffffff inset, 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -203,8 +214,10 @@ a {
   margin-left: 4px;
   -moz-border-radius: 20px;
   /* Firefox */
+
   -webkit-border-radius: 20px;
   /* Safari, Chrome */
+
   border-radius: 20px;
   font-family: sans-serif;
   font-size: 9px;
@@ -220,8 +233,10 @@ a {
   margin-left: 4px;
   -moz-border-radius: 20px;
   /* Firefox */
+
   -webkit-border-radius: 20px;
   /* Safari, Chrome */
+
   border-radius: 20px;
   font-family: sans-serif;
   font-size: 9px;
@@ -274,6 +289,7 @@ a {
   /*vertical-align:middle;
 	margin-bottom:-3px;
 	margin-right: 3px;*/
+
   position: absolute;
   left: 15px;
 }

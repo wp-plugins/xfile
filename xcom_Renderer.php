@@ -104,7 +104,6 @@ if($xcomParameters){
     $XAPP_WP_SESSION = XApp_WP_Session::get_instance();
     $XAPP_WP_SESSION['XAPP_PARAMETERS'] = $XAPP_XFILE_CONFIG_ARRAY;
 
-
 }
 /***
  * Setup xapp app bootstrapper
@@ -145,12 +144,12 @@ else{
 
 wp_enqueue_style(md5($jQueryThemeUrl),$jQueryThemeUrl);
 $XAPP_FILE_SERVICE = "../wp-content/plugins/".$XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php?view=rpc";
-$XAPP_FILE_SERVICE = $XAPP_PLUGIN_URL .  "/server/service/index_wordpress_admin.php?view=rpc";
-error_log('sdfsdf : '. $XAPP_FILE_SERVICE );
-
 //$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
 
 $authDelegate = new XAppWordpressAuth();
+$authDelegate->setSalt(SECURE_AUTH_SALT);
+
+
 $XAPP_SERVICE_URL_MIXIN = $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc';
 
 $xappResourceRender->registerRelative('APP_URL',$XAPP_APP_URL);
@@ -161,8 +160,6 @@ $resourceVariables['DOJOPACKAGES']=array();
 $resourceVariables['XFILE_CONFIG_MIXIN']=array();
 $resourceVariables['RESOURCE_VARIABLES']=array();
 $xappResourceRender->registerRelative('RESOURCE_VARIABLES',json_encode($resourceVariables,true));
-
-XAppWordpressAuth::setSalt(SECURE_AUTH_SALT);//important
 
 
 ?>

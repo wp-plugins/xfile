@@ -132,6 +132,9 @@ Stable tag: 1.6
 
 == Changelog ==
 
+= 1.6.1 (1.11.2014) =
+* Security level raised. All client calls on the RPC end-point need to be signed. Prevents session high-jacking and url tampering on authenticated WP sessions
+
 = 1.6 (24.10.2014) =
 * Lots of minor issues fixed
 * Editor improved

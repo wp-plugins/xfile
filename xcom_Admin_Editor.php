@@ -93,6 +93,7 @@ class xcom_Admin_Editor {
 		if ( version_compare( $wp_version, '3.9', '>=' ) ) {
 			$plugin_array['wc_shortcodes_button'] = $XAPP_PLUGIN_URL . '/assets/js/admin/editor_plugin' . $suffix . '.js';
 			$plugin_array['xfile'] = $XAPP_PLUGIN_URL . '/assets/js/admin/editor_plugin' . $suffix . '.js';
+			//error_log('adding ' . $XAPP_PLUGIN_URL . '/assets/js/admin/editor_plugin' . $suffix . '.js');
 		} else {
 			$plugin_array['wc_shortcodes_button'] = $XAPP_PLUGIN_URL . '/assets/js/admin/editor_plugin_legacy' . $suffix . '.js';
 		}

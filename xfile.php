@@ -50,7 +50,6 @@ function xcom_i18n_init() {
 // First initialize i18n
 xcom_i18n_init();
 
-
 // Next, run the version check.
 // If it is successful, continue with initialization for this plugin
 if (xcom_PhpVersionCheck()) {
@@ -70,7 +69,7 @@ function renderXCOMGUI_HEAD(){
 }
 function renderRPC(){
 	include(realpath(dirname(__FILE__).'/server/service/index_wordpress_admin.php'));
-	exit();
+	die();
 }
 
 function xcom_admin_menu() {
@@ -79,9 +78,8 @@ function xcom_admin_menu() {
 
 add_action('admin_menu', 'xcom_admin_menu');
 add_action('admin_head', 'renderXCOMGUI_HEAD');
+add_action('wp_ajax_xfile-rpc', 'renderRPC');//http://localhost:81/wordpress/wp-admin/admin-ajax.php?action=xfile-rpc
 
-//add_action('wp_ajax_xfile-rpc', 'renderRPC');//http://mc007ibi.dyndns.org:81/wordpress/wp-admin/admin-ajax.php?action=xfile-rpc
-//add_action('wp_ajax_nopriv_xfile-rpc', 'renderRPC');//http://mc007ibi.dyndns.org:81/wordpress/wp-admin/admin-ajax.php?action=xfile-rpc
 
 if(file_exists(realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'xcom_Admin_Editor.php')){
 	include_once realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'xcom_Admin_Editor.php';
@@ -89,5 +87,3 @@ if(file_exists(realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'xcom_Admin_E
 include_once realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR. 'class-recursive-arrayaccess.php';
 include_once realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR. 'class-wp-session.php';
 include_once realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR. 'wp-session.php';
-
-//error_log('test3');

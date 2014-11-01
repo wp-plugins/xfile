@@ -5,11 +5,6 @@
  * @author XApp-Studio.com support@xapp-studio.com
  * @license : GPL v2. http://www.gnu.org/licenses/gpl-2.0.html
  */
-
-/**
- * xcom_init
- * @param $file
- */
 function xcom_init($file) {
 
     require_once('xcom_Plugin.php');
