@@ -380,7 +380,6 @@ class XApp_Commander_PluginManager implements Xapp_Singleton_Interface {
             }
             if(is_file($_pathToSearch . DIRECTORY_SEPARATOR . $value) && strpos($value,'json')!==false)
             {
-                /*$confStore = (object)XApp_Utils_JSONUtils::read_json($_pathToSearch . DIRECTORY_SEPARATOR . $value,'json',false,true);*/
                 $confStore=$this->readJSON($_pathToSearch . DIRECTORY_SEPARATOR . $value,'json');
                 if($confStore){
                     array_push($result,$confStore);

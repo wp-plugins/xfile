@@ -538,6 +538,13 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
 	public static function setSalt($salt){
 		self::$_salt = $salt;
 	}
+
+	/**
+	 * Salt getter
+	 */
+	public static function getSalt(){
+		return self::$_salt;
+	}
     /**
      * basic data sign method converting an array/object to string to be hashed and signed with key passed in second
      * parameter using the algorithm in third parameter. the same function must be used server and client side.
@@ -566,11 +573,11 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
             throw new Xapp_Rpc_Gateway_Exception("passed hashing algorithm is not recognized", 1401301);
         }
 
-	    /*
+/*
 	    $_data = json_encode($data);
 	    $_data = str_replace('\\/', '/',$_data);
-	    error_log('     xdata to hash :  ' . $_data . ' with key : ' . $key . '  = ' . hash_hmac((string)$algo, $_data, (string)$key));
-	    */
+	    error_log('sign ' . $_data . ' with key : ' . $key . '  to ' . hash_hmac((string)$algo, $_data, (string)$key));
+*/
 
         if(!function_exists('xapp_rpc_sign'))
         {
@@ -579,7 +586,6 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                 $data = json_encode($data);
                 $data = str_replace('\\/', '/',$data);
                 //error_log(' data to hash :  ' . $data . ' with key : ' . $key . '  = ' . hash_hmac((string)$algo, $data, (string)$key));
-
                 if($data !== false)
                 {
                     return hash_hmac((string)$algo, $data, (string)$key);
@@ -821,6 +827,10 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                         if(array_key_exists('xdmTarget',$params)){
                             unset($params['xdmTarget']);
                         }
+
+	                    if(array_key_exists('view',$params)){
+		                    unset($params['view']);
+	                    }
 	                    if(array_key_exists('xfToken',$params)){
 		                    unset($params['xfToken']);
 	                    }

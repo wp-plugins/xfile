@@ -84,6 +84,14 @@ class XAppWordpressAuth {
 	}
 
 	/**
+	 * Salt setter
+	 * @param $salt
+	 */
+	public static function getSalt(){
+		return self::$_salt;
+	}
+
+	/**
 	 * basic data sign method converting an array/object to string to be hashed and signed with key passed in second
 	 * parameter using the algorithm in third parameter. the same function must be used server and client side.
 	 * use your own implementation by setting valid callback function in option SIGNED_REQUEST_CALLBACK - this
@@ -139,7 +147,7 @@ class XAppWordpressAuth {
 		if(self::isLoggedIn()){
 			global $current_user;
 			get_currentuserinfo();
-			return self::sign(array(
+			return  self::sign(array(
 					'pw'=>$current_user->user_pass,
 					'name'=>$current_user->user_login
 				),self::$_salt);//.wp_create_nonce('xfToken');//add some time limits (valid for 24h)

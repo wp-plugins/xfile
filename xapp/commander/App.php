@@ -65,7 +65,8 @@ function xapp_commander_render_app(
     $RPC_TARGET,
     $RPC_URL,
     $STORE_CLASS,
-    $STORE_FILE
+    $STORE_FILE,
+    $XAPP_SALT_KEY
 )
 {
 
@@ -83,7 +84,7 @@ function xapp_commander_render_app(
     if($_IS_RPC)
     {
 
-        /***
+	    /***
          * Ajax - calls go through here too! In case its RPC, we do here the 1st security pass, further checks are done in XFile.php in conjunction with the Joomla-Component-Parameters
          */
         switch(XApp_Service_Entry_Utils::getServiceType()){
@@ -110,7 +111,7 @@ function xapp_commander_render_app(
              */
             case XApp_Service_Entry_Utils::UPLOAD:{
                 $authorized  = $XAPP_AUTH_DELEGATE::authorize($XAPP_AUTH_PREFIX.XC_OPERATION_UPLOAD_STR,$XAPP_AUTH_SUFFIX);
-                if(!$authorized){
+				if(!$authorized){
                     die ( XApp_Service_Entry_Utils::toRPCError(1,XAPP_TEXT('AUTHORIZATION_ERROR')));
                 }
                 break;
@@ -120,7 +121,7 @@ function xapp_commander_render_app(
              */
             case XApp_Service_Entry_Utils::DOWNLOAD:{
                 $authorized  = $XAPP_AUTH_DELEGATE::authorize($XAPP_AUTH_PREFIX.XC_OPERATION_DOWNLOAD_STR,$XAPP_AUTH_SUFFIX);
-                if(!$authorized){
+				if(!$authorized){
                     die ( XAPP_TEXT('AUTHORIZATION_ERROR'));
                 }
                 break;
@@ -151,17 +152,13 @@ function xapp_commander_render_app(
             case XApp_Service_Entry_Utils::UPLOAD:
             case XApp_Service_Entry_Utils::DOWNLOAD://RPC call
             {
-                /***
-                 * Pull in more stuff
-                 */
-
-                //file io service
-                require_once($XAPP_SERVICE_DIRECTORY . 'xfile/service/File.php');
                 xapp_import('xapp.Service.Service');
                 xapp_import('xapp.commander.Directory.Service');
                 xapp_import('xapp.VFS.Base');
                 xapp_import('xapp.VFS.Local');
                 xapp_import('xapp.Option.Utils');
+
+	            xapp_import('xapp.Directory.Utils');
 
 	            xapp_import("xapp.xide.Models.User");
 	            xapp_import('xapp.xide.Controller.UserManager');
@@ -172,11 +169,10 @@ function xapp_commander_render_app(
                 xapp_import('xapp.Resource.Service');
                 xapp_import('xapp.Resource.ResourceManager');
 
-	            /**
-	             * Logging Imports
-	             */
 	            xapp_import('xapp.xide.Logging.Service');
 	            xapp_import('xapp.xide.Logging.LogManager');
+
+
 
 
                 $XAPP_VFS_CONFIG_PATH =     realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'vfs.php';
@@ -199,7 +195,9 @@ function xapp_commander_render_app(
 
 	            $authDelegate = new $XAPP_AUTH_DELEGATE();
                 $SYSTEM_ROOT                = realpath('/PMaster/') . DIRECTORY_SEPARATOR;
-	            /***
+
+	            Xapp_Rpc_Gateway::setSalt($XAPP_SALT_KEY);
+				/***
                  * Build bootstrap config for the RPC service
                  */
                 $opt = array(
@@ -245,13 +243,13 @@ function xapp_commander_render_app(
                         Xapp_Rpc_Gateway::ALLOW_HOST         => $ALLOW_HOST,
                         Xapp_Rpc_Gateway::DENY_HOST          => $DENY_HOST,
                         Xapp_Rpc_Gateway::OMIT_ERROR         => false
-                    ),
+                    ),/*
                     XApp_Commander_Bootstrap::XFILE_CONF                  =>  array(
 
                         Xapp_FileService::REPOSITORY_ROOT   => $REPOSITORY_ROOT,                 // the absolute path to your files
                         Xapp_FileService::AUTH_DELEGATE     => $authDelegate,                   // needed!
                         Xapp_FileService::UPLOAD_EXTENSIONS => $UPLOAD_EXTENSIONS          // allowed upload extensions
-                    ),
+                    ),*/
                     XApp_Commander_Bootstrap::LOGGING_FLAGS               =>  array(
                         XAPP_LOG_SHARED_LOGGER_PLUGINS,
                         XAPP_LOG_XFILE_OPERATIONS
@@ -345,10 +343,7 @@ function xapp_commander_render_app(
     /*  Its not RPC, render UX                                                                 */
     /*******************************************************************************************/
 
-
-///////////////////     Setup paths, variables and shit         /////////////////////////////
-
-
+	//Setup paths, variables and shit
     $XAPP_SERVICE_URL           = $RPC_URL;
     $XAPP_APP_URL               = $XAPP_SITE_URL . '/client/';
     $XAPP_PLUGIN_URL            = ''.$XAPP_PLUGIN_URL;
@@ -372,6 +367,7 @@ function xapp_commander_render_app(
         XApp_Commander_Bootstrap::RESOURCE_RENDERER_CLZ   =>  $RESOURCE_RENDERER,
         XApp_Commander_Bootstrap::ALLOW_PLUGINS           =>  $XAPP_AUTH_DELEGATE::authorize($XAPP_AUTH_PREFIX.XC_OPERATION_PLUGINS_STR,$XAPP_AUTH_SUFFIX),
         XApp_Commander_Bootstrap::PLUGIN_DIRECTORY        =>  XAPP_BASEDIR . DIRECTORY_SEPARATOR . 'commander' . DIRECTORY_SEPARATOR . 'plugins' .DIRECTORY_SEPARATOR,
+	    XApp_Commander_Bootstrap::PROHIBITED_PLUGINS      =>  $PROHIBITED_PLUGINS,
 
         XApp_Commander_Bootstrap::RELATIVE_VARIABLES      => array(
             'APP_URL'                   =>              $XAPP_APP_URL,
@@ -445,7 +441,9 @@ function xapp_commander_render_standalone(
     $XAPP_JQUERY_THEME='dot-luv',
     $SERVICE_DIRECTORY,
     $LOG_DIRECTORY,
-    $CONF_FILE
+    $CONF_FILE,
+    $XAPP_SALT_KEY,
+    $XF_PROHIBITED_PLUGINS
 ){
     /***
      * prepare and adjust bootstrapper for stand-alone
@@ -466,21 +464,75 @@ function xapp_commander_render_standalone(
     xapp_setup_language_standalone();
 
 	define('XAPP_INDEX',xapp_fix_index());
+
 	/***
-     * Class fake auth delegate
+     * Quick'n dirty auth delegate
+	 * @TODO replace with new ACL/Permission system
      */
     class XAPP_AUTH_DELEGATE{
-        public static function authorize(){
-            return true;
+
+	    // salt key, passed from index.php
+	    public static $_salt;
+
+	    // xf config, passed from index.php
+	    public static $_config;
+
+	    /**
+	     * Reject RPC methods
+	     * @param $what
+	     * @return bool
+	     */
+	    public static function authorize($what){
+
+		    /**
+		     * Option 1. Use the xfile config passed from index.php
+		     */
+		    if(self::$_config){
+
+			    $data = (array)json_decode(self::$_config);
+			    $allowedActions = $data['ALLOWED_ACTIONS'];
+			    $intOp = (intval(XApp_Service_Entry_Utils::opToInteger($what)));
+			    if($intOp!=XC_OPERATION_UNKOWN) {
+				    if ( $intOp >0 &&  $intOp < count($allowedActions)) {//boundary check
+					    return $allowedActions[$intOp-1];
+				    }
+			    }
+		    }
+
+		    /**
+		     * Option 2. Reject via string match if you like
+		     */
+		    switch($what){
+				case XC_OPERATION_COPY_STR:
+				case XC_OPERATION_MOVE_STR:
+				case XC_OPERATION_DELETE_STR:
+				case XC_OPERATION_READ_STR:
+				case XC_OPERATION_EDIT_STR:
+				case XC_OPERATION_COMPRESS_STR:
+				case XC_OPERATION_RENAME_STR:
+				case XC_OPERATION_DOWNLOAD_STR:
+				case XC_OPERATION_FILE_UPDATE_STR:
+				case XC_OPERATION_NEW_DIRECTORY_STR:
+				case XC_OPERATION_NEW_FILE_STR:
+			    case XC_OPERATION_UPLOAD:
+			    case XC_OPERATION_DOWNLOAD:{
+			        return true;
+		        }
+		    }
+		    return true;
         }
 
         public function getUserName(){
-            return 'coolio';
+            return 'admin';
         }
         public function getToken(){
-            return 'coolioToken';
+            return md5(self::$_salt);
         }
     }
+
+	XAPP_AUTH_DELEGATE::$_salt=$XAPP_SALT_KEY;
+	XAPP_AUTH_DELEGATE::$_config=$XFILE_CONFIG;
+
 
     $authDelegate = new XAPP_AUTH_DELEGATE();
 
@@ -510,7 +562,7 @@ function xapp_commander_render_standalone(
         '',
         $SERVICE_DIRECTORY,
         $LOG_DIRECTORY,
-        '',
+        $XF_PROHIBITED_PLUGINS,
         'standalone',
         'XCOM_Resource_Renderer',
         '',
@@ -522,7 +574,8 @@ function xapp_commander_render_standalone(
 		XAPP_INDEX .'?view=smdCall',
 		XAPP_INDEX .'?view=rpc',
         'XApp_Store_Delegate',
-        $CONF_FILE
+        $CONF_FILE,
+        $XAPP_SALT_KEY
     );
 
 

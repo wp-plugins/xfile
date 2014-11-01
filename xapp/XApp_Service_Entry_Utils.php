@@ -330,6 +330,7 @@ class XApp_Service_Entry_Utils {
         $result['result'][]= $messages;
         return json_encode($result);
     }
+
     static function getXCommanderOperation(){
 
         $smdMethod = str_replace('Xapp_FileService.','',self::getSMDMethod());
@@ -348,8 +349,34 @@ class XApp_Service_Entry_Utils {
         }
         return XC_OPERATION_UNKOWN_STR;
     }
-    /**
-     *
+
+
+
+	/*
+	 * String op to integer
+	 */
+	static function opToInteger($what){
+
+		switch($what){
+			case XC_OPERATION_MOVE_STR:             return XC_OPERATION_MOVE;
+			case XC_OPERATION_DELETE_STR:           return XC_OPERATION_DELETE;
+			case XC_OPERATION_COPY_STR:             return XC_OPERATION_COPY;
+			case XC_OPERATION_READ_STR:             return XC_OPERATION_READ;
+			case XC_OPERATION_WRITE_STR:            return XC_OPERATION_WRITE;
+			case XC_OPERATION_EDIT_STR:             return XC_OPERATION_EDIT;
+			case XC_OPERATION_COMPRESS_STR:         return XC_OPERATION_COMPRESS;
+			case XC_OPERATION_RENAME_STR:           return XC_OPERATION_RENAME;
+			case XC_OPERATION_DOWNLOAD_STR:         return XC_OPERATION_DOWNLOAD;
+			case XC_OPERATION_NEW_DIRECTORY_STR:    return XC_OPERATION_NEW_DIRECTORY;
+			case XC_OPERATION_NEW_FILE_STR:         return XC_OPERATION_NEW_FILE;
+			case XC_OPERATION_UPLOAD_STR:           return XC_OPERATION_UPLOAD;
+		}
+
+		return XC_OPERATION_UNKOWN;
+	}
+
+	/**
+     * Known RPC methods
      * @return array
      */
     static function getXCommanderFuncTable(){
@@ -366,7 +393,9 @@ class XApp_Service_Entry_Utils {
             XC_OPERATION_DOWNLOAD_STR,
             XC_OPERATION_FILE_UPDATE_STR,
             XC_OPERATION_NEW_DIRECTORY_STR,
-            XC_OPERATION_NEW_FILE_STR
+            XC_OPERATION_NEW_FILE_STR,
+	        XC_OPERATION_UPLOAD,
+	        XC_OPERATION_DOWNLOAD
         );
         return $verbs;
     }

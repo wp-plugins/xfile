@@ -137,7 +137,7 @@ define([
                     return fileManager.callMethod('createToken','xfToken',_tokenReady,false);
 
                 }else{
-                    _openEditor(imageUrl,saveUrl);
+                    _openEditor(imageUrl);
                 }
 
 

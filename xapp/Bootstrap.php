@@ -1254,17 +1254,14 @@ class XApp_Bootstrap
 		if (xapp_get_option(self::IGNORED_RPC_METHODS, $this)) {
 			$ignoredRPCMethods = array_merge(xapp_get_option(self::IGNORED_RPC_METHODS, $this), $ignoredRPCMethods);
 		} elseif (xapp_has_option(self::AUTH_DELEGATE, $this)) {
-
 			/***
 			 * Additional security here, mark each service method which has not been authorized by the
 			 * auth delegate as ignored!
-			 *
 			 */
 			$authDelegate = xapp_get_option(self::AUTH_DELEGATE, $this);
 			if (method_exists($authDelegate, 'authorize')) {
 				$xCommanderFunctionTable = XApp_Service_Entry_Utils::getXCommanderFuncTable();
 				foreach ($xCommanderFunctionTable as $key => $value) {
-
 					if (!$authDelegate::authorize($value)) {
 						array_push($ignoredRPCMethods, $value);
 					}

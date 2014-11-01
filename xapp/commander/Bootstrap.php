@@ -1084,6 +1084,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 						foreach ($plugins as $pluginConfig) {
 							//load only when not prohibited
 							$prohibited = explode(',', xapp_get_option(self::PROHIBITED_PLUGINS, $this));
+
 							if (!in_array($serviceClass, $prohibited)) {
 
 								if ($pluginConfig !== null && is_object($pluginConfig)) {
@@ -1268,7 +1269,6 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 					$opt[Xapp_Rpc_Gateway::SIGNED_REQUEST] = true;
 
 					//complete configuration
-
 					if (!array_key_exists(Xapp_Rpc_Gateway::SIGNED_REQUEST_METHOD, $opt)) {
 						$opt[Xapp_Rpc_Gateway::SIGNED_REQUEST_METHOD] = 'user';
 					}
@@ -1276,7 +1276,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 					if (!array_key_exists(Xapp_Rpc_Gateway::SIGNED_REQUEST_USER_PARAM, $opt)) {
 						$opt[Xapp_Rpc_Gateway::SIGNED_REQUEST_USER_PARAM] = 'user';
 					}
-					//complete configuration
+
 				}
 
 				$this->setGatewayOptionArray(Xapp_Rpc_Gateway::ALLOW_IP, $opt);
@@ -1293,6 +1293,8 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 				 * Set the API key for signed requests
 				 */
 				if ($needsSigning) {
+
+					error_log('add key ' . xapp_get_option(self::SIGNING_KEY, $this) . ' and token : ' . xapp_get_option(self::SIGNING_TOKEN, $this));
 					$gateway->addKey(
 						xapp_get_option(self::SIGNING_KEY, $this),
 						xapp_get_option(self::SIGNING_TOKEN, $this)
@@ -1488,11 +1490,22 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 			$pluginResources = $this->getPluginResources($plugins, $XAPP_RUN_TIME_CONFIGURATION);
 		}
 
-		//now merge into app resources
+		//now merge into app resources, filtered
 		if ($pluginResources) {
 			foreach ($pluginResources as $pluginResourceItems) {
 				foreach ($pluginResourceItems as $pluginResource) {
-					array_push($resources->items, $pluginResource);
+					$prohibited = explode(',', xapp_get_option(self::PROHIBITED_PLUGINS, $this));
+
+					if(property_exists($pluginResource,'type') && property_exists($pluginResource,'name')) {//is plugin item
+
+						if(in_array('X'.$pluginResource->name, $prohibited)){
+							continue;
+						}else{
+							array_push($resources->items, $pluginResource);
+						}
+					}else{
+						array_push($resources->items, $pluginResource);
+					}
 				}
 			}
 		}
@@ -1506,9 +1519,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		);
 		$clz = xapp_get_option(self::RESOURCE_RENDERER_CLZ, $this);
 
-		/***
-		 * new
-		 */
+
 		$xappResourceRenderer = new $clz($resourceRendererOptions);
 		$xappResourceRenderer->registerDefault();
 		if (xapp_has_option(self::RELATIVE_VARIABLES)) {
@@ -1606,17 +1617,12 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		$opt = array
 		(
 			XApp_App_Commander::DOC_ROOT_PATH => xapp_get_option(self::APPDIR, $this),
-			//complete url to the client app doc root : http://192.168.1.37/joomla352//administrator/components/com_xappcommander/client/
 			XApp_App_Commander::DOC_ROOT => xapp_get_option(self::DOC_ROOT, $this),
-			//complete absolute path : /mnt/ssd2/htdocs/joomla352/administrator/components/com_xappcommander//client/
 			XApp_App_Commander::APP_NAME => xapp_get_option(self::APP_NAME, $this),
-			//system application name
 			XApp_App_Commander::APP_FOLDER => xapp_get_option(self::APP_FOLDER, $this),
-			//path prefix to the client application
 			XApp_App_Commander::CONFIG_NAME => $XAPP_RUN_TIME_CONFIGURATION,
 			XApp_App_Commander::SERVICE_URL => xapp_get_option(self::SERVICE, $this),
 			XApp_App_Commander::RESOURCE_RENDERER => $xappResourceRenderer
-			///components/com_xappcommander/index.php?option=com_xappcommander&view=rpc///components/com_xappcommander/index.php?option=com_xappcommander&view=rpc
 		);
 		$xappAppRenderer = new XApp_App_Commander($opt);
 		$this->appRenderer = $xappAppRenderer;
