@@ -53,7 +53,7 @@ global $XAPP_WP_SESSION;                //the session object
 
 // defaults
 $XAPP_FILE_ROOT = '/';
-$XAPP_JQUERY_THEME = 'dot-luv';
+$XAPP_JQUERY_THEME = 'blitzer';
 $XAPP_UPLOAD_EXTENSIONS = 'js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS';
 /***
  * Plugin Type, being using as filter for the plugin manager
@@ -169,11 +169,11 @@ if($javascriptPlugins && count($javascriptPlugins)){
 }
 ?>
 <!--Start of Zopim Live Chat Script-->
-<script type="text/javascript">
+<!--script type="text/javascript">
 	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
 		d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
 		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
 		$.src='//v2.zopim.com/?2NTMTET7LTUMmledW9IT55fQkq6DeptG';z.t=+new Date;$.
 			type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
-</script>
+</script-->
 <!--End of Zopim Live Chat Script-->

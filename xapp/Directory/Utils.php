@@ -296,4 +296,48 @@ class XApp_Directory_Utils
         }
         return $text;
     }
+
+	protected function isWindows(){
+		$os = PHP_OS;
+		switch($os)
+		{
+			case "WINNT": {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public static function getCacheDirectory($autoCreate=true,$prefix='xapp'){
+
+		if(!self::isWindows()){
+
+			$_try = '/tmp';
+
+			if(is_writeable($_try)){
+
+				if(isset($prefix)){
+					//doesn't exists
+					if(!file_exists($_try . DIRECTORY_SEPARATOR . $prefix)){
+						mkdir($_try . DIRECTORY_SEPARATOR . $prefix);
+						if(file_exists($_try . DIRECTORY_SEPARATOR . $prefix) && is_writable($_try . DIRECTORY_SEPARATOR . $prefix)){
+							return $_try . DIRECTORY_SEPARATOR . $prefix;
+						}else{
+							return $_try;
+						}
+					}elseif(is_writable($_try . DIRECTORY_SEPARATOR . $prefix)){
+
+						return $_try . DIRECTORY_SEPARATOR . $prefix;
+					}
+
+				}
+				return $_try;
+			}
+
+
+			return null;
+		}
+	}
+
 }

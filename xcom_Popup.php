@@ -62,7 +62,7 @@ global $XAPP_WP_SESSION;                //the session object
 
 // defaults
 $XAPP_FILE_ROOT = '/';
-$XAPP_JQUERY_THEME = 'dot-luv';
+$XAPP_JQUERY_THEME = 'blitzer';
 $XAPP_UPLOAD_EXTENSIONS = 'js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS';
 $XAPP_DOJO_PACKAGES='[]';
 $XAPP_DOJO_PACKAGE_LOCATION_PREFIX=$XAPP_PLUGIN_URL.'/xapp/commander/plugins/';

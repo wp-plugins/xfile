@@ -43,7 +43,13 @@ define([
             onImageSaved:function(newUrl){
                 var fileManager = this.fileManager || xfile.getContext().getFileManager();
                 if(fileManager){
+                    //mark as dirty
+                    this.currentItem.dirty=true;
                     fileManager.downloadTo(newUrl,this.currentItem.mount,this.currentItem.path);
+                    this.publish(types.EVENTS.ON_FILE_CONTENT_CHANGED,{
+                        item:this.currentItem,
+                        owner:this
+                    });
                 }
             },
             getFileName:function(){

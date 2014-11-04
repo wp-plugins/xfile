@@ -67,6 +67,9 @@ class XApp_File_Utils
     const OPTION_INCLUDE_LIST="includeList";
     const OPTION_EXCLUDE_LIST="excludeList";
 
+	const OPTION_RESIZE_TO="width";
+	const OPTION_PREVENT_CACHE="preventCache";
+
 
     const GET_FILE_SIZE_LIMIT='6M';   // File size limit for "get" method, in MB
     const GET_FILE_CHUNK_SIZE='1M';     // Chunk size for "get" method, in MB
@@ -405,6 +408,8 @@ class XApp_File_Utils
         if (!isset($options[self::OPTION_AS_ATTACHMENT])) $options[self::OPTION_AS_ATTACHMENT]=false;
         if (!isset($options[self::OPTION_TEST])) $options[self::OPTION_TEST]=false;
         if (!isset($options[self::OPTION_SEND])) $options[self::OPTION_SEND]=true;
+	    if (!isset($options[self::OPTION_PREVENT_CACHE])) $options[self::OPTION_PREVENT_CACHE]=false;
+
 
         $target_file=XApp_Directory_Utils::normalizePath($basePath.$relativePath);
         if (is_dir($target_file)) {  // ZIP dir contents
@@ -421,7 +426,7 @@ class XApp_File_Utils
 
         }
 
-        if ($options[self::OPTION_SEND]===true) {
+	    if ($options[self::OPTION_SEND]===true) {
             if (!$options[self::OPTION_TEST]) {
 
 	            self::sendHeader($mime,($options[self::OPTION_AS_ATTACHMENT] ? $target_file:''), basename($target_file));
@@ -533,6 +538,49 @@ class XApp_File_Utils
 
         }else{
 
+
+		    /**
+		     * deal with resize!
+		     */
+		    if (isset($options[self::OPTION_RESIZE_TO]) &&
+
+			    //check we have some image tools
+			    (
+				    (extension_loaded('gd') && function_exists('gd_info')) || //GD is fine , otherwise try imagick
+			        extension_loaded('imagick')
+		        )
+		    )
+		    {
+			    xapp_import('xapp.Image.Utils');
+
+			    $cacheImage = false;
+
+			    $options = array(
+				    XApp_Image_Utils::OPTION_WIDTH => $options[self::OPTION_RESIZE_TO],
+				    XApp_Image_Utils::OPTION_PREVENT_CACHE => self::OPTION_PREVENT_CACHE
+			    );
+
+			    //enable caching if possible
+			    $cacheDir = XApp_Directory_Utils::getCacheDirectory(true,'xcom');
+			    if($cacheDir!=null && is_writable($cacheDir)){
+				    $cacheImage=true;
+				    $options[XApp_Image_Utils::OPTION_CACHE_DIR] = $cacheDir;
+				    XApp_Image_Utils::$cacheDir =$cacheDir;
+			    }
+
+			    $job = array(
+				    XApp_Image_Utils::IMAGE_OPERATION   => XApp_Image_Utils::OPERATION_RESIZE,
+				    XApp_Image_Utils::OPERATION_OPTIONS => $options
+			    );
+
+			    $jobs = array();
+			    $jobs[]=$job;
+
+
+			    $errors = array();
+			    XApp_Image_Utils::execute($target_file,null,json_encode($jobs),$errors,false,$cacheImage,true);
+			    exit;
+		    }
 	        // send streamed or complete
 	        $limit=intval($options[self::OPTION_SIZE_LIMIT])*1024*1024; // Convert limit to bytes
 	        if (filesize($target_file)>$limit) {

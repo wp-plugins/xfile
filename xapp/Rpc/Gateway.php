@@ -573,11 +573,10 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
             throw new Xapp_Rpc_Gateway_Exception("passed hashing algorithm is not recognized", 1401301);
         }
 
-/*
-	    $_data = json_encode($data);
-	    $_data = str_replace('\\/', '/',$_data);
-	    error_log('sign ' . $_data . ' with key : ' . $key . '  to ' . hash_hmac((string)$algo, $_data, (string)$key));
-*/
+
+	    //$_data = json_encode($data);
+	    //$_data = str_replace('\\/', '/',$_data);
+	    //error_log('sign ' . $_data . ' with key : ' . $key . '  to ' . hash_hmac((string)$algo, $_data, (string)$key));
 
         if(!function_exists('xapp_rpc_sign'))
         {
@@ -840,6 +839,9 @@ class Xapp_Rpc_Gateway implements Xapp_Singleton_Interface
                         if(array_key_exists('xdm_e',$params)){
                             unset($params['xdm_e']);
                         }
+	                    if(array_key_exists('user',$params)){
+		                    unset($params['user']);
+	                    }
                         if(array_key_exists('xdm_c',$params)){
                             unset($params['xdm_c']);
                         }

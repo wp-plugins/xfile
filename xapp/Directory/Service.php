@@ -298,11 +298,10 @@ class XApp_Directory_Service extends XApp_Service
 		return $srcType==XAPP_RESOURCE_TYPE_REMOTE_FILE_PROXY && $dstType==XAPP_RESOURCE_TYPE_REMOTE_FILE_PROXY;
 	}
 
-
-
-
-
-
+	/**
+	 * @param string $mount
+	 * @throws Exception
+	 */
     private function createFileSystem($mount='')
     {
         $_fs  = xapp_get_option(self::FILE_SYSTEM);//file system class
@@ -477,7 +476,7 @@ class XApp_Directory_Service extends XApp_Service
      * @param bool $attachment
      * @return mixed
      */
-    public function get($path,$attachment=false,$send=true){
+    public function get($path,$attachment=false,$send=true,$width=null,$time=null){
 	    $path=urldecode ($path);
 	    $mount = XApp_Path_Utils::getMount($path);
 	    $path = XApp_Path_Utils::getRelativePart($path);
@@ -487,7 +486,9 @@ class XApp_Directory_Service extends XApp_Service
             XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath($path,true,false)),
             $attachment,
             array(
-                XApp_File_Utils::OPTION_SEND=>$send
+                XApp_File_Utils::OPTION_SEND=>$send,
+	            XApp_File_Utils::OPTION_RESIZE_TO=>$width,
+	            XApp_File_Utils::OPTION_PREVENT_CACHE=>isset($time)
             )
         );
         if($attachment===true){

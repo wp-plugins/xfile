@@ -132,6 +132,14 @@ Stable tag: 1.6
 
 == Changelog ==
 
+= 1.6.2 (4.11.2014) =
+* Major performance improvement when working with lots of images. Images are downloaded now in the size needed.
+* Toolbar buttons same size as Wordpress
+* Toolbar bug fixed when changing main perspective
+* Contact box removed, thank you all for your suggestions :-)
+
+
+
 = 1.6.1 (2.11.2014) =
 * Minor issues fixed
 * Another style polish round
