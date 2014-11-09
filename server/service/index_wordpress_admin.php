@@ -80,6 +80,10 @@ require_once ($XAPP_WP_PATH . 'wp-load.php');
 include_once ($XCOM_ROOT . 'class-recursive-arrayaccess.php');
 include_once ($XCOM_ROOT . 'class-wp-session.php');
 $XAPP_WP_SESSION = XApp_WP_Session::get_instance();
+
+//xapp_dump($XAPP_WP_SESSION['XAPP_PARAMETERS']['PANEL_OPTIONS']);
+
+
 $XAPP_PARAMETERS = null;
 $XAPP_NEEDS_SESSION = true;
 
@@ -100,7 +104,6 @@ if( !$authDelegate->isLoggedIn() && //no logged in
 	$authDelegate->loginUserByToken($xfToken,$userHash)
 )
 {
-
 	/**
 	 * read config and re-construct session parameters
 	 */
@@ -124,6 +127,7 @@ if( !$authDelegate->isLoggedIn() && //no logged in
 
 }
 if($XAPP_NEEDS_SESSION) {
+
 	//kill switch for non - authorized requests
 	if($XAPP_WP_SESSION==null){
 		die('have no session');
@@ -136,14 +140,15 @@ if($XAPP_NEEDS_SESSION) {
 		die('you must be logged in');
 	}
 }
+
 /***
  * Now transfer settings
  */
 $XAPP_FILE_START_PATH='';
-if(array_key_exists('XAPP_FILE_START_PATH',$XAPP_PARAMETERS)){
+if(isset($XAPP_PARAMETERS['XAPP_FILE_START_PATH'])) {
 	$XAPP_FILE_START_PATH = $XAPP_PARAMETERS['XAPP_FILE_START_PATH'];
-}
 
+}
 $XAPP_UPLOAD_EXTENSIONS=$XAPP_PARAMETERS['XAPP_UPLOAD_EXTENSIONS'];
 
 
@@ -152,11 +157,17 @@ if($XAPP_FILE_ROOT!=null){
     $repositoryRoot .= DIRECTORY_SEPARATOR. $XAPP_FILE_ROOT . DIRECTORY_SEPARATOR;
 }
 if($XAPP_FILE_START_PATH!=null){
-    $repositoryRoot.=$XAPP_FILE_START_PATH;
-}
+	if($XAPP_FILE_START_PATH[0]!='/') {
 
+		$repositoryRoot.= $XAPP_FILE_START_PATH;
+
+	}else if(file_exists(realpath($XAPP_FILE_START_PATH))){
+		$repositoryRoot = $XAPP_FILE_START_PATH;
+	}
+}
+//$repositoryRoot = realpath($repositoryRoot);
 if($XAPP_UPLOAD_EXTENSIONS==null){
-    $XAPP_UPLOAD_EXTENSIONS = 'bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS';
+    $XAPP_UPLOAD_EXTENSIONS = 'bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,mp4,mp3,xblox';
 }
 
 xapp_import('xapp.Service.Service');
@@ -179,11 +190,11 @@ $REDUX_OPTIONS=XApp_Wordpress_Parameter_Helper::getComponentParameters();
 
 //vfs config, there is just one entry at /
 $XAPP_VFS_CONFIG_PATH = XAPP_BASEDIR . 'commander'. DIRECTORY_SEPARATOR . 'vfs.json';
+
 $XAPP_VFS_CONFIG_PASSWORD = '2K<{K01!k;6484| Q9=VUA#P8FFDcNy u!w_@<gV6zXPJy3yI^g2[:LqwIe6rXO2';
 if(defined('AUTH_SALT')){
 	$XAPP_VFS_CONFIG_PASSWORD = AUTH_SALT;
 }
-$repositoryRoot = XApp_Path_Utils::securePath(XApp_Path_Utils::normalizePath($repositoryRoot));
 
 //xfile - repo root, back-compat :
 $xFileRepositoryRoot = XApp_Variable_Mixin::replaceResourceVariables($repositoryRoot,array(
@@ -191,16 +202,12 @@ $xFileRepositoryRoot = XApp_Variable_Mixin::replaceResourceVariables($repository
         'user' => $authDelegate->getUserName()
     ));
 
-
 $XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc');//not used anymore, to slow!!!
 $XAPP_SETTINGS_FILE  = XAPP_CONF_DIRECTORY . DIRECTORY_SEPARATOR . 'settings.json';
 $XIDE_LOG_PATH = realpath(XAPP_BASEDIR . '..' . DIRECTORY_SEPARATOR . 'logs'. DIRECTORY_SEPARATOR . 'all.log');
 if(!$XIDE_LOG_PATH){
 	$XIDE_LOG_PATH='';
 }
-
-
-
 
 require_once(XAPP_BASEDIR. 'lib/standalone/StoreDelegate.php');
 

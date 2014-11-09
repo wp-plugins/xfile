@@ -16,6 +16,15 @@ Stable tag: 1.6
 * XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client. Simply install and access your files with a browser.
 
 
+== Demo ==
+
+* [Main Demo Page with limited set of features!](http://pearls-media.com:89/demo/)
+
+== Stand-Alone Version ==
+
+* [Trouble with XFile in Wordpress? You can also purchase or more supported and stable version here:](http://codecanyon.net/item/xfile/9294082). You only need to unzip that on your server. Its possible that this way will work better for you!
+
+
 = External Reviews =
 
 * [Wordpress plugins will make your life easier](http://www.semgeeks.com/blog/free-wordpress-plugins-will-make-your-life-easier)
@@ -128,9 +137,22 @@ Stable tag: 1.6
 12. Split View with Video preview
 13. Split View with Coverflow ala Mac for images (experimental)
 14. Aviary picture editor
+15. Sample of xfile being integrated in our up-coming mega editor collection, power your posts with self made scripts using our 'XBlox' visual programming language!
 
 
 == Changelog ==
+
+= 1.6.9 (9.11.2014) =
+* Start Path accepts now absolute paths, only Linux servers !
+* 2 New Main Layouts added : Browser (classic) and Gallery
+* More settings added. Please really read it now!
+* New Permission added : Change Perspective
+* Image flow mode now in syn with selection, also actions are working now for this type
+* XBlox : 3 Blocks added  : Set CSS, Set Style (with visual helpers, hot!), and On Key to trigger on keyboard sequence events
+* File Picker added, allows you to use xfile as file picker. TinyMCE integration is almost there!
+* Lots of minor bug fixes
+* Major problems with perspective changes fixed
+* Font-Size problems fixed
 
 = 1.6.2 (4.11.2014) =
 * Major performance improvement when working with lots of images. Images are downloaded now in the size needed.

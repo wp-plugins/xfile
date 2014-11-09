@@ -80,20 +80,22 @@ $xappServicePath=  $XAPP_SITE_DIRECTORY . 'server' .DIRECTORY_SEPARATOR . 'servi
 $xcomParameters = XApp_Wordpress_Parameter_Helper::getComponentParameters();
 if($xcomParameters){
     $xfileConfig =XApp_Wordpress_Parameter_Helper::toXFileConfig($xcomParameters);
-    $XAPP_XFILE_CONFIG_ARRAY = $xfileConfig;
+
+	$XAPP_XFILE_CONFIG_ARRAY = $xfileConfig;
     $XAPP_XFILE_CONFIG_ARRAY['XAPP_IS_LOGGED_IN']= is_user_logged_in();
+
     $xfileConfig = json_encode($xfileConfig);
     $xfileConfig = preg_replace( "/\"(\d+)\"/", '$1', $xfileConfig);
-    $XAPP_XFILE_CONFIG = $xfileConfig;
+
+	$XAPP_XFILE_CONFIG = $xfileConfig;
     $XAPP_XFILE_CONFIG_ARRAY['XAPP_FILE_ROOT'] = rtrim(ABSPATH, '/');
     $XAPP_XFILE_CONFIG_ARRAY['XAPP_FILE_START_PATH'] = ''  . $XAPP_XFILE_CONFIG_ARRAY['START_PATH'];
-    $XAPP_JQUERY_THEME = $XAPP_XFILE_CONFIG_ARRAY['JQTHEME'];
-
-    //store in session, the RPC server will reject any request otherwise
-    $XAPP_WP_SESSION = XApp_WP_Session::get_instance();
+	$XAPP_JQUERY_THEME = $XAPP_XFILE_CONFIG_ARRAY['JQTHEME'];
+	$XAPP_WP_SESSION = XApp_WP_Session::get_instance();
     $XAPP_WP_SESSION['XAPP_PARAMETERS'] = $XAPP_XFILE_CONFIG_ARRAY;
-
 }
+
+
 
 
 /***
@@ -128,9 +130,7 @@ if(!XApp_Service_Entry_Utils::isDebug()){
 }
 ?>
 
-
 <?php
-
 /***
  * Now we render all the application's resources out, using a Wordpress specific resource renderer : xapp/lib/wordpress/ResourceRenderer.php
  */
