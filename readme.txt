@@ -45,7 +45,7 @@ Stable tag: 1.6
 * Enhanced media preview as cover flow like on Macintosh or simple preview panel for whatever content & media
 * Mount external FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive
 * 5 display modes for file panels : Thumbnails, List, Preview, Cover-Flow, Split-Horizontal, Split-Vertical
-* 3 main layouts : Dual panel, single panel and 'preview', ideal for media browsing
+* 5 main layouts : Dual panel, single panel, Preview (ideal for media browsing), Browser (classic) and Gallery(slide show mode)
 * Visual programming language for extending the plugin easier (see screenshot 4). Open wp-content/plugins/xcom/blox.xblox!
 * Logging panel with filters
 * built-in Javascript and Bash shell
