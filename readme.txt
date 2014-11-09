@@ -31,7 +31,6 @@ Stable tag: 1.6
 * PHP 5.3
 * Linux based server, no Windows support right now.
 * Supported browsers : Chrome, Firefox and maybe Opera.
-* Please find more information on www.xappcommander.com
 
 = Features =
 * Full keyboard support ala Midnight or Total-Commander
