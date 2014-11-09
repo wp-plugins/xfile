@@ -18,11 +18,11 @@ Stable tag: 1.6
 
 == Demo ==
 
-* [Main Demo Page with limited set of features!](http://pearls-media.com:89/demo/)
+* [Main Demo Page with limited set of features](http://pearls-media.com:89/demo/)
 
 == Stand-Alone Version ==
 
-* [Trouble with XFile in Wordpress? You can also purchase or more supported and stable version here:](http://codecanyon.net/item/xfile/9294082). You only need to unzip that on your server. Its possible that this way will work better for you!
+* [Trouble with XFile in Wordpress: You can also purchase or more supported and stable version here](http://codecanyon.net/item/xfile/9294082). You only need to unzip that on your server. Its possible that this way will work better for you!
 
 
 = External Reviews =
