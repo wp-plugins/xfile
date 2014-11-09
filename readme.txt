@@ -9,7 +9,7 @@ Tested up to: 4.0
 Stable tag: 1.6
 
 !XFile, the must have file manager for your Wordpress
-
+[Main Demo Page with limited set of features](http://pearls-media.com:89/demo/)
 
 == Demo ==
 
