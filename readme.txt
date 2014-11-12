@@ -18,8 +18,8 @@ Stable tag: 1.6
 
 == Description ==
 
-XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client. Simply install and access your files with a browser.
-[Main Demo Page with limited set of features](http://pearls-media.com:89/demo/)
+XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client.
+
 
 = External Review =
 
