@@ -1,22 +1,28 @@
 === xfile ===
 Contributors: xfile
 
-Tags: ftp, sftp, dropbox, filemanager, pictures, picture editor, file, management, organize, upload, picture, editor, file manager
+Tags: user folder, gallery, ftp, sftp, dropbox, filemanager, pictures, picture, file, management, organize, upload, picture, editor, file manager, ACE
+
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.4.2
 Tested up to: 4.0
-Stable tag: 1.6
+Stable tag: 1.7
 
 !XFile, the must have file manager for your Wordpress
 
 
+== Demo ==
+
+* [Main Demo Page with limited set of features](http://pearls-media.com:89/demo/)
+
+
 == Description ==
 
-* XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client. Simply install and access your files with a browser.
+XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client.
 
 
-= External Reviews 2 =
+= External Review =
 
 * [Wordpress plugins will make your life easier](http://www.semgeeks.com/blog/free-wordpress-plugins-will-make-your-life-easier)
 * [the-best-free-wordpress-plugins-for-september-2014](http://www.webdesignerdepot.com/2014/08/the-best-free-wordpress-plugins-for-september-2014/)
@@ -27,7 +33,6 @@ Stable tag: 1.6
 * PHP 5.3
 * Linux based server, no Windows support right now.
 * Supported browsers : Chrome, Firefox and maybe Opera.
-* Please find more information on www.xappcommander.com
 
 = Features =
 * Full keyboard support ala Midnight or Total-Commander
@@ -42,7 +47,7 @@ Stable tag: 1.6
 * Enhanced media preview as cover flow like on Macintosh or simple preview panel for whatever content & media
 * Mount external FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive
 * 5 display modes for file panels : Thumbnails, List, Preview, Cover-Flow, Split-Horizontal, Split-Vertical
-* 3 main layouts : Dual panel, single panel and 'preview', ideal for media browsing
+* 5 main layouts : Dual panel, single panel, Preview (ideal for media browsing), Browser (classic) and Gallery(slide show mode)
 * Visual programming language for extending the plugin easier (see screenshot 4). Open wp-content/plugins/xcom/blox.xblox!
 * Logging panel with filters
 * built-in Javascript and Bash shell
@@ -132,6 +137,22 @@ Stable tag: 1.6
 
 
 == Changelog ==
+
+
+= 1.7.0 (26.11.2014) =
+
+* resource optimization, less CSS/Javascript and Ajax calls
+* support for windows added
+* support for fe*** Internet-Explorer 9 added
+* support for remote downloads added: drag simply an url into the file manager
+* settings extended: minimum role to use the file manager
+* open source version added ([check out on Github](https://github.com/mc007/xbox-app))
+* new xblox : Call-Server with direct link to shell
+* new OnKey (Keyboard) : Call-Server with direct link to shell
+* new OnEvent(whatever system event) : triggers child blocks
+* new url parameter : noImageCache=true
+* less interest in wordpress, back to real tasks
+
 
 = 1.6.9 (9.11.2014) =
 * Start Path accepts now absolute paths, only Linux servers !
