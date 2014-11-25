@@ -1,12 +1,13 @@
 === xfile ===
 Contributors: xfile
 
-Tags: ftp, sftp, dropbox, filemanager, pictures, picture editor, file, management, organize, upload, picture, editor, file manager
+Tags: user folder, gallery, ftp, sftp, dropbox, filemanager, pictures, picture, file, management, organize, upload, picture, editor, file manager, ACE
+
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.4.2
 Tested up to: 4.0
-Stable tag: 1.6
+Stable tag: 1.7
 
 !XFile, the must have file manager for your Wordpress
 
@@ -136,6 +137,22 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 
 == Changelog ==
+
+
+= 1.7.0 (26.11.2014) =
+
+* resource optimization, less CSS/Javascript and Ajax calls
+* support for windows added
+* support for fe*** Internet-Explorer 9 added
+* support for remote downloads added: drag simply an url into the file manager
+* settings extended: minimum role to use the file manager
+* open source version added ([check out on Github](https://github.com/mc007/xbox-app))
+* new xblox : Call-Server with direct link to shell
+* new OnKey (Keyboard) : Call-Server with direct link to shell
+* new OnEvent(whatever system event) : triggers child blocks
+* new url parameter : noImageCache=true
+* less interest in wordpress, back to real tasks
+
 
 = 1.6.9 (9.11.2014) =
 * Start Path accepts now absolute paths, only Linux servers !
