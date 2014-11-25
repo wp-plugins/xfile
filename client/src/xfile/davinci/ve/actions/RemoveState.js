@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ve/actions/RemoveState","dojo/_base/declare davinci/Runtime davinci/ve/States davinci/actions/Action davinci/commands/CompoundCommand davinci/ve/commands/AppStateCommand".split(" "),function(g,b,e,h,k,l){return g("davinci.ve.actions.RemoveState",[h],{run:function(){var c;if(b.currentEditor&&b.currentEditor.currentEditor&&b.currentEditor.currentEditor.context){c=b.currentEditor.currentEditor.context;var a=e.getFocus(c.rootNode);if(a&&a.state&&a.state!==e.NORMAL){var a=a.stateContainerNode,
+d=d=davinci.ve.states.getState(a);if(d){var f=new k;f.add(new l({action:"remove",state:d,stateContainerNode:a,context:c}));c.getCommandStack().execute(f)}}}}})});
+//# sourceMappingURL=RemoveState.js.map

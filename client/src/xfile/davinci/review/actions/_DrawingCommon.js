@@ -1,0 +1,3 @@
+//>>built
+define("davinci/review/actions/_DrawingCommon",["dojo/_base/declare","davinci/actions/Action"],function(c,d){return c("davinci.review.actions._DrawingCommon",[d],{run:function(b){b=davinci.Workbench.getOpenEditor();var a;b&&b.getContext&&(a=b.getContext());a&&a.frame?a.frame.contentWindow.focus():a&&a._frameNode&&a._frameNode.contentWindow.focus()}})});
+//# sourceMappingURL=_DrawingCommon.js.map

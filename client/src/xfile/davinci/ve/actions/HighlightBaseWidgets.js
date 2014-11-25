@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ve/actions/HighlightBaseWidgets","dojo/_base/declare davinci/Runtime davinci/Workbench davinci/ve/States davinci/actions/Action davinci/workbench/Preferences".split(" "),function(f,a,g,k,h,c){return f("davinci.ve.actions.HighlightBaseWidgets",[h],{run:function(){var d;if(a.currentEditor&&a.currentEditor.currentEditor&&a.currentEditor.currentEditor.context){d=a.currentEditor.currentEditor.context;var e=g.getProject(),b=c.getPreferences("davinci.ve.editorPrefs",e);b.highlightBaseWidgets=
+b.highlightBaseWidgets?!1:!0;c.savePreferences("davinci.ve.editorPrefs",e,b);d.updateFocusAll()}}})});
+//# sourceMappingURL=HighlightBaseWidgets.js.map

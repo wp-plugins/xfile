@@ -1,0 +1,4 @@
+//>>built
+define("davinci/workbench/PropertyEditor",["dojo/_base/declare","davinci/workbench/ViewPart"],function(b,c){return b("davinci.workbench.PropertyEditor",c,{propertyProvider:null,constructor:function(a,b){this.subscribe("/davinci/ui/editorSelected",this.editorChanged);this.subscribe("/davinci/ui/selectionChanged",this.selectionChanged)},editorChanged:function(a){a=a.editor;if(this.currentEditor){if(this.currentEditor==a)return;this.removeContent();this.propertyProvider=null}if(this.currentEditor=a)a.getProperties&&
+(this.propertyProvider=a.getPropertiesProvider()),this.propertyProvider?(this.setContent(this.outlineTree),this.outlineTree.startup()):this.containerNode.innerHTML="Properties are not available"},selectionChanged:function(a){}})});
+//# sourceMappingURL=PropertyEditor.js.map

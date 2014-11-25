@@ -1,0 +1,4 @@
+//>>built
+define("davinci/html/CSSProperty",["dojo/_base/declare","davinci/html/CSSElement"],function(d,e){return d("davinci.html.CSSProperty",e,{constructor:function(b,a,c){this.elementType="CSSProperty";this.name=b||"";this.value=a||"";this.parent=c;this.expanded=[];this.lengthValues=[]},getValue:function(){return this.value},getText:function(b){var a="";this.comment&&!b.noComments&&(a+="\n  "+this.comment.getText(b));a+=this.name+" : "+this.value;this.isNotImportant&&(a+=" !important");a+=";";this.postComment&&
+!b.noComments&&(a+=this.postComment.getText(b));return a},getCSSRule:function(){return this.parent},addProperty:function(b,a){var c=new CSSProperty(b,a,this);this.properties.push(c)},getURL:function(){if(this.url){var b=new davinci.model.Path(this.getCSSFile().url),b=b.getParentPath().append(this.url);return b.toString()}}})});
+//# sourceMappingURL=CSSProperty.js.map

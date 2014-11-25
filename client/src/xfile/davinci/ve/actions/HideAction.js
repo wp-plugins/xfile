@@ -1,0 +1,3 @@
+//>>built
+define("davinci/ve/actions/HideAction",["dojo/_base/declare","davinci/ve/actions/_LayerAction"],function(d,e){return d("davinci.ve.actions.HideAction",[e],{name:"hide",run:function(b){if(b){var c=b.getSelection()[0];if(c){var a=c.domNode;"hidden"!=dojo.style(a,"visibility")&&dojo.style(a,"visibility","hidden");"none"!=dojo.style(a,"display")&&dojo.style(a,"display","none");b.deselect(c)}}}})});
+//# sourceMappingURL=HideAction.js.map

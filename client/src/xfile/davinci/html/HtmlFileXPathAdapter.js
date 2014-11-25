@@ -1,0 +1,3 @@
+//>>built
+define("davinci/html/HtmlFileXPathAdapter",function(){function a(b){this.elem=b}a.prototype={name:function(){return this.elem.tag},parent:function(){var b=this.elem.parent;if("HTMLFile"!==b.elementType)return new a(b)},index:function(){var b=this.elem.tag,c=this.elem.parent.children,a=0;if(1===c.length)return 0;c=c.filter(function(a){return a.tag===b});1<c.length&&c.some(function(b,c){if(b===this.elem)return a=c+1,!0},this);return a}};return a});
+//# sourceMappingURL=HtmlFileXPathAdapter.js.map

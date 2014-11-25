@@ -1,0 +1,5 @@
+//>>built
+define("davinci/ve/actions/MoveBackwardAction",["dojo/_base/declare","./_ReorderAction","davinci/commands/CompoundCommand","davinci/ve/commands/ReparentCommand"],function(m,n,p,q){return m("davinci.ve.actions.MoveBackwardAction",[n],{name:"MoveBackward",iconClass:"editActionIcon editMoveBackwardIcon",run:function(a){if(a=this.fixupContext(a)){var c=a&&a.getSelection?a.getSelection():[];if(0!==c.length&&this.selectionSameParentAllAbsoluteAdjacent(c)){for(var b,h=c[0].getParent(),f=h.getChildren(),
+e=this.getAbsoluteSiblings(c[0]),k=new p,d=c.slice(0),g=e.length-1;0<=g;g--){b=e[g];var l=d.indexOf(b);if(0<=l)d.splice(l,1);else if(0===d.length)break}f=f.indexOf(b);for(d=e.length-1;0<=d;d--)b=e[d],0<=c.indexOf(b)&&k.add(new q(b,h,f));a.getCommandStack().execute(k)}}},isEnabled:function(a){a=(a=this.fixupContext(a))&&a.getSelection?a.getSelection():[];if(0===a.length||!this.selectionSameParentAllAbsoluteAdjacent(a))return!1;for(var c=this.getAbsoluteSiblings(a[0]),b=0;b<a.length;b++)if(c.indexOf(a[b])>
+a.length-1)return!0;return!1}})});
+//# sourceMappingURL=MoveBackwardAction.js.map

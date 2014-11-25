@@ -42,11 +42,11 @@ require_once(XAPP_BASEDIR . '/commander/Commander.php');
 XApp_App_Commander::loadDependencies();
 
 
-$XAPP_CLIENT_DIRECTORY = $XAPP_SITE_DIRECTORY . DS . 'client';
+$XAPP_CLIENT_DIRECTORY = $XAPP_SITE_DIRECTORY . DIRECTORY_SEPARATOR . 'client' . DIRECTORY_SEPARATOR . 'src';
 
 //$XAPP_SERVICE_URL  = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
 $XAPP_SERVICE_URL  = './admin.php?page=xcommander?view=rpc';
-$XAPP_APP_URL = $XAPP_PLUGIN_URL . '/client/';
+$XAPP_APP_URL = $XAPP_PLUGIN_URL . '/client/src/';
 $XAPP_SITE_URL= get_site_url();
 
 
@@ -86,9 +86,7 @@ require_once(XAPP_BASEDIR . '/lib/wordpress/ParameterHelper.php');//auth checker
 require_once(XAPP_BASEDIR . '/Utils/Debugging.php');
 
 $xappServicePath=  $XAPP_SITE_DIRECTORY . 'server' .DIRECTORY_SEPARATOR . 'service' . DIRECTORY_SEPARATOR . 'index_wordpress_admin.php';
-
 include_once($XAPP_BASE_DIRECTORY . '/commander/Bootstrap.php');
-
 $xcomParameters = XApp_Wordpress_Parameter_Helper::getComponentParameters();
 if($xcomParameters){
     $xfileConfig =XApp_Wordpress_Parameter_Helper::toXFileConfig($xcomParameters);
@@ -144,6 +142,7 @@ else{
 
 wp_enqueue_style(md5($jQueryThemeUrl),$jQueryThemeUrl);
 $XAPP_FILE_SERVICE = "../wp-content/plugins/".$XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php?view=rpc";
+
 //$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
 
 $authDelegate = new XAppWordpressAuth();

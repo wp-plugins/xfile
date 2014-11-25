@@ -1,0 +1,4 @@
+//>>built
+define("davinci/html/ui/HTMLEditor",["dojo/_base/declare","davinci/ui/ModelEditor","davinci/model/Factory","davinci/html/ui/HTMLOutline"],function(b,a,c,d){return b("davinci.html.ui.HTMLEditor",a,{constructor:function(b,a){this.model=this.htmlFile=c.getModel({url:a});this._handle=dojo.connect(this.htmlFile.getDocumentElement(),"onkeydown",this,"onKeyDown")},destroy:function(){this.htmlFile.close();dojo.disconnect(this._handle);this.inherited(arguments)},getOutline:function(){this.outline||(this.outline=
+new d(this.model));return this.outline},getDefaultContent:function(){return"\x3chtml\x3e\n \x3chead\x3e\x3c/head\x3e\n \x3cbody\x3e\x3c/body\x3e\n\x3c/html\x3e"},onKeyDown:function(a){}})});
+//# sourceMappingURL=HTMLEditor.js.map

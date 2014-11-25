@@ -1,0 +1,3 @@
+//>>built
+define("davinci/js/JSDebugger",["dojo/_base/declare","davinci/js/JSElement"],function(c,d){return c("davinci.js.JSCase",d,{constructor:function(a){this.elementType="JSDebugger"},getText:function(a){var b="";this.comment&&(b+=this.printNewLine(a)+this.comment.getText(a));this.label&&(b+=this.printNewLine(a)+this.label.getText(a));return b+"debugger"}})});
+//# sourceMappingURL=JSDebugger.js.map

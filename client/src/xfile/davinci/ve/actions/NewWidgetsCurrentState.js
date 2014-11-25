@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ve/actions/NewWidgetsCurrentState","dojo/_base/declare davinci/Runtime davinci/Workbench davinci/ve/States davinci/actions/Action davinci/workbench/Preferences".split(" "),function(f,a,g,h,k,c){return f("davinci.ve.actions.NewWidgetsCurrentState",[k],{run:function(){var d;if(a.currentEditor&&a.currentEditor.currentEditor&&a.currentEditor.currentEditor.context){d=a.currentEditor.currentEditor.context;var e=g.getProject(),b=c.getPreferences("davinci.ve.editorPrefs",e);b.newWidgetsCurrentState=
+b.newWidgetsCurrentState?!1:!0;c.savePreferences("davinci.ve.editorPrefs",e,b);h.updateStateIcons(d)}}})});
+//# sourceMappingURL=NewWidgetsCurrentState.js.map

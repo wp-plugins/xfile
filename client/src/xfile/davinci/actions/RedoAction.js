@@ -1,0 +1,3 @@
+//>>built
+define("davinci/actions/RedoAction",["dojo/_base/declare","./Action","../Workbench"],function(d,e,c){return d("davinci.actions.RedoAction",e,{run:function(a){(a=c.getOpenEditor())&&a.getContext&&a.getContext().getCommandStack().redo()},isEnabled:function(a){var b=(a=c.getOpenEditor())&&a.getContext&&a.getContext();if(a&&b){if(b=b.getCommandStack().canRedo(),"davinci.ve.PageEditor"==a.declaredClass||"davinci.ve.themeEditor.ThemeEditor"==a.declaredClass)return b}else return!1}})});
+//# sourceMappingURL=RedoAction.js.map

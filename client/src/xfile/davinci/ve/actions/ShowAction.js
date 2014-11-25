@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ve/actions/ShowAction",["dojo/_base/declare","davinci/ve/actions/_LayerAction"],function(f,g){return f("davinci.ve.actions.ShowAction",[g],{name:"show",run:function(c){if(c){var d=c.getSelection()[0];if(d){var a=d.domNode;"hidden"==dojo.style(a,"visibility")&&dojo.style(a,"visibility","visible");"none"==dojo.style(a,"display")&&dojo.style(a,"display","");"auto"!=dojo.style(a,"zIndex")&&dojo.style(a,"zIndex","auto");var b=a.offsetParent,e=(b.offsetHeight-a.offsetHeight)/2,b=(b.offsetWidth-
+a.offsetWidth)/2,b=0<=b?b:0;dojo.style(a,"top",(0<=e?e:0)+"px");dojo.style(a,"left",b+"px");c.select(d)}}}})});
+//# sourceMappingURL=ShowAction.js.map

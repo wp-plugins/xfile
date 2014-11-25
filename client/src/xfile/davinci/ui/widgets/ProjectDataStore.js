@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ui/widgets/ProjectDataStore",["dojo/_base/declare","dojo/data/ItemFileReadStore"],function(d,e){return d("davinci.ui.widgets.ProjectDataStore",e,{constructor:function(a){this.clearValues();a.values&&this.setValues(a.values)},setValues:function(a){var b=[];a&&(this._values=a);dojo.forEach(this._values,dojo.hitch(this,function(a){b.push({name:a.name,value:a.name})}));this._jsonData={identifier:"name",items:b};this._loadFinished=!1},modifyItem:function(a,b){for(var c=0;c<this._values.length;c++)this._values[c]==
+a&&(this._values[c]=b);this.setValues()},insert:function(a,b){this._values.splice(a,0,b);this.setValues()},contains:function(a){for(var b=0;b<this._values.length;b++)if(this._values[b]==a)return!0;return!1},getItemNumber:function(a){return this._values[a]},clearValues:function(){this._loadFinished=!1}})});
+//# sourceMappingURL=ProjectDataStore.js.map

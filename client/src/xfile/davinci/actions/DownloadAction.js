@@ -1,0 +1,3 @@
+//>>built
+define("davinci/actions/DownloadAction","dojo/_base/declare ./Action ../Workbench ../ui/DownloadSelected system/resource davinci/ui/Resource dojo/i18n!davinci/ui/nls/ui dojo/i18n!./nls/actions dijit/form/ValidationTextBox".split(" "),function(b,c,d,e,h,f,g){return b("davinci.actions.DownloadAction",c,{run:function(){d.showModal(new e,g.downloadFile,{width:"400px"})},isEnabled:function(a){return(a=f.getSelectedResources())&&0<a.length}})});
+//# sourceMappingURL=DownloadAction.js.map

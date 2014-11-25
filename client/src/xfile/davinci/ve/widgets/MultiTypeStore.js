@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ve/widgets/MultiTypeStore",["dojo/_base/declare","dojo/data/ItemFileReadStore"],function(e,f){var g=e("davinci.ve.widgets.MultiTypeStore",f,{constructor:function(a){this._allValues=[];this.clearValues();a.values&&a.units&&this.setValues(a.values,a.units)},setValues:function(a,c){a.forEach(function(a){-1===this._allValues.indexOf(a)&&this._allValues.push(a)},this);this._unit=c;var d=[];dojo.forEach(this._allValues,function(a){var b=c;""==(""+a).replace(/^\s*/,"").replace(/\s*$/,"")&&
+(b="");d.push({name:""+a+b,value:""+a+b})});this._jsonData={identifier:"name",items:d};this._loadFinished=!1},contains:function(a){return-1!=this._allValues.indexOf(a)},clearValues:function(){this._allValues=[davinci.ve.widgets.MultiTypeStore.BLANK_VALUE];this._unit=null;this._loadFinished=!1}});return dojo.mixin(g,{BLANK_VALUE:"     "})});
+//# sourceMappingURL=MultiTypeStore.js.map

@@ -1,0 +1,4 @@
+//>>built
+define("davinci/XPathUtils",function(){function d(a){this.node=a}d.prototype={name:function(){return this.node.nodeName},parent:function(){var a=this.node.parentNode;if(a!==this.node.ownerDocument)return new d(a)},index:function(){var a=this.node.nodeName,b=this.node.parentNode,e=!1,c=0;b.id||(b.id="__XPATH_UTILS_TEMP_ID__"+Date.now(),e=!0);a=b.querySelectorAll("#"+b.id+"\x3e"+a);if(1<a.length)for(var f=0,h=a.length;f<h;f++)if(a[f]===this.node){c=f+1;break}e&&(b.id="");return c}};var k=/(\w+)(?:\[(\d+)\])?/;
+return{getXPath:function(a,b){function e(a,b){var c=b.name(),d=b.parent();if(d){var g=b.index();a=(g?c+("["+g+"]"):c+"[1]")+(a?"/"+a:"");return e(a,d)}return"/"+c+"/"+a}b=b||d;var c=new b(a);return e("",c).toLowerCase()},toCssPath:function(a){"/"===a.charAt(0)&&(a=a.substr(1));var b="";a.split("/").forEach(function(a){a=a.match(k);var c=a[2];b+=(b?"\x3e":"")+a[1];c&&(b+=":nth-of-type("+c+")")});return b}}});
+//# sourceMappingURL=XPathUtils.js.map

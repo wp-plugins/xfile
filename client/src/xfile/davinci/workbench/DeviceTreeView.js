@@ -1,0 +1,5 @@
+//>>built
+define("davinci/workbench/DeviceTreeView","dojo/_base/declare ./ViewPart ../Workbench ../ui/widgets/OutlineTree dijit/layout/ContentPane dojo/i18n!./nls/workbench xide/utils xcf/views/DeviceTreeView".split(" "),function(b,c,d,h,e,k,f,g){return b(c,{constructor:function(a,b){this.subscribe("/davinci/ui/editorSelected",this.editorChanged);this.subscribe("/davinci/ui/context/pagerebuilt",this._pageRebuilt)},editorChanged:function(a){a=a.editor;if(!(this.currentEditor&&this.currentEditor==a)&&(this.currentEditor=
+a))this.toolbarDiv.innerHTML="",this.treeView||(a=d.ctx.getDeviceManager(),a.store&&(a.treeView=f.addWidget(g,{title:"Devices",store:a.getStore(),delegate:a},a,this.containerNode,!0),this.treeView=a.treeView))},createTree:function(){this.container=new e({style:"padding:0"});this.subcontainer=dojo.doc.createElement("div");this.container.domNode.appendChild(this.subcontainer);this.setContent(this.container)},_getViewContext:function(){return this.outlineProvider},selectionChanged:function(a){console.error("sel changed")},
+_pageRebuilt:function(){},modelChanged:function(a){}})});
+//# sourceMappingURL=DeviceTreeView.js.map

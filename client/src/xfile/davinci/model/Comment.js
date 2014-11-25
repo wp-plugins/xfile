@@ -1,0 +1,4 @@
+//>>built
+define("davinci/model/Comment",["dojo/_base/declare","davinci/model/Model"],function(c,d){return c("davinci.model.Comment",d,{constructor:function(){this.elementType="Comment";this.nosemicolon=!0},addComment:function(b,a,c,d){null==this.comments&&(this.comments=[]);this.comments[this.comments.length]={commentType:b,start:a,stop:c,s:d}},appendComment:function(b){var a=this.comments[this.comments.length-1];a.s+=b;a.stop+=b.length},getText:function(b){b="";for(var a=0;a<this.comments.length;a++)"line"==
+this.comments[a].commentType?b+="//"+this.comments[a].s+"\n":"block"==this.comments[a].commentType&&(b+="/*"+this.comments[a].s+"*/\n");return b}})});
+//# sourceMappingURL=Comment.js.map

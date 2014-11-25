@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ve/actions/ViewDesignAction",["dojo/_base/declare","davinci/ve/actions/ContextAction"],function(c,d){return c("davinci.ve.actions.ViewDesignAction",[d],{run:function(a){(a=this.fixupContext(a))&&(a.editor&&a.editor.switchDisplayModeDesign)&&a.editor.switchDisplayModeDesign()},updateStyling:function(){var a=davinci.Workbench.getOpenEditor();if(a&&a.getDisplayMode){var a=a.getDisplayMode(),b=dojo.query(".maqDesignButton")[0];b&&("design"==a?dojo.addClass(b,"maqLabelButtonSelected"):
+dojo.removeClass(b,"maqLabelButtonSelected"))}}})});
+//# sourceMappingURL=ViewDesignAction.js.map

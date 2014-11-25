@@ -97,7 +97,6 @@ class xcom_Plugin extends xcom_LifeCycle {
 
         if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' ) ) {
             require_once( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' );
-
         }else{
 
         }

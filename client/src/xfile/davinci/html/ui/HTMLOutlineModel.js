@@ -1,0 +1,4 @@
+//>>built
+define("davinci/html/ui/HTMLOutlineModel",["dojo/_base/declare"],function(c){return c("davinci.html.ui.HTMLOutlineModel",null,{constructor:function(a){this.root=a;this.subscription=dojo.subscribe("/davinci/ui/modelChanged",this,this._modelChanged)},getRoot:function(a,b){a(this.root)},getIdentity:function(a){return a.getID()},getLabel:function(a){return a.getLabel().replace("\x3c","\x26lt")},_getChildren:function(a){var b=[];("HTMLFile"==a.elementType||"HTMLElement"==a.elementType)&&dojo.forEach(a.children,
+function(a){"HTMLElement"==a.elementType&&b.push(a)});return b},mayHaveChildren:function(a){return 0<a.children.length},getChildren:function(a,b,c){b(this._getChildren(a))},_modelChanged:function(){this.onChildrenChange(this.root,this._getChildren(this.root))},destroy:function(){dojo.unsubscribe(this.subscription)}})});
+//# sourceMappingURL=HTMLOutlineModel.js.map

@@ -1,0 +1,3 @@
+//>>built
+define("davinci/js/JSExpression",["dojo/_base/declare","davinci/js/JSElement"],function(b,c){return b("davinci.js.JSExpression",c,{constructor:function(){this.elementType="JSExpression"},getText:function(){var a="";this.comment&&(a+=this.printNewLine(context)+this.comment.getText(context));this.label&&(a+=this.printNewLine(context)+this.label.getText(context));return a},add:function(a){}})});
+//# sourceMappingURL=JSExpression.js.map

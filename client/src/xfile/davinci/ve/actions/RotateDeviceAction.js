@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ve/actions/RotateDeviceAction",["dojo/_base/declare","davinci/Workbench","davinci/actions/Action"],function(c,e,d){return c("davinci.ve.actions.RotateDeviceAction",[d],{run:function(a){davinci.Workbench.getOpenEditor().getContext().visualEditor.toggleOrientation()},isEnabled:function(a){if((a=davinci.Workbench.getOpenEditor())&&a.getContext)if(a=a.getContext(),a.getMobileDevice)return(a=a.getMobileDevice())&&""!=a&&"none"!=a&&"desktop"!=a;return!1},updateStyling:function(){var a=!1,
+b=davinci.Workbench.getOpenEditor();b&&(b=b.visualEditor)&&b.getOrientation&&(a="landscape"==b.getOrientation());a?dojo.addClass(document.body,"orientationLandscape"):dojo.removeClass(document.body,"orientationLandscape")}})});
+//# sourceMappingURL=RotateDeviceAction.js.map

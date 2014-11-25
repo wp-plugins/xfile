@@ -1,0 +1,4 @@
+//>>built
+define("davinci/html/CSSEditorContext",["dojo/_base/declare","davinci/html/CSSEditorWidget"],function(b,c){return b("davinci.html.CSSEditorContext",null,{constructor:function(a){this.editor=a;this.connects=[];this.subscriptions=[];this.subscriptions.push(dojo.subscribe("/davinci/ui/selectionChanged",this,this._selection))},_selection:function(a){if(a[0]&&a[0].model&&(a=a[0].model,!a._edit_context&&"CSS"==a.elementType.substring(0,3))){a=a.getCSSRule();var b=a!=this.selectedRule;this.selectedWidget=
+a?new c(this):null;this.selectedRule=a;if(b)this.onSelectionChange()}},getSelection:function(){return this.selectedWidget?[this.selectedWidget]:[]},onSelectionChange:function(){}})});
+//# sourceMappingURL=CSSEditorContext.js.map

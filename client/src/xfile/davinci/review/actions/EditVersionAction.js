@@ -1,0 +1,4 @@
+//>>built
+define("davinci/review/actions/EditVersionAction","dojo/_base/declare ./_ReviewNavigatorCommon ./PublishAction ../../Runtime dojox/widget/Toaster dojo/i18n!./nls/actions".split(" "),function(b,c,d,e,f,g){return b("davinci.review.actions.EditVersionAction",[c],{run:function(a){(a=this._getSelection(a))&&a.length&&(new d("ReviewFile"==a[0].resource.elementType?a[0].resource.parent:a[0].resource)).run()},isEnabled:function(a){return(a=this._getSelection(a))&&0<a.length&&("ReviewFile"==a[0].resource.elementType?
+a[0].resource.parent:a[0].resource).designerId==e.userName?!0:!1}})});
+//# sourceMappingURL=EditVersionAction.js.map

@@ -1,0 +1,4 @@
+//>>built
+define("davinci/js/JSArrayInitializer",["dojo/_base/declare","davinci/js/JSExpression"],function(d,e){return d("davinci.js.JSArrayInitializer",e,{constructor:function(){this.elementType="JSArrayInitializer"},getText:function(b){var a="";this.comment&&(a+=this.printNewLine(b)+this.comment.getText(b));this.label&&(a+=this.printNewLine(b)+this.label.getText(b));for(var a=a+"[",c=0;c<this.children.length;c++)0<c&&(a+=", "),a+=this.children[c].getText(b);return a+"]"},visit:function(b){if(!b.visit(this))for(var a=
+0;a<this.children.length;a++)this.children[a].visit(b);b.endVisit&&b.endVisit(this)}})});
+//# sourceMappingURL=JSArrayInitializer.js.map

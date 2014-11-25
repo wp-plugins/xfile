@@ -1,0 +1,5 @@
+//>>built
+function copyOnly(a){return a in{}}
+var profile={basePath:"../",action:"release",cssOptimize:"comments",mini:!0,optimize:"closure",layerOptimize:"closure",stripConsole:"warn",selectorEngine:"lite",layers:{"orion/orion":{include:"orion/main orion orion/editor/editor orion/editor/editorFeatures orion/editor/htmlGrammar orion/editor/textMateStyler orion/editor/textView orion/editor/textModel orion/editor/projectionTextModel orion/editor/contentAssist orion/editor/jsContentAssist orion/editor/cssContentAssist".split(" "),boot:!1,customBase:!1}},
+staticHasFeatures:{"dojo-trace-api":0,"dojo-log-api":0,"dojo-publish-privates":0,"dojo-sync-loader":0,"dojo-xhr-factory":0,"dojo-test-sniff":0},resourceTags:{test:function(a,b){return!1},copyOnly:function(a,b){console.error("filename "+a+" mid : "+b);return copyOnly(b)},amd:function(a,b){return!copyOnly(b)&&/\.js$/.test(a)},miniExclude:function(a,b){return b in{"XPLUGIN/profile":1}}}};
+//# sourceMappingURL=layer.profile.js.map

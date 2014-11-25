@@ -1,0 +1,4 @@
+//>>built
+define("davinci/workbench/ViewPart",["dojo/_base/declare","./_ToolbaredContainer","../ve/States","../Runtime"],function(d,e,g,f){return d("davinci.workbench.ViewPart",e,{constructor:function(a,b){this.viewExt=a.view;this.subscriptions=[];this.publishing={}},startup:function(){this.inherited(arguments);this.domNode.view=this;this.viewExt.startup&&this.viewExt.startup()},subscribe:function(a,b){this.subscriptions.push(dojo.subscribe(a,this,b))},publish:function(a,b){this.publishing[a]=!0;try{dojo.publish(a,
+b)}catch(c){console.error(c)}delete this.publishing[a]},destroy:function(){dojo.forEach(this.subscriptions,dojo.unsubscribe);delete this.subscriptions},_getViewActions:function(){var a=this.toolbarID||this.viewExt.id,b=[];f.getExtensions("davinci.viewActions",function(c){if(a==c.viewContribution.targetID)return b.push(c.viewContribution),!0});return b}})});
+//# sourceMappingURL=ViewPart.js.map

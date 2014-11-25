@@ -1,0 +1,3 @@
+//>>built
+define("davinci/js/JSParenExpression",["dojo/_base/declare","davinci/js/JSExpression"],function(c,d){return c("davinci.js.JSParenExpression",d,{constructor:function(){this.elementType="JSParenExpression";this.expression=null},getText:function(a){var b="";this.comment&&(b+=this.printNewLine(a)+this.comment.getText(a));this.label&&(b+=this.printNewLine(a)+this.label.getText(a));return b+="("+this.expression.getText(a)+")"},visit:function(a){a.visit(this)||this.expression.visit(a);a.endVisit&&a.endVisit(this)}})});
+//# sourceMappingURL=JSParenExpression.js.map

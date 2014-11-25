@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ui/widgets/DavinciModelTreeModel",["dojo/_base/declare"],function(c){return c("davinci.ui.widgets.DavinciModelTreeModel",null,{constructor:function(a){this.root=a;this.subscription=dojo.subscribe("/davinci/ui/modelChanged",this,this.modelChanged)},destroy:function(){dojo.unsubscribe(this.subscription)},getRoot:function(a){a(this.root)},mayHaveChildren:function(a){return 0<a.children.length},getChildren:function(a,b){b(this._childList(a))},getIdentity:function(a){return a.getID()},
+getLabel:function(a){return a.getLabel()},modelChanged:function(a,b){this.refresh()},_childList:function(a){return a.children},newItem:function(a,b){},pasteItem:function(a,b,c,d){},onChange:function(a){},onChildrenChange:function(a,b){},refresh:function(){try{var a=this.root;this.onChildrenChange(a,this._childList(a))}catch(b){console.error("error in VisualEditorOutline::refresh")}}})});
+//# sourceMappingURL=DavinciModelTreeModel.js.map

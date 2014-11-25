@@ -1,0 +1,5 @@
+//>>built
+define("davinci/review/actions/CloseVersionAction",["dojo/_base/declare","./_ReviewNavigatorCommon","davinci/Runtime","dojox/widget/Toaster","dojo/i18n!./nls/actions"],function(d,e,f,g,b){return d("davinci.review.actions.CloseVersionAction",[e],{run:function(a){if((a=this._getSelection(a))&&a.length)if(okToClose=confirm(b.areYouSureClose)){var c="ReviewFile"==a[0].resource.elementType?a[0].resource.parent:a[0].resource;dojo.xhrGet({url:"cmd/managerVersion",sync:!1,handleAs:"text",content:{type:"close",
+vTime:c.timeStamp}}).then(function(a){"OK"==a&&("undefined"==typeof hasToaster&&(new g({position:"br-left",duration:4E3,messageTopic:"/davinci/review/resourceChanged"}),hasToaster=!0),dojo.publish("/davinci/review/resourceChanged",[{message:b.closeSuccessful,type:"message"},"closed",c]))})}},isEnabled:function(a){a=this._getSelection(a);if(!a||0==a.length)return!1;a="ReviewFile"==a[0].resource.elementType?a[0].resource.parent:a[0].resource;return a.designerId==f.userName&&!a.closed&&!a.isDraft?!0:
+!1}})});
+//# sourceMappingURL=CloseVersionAction.js.map

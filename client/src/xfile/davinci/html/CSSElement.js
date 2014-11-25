@@ -1,0 +1,4 @@
+//>>built
+define("davinci/html/CSSElement",["dojo/_base/declare","davinci/model/Model"],function(c,d){return c("davinci.html.CSSElement",d,{constructor:function(){"undefined"!=typeof pushComment&&null!==pushComment&&(this.comment=pushComment,pushComment=null);this.elementType="CSSElement"},getLabel:function(){context={indent:0,noComments:!0};return this.getText(context)},onChange:function(a){if(this.parent)if(a)this.parent.onChange(a);else this.parent.onChange(this)},close:function(a){for(a=0;a<this.children;a++)this.children[a].close()},
+getCSSFile:function(){var a=this.getCSSRule();if(a)return a.parent},getCSSRule:function(){},_convertNode:function(a){if(dojo.isArray(a))return a;for(var b=[];a&&"HTML"!=a.tagName;)b.push({tagName:a.tagName,id:a.id,classes:a.className&&a.className.split(" ")}),a=a.parentNode;return b},getID:function(){return this.parent.getID()+":"+this.startOffset+":"+this.getLabel()}})});
+//# sourceMappingURL=CSSElement.js.map

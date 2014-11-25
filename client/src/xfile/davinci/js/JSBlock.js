@@ -1,0 +1,4 @@
+//>>built
+define("davinci/js/JSBlock",["dojo/_base/declare","davinci/js/JSElement"],function(d,e){return d("davinci.js.JSBlock",e,{constructor:function(){this.nosemicolon=!0;this.elementType="JSBlock";this.nosemicolon=!0},getText:function(b){b.indent+=2;var a="";this.comment&&(a+=this.printNewLine(b)+this.comment.getText(b));this.label&&(a+=this.printNewLine(b)+this.label.getText(b));for(var a=a+"{",c=0;c<this.children.length;c++)a+=this.printNewLine(b),a=a+this.children[c].getText(b)+(this.children[c].nosemicolon?
+"":";");b.indent-=2;a+=this.printNewLine(b);return a+"}"},getLabel:function(){return"{     }"},visit:function(b){if(!b.visit(this))for(var a=0;a<this.children.length;a++)this.children[a].visit(b);b.endVisit&&b.endVisit(this)}})});
+//# sourceMappingURL=JSBlock.js.map

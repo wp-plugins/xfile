@@ -1,0 +1,3 @@
+//>>built
+define("davinci/js/JSBranch",["dojo/_base/declare","davinci/js/JSElement"],function(c,d){return c("davinci.js.JSBlock",d,{constructor:function(a){this.elementType="JSBranch";this.statement=a;this.targetLabel=null},getText:function(a){var b="";this.comment&&(b+=this.printNewLine(a)+this.comment.getText(a));this.label&&(b+=this.printNewLine(a)+this.label.getText(a));b+=this.statement;this.targetLabel&&(b=b+" "+this.targetLabel);return b},visit:function(a){a.visit(this);a.endVisit&&a.endVisit(this)}})});
+//# sourceMappingURL=JSBranch.js.map

@@ -1,0 +1,3 @@
+//>>built
+define("davinci/review/widgets/ReviewToolBarText",["dojo/_base/declare","dijit/_WidgetBase","dojo/i18n!davinci/review/widgets/nls/widgets"],function(a,b,c){return a("davinci.review.widgets.ReviewToolBarText",[b],{postCreate:function(){this.inherited(arguments);dojo.addClass(this.domNode,"ReviewToolBarTextContainer");var a=dojo.create("div",{className:"ReviewToolBarText"},this.domNode);dojo.create("span",{},a).textContent=c.ReviewToolBarText}})});
+//# sourceMappingURL=ReviewToolBarText.js.map

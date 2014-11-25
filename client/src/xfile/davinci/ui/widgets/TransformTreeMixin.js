@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ui/widgets/TransformTreeMixin",["dijit/Tree"],function(g){var c=dijit.Tree.prototype.postCreate;dijit.Tree.prototype.postCreate=function(){var e=dijit.Tree.prototype._onItemChildrenChange;dijit.Tree.prototype._onItemChildrenChange=function(a,b){this.transforms&&this.transforms.forEach(function(a){b=a(b)});e.apply(this,[a,b])};var f=this.model.getChildren;this.model.getChildren=dojo.hitch(this,function(a,b,c){var d=b;this.transforms&&(d=dojo.hitch(this,function(a){this.transforms.forEach(function(b){a=
+b(a)});b(a)}));f.apply(this.model,[a,d,c])});c.apply(this)}});
+//# sourceMappingURL=TransformTreeMixin.js.map

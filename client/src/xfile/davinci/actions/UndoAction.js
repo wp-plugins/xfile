@@ -1,0 +1,3 @@
+//>>built
+define("davinci/actions/UndoAction",["dojo/_base/declare","./Action","../Workbench"],function(d,e,c){return d("davinci.actions.UndoAction",e,{run:function(a){(a=c.getOpenEditor())&&a.getContext&&a.getContext().getCommandStack().undo()},isEnabled:function(a){var b=(a=c.getOpenEditor())&&a.getContext&&a.getContext();if(a&&b){if(b=b.getCommandStack().canUndo(),"davinci.ve.PageEditor"==a.declaredClass||"davinci.ve.themeEditor.ThemeEditor"==a.declaredClass)return b}else return!1}})});
+//# sourceMappingURL=UndoAction.js.map

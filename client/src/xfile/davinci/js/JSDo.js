@@ -1,0 +1,4 @@
+//>>built
+define("davinci/js/JSDo",["dojo/_base/declare","davinci/js/JSElement"],function(c,d){return c("davinci.js.JSDo",d,{constructor:function(){this.elementType="JSDo";this.action=this.expr=null},getText:function(a){var b="";this.comment&&(b+=this.printNewLine(a)+this.comment.getText(a));this.label&&(b+=this.printNewLine(a)+this.label.getText(a));a.indent+=2;b=b+"do"+this.printStatement(a,this.action);a.indent-=2;return b=b+this.printNewLine(a)+"while ( "+this.expr.getText(a)+" )"},getLabel:function(){return"do while"},
+visit:function(a){a.visit(this)||(this.expr.visit(a),this.action.visit(a));a.endVisit&&a.endVisit(this)}})});
+//# sourceMappingURL=JSDo.js.map

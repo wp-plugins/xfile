@@ -257,18 +257,15 @@ class xcom_OptionsManager {
             wp_die(__('You do not have sufficient permissions to access this page.', 'xcom'));
         }
 
-
-        /*echo ("render settings page");*/
         if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' ) ) {
             require_once( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' );
-            error_log('include rfr');
         }else{
 
         }
 
         if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/ReduxFramework/sample/sample-config.php' ) ) {
             require_once( dirname( __FILE__ ) . '/ReduxFramework/sample/sample-config.php' );
-            error_log('include rfr demo');
+
         }
         return;
     }

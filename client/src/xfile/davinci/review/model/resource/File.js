@@ -1,0 +1,4 @@
+//>>built
+define("davinci/review/model/resource/File",["dojo/_base/declare","davinci/Runtime","davinci/model/resource/File","davinci/model/Path","dojo/Deferred"],function(c,d,e,f,g){return c("davinci.review.model.resource.File",e,{constructor:function(a,b){this.elementType="ReviewFile";this.name=a;this.parent=b;this.extension="rev"},getLabel:function(){var a=(new f(this.name)).getSegments(),b="."+d.getExtension("davinci.editor",function(a){return"davinci.review.CommentReviewEditor"===a.id}).extensions;return label=
+a[a.length-1]+b},getContentSync:function(){return""},getContent:function(){return(new g).resolve("")},removeWorkingCopy:function(){}})});
+//# sourceMappingURL=File.js.map

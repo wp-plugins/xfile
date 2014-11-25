@@ -1,0 +1,5 @@
+//>>built
+define("davinci/commands/CompoundCommand",["dojo/_base/declare"],function(e){return e("davinci.commands.CompoundCommand",null,{name:"compound",_commands:[],constructor:function(a){this._commands=[];a&&(this._commands=[a])},add:function(a){if(a)if(this._commands)if("compound"==a.name)dojo.forEach(a._commands,function(a){this.add(a)},this);else{if("modify"==a.name)for(var b=a._oldId,c=0;c<this._commands.length;c++){var d=this._commands[c];if("modify"==d.name&&d._oldId==b){d.add(a);return}}this._commands.push(a)}else this._commands=
+"compound"==a.name?a._commands:[a]},setContext:function(a){for(var b=0;b<this._commands.length;b++)this._commands[b].setContext&&this._commands[b].setContext(a)},isEmpty:function(){return!this._commands||0===this._commands.length},execute:function(){if(this._commands)for(var a=0;a<this._commands.length;a++)this._commands[a].execute(),this._commands[a]._oldId&&this._commands[a]._newId&&(this._oldId=this._commands[a]._oldId,this._newId=this._commands[a]._newId)},undo:function(){if(this._commands)for(var a=
+this._commands.length-1;0<=a;a--)this._commands[a].undo()}})});
+//# sourceMappingURL=CompoundCommand.js.map

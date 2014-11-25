@@ -1,0 +1,3 @@
+//>>built
+define("davinci/actions/SelectLayoutAction",["dojo/_base/declare","./Action","../Workbench","dojo/i18n!./nls/actions"],function(d,e,f,g){return d("davinci.actions.SelectLayoutAction",e,{_changeLayoutCommand:function(b){var a=dijit.byId("selectLayout");a&&a.destroyRecursive(!1);if((a=f.getOpenEditor())&&a.getContext){var c=!0;if("absolute"===b||"Absolute positioning"===b)c=!1;a.getContext().setFlowLayout(c);a._visualChanged()}}})});
+//# sourceMappingURL=SelectLayoutAction.js.map

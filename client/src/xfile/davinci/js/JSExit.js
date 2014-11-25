@@ -1,0 +1,3 @@
+//>>built
+define("davinci/js/JSExit",["dojo/_base/declare","davinci/js/JSElement"],function(c,d){return c("davinci.js.JSExit",d,{constructor:function(b){this.elementType="JSExit";this.statement=b;this.expr=null},getText:function(b){var a="";this.comment&&(a+=this.printNewLine(b)+this.comment.getText(b));this.label&&(a+=this.printNewLine(b)+this.label.getText(b));a+=this.statement;this.expr&&(a=a+" "+this.expr.getText(b));return a}})});
+//# sourceMappingURL=JSExit.js.map

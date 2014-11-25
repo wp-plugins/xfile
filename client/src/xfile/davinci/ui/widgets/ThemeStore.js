@@ -1,0 +1,3 @@
+//>>built
+define("davinci/ui/widgets/ThemeStore",["dojo/_base/declare","dojo/data/ItemFileReadStore"],function(d){return d("davinci.ui.widgets.ThemeStore",ItemFileReadStore,{constructor:function(b){this._allValues=[];b.values&&this.setValues(b.values)},setValues:function(b){for(var c=[],a=0;a<b.length;a++)c[a]={},c[a].name=b[a].name+" "+b[a].version,c[a].value=a;this._jsonData={label:"name",identifier:"value",items:c};this._loadFinished=!1}})});
+//# sourceMappingURL=ThemeStore.js.map

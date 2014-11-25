@@ -1,0 +1,4 @@
+//>>built
+define("davinci/js/JSPrefixPostfixExpression",["dojo/_base/declare","davinci/js/JSExpression"],function(c,d){return c("davinci.js.JSPrefixPostfixExpression",d,{constructor:function(){this.isPrefix=!1;this.operator=this.expr=null;this.elementType="JSPrefixPostfixExpression"},getText:function(b){var a="";this.comment&&(a+=this.printNewLine(b)+this.comment.getText(b));this.label&&(a+=this.printNewLine(b)+this.label.getText(b));this.isPrefix&&(a+=this.operator);a+=this.expr.getText(b);this.isPrefix||
+(a+=this.operator);return a},visit:function(b){b.visit(this)||this.expr.visit(b);b.endVisit&&b.endVisit(this)}})});
+//# sourceMappingURL=JSPrefixPostfixExpression.js.map

@@ -1,0 +1,3 @@
+//>>built
+define("davinci/js/JSEmptyExpression",["dojo/_base/declare","davinci/js/JSExpression"],function(c,d){return c("davinci.js.JSEmptyExpression",d,{constructor:function(){this.elementType="JSEmptyExpression"},getText:function(b){var a="";this.comment&&(a+=this.printNewLine(b)+this.comment.getText(b));this.label&&(a+=this.printNewLine(b)+this.label.getText(b));return a+""}})});
+//# sourceMappingURL=JSEmptyExpression.js.map

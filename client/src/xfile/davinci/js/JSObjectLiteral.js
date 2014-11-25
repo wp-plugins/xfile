@@ -1,0 +1,4 @@
+//>>built
+define("davinci/js/JSObjectLiteral",["dojo/_base/declare","davinci/js/JSExpression"],function(d,e){return d("davinci.js.JSObjectLiteral",e,{constructor:function(){this.elementType="JSObjectLiteral"},getText:function(b){var a="";this.comment&&(a+=this.printNewLine(b)+this.comment.getText(b));this.label&&(a+=this.printNewLine(b)+this.label.getText(b));a+="{";b.indent+=2;for(var c=0;c<this.children.length;c++)0<c&&(a+=", "),a+=this.printNewLine(b),a+=this.children[c].getText(b);b.indent-=2;a+=this.printNewLine(b);
+return a+"}"},getLabel:function(){return"{}"},visit:function(b){if(!b.visit(this))for(var a=0;a<this.children.length;a++)this.children[a].visit(b);b.endVisit&&b.endVisit(this)}})});
+//# sourceMappingURL=JSObjectLiteral.js.map

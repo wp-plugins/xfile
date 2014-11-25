@@ -1,0 +1,4 @@
+//>>built
+define("davinci/js/JSBinaryOperation",["dojo/_base/declare","davinci/js/JSExpression"],function(c,d){return c("davinci.js.JSBinaryOperation",d,{constructor:function(){this.elementType="JSBinaryOperation";this.right=this.left=null;this.operator=0},getText:function(a){var b="";this.comment&&(b+=this.printNewLine(a)+this.comment.getText(a));this.label&&(b+=this.printNewLine(a)+this.label.getText(a));return b+this.left.getText(a)+this.operator+this.right.getText(a)},visit:function(a){a.visit(this)||(this.left.visit(a),
+this.right.visit(a));a.endVisit&&a.endVisit(this)}})});
+//# sourceMappingURL=JSBinaryOperation.js.map

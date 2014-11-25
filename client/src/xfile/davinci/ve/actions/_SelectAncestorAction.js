@@ -1,0 +1,3 @@
+//>>built
+define("davinci/ve/actions/_SelectAncestorAction",["dojo/_base/declare","davinci/ve/actions/ContextAction"],function(d,e){return d("davinci.ve.actions._SelectAncestorAction",[e],{shouldShow:function(a){return(a=this.fixupContext(a))&&a.editor&&"davinci.ve.HTMLPageEditor"==a.editor.editorID},selectionSameParentNotBody:function(a){if(!a||0===a.length)return!1;var b=a[0].getParent();if(!b||!b.domNode||"BODY"==b.domNode.tagName)return!1;for(var c=0;c<a.length;c++)if(a[c].getParent()!=b)return!1;return!0}})});
+//# sourceMappingURL=_SelectAncestorAction.js.map

@@ -1,0 +1,4 @@
+//>>built
+define("davinci/ve/widgets/a",["dijit","dojo","dojox"],function(a,b,c){[{label:"onclick",value:"onclick"},{label:"ondblclick",value:"ondblclick"},{label:"onmousedown",value:"onmousedown"},{label:"onmouseup",value:"onmouseup"},{label:"onmouseover",value:"onmouseover"},{label:"onmousemove",value:"onmousemove"},{label:"onmouseout",value:"onmouseout"},{label:"onkeypress",value:"onkeypress"},{label:"onkeydown",value:"onkeydown"},{label:"onkeyup",value:"onkeyup"},{label:"onfocus",value:"onfocus"},{label:"onblur",
+value:"onblur"},{label:"onchange",value:"onchange"}]});
+//# sourceMappingURL=a.js.map

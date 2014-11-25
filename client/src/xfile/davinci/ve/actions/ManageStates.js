@@ -1,0 +1,5 @@
+//>>built
+define("davinci/ve/actions/ManageStates","dojo/_base/declare davinci/Runtime davinci/Workbench davinci/ve/actions/ContextAction davinci/workbench/Preferences dijit/registry davinci/ve/States davinci/actions/Action dojo/i18n!davinci/ve/nls/ve davinci/ve/actions/_ManageStatesWidget".split(" "),function(e,b,c,f,h,k,g,l,d,m){return e("davinci.ve.actions.ManageStates",[f],{run:function(){var a;if(b.currentEditor&&(b.currentEditor.currentEditor&&b.currentEditor.currentEditor.context)&&(a=b.currentEditor.currentEditor.context,
+(a=g.getFocus(a.rootNode))&&a.stateContainerNode))a=new davinci.ve.actions._ManageStatesWidget({node:a.stateContainerNode}),a._calledBy="ManageStates",a.okButton.set("label",d.updateLabel),a.updateDialog(),c.showModal(a,d.manageStates,{width:400},null,!0)},isEnabled:function(a){a=this.fixupContext(a);var b=c.getOpenEditor();return b&&a?"davinci.ve.PageEditor"==b.declaredClass?0<a.getSelection().length:!1:!1},shouldShow:function(a){return(a=(a=this.fixupContext(a))?a.editor:null)&&"davinci.ve.PageEditor"==
+a.declaredClass}})});
+//# sourceMappingURL=ManageStates.js.map

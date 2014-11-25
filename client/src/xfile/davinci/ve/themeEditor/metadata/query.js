@@ -1,0 +1,5 @@
+//>>built
+define("davinci/ve/themeEditor/metadata/query",["dojo/_base/declare","davinci/ve/utils/URLRewrite"],function(d,e){return d("davinci.ve.themeEditor.metadata.query",null,{constructor:function(b,a){this.files=b;this.cache={};this.lastLoaded=-1;this.modules=a;this.modulePrefix=null;this.modulePrefix=".";if(a)for(var c=0;c<a.length;c++)this.modulePrefix+="/"+a[c]},getType:function(b){var a=null;b.declaredClass?a=b.type:(a=b,"html."==a.substring(0,5)&&(tagName=a.substring(5)));return a},_loadNextFile:function(){var b=
+this.files[++this.lastLoaded],a=null,a=b.getURL?e.encodeURI(b.getURL()):this.modulePrefix+b,c=null;dojo.xhrGet({url:a,handleAs:"json",sync:!0,load:function(a){c=a}});return c},_fullyLoaded:function(){return this.files.length<=this.lastLoaded+1},_cacheNext:function(){var b=this._loadNextFile();dojo.mixin(this.cache,b)},getMetaData:function(b){var a=b.split(/[\.\/]/),c=0<=a.length?a[a.length-1]:a;return(a=this.cache[0<=a.length?a[0]:a])&&a[c]?a[c]:!this._fullyLoaded()?(this._cacheNext(),this.getMetaData(b)):
+null}})});
+//# sourceMappingURL=query.js.map
