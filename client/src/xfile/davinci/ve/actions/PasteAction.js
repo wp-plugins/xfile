@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ve/actions/PasteAction",["dojo/_base/declare","../../Workbench","./ContextAction","../tools/PasteTool","../../Runtime"],function(d,e,f,g,c){return d("davinci.ve.actions.PasteAction",[f],{shortcut:{keyCode:86,ctrlKey:!0},run:function(a){if(a=this.fixupContext(a))if("davinci.ve.PageEditor"==a.declaredClass&&"source"==a._displayMode)a.htmlEditor.pasteAction.run();else{var b=c.clipboard;b&&a.setActiveTool(new g(b))}},isEnabled:function(a){a=this.fixupContext(a);var b=e.getOpenEditor();
-return b&&a?"davinci.ve.PageEditor"==b.declaredClass?(a=b.getDisplayMode(),c.clipboard&&"source"!=a):c.clipboard:!1},shouldShow:function(a){return(a=(a=this.fixupContext(a))?a.editor:null)&&"davinci.ve.PageEditor"==a.declaredClass}})});
-//# sourceMappingURL=PasteAction.js.map

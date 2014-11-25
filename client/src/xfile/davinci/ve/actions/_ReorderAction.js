@@ -1,5 +1,0 @@
-//>>built
-define("davinci/ve/actions/_ReorderAction",["dojo/_base/declare","dojo/_base/array","dojo/dom-style","davinci/ve/actions/ContextAction"],function(g,h,f,k){return g("davinci.ve.actions._ReorderAction",[k],{shouldShow:function(a){return(a=this.fixupContext(a))&&a.editor&&"davinci.ve.HTMLPageEditor"==a.editor.editorID},selectionSameParentAllAbsolute:function(a){if(0===a.length)return!1;var c=a[0].getParent();if(!c)return!1;for(var d=0;d<a.length;d++){var b=a[d];if(b.getParent()!=c||"absolute"!=(b&&b.domNode?
-f.get(b.domNode,"position"):null))return!1}return!0},selectionSameParentAllAbsoluteAdjacent:function(a){if(!a||0===a.length||!this.selectionSameParentAllAbsolute(a))return!1;var c=a[0].getParent();if(!c)return!1;for(var c=c.getChildren(),d=Number.MAX_VALUE,b=Number.MIN_VALUE,e=0;e<c.length;e++)0<=a.indexOf(c[e])&&(d=e<d?e:d,b=e>b?e:b);return b-d+1===a.length},getAbsoluteSiblings:function(a){a=a&&a.getParent&&a.getParent();if(!a)return[];a=a.getChildren&&a.getChildren();return!a?[]:h.filter(a,function(a){return"absolute"==
-(a&&a.domNode?f.get(a.domNode,"position"):null)})}})});
-//# sourceMappingURL=_ReorderAction.js.map

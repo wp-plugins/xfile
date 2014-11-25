@@ -1,5 +1,0 @@
-//>>built
-define("davinci/actions/StickyNoteAction","dojo/_base/declare ./Action ../Workbench davinci/commands/CompoundCommand ../ve/commands/AddCommand ../ve/commands/MoveCommand ../ve/commands/ResizeCommand ../ve/tools/CreateTool ../ve/widget ../ve/metadata".split(" "),function(f,g,d,h,k,l,m,n,p,q){return f("davinci.actions.StickyNoteAction",g,{run:function(a){var b=d.getOpenEditor();if(a=davinci.ve.metadata.queryDescriptor("html.stickynote")){var e=dojo.clone(a);e.context=b.getContext();if(b&&b.getContext){var c=
-void 0;dojo.withDoc(b.getContext().getDocument(),function(){c=p.createWidget(e)});c&&(a=new h,b.getContext().getDocument(),b.getContext().getContainerNode(),a.add(new k(c,b.getContext().getContainerNode())),n.prototype.checkAddToCurrentState(a,c),a.add(new l(c,50,50)),c.isLayoutContainer&&a.add(new m(c,args.size&&args.size.w,args.size&&args.size.h)),b.getContext().getCommandStack().execute(a),q.getSmartInput(c.type).then(function(a){a&&a.displayOnCreate?b.getContext().select(c,null,!0):b.getContext().select(c)}.bind(this)))}}},
-isEnabled:function(a){return(a=d.getOpenEditor())&&a.getContext}})});
-//# sourceMappingURL=StickyNoteAction.js.map

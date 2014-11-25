@@ -1,4 +1,0 @@
-//>>built
-define("davinci/review/actions/ArrowAction",["dojo/_base/declare","davinci/review/actions/_DrawingCommon","davinci/review/Review"],function(c,e,d){return c("davinci.review.actions.ArrowAction",[e],{run:function(c){this.inherited(arguments);if(dijit.byId("davinci.ui.comment")._commentForm.isShowing){var a=davinci.Workbench.getOpenEditor(),b=(a=(a=a&&a.getContext?a.getContext():null)?a.surface:null)?a.createTool:null;b&&(b.deactivate(),b.setShape("Arrow",{colorAlias:a.currentReviewerEmail,a2c:dojo.hitch(d,
-d.getColor),commentId:a.commentId,state:"",stateList:"",scene:"",sceneList:""}),b.activate())}}})});
-//# sourceMappingURL=ArrowAction.js.map

@@ -1,3 +1,0 @@
-//>>built
-define("davinci/ve/actions/SelectParentAction",["dojo/_base/declare","davinci/ve/actions/_SelectAncestorAction"],function(c,d){return c("davinci.ve.actions.SelectParentAction",[d],{run:function(a){var b=(a=this.fixupContext(a))&&a.getSelection();this.selectionSameParentNotBody(b)&&a.select(b[0].getParent())},isEnabled:function(a){a=(a=this.fixupContext(a))&&a.getSelection();return this.selectionSameParentNotBody(a)}})});
-//# sourceMappingURL=SelectParentAction.js.map

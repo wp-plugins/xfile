@@ -1,3 +1,0 @@
-//>>built
-define("davinci/ve/actions/OtherAction",["dojo/_base/declare","./_ReorderAction","davinci/commands/CompoundCommand","davinci/ve/commands/ReparentCommand"],function(b,c,d,e){return b("davinci.ve.actions.OtherAction",[c],{run:function(a){},isEnabled:function(a){return!0},shouldShow:function(a){return(a=(a=this.fixupContext(a))?a.editor:null)&&"davinci.ve.PageEditor"==a.declaredClass}})});
-//# sourceMappingURL=OtherAction.js.map

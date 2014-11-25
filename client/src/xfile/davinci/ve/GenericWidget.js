@@ -1,5 +1,0 @@
-//>>built
-define("davinci/ve/GenericWidget",["dojo/_base/declare","./_Widget"],function(g,h){return g("davinci.ve.GenericWidget",h,{isGenericWidget:!0,constructor:function(a,c,b,f,d){dojo.attr(c,"dvwidget",b);d&&d.addAttribute("dvwidget",b)},buildRendering:function(){this.containerNode=this.domNode;if(this._params){for(var a in this._params)this.domNode.setAttribute(a,this._params[a]);this._params=void 0}},_getChildrenData:function(a){for(var c=[],b=this.domNode.childNodes,f=0;f<b.length;f++){var d=b[f],e;
-switch(d.nodeType){case 1:(d=require("davinci/ve/widget").byNode(d))&&(e=d.getData(a));break;case 3:(e=d.nodeValue.trim())&&a.serialize&&(e=davinci.html.escapeXml(e));break;case 8:e="\x3c!--"+d.nodeValue+"--\x3e"}e&&c.push(e)}return 0===c.length?void 0:c},setProperties:function(a){var c=this.domNode,b;for(b in a)"style"===b?dojo.style(c,a[b]):a[b]?c[b]=a[b]:c.removeAttribute(b);this.inherited(arguments)},_attr:function(a,c){if(1<arguments.length)this.domNode.setAttribute(a,c);else return this.domNode.getAttribute(a)},
-getTagName:function(){return this.domNode.nodeName.toLowerCase()}})});
-//# sourceMappingURL=GenericWidget.js.map

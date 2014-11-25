@@ -1,3 +1,0 @@
-//>>built
-define("davinci/ve/actions/EditPropertiesAction",["dojo/_base/declare","davinci/ve/actions/ContextAction"],function(b,c){return b("davinci.ve.actions.EditPropertiesAction",[c],{run:function(a){(a=this.fixupContext(a))&&(a.editor&&a.editor.editorContainer&&a.editor.editorContainer.hideShowProperties)&&a.editor.editorContainer.hideShowProperties()},isEnabled:function(a){this.fixupContext(a);return!0}})});
-//# sourceMappingURL=EditPropertiesAction.js.map

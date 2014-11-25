@@ -1,3 +1,0 @@
-//>>built
-define("davinci/ve/themeEditor/metadata/CSSDescriptorProvider",["dojo/_base/declare"],function(b){return b("davinci.ve.themeEditor.metadata.CSSDescriptorProvider",null,{module:"davinci.libs",path:"css3/css.json",constructor:function(a){dojo.mixin(this,a)},getDescriptor:function(){if(!this._descriptor){var a=void 0;dojo.xhrGet({url:""+dojo.moduleUrl(this.module,this.path),handleAs:"json",sync:!0,load:function(b){a=b}});this._descriptor=a}return this._descriptor}})});
-//# sourceMappingURL=CSSDescriptorProvider.js.map

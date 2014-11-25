@@ -1,4 +1,0 @@
-//>>built
-define("davinci/js/JSIf",["dojo/_base/declare","davinci/js/JSElement"],function(c,d){return c("davinci.js.JSIf",JSElement,{constructor:function(){this.elementType="JSIf";this.elseStmt=this.trueStmt=this.expr=null;this.nosemicolon=!0},getText:function(a){var b="";this.comment&&(b+=this.printNewLine(a)+this.comment.getText(a));this.label&&(b+=this.printNewLine(a)+this.label.getText(a));b+="if ("+this.expr.getText(a)+")";a.indent+=2;b+=this.printStatement(a,this.trueStmt);null!=this.elseStmt&&(a.indent-=
-2,b=b+this.printNewLine(a)+"else",a.indent+=2,b+=this.printStatement(a,this.elseStmt));a.indent-=2;return b},getLabel:function(){return"if ("+this.expr.getLabel()+")"},visit:function(a){a.visit(this)||(this.expr.visit(a),this.trueStmt&&this.trueStmt.visit(a),this.elseStmt&&this.elseStmt.visit(a));a.endVisit&&a.endVisit(this)}})});
-//# sourceMappingURL=JSIf.js.map

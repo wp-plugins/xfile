@@ -1,4 +1,0 @@
-//>>built
-define("davinci/js/ui/FormatOptions","dojo/_base/declare davinci/Runtime davinci/Workbench davinci/js/JSFile davinci/js/Format dijit/layout/ContentPane dijit/_TemplatedMixin davinci/workbench/Preferences dojo/i18n!../nls/js".split(" "),function(a,d,e,f,g,b,c,h,k){return a("davinci.js.ui.FormatOptions",[b,c],{templateString:"\x3cdiv\x3e\x3cdiv dojoAttachPoint\x3d'dynamicPanels' id\x3d\"dynamicPanels\"\x3e\x3c/div\x3e\x3c/div\x3e",postCreate:function(){this.inherited(arguments);this.dynamicPanels.innerHTML=
-"No JavaScript formatting options are currently available."},getDefaults:function(){},setDefaults:function(){},doApply:function(){},getPanel:function(){},getPreferences:function(){return null},setPreferences:function(a){},getPanel:function(){}})});
-//# sourceMappingURL=FormatOptions.js.map

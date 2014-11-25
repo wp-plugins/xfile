@@ -1,3 +1,0 @@
-//>>built
-define("davinci/html/ui/ImageViewer",[],function(){var b=function(a){this.element=a};b.prototype={isReadOnly:!0,save:function(){},getDefaultContent:function(){},supports:function(a){return!1},setContent:function(a,b){this.fileName=a;this.element.innerHTML="\x3cdiv style\x3d'overflow:auto'\x3e\x3cimg src\x3d'"+encodeURI(this.resourceFile.getURL())+"'/\x3e\x3c/div\x3e";this.dirty=!1},destroy:function(){},getOnUnloadWarningMessage:function(){return null}};return b});
-//# sourceMappingURL=ImageViewer.js.map

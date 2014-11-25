@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ve/actions/MoveToFrontAction",["dojo/_base/declare","./_ReorderAction","davinci/commands/CompoundCommand","davinci/ve/commands/ReparentCommand"],function(h,k,l,m){return h("davinci.ve.actions.MoveToFrontAction",[k],{name:"MoveToFront",iconClass:"editActionIcon editMoveToFrontIcon",run:function(a){if(a=this.fixupContext(a)){var b=a&&a.getSelection?a.getSelection():[];if(0!==b.length&&this.selectionSameParentAllAbsolute(b)){for(var c=b[0].getParent(),e=this.getAbsoluteSiblings(b[0]),
-f=new l,d=0;d<e.length;d++){var g=e[d];0<=b.indexOf(g)&&f.add(new m(g,c,null))}a.getCommandStack().execute(f)}}},isEnabled:function(a){a=(a=this.fixupContext(a))&&a.getSelection?a.getSelection():[];if(0===a.length||!this.selectionSameParentAllAbsolute(a))return!1;for(var b=this.getAbsoluteSiblings(a[0]),c=0;c<a.length;c++)if(b.indexOf(a[c])<b.length-a.length)return!0;return!1}})});
-//# sourceMappingURL=MoveToFrontAction.js.map

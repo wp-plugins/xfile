@@ -1,3 +1,0 @@
-//>>built
-define("davinci/ve/actions/UnselectAllAction",["dojo/_base/declare","davinci/ve/actions/ContextAction"],function(b,c){return b("davinci.ve.actions.SelectParentAction",[c],{run:function(a){a=this.fixupContext(a);0<(a&&a.getSelection()).length&&a.deselect()},isEnabled:function(a){return(a=(a=this.fixupContext(a))&&a.getSelection())&&0<a.length}})});
-//# sourceMappingURL=UnselectAllAction.js.map

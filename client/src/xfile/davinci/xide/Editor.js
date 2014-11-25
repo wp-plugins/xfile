@@ -1,4 +1,0 @@
-//>>built
-define("davinci/xide/Editor",["dojo/_base/declare","davinci/ui/ModelEditor","./EditorContext","xide/utils","xide/views/ACEEditor"],function(d,e,f,g,h){return d(e,{editor:null,item:null,setContent:function(b,a,c){this.fileName=b;this.content=a;this.editor&&this.editor.setValue(a);this.model.fileName=b},constructor:function(b,a,c){this.model=new EditorModel;this.item=c;this.editor=g.addWidget(h,{dataItem:null,filePath:a,config:{},delegate:this,owner:this,parentContainer:null,style:"padding:0px;height:inherit;",
-store:null,value:"novalue",storeDelegate:{getContent:function(a){},saveContent:function(a,b,c){}},title:a,closable:!0},this,b,!0)},destroy:function(){this.inherited(arguments)},getOutline:function(){return null},getDefaultContent:function(){return""},getContext:function(){this.context||(this.context=new f(this));return this.context}})});
-//# sourceMappingURL=Editor.js.map

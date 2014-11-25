@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ve/commands/EventCommand",["dojo/_base/declare","davinci/ve/widget"],function(f,e){return f("davinci.ve.commands.EventCommand",null,{name:"EventCommand",constructor:function(a,b){this._oldId=a?a.id:void 0;this._properties=b||{}},setContext:function(a){this._context=a},execute:function(){if(this._oldId&&this._properties){var a=e.byId(this._oldId);this._oldProps=a.properties||{};a.setProperties(this._properties,!0);if(a.isHtmlWidget){var b=a.domNode,c;for(c in this._properties)this._properties[c]||
-b.removeAttribute(c)}this._newId=this._oldId;dojo.publish("/davinci/ui/widgetPropertiesChanged",[[a]])}},undo:function(){if(this._newId){var a=e.byId(this._newId),b=a.domNode,c=a._srcElement,d;for(d in this._properties)this._oldProps[d]||(b.removeAttribute(d),c.removeAttribute(d));a.setProperties(this._oldProps);dojo.publish("/davinci/ui/widgetPropertiesChanged",[[a]])}}})});
-//# sourceMappingURL=EventCommand.js.map

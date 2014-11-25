@@ -1,3 +1,0 @@
-//>>built
-define("davinci/maqetta/space",function(){var e={SCRIPT:1,STYLE:1},d=function(b){for(var c=0;c<b.childNodes.length;c++){var a=b.childNodes[c];3==a.nodeType?a.nodeValue=a.data.replace(/^[\f\n\r\t\v\ ]+$/g,""):1==a.nodeType&&!e[a.nodeName]&&d(a)}},b=function(){"collapse"==document.body.getAttribute("data-maq-ws")&&d(document.body)};document.addEventListener?(document.addEventListener("DOMContentLoaded",b,!1),window.addEventListener("load",b,!1)):window.attachEvent&&window.attachEvent("onload",b)});
-//# sourceMappingURL=space.js.map

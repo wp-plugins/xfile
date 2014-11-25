@@ -1,5 +1,0 @@
-//>>built
-define("davinci/review/model/resource/Folder",["dojo/_base/declare","davinci/model/resource/Resource","davinci/review/model/resource/File","dojo/_base/xhr","dojo/date/stamp"],function(c,d,e,f,g){return c("davinci.review.model.resource.Folder",d,{isDraft:!1,closed:!1,width:0,height:0,constructor:function(a){dojo.mixin(this,a);this.elementType="ReviewVersion";this.dueDate="infinite"==this.dueDate?this.dueDate:g.fromISOString(this.dueDate)},getChildrenSync:function(a,b){this.getChildren(a)},getChildren:function(a,
-b){this._isLoaded?a.call(null,this.children):this._loading?this._loading.then(function(){a.call(null,this.children)}.bind(this),b):this._loading=f.get({url:"cmd/listReviewFiles",handleAs:"json",content:{designer:this.designerId||"",version:this.timeStamp}}).then(function(b,c){this.children=b.map(function(a){return new e(a.path,this)},this);this._isLoaded=!0;a.call(null,this.children);delete this._loading}.bind(this),b)},getPath:function(){return this.parent?this.parent.getPath()+"/"+this.timeStamp:
-this.timeStamp}})});
-//# sourceMappingURL=Folder.js.map

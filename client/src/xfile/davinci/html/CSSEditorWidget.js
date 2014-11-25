@@ -1,3 +1,0 @@
-//>>built
-define("davinci/html/CSSEditorWidget",["dojo/_base/declare"],function(d){return d("davinci.html.CSSEditorWidget",null,{constructor:function(a){this.context=a},getValues:function(){if(!this.values){this.values={};for(var a=this.context.selectedRule,b=0;b<a.properties.length;b++){var c=a.properties[b];this.values[c.name]=c.value}}return this.values}})});
-//# sourceMappingURL=CSSEditorWidget.js.map

@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ve/widgets/MetaDataStore",["dojo/_base/declare","dojo/data/ItemFileReadStore","dojo/i18n!davinci/ve/nls/ve","dojo/i18n!dijit/nls/common"],function(c,d){return c("davinci.ve.widgets.MetaDataStore",d,{_allValues:[],constructor:function(a){this.setValues(a&&a.values||[])},setValues:function(a){dojo.mixin(this._allValues,a);var b=[];dojo.forEach(this._allValues,function(a){b.push({name:a,value:a})});this._jsonData={identifier:"name",items:b};this._loadFinished=!1},contains:function(a){return-1!=
-dojo.indexOf(this._allValues,a)},clearValues:function(){this._allValues=[];this._loadFinished=!1}})});
-//# sourceMappingURL=MetaDataStore.js.map

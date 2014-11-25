@@ -1,4 +1,0 @@
-//>>built
-define("davinci/js/JSComment",["dojo/_base/declare","davinci/js/JSElement"],function(c,d){return c("davinci.js.JSComment",d,{constructor:function(){this.elementType="JSComment";this.nosemicolon=!0},addComment:function(a,b,c,d,e,f){null==this.comments&&(this.comments=[]);this.comments[this.comments.length]={commentType:a,startLine:b,startOffset:c,stopLine:d,stopOffset:e,s:f}},getText:function(a){a="";for(var b=0;b<this.comments.length;b++)"line"==this.comments[b].commentType?a+="//"+this.comments[b].s+
-"\n":"block"==this.comments[b].commentType&&(a+="/*"+this.comments[b].s+"*/\n");return a}})});
-//# sourceMappingURL=JSComment.js.map

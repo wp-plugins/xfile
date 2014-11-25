@@ -1,4 +1,0 @@
-//>>built
-define("davinci/workbench/WidgetLite",["dojo/_base/declare","dijit/_WidgetBase","dojo/parser"],function(b,c,d){return b("davinci.workbench.WidgetLite",[c],{buildRendering:function(){this.inherited(arguments);if(/dojotype/i.test(this.domNode.innerHTML||""))this._startupWidgets=dojo.parser.parse(this.domNode,{noStart:!this._earlyTemplatedStartup,inherited:{dir:this.dir,lang:this.lang}})},_destroyContent:function(){var a=this.containerNode||this.domNode;for(dojo.forEach(dojo.query("[widgetId]",a).map(dijit.byNode),
-function(a){a.destroy()});a.firstChild;)dojo._destroyElement(a.firstChild);dojo.forEach(this._tooltips,function(a){a.destroy()});delete this._tooltips},startup:function(){dojo.forEach(this._startupWidgets,function(a){a&&(!a._started&&a.startup)&&a.startup()});this.inherited(arguments)}})});
-//# sourceMappingURL=WidgetLite.js.map

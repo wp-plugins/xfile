@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ve/actions/ViewSourceAction",["dojo/_base/declare","davinci/ve/actions/ContextAction","dojo/i18n!davinci/ve/nls/ve"],function(c,e,f){return c("davinci.ve.actions.ViewSourceAction",[e],{run:function(a){if((a=this.fixupContext(a))&&a.editor&&a.editor.switchDisplayModeSourceLatest)editor=a.editor,editor.switchDisplayModeSourceLatest()},updateStyling:function(){var a=davinci.Workbench.getOpenEditor();if(a&&a.getDisplayMode){var c=a.getDisplayMode(),a=a.getSourceDisplayMode(),b=dojo.query(".maqSourceComboButton")[0];
-if(b){var d=dijit.byNode(b);d&&d.set("label",f["SourceComboButton-"+a]);"design"==c?dojo.removeClass(b,"maqLabelButtonSelected"):dojo.addClass(b,"maqLabelButtonSelected")}}}})});
-//# sourceMappingURL=ViewSourceAction.js.map

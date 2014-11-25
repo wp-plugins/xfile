@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ui/about","dojo/_base/declare ../Workbench davinci/version davinci/repositoryinfo dojo/date/locale dojo/date/stamp dojo/i18n!davinci/ui/nls/ui dojo/i18n!dijit/nls/common dijit/form/Button".split(" "),function(a,g,h,e,k,l,d,m){a=a("davinci.ui.about",null,{});a.show=function(){var b="\x3cdiv class\x3d'about_container'\x3e\x3cdiv class\x3d'about_version'\x3e"+dojo.string.substitute(d.productVersion,[h])+"\x3c/div\x3e",c=e.revision,a=e.buildtime,f=l.fromISOString(a);f&&(a=k.format(f,{formatLength:"medium"}));
-a&&(b+="\x3cdiv class\x3d'about_date'\x3e"+dojo.string.substitute(d.productDate,[a])+"\x3c/div\x3e");c&&(c="\x3ca href\x3d'https://github.com/maqetta/maqetta/commit/"+c+"'\x3e"+c.substr(0,15)+"...\x3c/a\x3e",b+="\x3cdiv class\x3d'about_build'\x3e"+dojo.string.substitute(d.build,[c])+"\x3c/div\x3e");g.showMessage(d.aboutMaqetta,b+"\x3c/div\x3e")};return a});
-//# sourceMappingURL=about.js.map

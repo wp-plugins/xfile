@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ve/widgets/FontComboBox",["dojo/_base/declare","dijit/form/ComboBox","dojo/i18n!davinci/ve/nls/ve","dojo/i18n!dijit/nls/common"],function(c,d){return c("davinci.ve.widgets.FontComboBox",d,{_getValueAttr:function(){if(this.store)for(var a=0;a<this.store._allValues.length;a++){var b=this.store._allValues[a];if(b.name[0]==this.value)return b.value[0]}return this.value},_setValueAttr:function(a){this.store&&a?this.store.fetch({query:{value:a},onComplete:function(b,c){1>b.length?this.inherited("_setValueAttr",
-[a]):(this.inherited("_setValueAttr",[b[0].name[0]]),this.item=b[0])}.bind(this),onError:function(){this.inherited("_setValueAttr",[a])}.bind(this)}):this.inherited("_setValueAttr",[a])}})});
-//# sourceMappingURL=FontComboBox.js.map

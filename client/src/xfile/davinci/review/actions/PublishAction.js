@@ -1,4 +1,0 @@
-//>>built
-define("davinci/review/actions/PublishAction","dojo/_base/declare davinci/actions/Action davinci/review/widgets/PublishWizard davinci/Runtime dojox/widget/Toaster davinci/ui/Dialog dojo/i18n!./nls/actions".split(" "),function(c,d,e,g,h,f,b){return c("davinci.review.actions.PublishAction",[d],{constructor:function(a,b){this.node=a;this.isRestart=b;a&&a.isRestart&&(this.isRestart=!0)},run:function(){var a=this.publishWizard=new e;this.dialog=new f({contentStyle:{width:650,height:350},title:this.node?
-b.editReview:b.newReview,onCancel:dojo.hitch(this,this.close),onHide:dojo.hitch(this,this.hide)});this.dialog.setContent(a);this.dialog.show();dojo.connect(a,"onClose",this,this.close);a.initData(this.node,this.isRestart).then(function(){a.updateSubmit();a.reviewerStackContainer.resize()})},hide:function(){this.dialog.destroyRecursive()},close:function(){this.dialog.hide()}})});
-//# sourceMappingURL=PublishAction.js.map

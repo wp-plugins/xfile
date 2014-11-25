@@ -1,3 +1,0 @@
-//>>built
-define("davinci/ve/actions/EditValueAction",["dojo/_base/declare","davinci/ve/actions/ContextAction"],function(c,d){return c("davinci.ve.actions.EditValueAction",[d],{run:function(a){if((a=this.fixupContext(a))&&"davinci.ve.Context"===a.declaredClass){var b=a.getSelection();1===b.length&&a.select(b[0],!1,!0)}},isEnabled:function(a){return(a=this.fixupContext(a))&&0<a.getSelection().length},shouldShow:function(a){return(a=(a=this.fixupContext(a))?a.editor:null)&&"davinci.ve.PageEditor"==a.declaredClass}})});
-//# sourceMappingURL=EditValueAction.js.map

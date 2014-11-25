@@ -1,3 +1,0 @@
-//>>built
-define("davinci/review/actions/ViewFileAction",["dojo/_base/declare","./_ReviewNavigatorCommon","davinci/Runtime"],function(b,c,d){return b("davinci.review.actions.ViewFileAction",[c],{run:function(a){if((a=this._getSelection(a))&&a.length)a=a[0].resource,davinci.Workbench.openEditor({fileName:a,content:a.getText()})},shouldShow:function(a){return!0},isEnabled:function(a){a=this._getSelection(a);return!a||0===a.length?!1:"ReviewFile"==a[0].resource.elementType}})});
-//# sourceMappingURL=ViewFileAction.js.map

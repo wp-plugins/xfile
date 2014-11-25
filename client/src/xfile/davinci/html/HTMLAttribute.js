@@ -1,4 +1,0 @@
-//>>built
-define("davinci/html/HTMLAttribute",["dojo/_base/declare","davinci/html/HTMLItem"],function(b,c){return b("davinci.html.HTMLAttribute",c,{constructor:function(){this.elementType="HTMLAttribute";this.value=this.name=""},getText:function(a){if(this.noPersist&&!a.includeNoPersist)return"";a=this.name;({checked:1,selected:1,disabled:1,readonly:1,multiple:1,ismap:1,autofocus:1,autoplay:1,controls:1,formnovalidate:1,loop:1,muted:1,required:1})[this.name.toLowerCase()]?a=!this.value||"false"===this.value?
-"":a+('\x3d"'+this.value+'"'):this.noValue||(a=a+'\x3d"'+davinci.html.escapeXml(String(this.value))+'"');return a},setValue:function(a){this.value=davinci.html.unEscapeXml(a);this.onChange()}})});
-//# sourceMappingURL=HTMLAttribute.js.map

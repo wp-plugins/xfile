@@ -1,5 +1,0 @@
-//>>built
-define("davinci/review/actions/DeleteVersionAction",["dojo/_base/declare","./_ReviewNavigatorCommon","davinci/Runtime","dojox/widget/Toaster","dojo/i18n!./nls/actions"],function(d,e,f,g,c){return d("davinci.review.actions.DeleteVersionAction",[e],{run:function(a){if((a=this._getSelection(a))&&a.length)if(okToClose=confirm(c.areYouSureDelete)){var b="ReviewFile"==a[0].resource.elementType?a[0].resource.parent:a[0].resource;dojo.xhrGet({url:"cmd/managerVersion",sync:!1,handleAs:"text",content:{type:"delete",
-vTime:b.timeStamp}}).then(function(a){if("OK"==a){"undefined"==typeof hasToaster&&(new g({position:"br-left",duration:4E3,messageTopic:"/davinci/review/resourceChanged"}),hasToaster=!0);dojo.publish("/davinci/review/resourceChanged",[{message:c.deleteSuccessful,type:"message"},"delete",b]);for(a=0;a<b.children.length;a++)dojo.publish("/davinci/resource/resourceChanged",["deleted",b.children[a]])}})}},isEnabled:function(a){return(a=this._getSelection(a))&&0<a.length&&("ReviewFile"==a[0].resource.elementType?
-a[0].resource.parent:a[0].resource).designerId==f.userName?!0:!1}})});
-//# sourceMappingURL=DeleteVersionAction.js.map

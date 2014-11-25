@@ -1,3 +1,0 @@
-//>>built
-define("davinci/review/actions/_ReviewNavigatorCommon",["dojo/_base/declare","davinci/actions/Action"],function(a,c){return a("davinci.review.actions._ReviewNavigatorCommon",[c],{_getSelection:function(b){var a=null;return a=b.getSelection?b.getSelection():dijit.byId("davinci.review.reviewNavigator").getSelection()},shouldShow:function(a){return!0}})});
-//# sourceMappingURL=_ReviewNavigatorCommon.js.map

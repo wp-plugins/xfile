@@ -1,4 +1,0 @@
-//>>built
-define("davinci/js/JSConditionalExpression",["dojo/_base/declare","davinci/js/JSExpression"],function(c,d){return c("davinci.js.JSConditionalExpression",d,{constructor:function(){this.falseValue=this.trueValue=this.condition=null;this.elementType="JSConditionalExpression"},getText:function(a){var b="";this.comment&&(b+=this.printNewLine(a)+this.comment.getText(a));this.label&&(b+=this.printNewLine(a)+this.label.getText(a));return b+=this.condition.getText(a)+" ? "+this.trueValue.getText(a)+" : "+
-this.falseValue.getText(a)},visit:function(a){a.visit(this)||(this.condition.visit(a),this.trueValue.visit(a),this.falseValue.visit(a));a.endVisit&&a.endVisit(this)}})});
-//# sourceMappingURL=JSConditionalExpression.js.map

@@ -1,3 +1,0 @@
-//>>built
-define("davinci/js/JSNameReference",["dojo/_base/declare","./JSExpression"],function(c,d){return c(d,{constructor:function(){this.elementType="JSNameReference";this.name=""},getText:function(a){var b="";this.comment&&(b+=this.printNewLine(a)+this.comment.getText(a));this.label&&(b+=this.printNewLine(a)+this.label.getText(a));return b+this.name},visit:function(a){a.visit(this);a.endVisit&&a.endVisit(this)}})});
-//# sourceMappingURL=JSNameReference.js.map

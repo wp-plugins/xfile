@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ui/ProjectSelection",["dojo/_base/declare","davinci/ui/ProjectDataStore","dijit/form/ComboBox","system/resource","davinci/Workbench"],function(a,b,c,d,e){return a("davinci.ui.ProjectSelection",dijit._Widget,{postCreate:function(){this._store=new b({});this.combo=new c({store:this._store,required:!1,style:"width:100%"});this.domNode=this.combo.domNode;this._populateProjects()},_populateProjects:function(){var a=d.getWorkspace(),b=this._store,c=this.combo;a.getChildren(function(a){b.setValues(a);
-a=e.getProject();c.attr("value",a)})}})});
-//# sourceMappingURL=ProjectSelection.js.map

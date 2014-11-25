@@ -1,3 +1,0 @@
-//>>built
-define("davinci/js/ui/JavaScriptEditor",["dojo/_base/declare","davinci/js/ui/JavaScriptOutline","davinci/model/Factory","davinci/ui/ModelEditor"],function(a,b,c,d){return a(d,{constructor:function(a){this.model=this.jsFile=c.newJS()},getOutline:function(){this.outline||(this.outline=new b(this.model));return this.outline},getDefaultContent:function(){return"function functionName ()\n{\n}\n"}})});
-//# sourceMappingURL=JavaScriptEditor.js.map

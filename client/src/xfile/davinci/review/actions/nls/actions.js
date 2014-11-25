@@ -1,3 +1,0 @@
-//>>built
-define("davinci/review/actions/nls/actions",{root:{areYouSureClose:"Are you sure you want to stop this review?",closeSuccessful:"Stopped the review successfully!",areYouSureDelete:"Are you sure you want to delete this review?",deleteSuccessful:"Deleted the review successfully!",openSuccessful:"Started the review successfully!",newReview:"New Review",editReview:"Edit Review"}});
-//# sourceMappingURL=actions.js.map

@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ve/actions/ContextAction",["dojo/_base/declare","davinci/actions/Action","davinci/Runtime"],function(d,h,k){return d("davinci.ve.actions.ContextAction",[h],{_normalizeSelection:function(a){var b=a.getSelection();if(2>b.length)return b;var d=a.rootWidget,g=[];dojo.forEach(b,function(e){for(var c=e.getParent();c&&c!=d;){for(var f=0;f<b.length;f++)if(b[f]==c){a.deselect(e);return}c=c.getParent()}g.push(e)});return g},_getContext:function(a){return a?a:(a=k.currentEditor)&&(a.getContext&&
-a.getContext()||a.context)},fixupContext:function(a){a=this._getContext(a);return"davinci.ve.Context"==a.declaredClass?a:"function"==typeof a.getContext?a.getContext():null}})});
-//# sourceMappingURL=ContextAction.js.map

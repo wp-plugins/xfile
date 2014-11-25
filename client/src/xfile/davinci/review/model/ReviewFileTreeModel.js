@@ -1,4 +1,0 @@
-//>>built
-define("davinci/review/model/ReviewFileTreeModel",["dojo/_base/declare"],function(d){return d("davinci.review.model.ReviewFileTreeModel",null,{foldersOnly:!1,constructor:function(a){this.root=a&&a.root;this.foldersOnly=a&&a.foldersOnly},destroy:function(){dojo.unsubscribe(this.subscription)},getRoot:function(a){a(this.root)},mayHaveChildren:function(a){return"Folder"==a.elementType},getChildren:function(a,b){this.foldersOnly?a.getChildren(function(a){a=a.filter(function(a){return"Folder"==a.elementType});
-b(a)}):a.getChildren(b,!0)},getIdentity:function(a){return a.getPath()},getLabel:function(a){var b=a.getName();a.link&&(b=b+"  ["+a.link+"]");return b},resourceChanged:function(a,b){if("created"==a||"deleted"==a){var c=b.parent;c.getChildren(function(a){this.onChildrenChange(c,a)}.bind(this))}},newItem:function(a,b){},pasteItem:function(a,b,c,d){},onChange:function(a){},onChildrenChange:function(a,b){}})});
-//# sourceMappingURL=ReviewFileTreeModel.js.map

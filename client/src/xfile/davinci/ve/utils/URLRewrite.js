@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ve/utils/URLRewrite",[],function(){var b=/^\s*url\s*\(\s*(\'[^\'\"]*\'|\"[^\'\"]*\"|[^\'\"]*)\s*\)\s*$/,c=/^[\'\"]?([^\'\"]*)[\'\"]?$/,d=/^(http|ftp)/;return{isAbsolute:function(a){return"string"!=typeof a?!1:(a=this.getUrl(a))?d.test(a):!1},containsUrl:function(a){return"string"!=typeof a?!1:b.test(a)},replaceUrl:function(a,b){return"string"!=typeof a||"string"!=typeof b?null:this.getUrl(a)?"url('"+b+"')":null},stripQuotes:function(a){return a.replace(c,"$1")},encodeURI:function(a){return encodeURI(a).replace(/#/g,
-"%23")},getUrl:function(a){return"string"!=typeof a?null:(a=a.match(b))&&1<a.length?this.stripQuotes(a[1]):null}}});
-//# sourceMappingURL=URLRewrite.js.map

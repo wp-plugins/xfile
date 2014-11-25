@@ -1,3 +1,0 @@
-//>>built
-define("davinci/xide/EditorContext",["dojo/_base/declare","davinci/html/CSSEditorWidget"],function(b,c){return b("davinci.xide.EditorContext",null,{getCommandStack:function(){return{canUndo:function(){return!1},canRedo:function(){return!1}}},constructor:function(a){this.editor=a;this.connects=[];this.subscriptions=[];this.subscriptions.push(dojo.subscribe("/davinci/ui/selectionChanged",this,this._selection))},_selection:function(a){},getSelection:function(){return[]},onSelectionChange:function(){}})});
-//# sourceMappingURL=EditorContext.js.map

@@ -1,4 +1,0 @@
-//>>built
-define("davinci/review/actions/RestartVersionAction",["dojo/_base/declare","./_ReviewNavigatorCommon","davinci/review/actions/PublishAction","davinci/Runtime"],function(b,c,d,e){return b("davinci.review.actions.RestartVersionAction",[c],{run:function(a){(a=this._getSelection(a))&&a.length&&(new d("ReviewFile"==a[0].resource.elementType?a[0].resource.parent:a[0].resource,!0)).run()},isEnabled:function(a){a=this._getSelection(a);if(!a||0==a.length)return!1;a="ReviewFile"==a[0].resource.elementType?
-a[0].resource.parent:a[0].resource;return a.designerId==e.userName&&a.closed?!0:!1}})});
-//# sourceMappingURL=RestartVersionAction.js.map

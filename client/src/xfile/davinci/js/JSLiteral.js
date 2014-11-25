@@ -1,4 +1,0 @@
-//>>built
-define("davinci/js/JSLiteral",["dojo/_base/declare","davinci/js/JSExpression"],function(c,d){return c("davinci.js.JSLiteral",d,{constructor:function(){this.elementType="JSLiteral";this.value=null;this.type=type},getText:function(b){var a="";this.comment&&(a+=this.printNewLine(b)+this.comment.getText(b));this.label&&(a+=this.printNewLine(b)+this.label.getText(b));switch(this.type){case "char":return a+"'"+this.value+"'";case "string":return a+'"'+this.value+'"';case "null":case "this":case "undefined":case "true":case "false":return a+
-this.type}return a+this.value}})});
-//# sourceMappingURL=JSLiteral.js.map

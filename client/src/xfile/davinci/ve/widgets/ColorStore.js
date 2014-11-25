@@ -1,5 +1,0 @@
-//>>built
-define("davinci/ve/widgets/ColorStore",["dojo/_base/declare","dojo/data/ItemFileReadStore","dojo/i18n!davinci/ve/nls/ve","dojo/i18n!dijit/nls/common"],function(e,f){return e("davinci.ve.widgets.ColorStore",f,{constructor:function(a){this.clearValues();a.noncolors&&(this.noncolors=a.noncolors);a.values&&this.setValues(a.values)},setValues:function(a){var b=[];a&&(this._values=a);dojo.forEach(this._values,dojo.hitch(this,function(a){for(var c=!1,d=0;!c&&d<this.noncolors.length;d++)this.noncolors[d]==
-a&&(c=!0);c?b.push({name:a,value:a,label:a}):b.push({value:a,name:a,label:"\x3ctable\x3e\x3ctr\x3e\x3ctd style\x3d'width:10em'\x3e"+a+"\x3c/td\x3e\x3ctd style\x3d'width:10px;height:10px;background-color:"+a+"'\x3e\x3c/td\x3e\x3c/tr\x3e\x3c/table\x3e"})}));this._jsonData={identifier:"value",items:b};this._loadFinished=!1},insert:function(a,b){this._values.splice(a,0,b);this.setValues()},contains:function(a){for(var b=0;b<this._values.length;b++)if(this._values[b]==a)return!0;return!1},getItemNumber:function(a){return this._values[a]},
-clearValues:function(){this._loadFinished=!1}})});
-//# sourceMappingURL=ColorStore.js.map

@@ -1,4 +1,0 @@
-//>>built
-define("davinci/html/HTMLItem",["dojo/_base/declare","davinci/html/HTMLModel"],function(e,f){return e("davinci.html.HTMLItem",f,{constructor:function(){this.elementType="HTMLItem"},getLabel:function(){return this.getText({indent:0})},onChange:function(a){if(this.parent&&a)this.parent.onChange(a)},_addWS:function(a,b){a=a||0;b=b||0;for(var c=[],d=0;d<a;d++)c.push("\n");c.push("                                          ".substring(0,b));return c.join("")},close:function(){for(var a=0;a<this.children.length;a++)this.children[a].close()},
-getID:function(){return this.parent.getID()+":"+this.startOffset+":"+this.getLabel()},getHTMLFile:function(){for(var a=this;a&&"HTMLFile"!=a.elementType;)a=a.parent;return a}})});
-//# sourceMappingURL=HTMLItem.js.map

@@ -1,5 +1,0 @@
-//>>built
-require({cache:{"url:davinci/ve/widgets/templates/ChangeWillModify.html":'\x3cdiv\x3e\n  ${langObj.changeWillModify}\n  \x3cbr\x3e\x3cbr\x3e\n  ${insteadOfChanging}\n  \x3cbr\x3e\x3cbr\x3e\n  ${langObj.okToProceed}\n  \x3cbr\x3e\x3cbr\x3e\n  \x3cinput type\x3d"checkbox" data-dojo-attach-point\x3d"checkbox" data-dojo-type\x3d"dijit.form.CheckBox"/\x3e${uiNLS.dontShowAgain}\n\x3c/div\x3e\n\n'}});
-define("davinci/ve/widgets/ChangeWillModify","dojo/_base/declare dijit/_WidgetBase dijit/_TemplatedMixin dijit/_WidgetsInTemplateMixin dojo/i18n!../nls/ve dojo/i18n!davinci/ui/nls/ui dojo/text!./templates/ChangeWillModify.html dijit/form/CheckBox".split(" "),function(b,c,d,e,a,f,g){return b([c,d,e],{templateString:g,langObj:a,uiNLS:f,buildRendering:function(){this.insteadOfChanging=dojo.string.substitute(a.insteadOfChanging,["\x3ca href\x3d'app/docs/index.html#CreatingStyleRulesWithAppCss' target\x3d'_blank'\x3e"+
-a.creatingStyleRules+"\x3c/a\x3e"]);this.inherited(arguments)},postCreate:function(){}})});
-//# sourceMappingURL=ChangeWillModify.js.map

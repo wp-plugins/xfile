@@ -1,3 +1,0 @@
-//>>built
-define("davinci/actions/LogoutAction",["dojo/_base/declare","./Action","dojo/i18n!davinci/ui/nls/ui"],function(a,b,c){return a("davinci.actions.LogoutAction",b,{run:function(){dojo.xhrPost({url:"../logout",handleAs:"text",headers:{"Content-Type":"application/x-www-form-urlencoded","Orion-Version":"1"},postData:"",load:function(a,b){location.href="welcome"}.bind(this)})},isEnabled:function(a){return!0}})});
-//# sourceMappingURL=LogoutAction.js.map

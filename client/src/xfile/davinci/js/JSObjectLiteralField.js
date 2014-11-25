@@ -1,4 +1,0 @@
-//>>built
-define("davinci/js/JSObjectLiteralField",["dojo/_base/declare","davinci/js/JSExpression"],function(c,d){return c("davinci.js.JSObjectLiteralField",d,{constructor:function(){this.elementType="JSObjectLiteralField";this.nameType=this.name="";this.initializer=null},getText:function(a){var b="";this.comment&&(this.printNewLine(a),this.comment.getText(a));this.label&&(this.printNewLine(a),this.label.getText(a));b="(string)"==this.nameType?"'"+this.name+"'":this.name;return b=b+" : "+this.initializer.getText(a)},
-getLabel:function(){var a;a="(string)"==this.nameType?"'"+this.name+"'":this.name;return a=a+" : "+this.initializer.getLabel()},visit:function(a){a.visit(this)||this.initializer.visit(a);a.endVisit&&a.endVisit(this)}})});
-//# sourceMappingURL=JSObjectLiteralField.js.map

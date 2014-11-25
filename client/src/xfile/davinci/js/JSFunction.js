@@ -1,5 +1,0 @@
-//>>built
-define("davinci/js/JSFunction",["dojo/_base/declare","davinci/js/JSExpression"],function(d,e){return d("davinci.js.JSFunction",e,{constructor:function(){this.elementType="JSFunction";this.name=null;this.parms=[];this.namePosition=0;this.nosemicolon=!0},add:function(b){this.addChild(b)},getText:function(b){var a="";this.comment&&(a+=this.printNewLine(b)+this.comment.getText(b));this.label&&(a+=this.printNewLine(b)+this.label.getText(b));a+="function ";null!=this.name&&(a=a+this.name+" ");for(var a=
-a+"(",c=0;c<this.parms.length;c++)0<c&&(a+=","),a+=this.parms[c].getText(b);a=a+")"+this.printNewLine(b);b.indent+=2;a+="{";for(c=0;c<this.children.length;c++)a+=this.printStatement(b,this.children[c]);b.indent-=2;a+=this.printNewLine(b);return a+="}"},getLabel:function(){var b="function ";null!=this.name&&(b=b+this.name+" ");for(var b=b+"(",a={},c=0;c<this.parms.length;c++)0<c&&(b+=","),b+=this.parms[c].getText(a);return b+")"},visit:function(b){if(!b.visit(this))for(var a=0;a<this.children.length;a++)this.children[a].visit(b);
-b.endVisit&&b.endVisit(this)}})});
-//# sourceMappingURL=JSFunction.js.map

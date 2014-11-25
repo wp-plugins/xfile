@@ -1,4 +1,0 @@
-//>>built
-define("davinci/review/actions/DeleteAnnotationAction",["dojo/_base/declare","davinci/review/actions/_DrawingCommon","davinci/review/Review"],function(d,e,f){return d("davinci.review.actions.DeleteAnnotationAction",[e],{run:function(a){this.inherited(arguments);if(dijit.byId("davinci.ui.comment")._commentForm.isShowing){var b=davinci.Workbench.getOpenEditor(),c=(b=(b=b&&b.getContext?b.getContext():null)?b.surface:null)?b.selectTool:null;c&&c.shape&&b.removeShape(c.shape)}},isEnabled:function(a){return(a=
-(a=(a=(a=davinci.Workbench.getOpenEditor())&&a.getContext?a.getContext():null)?a.surface:null)?a.selectTool:null)&&a.shape}})});
-//# sourceMappingURL=DeleteAnnotationAction.js.map

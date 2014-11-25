@@ -1,4 +1,0 @@
-//>>built
-define("davinci/review/drawing/tools/_ToolCommon",["dojo/_base/declare"],function(a){return a("davinci.review.drawing.tools._ToolCommon",null,{constructor:function(b,a){this.surface=b;this.filterAttributes=a||[]},setFilterAttributes:function(a){this.filterAttributes=filterAttributes||[]},activate:function(){},deactivate:function(){dojo.forEach(this._evtSubs,dojo.unsubscribe);dojo.forEach(this._evtConns,dojo.disconnect)},destroy:function(){dojo.forEach(this._evtSubs,dojo.unsubscribe);dojo.forEach(this._evtConns,
-dojo.disconnect);this.surface=null}})});
-//# sourceMappingURL=_ToolCommon.js.map

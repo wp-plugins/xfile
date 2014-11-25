@@ -1,4 +1,0 @@
-//>>built
-define("davinci/js/JSFunctionCall",["dojo/_base/declare","davinci/js/JSExpression"],function(d,e){return d("davinci.js.JSFunctionCall",e,{constructor:function(){this.elementType="JSFunctionCall";this.receiver=null;this.parms=[]},getText:function(b){var a="";this.comment&&(a+=this.printNewLine(b)+this.comment.getText(b));this.label&&(a+=this.printNewLine(b)+this.label.getText(b));for(var a=a+(this.receiver.getText(b)+"("),c=0;c<this.parms.length;c++)0<c&&(a+=", "),a+=this.parms[c].getText(b);return a+
-")"},visit:function(b){if(!b.visit(this))for(var a=0;a<this.parms.length;a++)this.parms[a].visit(b);b.endVisit&&b.endVisit(this)}})});
-//# sourceMappingURL=JSFunctionCall.js.map

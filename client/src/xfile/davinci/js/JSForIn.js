@@ -1,4 +1,0 @@
-//>>built
-define("davinci/js/JSForIn",["dojo/_base/declare","davinci/js/JSElement"],function(c,d){return c("davinci.js.JSForIn",d,{constructor:function(){this.elementType="JSForIn";this.action=this.collection=this.iterationVar=null;this.nosemicolon=!0},getText:function(a){var b="";this.comment&&(b+=this.printNewLine(a)+this.comment.getText(a));this.label&&(b+=this.printNewLine(a)+this.label.getText(a));b+="for ( "+this.iterationVar.getText(a)+" in "+this.collection.getText(a)+")";a.indent+=2;b+=this.printStatement(a,
-this.action);a.indent-=2;return b},getLabel:function(){return"for ( "+this.iterationVar.getLabel()+" in "+this.collection.getLabel()+")"},visit:function(a){a.visit(this)||this.action.visit(a);a.endVisit&&a.endVisit(this)}})});
-//# sourceMappingURL=JSForIn.js.map

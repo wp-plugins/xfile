@@ -1,4 +1,0 @@
-//>>built
-define("davinci/ve/actions/AddState","dojo/_base/declare davinci/Runtime davinci/Workbench davinci/workbench/Preferences davinci/ve/States davinci/actions/Action dojo/i18n!davinci/ve/nls/ve davinci/ve/actions/_AddManageStatesWidget".split(" "),function(c,b,d,h,e,f,g,k){return c("davinci.ve.actions.AddState",[f],{run:function(){var a;if(b.currentEditor&&(b.currentEditor.currentEditor&&b.currentEditor.currentEditor.context)&&(a=b.currentEditor.currentEditor.context,(a=e.getFocus(a.rootNode))&&a.stateContainerNode))a=
-new davinci.ve.actions._AddManageStatesWidget({node:a.stateContainerNode}),a._calledBy="AddState",d.showModal(a,g.createNewState,null,null,!0),a.okButton.set("disabled",!0)}})});
-//# sourceMappingURL=AddState.js.map

@@ -1,5 +1,0 @@
-//>>built
-define("davinci/workbench/ViewLite",["dojo/_base/declare","./WidgetLite","../ve/States"],function(c,d){return c("davinci.workbench.ViewLite",[d],{_editor:null,_widget:null,_subWidget:null,constructor:function(a,b){this.subscriptions=[];this.publishing={};dojo.subscribe("/davinci/ui/editorSelected",dojo.hitch(this,this._editorSelected));dojo.subscribe("/davinci/ui/widgetSelected",dojo.hitch(this,this._widgetSelectionChanged))},_widgetSelectionChanged:function(a){if(this._editor){if((a=a[0])&&this._widget==
-a&&this._subwidget==a.subwidget)return!1;this._subwidget=(this._widget=a)&&a.subwidget;if(this.onWidgetSelectionChange)this.onWidgetSelectionChange()}},_editorSelected:function(a){this._editor=a.editor;if(this.onEditorSelected)this.onEditorSelected(this._editor)},subscribe:function(a,b){this.subscriptions.push(dojo.subscribe(a,this,b))},publish:function(a,b){this.publishing[a]=!0;try{dojo.publish(a,b)}catch(c){console.error(c)}delete this.publishing[a]},destroy:function(){dojo.forEach(this.subscriptions,
-dojo.unsubscribe);delete this.subscriptions}})});
-//# sourceMappingURL=ViewLite.js.map
