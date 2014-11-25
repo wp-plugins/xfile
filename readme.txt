@@ -143,14 +143,16 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 * resource optimization, less CSS/Javascript and Ajax calls
 * support for windows added
+* support for nginx added
 * support for fe*** Internet-Explorer 9 added
 * support for remote downloads added: drag simply an url into the file manager
 * settings extended: minimum role to use the file manager
 * open source version added ([check out on Github](https://github.com/mc007/xbox-app))
-* new xblox : Call-Server with direct link to shell
-* new OnKey (Keyboard) : Call-Server with direct link to shell
-* new OnEvent(whatever system event) : triggers child blocks
+* new xblox: Call-Server with direct link to shell
+* new xblox: OnKey (Keyboard) : Call-Server with direct link to shell
+* new xblox: OnEvent(whatever system event) : triggers child blocks
 * new url parameter : noImageCache=true
+* various bug-fixes regarding: multi-tabs, HTTPS, file-manager behind proxy, xblox, Aviary, copy & paste and stuff i can't remember
 * less interest in wordpress, back to real tasks
 
 
