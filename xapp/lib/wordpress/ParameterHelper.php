@@ -115,7 +115,8 @@ class XApp_Wordpress_Parameter_Helper
 	        XC_OPERATION_PLUGINS=>1,
 	        XC_OPERATION_ADD_MOUNT=>1,
 	        XC_OPERATION_REMOVE_MOUNT=>1,
-	        XC_OPERATION_EDIT_MOUNT=>1
+	        XC_OPERATION_EDIT_MOUNT=>1,
+		    XC_OPERATION_PERSPECTIVE=>1
 
         );
         $result['ALLOWED_ACTIONS']=$XCOM__DEFAULT_ACTIONS;
@@ -148,7 +149,7 @@ class XApp_Wordpress_Parameter_Helper
                 $result['PANEL_OPTIONS'][$key] = !empty($pOptions[$i]);
             }
         }
-        $result['UPLOADEXTENSIONS']='js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS';
+        $result['UPLOADEXTENSIONS']='js,css,less,bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,mp3,mp4,tar,zip,xblox';
         if(xapp_array_get($params,'UPLOADEXTENSIONS')){
             $result['XAPP_UPLOAD_EXTENSIONS']=xapp_array_get($params,'UPLOADEXTENSIONS');
         }

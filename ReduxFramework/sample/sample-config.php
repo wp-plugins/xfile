@@ -189,11 +189,15 @@ if (!function_exists('redux_init')) :
 
         $controlsStr = '<h2>Keyboard </h2>';
         $controlsStr .='<ul>'.
-                '<li><strong>F2</strong> : Rename</li>'.
+		        '<li><strong>CTRL + F1</strong> : Open Mount Menu</li>'.
+	            '<li><strong>Space</strong> : Open Preview</li>'.
+		        '<li><strong>F2</strong> : Rename</li>'.
                 '<li><strong>CTRL/CMD + ENTER</strong> : Open selection in main window</li>'.
-                '<li><strong>F5</strong> : Copy (If main window is open, the destination is set automatically)</li>'.
+                '<li><strong>F5</strong> : Copy</li>'.
                 '<li><strong>F6</strong> : Move</li>'.
-                '<li><strong>F7</strong> : Delete</li>'.
+                '<li><strong>F7</strong> : Create Directory</li>'.
+	            '<li><strong>F8</strong> : Delete</li>'.
+	            '<li><strong>F9</strong> : Create File</li>'.
                 '<li><strong>BACKSPACE</strong> (Firefox) : Go back in history</li>'.
                 '<li><strong>SHIFT + BACKSPACE</strong> (Chrome) : Go back in history</li>'.
                 '<li><strong>DEL</strong> : Delete selection</li>'.
@@ -271,7 +275,7 @@ if (!function_exists('redux_init')) :
                     'id'=>'PATH',
                     'type' => 'text',
                     'title' => __('Start path', 'redux-framework-demo'),
-                    'desc' => __('Set the relative path to your Wordpress installation. For instance wp-content or wp-content/uploads. You can use also : wp-content/%user%/ to have user folders!', 'redux-framework-demo'),
+                    'desc' => __('Set the relative path to your Wordpress installation. For instance wp-content or wp-content/uploads. You can use also : wp-content/%user%/ to have user folders! You can also use absolute paths, on Linux only!', 'redux-framework-demo'),
                     'msg' => 'custom error message',
                     'default' => ''
                 ),
@@ -291,20 +295,40 @@ if (!function_exists('redux_init')) :
             'fields' => array(
                 array(
                     'id'=>'LAYOUTPRESET',
-                    'type' => 'image_select',
+                    'type' => 'select',
                     'compiler'=>true,
                     'title' => __('Main Layout', 'redux-framework-demo'),
-                    'subtitle' => __('Select main content and sidebar alignment. Choose between dual and single layout', 'redux-framework-demo'),
+                    'subtitle' => __('Select main content and sidebar alignment. Layouts:
+						<ul>
+							<li><b>Dual</b> : Flexible dual panels, you can still switch per panel another type. Append the xfile url by \'&layout=dual\' to enable this layout</li>
+							<li><b>Single</b> : One panel, you can also append the xfile url by \'&layout=single\' to enable this layout</li>
+							<li><b>Browser</b> : Two panels, left: tree, right: thumbnail mode. You can append the xfile url by \'&layout=browser\'</li>
+							<li><b>Preview</b> : One panel but with horizontal split, top: preview window, bottom: thumbnail mode. You can append the xfile url by \'&layout=preview\' to enable this layout</li>
+							<li><b>Gallery</b> : One panel but with horizontal split, top: image flow window, bottom: thumbnail mode. You can append the xfile url by \'&layout=gallery\' to enable this layout</li>
+						</ul>
+
+						<strong>Attention:</strong>
+						<ul>
+							<li>When you append the xfile url by \'&minimal=true\' the bottom and right panel will be hidden!</li>
+							<li>When you append the xfile url by \'&open=myFolder\', it will open that folder for you!</li>
+							<li>You can switch also between layouts inside xfile in the action toolbar! The \'Change Perspective Permission\' must be enabled for this</li>
+						</ul>
+
+					', 'redux-framework-demo'),
+
                     'options' => array(
-                        '1' => array('alt' => '2 Column Left', 'img' => ReduxFramework::$_url.'assets/img/2cl.png'),
-                        '2' => array('alt' => '1 Column', 'img' => ReduxFramework::$_url.'assets/img/1col.png')
+                        '1' => 'Dual',
+                        '2' => 'Single',
+	                    '3' => 'Browser',
+	                    '4' => 'Preview',
+	                    '5' => 'Gallery'
                     ),
                     'default' => '1'
                 ),
                 array(
                     'id'=>'PANELOPTIONS',
                     'type' => 'checkbox',
-                    'title' => __('Panel Options', 'redux-framework-demo'),
+                    'title' => __('Global Panel Options', 'redux-framework-demo'),
                     'options' => array(
                         '0' => 'Allow new tabs',
                         '1' => 'Allow info view',
@@ -320,7 +344,13 @@ if (!function_exists('redux_init')) :
                         '0' => '1',
                         '1' => '1',
                         '2' => '1',
-                        '3' => '1')//See how std has changed? you also don't need to specify opts that are 0.
+                        '3' => '1',
+	                    '4' => '1',
+	                    '5' => '1',
+	                    '6' => '1',
+	                    '7' => '1',
+	                    '8' => '1',
+	                    '9' => '1')//See how std has changed? you also don't need to specify opts that are 0.
                 ),
                 array(
                     'id'=>'JQTHEME',
@@ -386,7 +416,8 @@ if (!function_exists('redux_init')) :
             XC_OPERATION_UPLOAD=>__('Upload', 'redux-framework-demo'),
 	        XC_OPERATION_ADD_MOUNT=>__('Add Mount', 'redux-framework-demo'),
 	        XC_OPERATION_REMOVE_MOUNT=>__('Remove Mount', 'redux-framework-demo'),
-	        XC_OPERATION_EDIT_MOUNT=>__('Edit Mount', 'redux-framework-demo')
+	        XC_OPERATION_EDIT_MOUNT=>__('Edit Mount', 'redux-framework-demo'),
+	        XC_OPERATION_PERSPECTIVE=>__('Change Perspective', 'redux-framework-demo')
         );
 
 

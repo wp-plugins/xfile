@@ -11,12 +11,17 @@ Stable tag: 1.6
 !XFile, the must have file manager for your Wordpress
 
 
+== Demo ==
+
+* [Main Demo Page with limited set of features](http://pearls-media.com:89/demo/)
+
+
 == Description ==
 
-* XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client. Simply install and access your files with a browser.
+XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client.
 
 
-= External Reviews =
+= External Review =
 
 * [Wordpress plugins will make your life easier](http://www.semgeeks.com/blog/free-wordpress-plugins-will-make-your-life-easier)
 * [the-best-free-wordpress-plugins-for-september-2014](http://www.webdesignerdepot.com/2014/08/the-best-free-wordpress-plugins-for-september-2014/)
@@ -27,7 +32,6 @@ Stable tag: 1.6
 * PHP 5.3
 * Linux based server, no Windows support right now.
 * Supported browsers : Chrome, Firefox and maybe Opera.
-* Please find more information on www.xappcommander.com
 
 = Features =
 * Full keyboard support ala Midnight or Total-Commander
@@ -42,7 +46,7 @@ Stable tag: 1.6
 * Enhanced media preview as cover flow like on Macintosh or simple preview panel for whatever content & media
 * Mount external FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive
 * 5 display modes for file panels : Thumbnails, List, Preview, Cover-Flow, Split-Horizontal, Split-Vertical
-* 3 main layouts : Dual panel, single panel and 'preview', ideal for media browsing
+* 5 main layouts : Dual panel, single panel, Preview (ideal for media browsing), Browser (classic) and Gallery(slide show mode)
 * Visual programming language for extending the plugin easier (see screenshot 4). Open wp-content/plugins/xcom/blox.xblox!
 * Logging panel with filters
 * built-in Javascript and Bash shell
@@ -128,9 +132,22 @@ Stable tag: 1.6
 12. Split View with Video preview
 13. Split View with Coverflow ala Mac for images (experimental)
 14. Aviary picture editor
+15. Sample of xfile being integrated in our up-coming mega editor collection, power your posts with self made scripts using our 'XBlox' visual programming language!
 
 
 == Changelog ==
+
+= 1.6.9 (9.11.2014) =
+* Start Path accepts now absolute paths, only Linux servers !
+* 2 New Main Layouts added : Browser (classic) and Gallery
+* More settings added. Please really read it now!
+* New Permission added : Change Perspective
+* Image flow mode now in syn with selection, also actions are working now for this type
+* XBlox : 3 Blocks added  : Set CSS, Set Style (with visual helpers, hot!), and On Key to trigger on keyboard sequence events
+* File Picker added, allows you to use xfile as file picker. TinyMCE integration is almost there!
+* Lots of minor bug fixes
+* Major problems with perspective changes fixed
+* Font-Size problems fixed
 
 = 1.6.2 (4.11.2014) =
 * Major performance improvement when working with lots of images. Images are downloaded now in the size needed.
