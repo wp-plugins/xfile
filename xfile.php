@@ -2,7 +2,7 @@
 /*
    Plugin Name: xfile
    Plugin URI: http://wordpress.org/plugins/xfile/
-   Version: 1.6
+   Version: 1.7
    Author: xfile
    Description: simple file manger
    Author URI: https://github.com/mc007/xbox-app
