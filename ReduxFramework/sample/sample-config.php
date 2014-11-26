@@ -425,7 +425,16 @@ if (!function_exists('redux_init')) :
             'icon' => 'el-icon-wrench',
             'title' => __('Permissions', 'redux-framework-demo'),
             'fields' => array(
-                array(
+	            array(
+		            'id'       => 'XAPP_USER_ROLE',
+		            'type'     => 'select',
+		            'data'     => 'roles',
+		            'title'    => __( 'Minimum Role', 'redux-framework-demo' ),
+		            'subtitle' => __( 'Select the minimum role a user must be in to be able to use XFile', 'redux-framework-demo' ),
+		            'desc'     => __( 'Recommended : Administrator', 'redux-framework-demo' ),
+		            'default'  => 'administrator'
+	            ),
+	            array(
                     'id'=>'XAPP-DEFAULT-ACTIONS',
                     'type' => 'select',
                     'multi'=>true,
