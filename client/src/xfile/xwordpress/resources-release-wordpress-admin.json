@@ -52,8 +52,5 @@
             "url":"%XASWEB%/themes/jQuery/%JQUERY_THEME%/jquery-ui.css",
             "enabled":true
         }
-
-
-
     ]
 }
