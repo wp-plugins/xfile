@@ -12,7 +12,7 @@ Stable tag: 1.8
 !XFile, the must have file manager for your Wordpress
 
 
-== Demo ==
+= Demo =
 
 * [Main Demo Page with limited set of features](http://pearls-media.com:89/demo/)
 
