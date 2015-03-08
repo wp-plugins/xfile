@@ -147,6 +147,10 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 * cleanup and many bug-fixes
 * consistent action interface added
 * code auto completion on by default
+* support for Windows server added
+* Cover flow view fixed
+* Perspective switch remove but you can still open it via &layout=dual...
+
 
 = 1.7.0 (26.11.2014) =
 
