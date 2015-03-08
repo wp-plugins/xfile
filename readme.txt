@@ -27,10 +27,11 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 
 
-= External Review =
+= External Reviews =
 
 * [Wordpress plugins will make your life easier](http://www.semgeeks.com/blog/free-wordpress-plugins-will-make-your-life-easier)
 * [the-best-free-wordpress-plugins-for-september-2014](http://www.webdesignerdepot.com/2014/08/the-best-free-wordpress-plugins-for-september-2014/)
+* [top free plugins December 2014](http://bestwebsoft.com/top-free-wordpress-plugins-of-the-month-december-2014)
 
 
 = Required =
