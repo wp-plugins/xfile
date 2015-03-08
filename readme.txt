@@ -143,10 +143,10 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 = 1.8.0 (08.03.2015) =
 
 * resource optimization, less CSS/Javascript and Ajax calls
-* all plugins removed !
+* all plugins removed! Sorry, we do currently a complete rewrite of the code base, and plugins will come back in 2.0
 * cleanup and many bug-fixes
 * consistent action interface added
-* code autocompletion on by default
+* code auto completion on by default
 
 = 1.7.0 (26.11.2014) =
 
