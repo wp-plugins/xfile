@@ -36,8 +36,8 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 = Required =
 
 * PHP 5.3
-* Linux based server, no Windows support right now.
-* Supported browsers : Chrome, Firefox and maybe Opera.
+* Supported servers: Linux based server, Macintosh and Windows
+* Supported browsers: Chrome, Firefox and maybe Opera and basic support for IE9+
 
 = Features =
 * Full keyboard support ala Midnight or Total-Commander
@@ -57,7 +57,6 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 = Controls : Keyboard =
 * SPACE : Open Preview
-* CTRL + F1 : Open Mounts
 * F2 : Rename
 * F3 : Preview file
 * F4 : Edit file
@@ -141,7 +140,6 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 == Changelog ==
 
 = 1.8.0 (08.03.2015) =
-
 
 * resource optimization, less CSS/Javascript and Ajax calls
 * all plugins removed !
