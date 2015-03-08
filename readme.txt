@@ -1,13 +1,13 @@
 === xfile ===
 Contributors: xfile
 
-Tags: user folder, gallery, ftp, sftp, dropbox, filemanager, pictures, picture, file, management, organize, upload, picture, editor, file manager, ACE
+Tags: user folder, gallery, ftp, sftp, filemanager, file, management, organize, upload, picture, editor, file manager, ACE
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.4.2
 Tested up to: 4.0
-Stable tag: 1.7
+Stable tag: 1.8
 
 !XFile, the must have file manager for your Wordpress
 
@@ -18,6 +18,7 @@ Stable tag: 1.7
 
 
 == Description ==
+
 
 XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client.
 
@@ -40,23 +41,16 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 * Supported browsers : Chrome, Firefox and maybe Opera.
 
 = Features =
-* Full keyboard support ala Midnight or Total-Commander
+* Full keyboard support ala Midnight or Total-Commander!CeqTLV#z*0s
 * Multi tab
 * Advanced code editor with auto-completion for CSS, PHP and Javascript
 * Multi selection
-* Advanced search
 * Drag'n drop for copy, move and upload into any panel
 * Standard actions : Edit, Move, Rename, Info, Delete,Compress and Download
-* 2 image editors : Pixlr and Aviary
 * Enhanced security
 * Enhanced media preview as cover flow like on Macintosh or simple preview panel for whatever content & media
-* Mount external FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive
 * 5 display modes for file panels : Thumbnails, List, Preview, Cover-Flow, Split-Horizontal, Split-Vertical
 * 5 main layouts : Dual panel, single panel, Preview (ideal for media browsing), Browser (classic) and Gallery(slide show mode)
-* Visual programming language for extending the plugin easier (see screenshot 4). Open wp-content/plugins/xcom/blox.xblox!
-* Logging panel with filters
-* built-in Javascript and Bash shell
-* probably lots of more features i cant remember, in short : this is the hottest file manager you've ever seen.
 * over 25 themes and 20 editor themes
 * user folders: simple put wp-content/%user%/ in the start path settings
 
@@ -65,6 +59,7 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 * SPACE : Open Preview
 * CTRL + F1 : Open Mounts
 * F2 : Rename
+* F3 : Preview file
 * F4 : Edit file
 * F5 : Copy (If main window is open, the destination is set automatically)
 * F6 : Move
@@ -85,6 +80,7 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 * CTRL+V : Paste selection
 * CTRL+S : Save current editor's content
 * CTRL+F : Open search
+* CTRL+L : Reload panel
 
 = Controls Editor =
 
@@ -143,6 +139,15 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 == Changelog ==
 
+
+= 1.8.0 (08.03.2015) =
+
+
+* resource optimization, less CSS/Javascript and Ajax calls
+* all plugins removed !
+* cleanup and many bug-fixes
+* consistent action interface added
+* code autocompletion on by default
 
 = 1.7.0 (26.11.2014) =
 
