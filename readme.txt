@@ -27,7 +27,6 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 - on a white page result, you must delete this extension by deleting 'wp-content/plugins/xfile'!<br/>
 
 
-
 = External Review =
 
 * [Wordpress plugins will make your life easier](http://www.semgeeks.com/blog/free-wordpress-plugins-will-make-your-life-easier)
