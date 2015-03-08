@@ -1,7 +1,8 @@
 === xfile ===
 Contributors: xfile
 
-Tags: ftp, sftp, dropbox, filemanager, pictures, picture editor, file, management, organize, upload, picture, editor, file manager
+Tags: user folder, gallery, ftp, sftp, filemanager, file, management, organize, upload, picture, editor, file manager, ACE
+
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.4.2
@@ -11,21 +12,23 @@ Stable tag: 1.8
 !XFile, the must have file manager for your Wordpress
 
 
-== Description ==
-
-* XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client. Simply install and access your files with a browser.
-
-
 == Demo ==
 
-* [Main Demo Page with limited set of features!](http://pearls-media.com:89/demo/)
-
-== Stand-Alone Version ==
-
-* [Trouble with XFile in Wordpress? You can also purchase or more supported and stable version here:](http://codecanyon.net/item/xfile/9294082). You only need to unzip that on your server. Its possible that this way will work better for you!
+* [Main Demo Page with limited set of features](http://pearls-media.com:89/demo/)
 
 
-= External Reviews =
+== Description ==
+
+
+XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client.
+
+<b>Attention</b>:
+- this plugin doesn't work with cheap hosting with! make sure you have some basics installed, curl & mbstring is a must.<br/>
+- on a white page result, you must delete this extension by deleting 'wp-content/plugins/xfile'!<br/>
+
+
+
+= External Review =
 
 * [Wordpress plugins will make your life easier](http://www.semgeeks.com/blog/free-wordpress-plugins-will-make-your-life-easier)
 * [the-best-free-wordpress-plugins-for-september-2014](http://www.webdesignerdepot.com/2014/08/the-best-free-wordpress-plugins-for-september-2014/)
@@ -36,26 +39,18 @@ Stable tag: 1.8
 * PHP 5.3
 * Linux based server, no Windows support right now.
 * Supported browsers : Chrome, Firefox and maybe Opera.
-* Please find more information on www.xappcommander.com
 
 = Features =
-* Full keyboard support ala Midnight or Total-Commander
+* Full keyboard support ala Midnight or Total-Commander!CeqTLV#z*0s
 * Multi tab
 * Advanced code editor with auto-completion for CSS, PHP and Javascript
 * Multi selection
-* Advanced search
 * Drag'n drop for copy, move and upload into any panel
 * Standard actions : Edit, Move, Rename, Info, Delete,Compress and Download
-* 2 image editors : Pixlr and Aviary
 * Enhanced security
 * Enhanced media preview as cover flow like on Macintosh or simple preview panel for whatever content & media
-* Mount external FTP, SFTP, Dropbox, WebDav. More are schedule : Flickr, GoogleDrive
 * 5 display modes for file panels : Thumbnails, List, Preview, Cover-Flow, Split-Horizontal, Split-Vertical
-* 3 main layouts : Dual panel, single panel and 'preview', ideal for media browsing
-* Visual programming language for extending the plugin easier (see screenshot 4). Open wp-content/plugins/xcom/blox.xblox!
-* Logging panel with filters
-* built-in Javascript and Bash shell
-* probably lots of more features i cant remember, in short : this is the hottest file manager you've ever seen.
+* 5 main layouts : Dual panel, single panel, Preview (ideal for media browsing), Browser (classic) and Gallery(slide show mode)
 * over 25 themes and 20 editor themes
 * user folders: simple put wp-content/%user%/ in the start path settings
 
@@ -64,6 +59,7 @@ Stable tag: 1.8
 * SPACE : Open Preview
 * CTRL + F1 : Open Mounts
 * F2 : Rename
+* F3 : Preview file
 * F4 : Edit file
 * F5 : Copy (If main window is open, the destination is set automatically)
 * F6 : Move
@@ -84,6 +80,7 @@ Stable tag: 1.8
 * CTRL+V : Paste selection
 * CTRL+S : Save current editor's content
 * CTRL+F : Open search
+* CTRL+L : Reload panel
 
 = Controls Editor =
 
@@ -141,6 +138,33 @@ Stable tag: 1.8
 
 
 == Changelog ==
+
+
+= 1.8.0 (08.03.2015) =
+
+
+* resource optimization, less CSS/Javascript and Ajax calls
+* all plugins removed !
+* cleanup and many bug-fixes
+* consistent action interface added
+* code autocompletion on by default
+
+= 1.7.0 (26.11.2014) =
+
+* resource optimization, less CSS/Javascript and Ajax calls
+* support for windows added
+* support for nginx added
+* support for fe*** Internet-Explorer 9 added
+* support for remote downloads added: drag simply an url into the file manager
+* settings extended: minimum role to use the file manager
+* open source version added ([check out on Github](https://github.com/mc007/xbox-app))
+* new xblox: Call-Server with direct link to shell
+* new xblox: OnKey (Keyboard) : Call-Server with direct link to shell
+* new xblox: OnEvent(whatever system event) : triggers child blocks
+* new url parameter : noImageCache=true
+* various bug-fixes regarding: multi-tabs, HTTPS, file-manager behind proxy, xblox, Aviary, copy & paste and stuff i can't remember
+* less interest in wordpress, back to real tasks
+
 
 = 1.6.9 (9.11.2014) =
 * Start Path accepts now absolute paths, only Linux servers !
