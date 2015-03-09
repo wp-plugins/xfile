@@ -12,7 +12,7 @@ Stable tag: 1.8
 !XFile, the must have file manager for your Wordpress
 
 
-= Demo =
+== Demo ==
 
 * [Main Demo Page with limited set of features](http://pearls-media.com:89/demo/)
 
@@ -23,7 +23,7 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 <b>Attention</b>:
 - this plugin doesn't work with cheap hosting with! make sure you have some basics installed, curl & mbstring is a must.<br/>
-- on a white page result, you must delete this extension by deleting 'wp-content/plugins/xfile'!<br/>
+- on a white page result, you must delete this extension by deleting 'wp-content/plugins/xfile'! <br/>
 
 
 
