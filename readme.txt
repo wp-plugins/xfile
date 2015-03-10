@@ -31,8 +31,11 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 = Required =
 
 * PHP 5.3
+* PHP MBString,PCRE, ICONV extension
 * Supported servers: Linux based server, Macintosh and Windows
 * Supported browsers: Chrome, Firefox and maybe Opera and basic support for IE9+
+* See installation for more
+
 
 = Features =
 * Full keyboard support ala Midnight or Total-Commander
@@ -108,6 +111,13 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
  2. Unzip it in your plugin folder (by default, `wp-content/plugins`)
  3. Activate it through your WordPress plugins administration page (XFile)
  4. Adjust settings (Settings->XFile)
+
+= Requirements Checker =
+
+ 1. Open http://YOUR_SITE_URL.COM/wp-content/plugins/xfile/xapp/tools/checker.php
+ 2. If everything is ok, then you can use xfile!
+
+
 
 == Frequently Asked Questions ==
 
