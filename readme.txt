@@ -1,7 +1,7 @@
 === xfile ===
 Contributors: xfile
 
-Tags: user folder, gallery, ftp, sftp, filemanager, file, management, organize, upload, picture, editor, file manager, ACE
+Tags: user folder, gallery, ftp, sftp, filemanager, pictures, picture, file, management, organize, upload, picture, editor, file manager, ACE
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,39 +11,35 @@ Stable tag: 1.8
 
 !XFile, the must have file manager for your Wordpress
 
-
-== Demo ==
-
-* [Main Demo Page with limited set of features](http://pearls-media.com:89/demo/)
-
-
 == Description ==
-
 
 XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client.
 
 <b>Attention</b>:
 - this plugin doesn't work with cheap hosting with! make sure you have some basics installed, curl & mbstring is a must.<br/>
-- on a white page result, you must delete this extension by deleting 'wp-content/plugins/xfile'!<br/>
+- on a white page result, you must delete this extension by deleting 'wp-content/plugins/xfile'! <br/>
 
 
-= External Review =
+
+= External Reviews =
 
 * [Wordpress plugins will make your life easier](http://www.semgeeks.com/blog/free-wordpress-plugins-will-make-your-life-easier)
 * [the-best-free-wordpress-plugins-for-september-2014](http://www.webdesignerdepot.com/2014/08/the-best-free-wordpress-plugins-for-september-2014/)
+* [top free plugins December 2014](http://bestwebsoft.com/top-free-wordpress-plugins-of-the-month-december-2014)
 
 
 = Required =
 
 * PHP 5.3
-* Linux based server, no Windows support right now.
-* Supported browsers : Chrome, Firefox and maybe Opera.
+* Supported servers: Linux based server, Macintosh and Windows
+* Supported browsers: Chrome, Firefox and maybe Opera and basic support for IE9+
 
 = Features =
-* Full keyboard support ala Midnight or Total-Commander!CeqTLV#z*0s
+* Full keyboard support ala Midnight or Total-Commander
 * Multi tab
 * Advanced code editor with auto-completion for CSS, PHP and Javascript
 * Multi selection
+* Advanced search
 * Drag'n drop for copy, move and upload into any panel
 * Standard actions : Edit, Move, Rename, Info, Delete,Compress and Download
 * Enhanced security
@@ -56,7 +52,6 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 = Controls : Keyboard =
 * SPACE : Open Preview
-* CTRL + F1 : Open Mounts
 * F2 : Rename
 * F3 : Preview file
 * F4 : Edit file
@@ -80,6 +75,7 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 * CTRL+S : Save current editor's content
 * CTRL+F : Open search
 * CTRL+L : Reload panel
+
 
 = Controls Editor =
 
@@ -138,15 +134,17 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 == Changelog ==
 
-
 = 1.8.0 (08.03.2015) =
 
-
 * resource optimization, less CSS/Javascript and Ajax calls
-* all plugins removed !
+* all plugins removed! Sorry, we do currently a complete rewrite of the code base, and plugins will come back in 2.0
 * cleanup and many bug-fixes
 * consistent action interface added
-* code autocompletion on by default
+* code auto completion on by default
+* support for Windows server added
+* Cover flow view fixed
+* Perspective switch remove but you can still open it via &layout=dual...
+
 
 = 1.7.0 (26.11.2014) =
 

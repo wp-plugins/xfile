@@ -1011,7 +1011,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 				);
 			}
 		}else{
-			error_log('plugins disabled');
+			//error_log('plugins disabled');
 		}
 
 		/***
@@ -1356,7 +1356,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		 * Get run-time configuration, there is 'debug' and 'release'. For both cases there are
 		 * different resources to load.
 		 */
-		$XAPP_RUN_TIME_CONFIGURATION = XApp_Service_Entry_Utils::getRunTimeConfiguration();
+		$XAPP_RUN_TIME_CONFIGURATION = XApp_Service_Utils::_getKey('rtConfig',XApp_Service_Entry_Utils::getRunTimeConfiguration());
 
 		/***
 		 * Now include all xapp stuff
@@ -1415,7 +1415,9 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		 */
 		//clients resource config path
 		$XAPP_RESOURCE_CONFIG_PATH = '' . xapp_get_option(self::APPDIR, $this) . DIRECTORY_SEPARATOR;
+
 		if ($XAPP_RUN_TIME_CONFIGURATION === 'debug') {
+
 			$XAPP_RESOURCE_CONFIG_PATH .= 'lib' . DIRECTORY_SEPARATOR . xapp_get_option(
 					self::APP_NAME,
 					$this
@@ -1423,9 +1425,9 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 					self::RESOURCE_CONFIG_SUFFIX,
 					$this
 				) . '.json';
-		} else {
-			if ($XAPP_RUN_TIME_CONFIGURATION === 'release') {
-				$XAPP_RESOURCE_CONFIG_PATH .= DIRECTORY_SEPARATOR . xapp_get_option(
+		} else if ($XAPP_RUN_TIME_CONFIGURATION === 'release') {
+
+			$XAPP_RESOURCE_CONFIG_PATH .= DIRECTORY_SEPARATOR . xapp_get_option(
 						self::APP_FOLDER,
 						$this
 					) . DIRECTORY_SEPARATOR . xapp_get_option(
@@ -1435,7 +1437,6 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 						self::RESOURCE_CONFIG_SUFFIX,
 						$this
 					) . '.json';
-			}
 		}
 
 		if (!file_exists($XAPP_RESOURCE_CONFIG_PATH)) {
@@ -1603,6 +1604,15 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		}
 
 		$xappResourceRenderer->registerRelative('DOJOPACKAGES', $XAPP_DOJO_PACKAGES);
+
+		$pConfigDefault = $xappResourceRenderer->resolveRelative('%PACKAGE_CONFIG%');
+		if(!strlen($pConfigDefault)){
+			$pConfigDefault = 'run-release-debug';
+		}
+
+		error_log('$pConfigDefault ' .$pConfigDefault);
+		$xappResourceRenderer->registerRelative('PACKAGE_CONFIG', XApp_Service_Utils::_getKey('pConfig',$pConfigDefault));
+
 
 
 		/****
