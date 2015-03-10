@@ -144,6 +144,14 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 == Changelog ==
 
+= 1.8.1 (10.03.2015) =
+
+* Tiny fixes upon user requests
+* Text editor: font-size will be remembered
+* Text editor: beautifiers added for HTML, JS, JSON and XML
+
+
+
 = 1.8.0 (08.03.2015) =
 
 * resource optimization, less CSS/Javascript and Ajax calls
