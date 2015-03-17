@@ -15,11 +15,11 @@ Stable tag: 1.8
 
 Attention: PLEASE READ BEFORE INSTALLING AND MAKING RATINGS:
 
-XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client.
+- this plugin doesn't work with cheap hosting with! make sure you have some basics installed, curl & mbstring is a must.
 
-<b>Attention</b>:
-- this plugin doesn't work with cheap hosting with! make sure you have some basics installed, curl & mbstring is a must.<br/>
-- on a white page result, you must delete this extension by deleting 'wp-content/plugins/xfile'! <br/>
+- on a white page result, you must delete this extension by deleting 'wp-content/plugins/xfile'!
+
+XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client.
 
 
 
