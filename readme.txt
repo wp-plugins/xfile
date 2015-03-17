@@ -13,6 +13,8 @@ Stable tag: 1.8
 
 == Description ==
 
+Attention: PLEASE READ BEFORE INSTALLING AND MAKING RATINGS:
+
 XFile is a multi-talent file manager. Perfect for quick editing and managing files without an FTP client.
 
 <b>Attention</b>:
