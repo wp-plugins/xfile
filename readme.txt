@@ -132,7 +132,7 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 == Frequently Asked Questions ==
 
 * Where to change remote sources : you can manage remote sites in wp-content/plugins/xfile/xapp/commander/vfs.php
-* In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your Wordpress site. The stand-alone version has usually less problems. You can buy it from here : http://www.xappcommander.com/index.php?option=com_jdownloads&view=viewcategory&catid=4&Itemid=189
+* In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your Wordpress site. The stand-alone version has usually less problems. You can buy it from here : www.codecanyon.net/item/xfile/9294082
 
 == Screenshots ==
 1. More recent screenshot of the coding utils. The editor understands lots of languages and has auto-completion by default.
