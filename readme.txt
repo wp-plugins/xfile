@@ -29,6 +29,14 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 * [the-best-free-wordpress-plugins-for-september-2014](http://www.webdesignerdepot.com/2014/08/the-best-free-wordpress-plugins-for-september-2014/)
 * [top free plugins December 2014](http://bestwebsoft.com/top-free-wordpress-plugins-of-the-month-december-2014)
 
+= Demo =
+
+* Please test a very limited set of features [here](http://www.pearls-media.com:89/demo)
+
+= Stand-alone version =
+
+* In some cases, its better use this file manager without Wordpress. [Here](codecanyon.net/item/xfile/9294082) is a stand-alone version
+  which is more stable.
 
 = Required =
 
