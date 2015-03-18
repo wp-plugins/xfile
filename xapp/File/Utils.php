@@ -48,6 +48,10 @@ define('XAPP_NODE_FIELD_IS_DIRECTORY', 'isDir');
 define('XAPP_NODE_FIELD_IS_DIRTY', 'isDirty');
 define('XAPP_NODE_FIELD_IS_NEW', 'isNew');
 
+//xide specific
+define('XAPP_NODE_FIELD_PARENT_ID', 'parentId');
+
+
 
 class XApp_File_Utils
 {
