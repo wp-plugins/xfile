@@ -158,6 +158,8 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 * Tiny fixes upon user requests
 * Uncompress added for zip, gz, tar, bzip: simple implementation, please also enable this action in the permissions!
 * 2 more themes added for the text editor: day & night
+* Fix for upload extensions
+* Fix for PHP warnings
 * Switched to RPC over Worpdress admin ajax router: slow as fuck now, sorry but its better working with this kiddie
  .htaccess tricks
 

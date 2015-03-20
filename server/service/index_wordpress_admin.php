@@ -92,8 +92,10 @@ $authDelegate = new XAppWordpressAuth();
 $authDelegate->setSalt(SECURE_AUTH_SALT);//make token salt site based
 $XAPP_USER_NAME = $authDelegate->getUserName();
 
-$xfToken = mysql_real_escape_string(htmlentities($_GET['xfToken']));
-$userHash = mysql_real_escape_string(htmlentities($_GET['user']));
+xapp_import('xapp.Service.Utils');
+
+$xfToken = XApp_Service_Utils::_getKey('xfToken','');
+$userHash = XApp_Service_Utils::_getKey('user','');
 
 
 if (!$authDelegate->isLoggedIn() && //no logged in
@@ -150,7 +152,6 @@ if (isset($XAPP_PARAMETERS['XAPP_FILE_START_PATH'])) {
 }
 $XAPP_UPLOAD_EXTENSIONS = $XAPP_PARAMETERS['XAPP_UPLOAD_EXTENSIONS'];
 
-
 $repositoryRoot = ABSPATH . DIRECTORY_SEPARATOR;
 if ($XAPP_FILE_ROOT != null) {
 	$repositoryRoot .= DIRECTORY_SEPARATOR . $XAPP_FILE_ROOT . DIRECTORY_SEPARATOR;
@@ -166,7 +167,6 @@ if ($XAPP_FILE_START_PATH != null) {
 		}
 	}
 }
-//$repositoryRoot = realpath($repositoryRoot);
 if ($XAPP_UPLOAD_EXTENSIONS == null) {
 	$XAPP_UPLOAD_EXTENSIONS = 'bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,mp4,mp3,xblox';
 }
@@ -304,7 +304,7 @@ try {
 			XApp_Service::factory(
 				'XCOM_Directory_Service',
 				array(
-
+					XApp_Directory_Service::UPLOAD_EXTENSIONS => $XAPP_UPLOAD_EXTENSIONS,
 					XApp_Directory_Service::AUTH_DELEGATE => $authDelegate,
 					XApp_Directory_Service::REPOSITORY_ROOT => $repositoryRoot,
 					XApp_Directory_Service::FILE_SYSTEM => 'XApp_VFS_Local',
