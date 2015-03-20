@@ -122,7 +122,8 @@ class XApp_Wordpress_Parameter_Helper
 	        XC_OPERATION_ADD_MOUNT=>1,
 	        XC_OPERATION_REMOVE_MOUNT=>1,
 	        XC_OPERATION_EDIT_MOUNT=>1,
-		    XC_OPERATION_PERSPECTIVE=>1
+		    XC_OPERATION_PERSPECTIVE=>1,
+            XC_OPERATION_EXTRACT=>1
 
         );
         $result['ALLOWED_ACTIONS']=$XCOM__DEFAULT_ACTIONS;

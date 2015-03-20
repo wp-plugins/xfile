@@ -394,6 +394,8 @@ class XApp_Service_Entry_Utils
 				return XC_OPERATION_FILE_UPDATE_STR;
 			case 'download':
 				return XC_OPERATION_DOWNLOAD_STR;
+			case 'extract':
+				return XC_OPERATION_EXTRACT_STR;
 		}
 		return XC_OPERATION_UNKOWN_STR;
 	}
@@ -436,6 +438,8 @@ class XApp_Service_Entry_Utils
 				return XC_OPERATION_UPLOAD;
 			case XC_OPERATION_PLUGINS_STR:
 				return XC_OPERATION_PLUGINS;
+			case XC_OPERATION_EXTRACT_STR:
+				return XC_OPERATION_EXTRACT;
 		}
 
 		return XC_OPERATION_UNKOWN;
@@ -462,8 +466,9 @@ class XApp_Service_Entry_Utils
 			XC_OPERATION_FILE_UPDATE_STR,
 			XC_OPERATION_NEW_DIRECTORY_STR,
 			XC_OPERATION_NEW_FILE_STR,
-			XC_OPERATION_UPLOAD,
-			XC_OPERATION_DOWNLOAD
+			XC_OPERATION_UPLOAD_STR,
+			XC_OPERATION_DOWNLOAD_STR,
+			XC_OPERATION_EXTRACT_STR
 		);
 		return $verbs;
 	}

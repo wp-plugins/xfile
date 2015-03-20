@@ -47,6 +47,20 @@ class XCOM_Directory_Service extends XIDE_Directory_Service
 		$vfs = $this->getFileSystem($mount);
 		return $vfs->compress($mount, $selection, $type, $error);
 	}
+	/**
+	 * @param $mount
+	 * @param $what
+	 * @return mixed
+	 */
+	public function extract($mount, $what)
+	{
+		$error = array();
+		xapp_import('xapp.Path.Utils');
+		xapp_import('xapp.Utils.SystemTextEncoding');
+		$mount = XApp_Path_Utils::getMount($mount);
+		$vfs = $this->getFileSystem($mount);
+		return $vfs->extract($mount, $what,$error);
+	}
 
 	/**
 	 * @param $path

@@ -212,7 +212,7 @@ $xFileRepositoryRoot = XApp_Variable_Mixin::replaceResourceVariables(
 );
 
 
-$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc');//not used anymore, to slow!!!
+$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc');
 $XAPP_SETTINGS_FILE = XAPP_CONF_DIRECTORY . DIRECTORY_SEPARATOR . 'settings.json';
 $XIDE_LOG_PATH = realpath(XAPP_BASEDIR . '..' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . 'all.log');
 if (!$XIDE_LOG_PATH) {
@@ -252,16 +252,16 @@ try {
 			XAPP_CONF_DEBUG_MODE => null,
 			XAPP_CONF_AUTOLOAD => false,
 			XAPP_CONF_DEV_MODE => true,
-			XAPP_CONF_HANDLE_BUFFER => true,
+			XAPP_CONF_HANDLE_BUFFER => !XApp_Service_Entry_Utils::isDownload(),
 			XAPP_CONF_HANDLE_SHUTDOWN => true,
-			XAPP_CONF_HTTP_GZIP => true,
+			XAPP_CONF_HTTP_GZIP => !XApp_Service_Entry_Utils::isDownload(),
 			XAPP_CONF_CONSOLE => false,
 			XAPP_CONF_HANDLE_ERROR => true,
 			XAPP_CONF_HANDLE_EXCEPTION => true
 		),
 		XApp_Commander_Bootstrap::AUTH_DELEGATE => $authDelegate,
 		//XApp_Commander_Bootstrap::RPC_TARGET              =>  $XAPP_FILE_SERVICE .'&view=smdCall',
-		XApp_Commander_Bootstrap::RPC_TARGET => $XAPP_PLUGIN_URL . '/index_wordpress_admin.php?view=smdCall',
+		XApp_Commander_Bootstrap::RPC_TARGET => $XAPP_FILE_SERVICE,
 		XApp_Commander_Bootstrap::SIGNING_KEY => md5($XAPP_USER_NAME),
 		XApp_Commander_Bootstrap::SIGNING_TOKEN => md5($authDelegate->getToken()),
 		XApp_Commander_Bootstrap::SIGNED_SERVICE_TYPES => array(

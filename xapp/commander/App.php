@@ -407,9 +407,9 @@ function xapp_commander_render_app(
 						XAPP_CONF_DEBUG_MODE => null,
 						XAPP_CONF_AUTOLOAD => false,
 						XAPP_CONF_DEV_MODE => $_DEBUG,
-						XAPP_CONF_HANDLE_BUFFER => true,
+						XAPP_CONF_HANDLE_BUFFER => !XApp_Service_Entry_Utils::isDownload(),
 						XAPP_CONF_HANDLE_SHUTDOWN => false,
-						XAPP_CONF_HTTP_GZIP => true,
+						XAPP_CONF_HTTP_GZIP => !XApp_Service_Entry_Utils::isDownload(),
 						XAPP_CONF_CONSOLE => $_DEBUG ? XApp_Service_Entry_Utils::getConsoleType() : false,
 						XAPP_CONF_HANDLE_ERROR => false,
 						XAPP_CONF_HANDLE_EXCEPTION => false
@@ -637,7 +637,8 @@ function xapp_commander_render_standalone(
 				case XC_OPERATION_NEW_DIRECTORY_STR:
 				case XC_OPERATION_NEW_FILE_STR:
 				case XC_OPERATION_UPLOAD:
-				case XC_OPERATION_DOWNLOAD: {
+				case XC_OPERATION_DOWNLOAD:
+				case XC_OPERATION_EXTRACT: {
 					return true;
 				}
 			}

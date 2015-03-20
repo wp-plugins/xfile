@@ -44,8 +44,8 @@ XApp_App_Commander::loadDependencies();
 
 $XAPP_CLIENT_DIRECTORY = $XAPP_SITE_DIRECTORY . DIRECTORY_SEPARATOR . 'client' . DIRECTORY_SEPARATOR . 'src';
 
-//$XAPP_SERVICE_URL  = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
-$XAPP_SERVICE_URL  = './admin.php?page=xcommander?view=rpc';
+$XAPP_SERVICE_URL  = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
+//$XAPP_SERVICE_URL  = './admin.php?page=xcommander?view=rpc';
 $XAPP_APP_URL = $XAPP_PLUGIN_URL . '/client/src/';
 $XAPP_SITE_URL= get_site_url();
 
@@ -135,26 +135,23 @@ $xappCommanderRenderer = $xappBootrapper->setup();
 //extract resource renderer
 $xappResourceRender = xapp_get_option(XApp_App_Commander::RESOURCE_RENDERER,$xappCommanderRenderer);
 
-//queue the jQuery theme
-/*
-if( isset($_SERVER['HTTPS'] ) ) {
-    $jQueryThemeUrl = "https://code.jquery.com/ui/1.10.3/themes/" .  $XAPP_JQUERY_THEME . "/jquery-ui.css ";
-}
-else{
-    $jQueryThemeUrl = "http://code.jquery.com/ui/1.10.3/themes/" .  $XAPP_JQUERY_THEME . "/jquery-ui.css ";
-}
-*/
 
-//wp_enqueue_style(md5($jQueryThemeUrl),$jQueryThemeUrl);
-$XAPP_FILE_SERVICE = "../wp-content/plugins/".$XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php?view=rpc";
+//$XAPP_FILE_SERVICE = "../wp-content/plugins/".$XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php?view=rpc";
 
-//$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
+$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
 
 $authDelegate = new XAppWordpressAuth();
 $authDelegate->setSalt(SECURE_AUTH_SALT);
 
 
-$XAPP_SERVICE_URL_MIXIN = $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc';
+//$XAPP_SERVICE_URL_MIXIN = $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc';
+
+//xapp ajax router: fast
+//$XAPP_SERVICE_URL_MIXIN = $XAPP_SITE_URL .'/wp-content/plugins/' . $XAPP_PLUGIN_DIR_NAME . '/server/service/index_wordpress_admin.php?view=rpc';
+
+//wp ajax router: fucking slow, actually useless
+$XAPP_SERVICE_URL_MIXIN = $XAPP_SERVICE_URL;
+
 
 $xappResourceRender->registerRelative('APP_URL',$XAPP_APP_URL);
 $resourceVariables = (array)$xappResourceRender->registryToKeyValues(xapp_get_option(XApp_Resource_Renderer::RELATIVE_REGISTRY_NAMESPACE,$xappResourceRender));

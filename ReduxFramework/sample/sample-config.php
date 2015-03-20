@@ -437,6 +437,7 @@ if (!function_exists('redux_init')) :
             XC_OPERATION_INFO=>__('Info', 'redux-framework-demo'),
             XC_OPERATION_DOWNLOAD=>__('Download', 'redux-framework-demo'),
             XC_OPERATION_COMPRESS=>__('Compress', 'redux-framework-demo'),
+            XC_OPERATION_EXTRACT=>__('Extract Archives', 'redux-framework-demo'),
             XC_OPERATION_DELETE=>__('Delete', 'redux-framework-demo'),
             XC_OPERATION_RENAME=>__('Rename', 'redux-framework-demo'),
             XC_OPERATION_DND=>__('Drag and Drop', 'redux-framework-demo'),
@@ -454,6 +455,7 @@ if (!function_exists('redux_init')) :
 	        XC_OPERATION_REMOVE_MOUNT=>__('Remove Mount', 'redux-framework-demo'),
 	        XC_OPERATION_EDIT_MOUNT=>__('Edit Mount', 'redux-framework-demo'),
 	        XC_OPERATION_PERSPECTIVE=>__('Change Perspective', 'redux-framework-demo')
+
         );
 
 
@@ -476,7 +478,7 @@ if (!function_exists('redux_init')) :
                     'multi'=>true,
                     'title' => __('Set global default actions', 'redux-framework-demo'),
                     'options' =>$XCOM_ACTIONS,
-                    'default' => array('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27')
+                    'default' => array('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32')
                 ),
                 array(
                     'id'=>'RPC_GATEWAY_ALLOW_IP',

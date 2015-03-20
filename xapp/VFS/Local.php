@@ -991,4 +991,76 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 	{
 		return false;
 	}
+
+	/***
+	 * @param $filePath
+	 * @param $filename_new
+	 * @param null $dest
+	 * @param $errors
+	 */
+
+	public function extract($mount, $what,&$errors)
+	{
+		$to = '';
+		$this->safeIniSet('memory_limit', '128M');
+		@set_time_limit(0);
+
+
+		require_once(realpath(dirname(__FILE__)) . "/Archive/archive.php");
+		$this->safeIniSet('memory_limit', '128M');
+		@set_time_limit(0);
+		$archive = new xFileArchive();
+
+		$root = $this->toRealPath($mount);
+		$firstItem = str_replace($mount,'',$what);
+		$what = $root . DIRECTORY_SEPARATOR . $firstItem;
+		$result = false;
+		if(file_exists($what)){
+
+			$to = dirname($what);
+			if(@is_writable($to)){
+				$result = $archive->extract($what,$to);
+			}
+
+		}
+		xapp_clog('w ' . $result);
+
+		return $result;
+
+
+		/*
+		if ($to == null || $to=='') {
+
+			$firstItem = str_replace($mount,'',$firstItem);
+			$to = $root . DIRECTORY_SEPARATOR . $firstItem . '.zip';
+
+			if(file_exists($to)){
+				$base = basename($to);
+				$ext = '';
+				$dotPos = strrpos($base, ".");
+				if ($dotPos > -1) {
+					$radic = substr($base, 0, $dotPos);
+					$ext = substr($base, $dotPos);
+				}
+
+				$i = 1;
+				$newName = $base;
+				while (file_exists($dstDirectory . "/" . $newName)) {
+					$suffix = "-$i";
+					if (isSet($radic)) {
+						$newName = $radic . $suffix . $ext;
+					} else {
+						$newName = $base . $suffix;
+					}
+					$i++;
+				}
+				$destFile = $dstDirectory . "/" . $newName;
+			}
+
+		}
+		*/
+
+		/*$archive->create($to, $zipSelection, 'zip', '', $root, true);*/
+		return $to;
+	}
 }

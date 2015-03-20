@@ -1,25 +1,12 @@
 <?php
-/**
- * @version		$Id: archive.php 13314 2009-10-24 07:09:41Z eddieajau $
- * @package		Joomla.Framework
- * @subpackage	FileSystem
- * @copyright	Copyright (C) 2005 - 2009 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
+
 if( !class_exists('PEAR')) {
 	@include_once 'PEAR.php';
 	if( !class_exists('PEAR')) {
 		require_once(dirname(__FILE__). DIRECTORY_SEPARATOR . 'PEAR.php');
 	}
 }
-/**
- * An Archive handling class
- *
- * @static
- * @package 	Joomla.Framework
- * @subpackage	FileSystem
- * @since		1.5
- */
+
 class xFileArchive {
 	/**
 	 * @param	string	The name of the archive file
@@ -27,40 +14,19 @@ class xFileArchive {
 	 * @return	boolean	True for success
 	 */
 	function extract( $archivename, $extractdir ) {
-		require_once( dirname(__FILE__). '/file.php' ) ;
-		require_once( dirname(__FILE__). '/folder.php' ) ;
 
-		$untar = false ;
-		$result = false ;
-		$ext = extFile::getExt( strtolower( $archivename ) ) ;
-		// check if a tar is embedded...gzip/bzip2 can just be plain files!
-		if( extFile::getExt( extFile::stripExt( strtolower( $archivename ) ) ) == 'tar' ) {
-			$untar = true ;
+		require_once( dirname(__FILE__). '/new/File.php' ) ;
+		require_once( dirname(__FILE__). '/new/Folder.php' ) ;
+		require_once( dirname(__FILE__). '/new/Archive.php' ) ;
+
+
+		$archive = new xapp_Archive2();
+		try {
+			$result = $archive->extract(realpath($archivename), realpath($extractdir));
+		}catch (Exception $e){
+			xapp_clog('e ' . $e->getMessage());
 		}
-		
-		switch( $ext) {
-			case 'tar' :
-			case 'tgz' :
-			case 'gz' : // This may just be an individual file (e.g. sql script)
-			case 'gzip' :
-			case 'tbz' :
-			case 'tbz2' :
-			case 'bz2' : // This may just be an individual file (e.g. sql script)
-			case 'bzip2' :
-					require_once( dirname(__FILE__).'/../Tar.php' ) ;
-					$archive = new Archive_Tar( $archivename );
-					$result = $archive->extract( $extractdir );
-				
-			break ;
-			default :
-				$adapter = & extArchive::getAdapter( $ext ) ;
-				if( $adapter ) {
-					$result = $adapter->extract( $archivename, $extractdir ) ;
-				} else {
-					return PEAR::raiseError('Unknown Archive Type: '.$ext );
-				}
-			break ;
-		}
+
 		return $result;
 	}
 	

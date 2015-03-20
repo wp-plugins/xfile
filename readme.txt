@@ -148,11 +148,19 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 11. Preview mode supports videos (outdated)
 12. Split View with Video preview
 13. Split View with Coverflow ala Mac for images (experimental)
-14. Aviary picture editor
-15. Sample of xfile being integrated in our up-coming mega editor collection, power your posts with self made scripts using our 'XBlox' visual programming language!
+
 
 
 == Changelog ==
+
+= 1.8.2 (20.03.2015) =
+
+* Tiny fixes upon user requests
+* Uncompress added for zip, gz, tar, bzip: simple implementation, please also enable this action in the permissions!
+* 2 more themes added for the text editor: day & night
+* Switched to RPC over Worpdress admin ajax router: slow as fuck now, sorry but its better working with this kiddie
+ .htaccess tricks
+
 
 = 1.8.1 (10.03.2015) =
 

@@ -201,7 +201,7 @@ function xapp_commander_render_app(
 				}
 
 				if ($UPLOAD_EXTENSIONS == null) {
-					$UPLOAD_EXTENSIONS = 'bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODIRECTORY_SEPARATOR,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS';
+					$UPLOAD_EXTENSIONS = 'bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls';
 				}
 
 				$authDelegate = new $XAPP_AUTH_DELEGATE();

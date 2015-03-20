@@ -42,6 +42,7 @@ $XAPP_SITE_DIRECTORY =  $ROOT_DIRECTORY_ABSOLUTE . DIRECTORY_SEPARATOR;
 $XAPP_CLIENT_DIRECTORY = $XAPP_SITE_DIRECTORY . DIRECTORY_SEPARATOR . 'client' . DIRECTORY_SEPARATOR . 'src';
 
 $XAPP_SERVICE_URL  = './admin.php?page=xfile?view=rpc';
+$XAPP_SERVICE_URL = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
 $XAPP_APP_URL = $XAPP_PLUGIN_URL . '/client/src/';
 
 
@@ -143,12 +144,14 @@ $xappCommanderRenderer = $xappBootrapper->setup();
 
 //extract resource renderer
 $xappResourceRender = xapp_get_option(XApp_App_Commander::RESOURCE_RENDERER,$xappCommanderRenderer);
-
+/*
 $XAPP_FILE_SERVICE = "../../..'" . $WP_PLUGIN_LOCATION_REL . $XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php";
 if(!XApp_Service_Entry_Utils::isDebug()){
     $XAPP_FILE_SERVICE = ".." .$WP_PLUGIN_LOCATION_REL . $XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php";
 }
+*/
 
+$XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
 //////////////////////////////////////////////////////////////////////////////////
 //
 //  HTML head rendering

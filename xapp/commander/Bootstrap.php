@@ -571,7 +571,8 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 			'indexDocument',
 			'onBeforeSearch',
 			'toDSURL',
-			'searchTest'
+			'searchTest',
+			'convert_size_to_num'
 		);
 
 		if (xapp_get_option(self::IGNORED_RPC_METHODS, $this)) {
@@ -587,7 +588,6 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 			if (method_exists($authDelegate, 'authorize')) {
 				$xCommanderFunctionTable = XApp_Service_Entry_Utils::getXCommanderFuncTable();
 				foreach ($xCommanderFunctionTable as $key => $value) {
-
 					if (!$authDelegate::authorize($value)) {
 						array_push($ignoredRPCMethods, $value);
 					}
@@ -1610,7 +1610,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 			$pConfigDefault = 'run-release-debug';
 		}
 
-		error_log('$pConfigDefault ' .$pConfigDefault);
+		//error_log('$pConfigDefault ' .$pConfigDefault);
 		$xappResourceRenderer->registerRelative('PACKAGE_CONFIG', XApp_Service_Utils::_getKey('pConfig',$pConfigDefault));
 
 
