@@ -7,6 +7,12 @@
         {
             "class":"cmx.types.Resource",
             "type":"JS-HEADER-INCLUDE",
+            "url":"%XASWEB%/xfile/ext/keypress.js",
+            "enabled":false
+        },
+        {
+            "class":"cmx.types.Resource",
+            "type":"JS-HEADER-INCLUDE",
             "url":"%XASWEB%/xfile/ext/xfileExternalsWP.js",
             "enabled":true
         },
