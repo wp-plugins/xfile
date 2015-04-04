@@ -9,7 +9,7 @@ Requires at least: 3.4.2
 Tested up to: 4.0
 Stable tag: 1.9
 
-!XFile, the must have file manager for your Wordpress
+!XFile, file manager for admins and developers(for real!!)
 
 == Description ==
 
