@@ -153,6 +153,16 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 == Changelog ==
 
+= 1.9 (04.05.2015) =
+
+* Tiny fixes upon user requests
+* Moved all client resources to cloud
+* Bug fixes regarding resumed downloads
+* any media file can be opened in a new browser tab, regarding browser media caps
+* this is the last free version ever I did for Wordpress. Say thank you to your self for your support and all those
+  brainless and whining users who shouldn't touch a computer, ever! Enjoy yourself.
+
+
 = 1.8.2 (20.03.2015) =
 
 * Tiny fixes upon user requests
