@@ -202,7 +202,6 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 * support for fe*** Internet-Explorer 9 added
 * support for remote downloads added: drag simply an url into the file manager
 * settings extended: minimum role to use the file manager
-* open source version added ([check out on Github](https://github.com/mc007/xbox-app))
 * new xblox: Call-Server with direct link to shell
 * new xblox: OnKey (Keyboard) : Call-Server with direct link to shell
 * new xblox: OnEvent(whatever system event) : triggers child blocks
