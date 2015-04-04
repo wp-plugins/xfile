@@ -94,9 +94,14 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 	const RESOURCE_CONFIG_SUFFIX = "XAPP_RESOURCE_CONFIG_SUFFIX";
 
 	/***
-	 * Additional resource renderer prefix : wordpress/joomla
+	 * Additional resource renderer prefix : wordpress/joomla/standalone
 	 */
 	const RESOURCE_RENDERER_PREFIX = "XAPP_RESOURCE_RENDERER_PREFIX";
+
+	/***
+	 * File name of the resource config
+	 */
+	const XAPP_RESOURCE_CONFIG= "XAPP_RESOURCE_CONFIG";
 
 	/***
 	 * Resource renderer class
@@ -232,7 +237,8 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		self::LOGGING_FLAGS => XAPP_TYPE_ARRAY,
 		self::LOGGER => XAPP_TYPE_OBJECT,
 		self::STORE => XAPP_TYPE_OBJECT,
-		self::GOOGLE_ANALYTICS_ID => XAPP_TYPE_STRING
+		self::GOOGLE_ANALYTICS_ID => XAPP_TYPE_STRING,
+		self::XAPP_RESOURCE_CONFIG => XAPP_TYPE_STRING
 	);
 
 	/**
@@ -273,7 +279,8 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		self::LOGGER => 0,
 		self::STORE_CONF => 0,
 		self::STORE => 0,
-		self::GOOGLE_ANALYTICS_ID => 0
+		self::GOOGLE_ANALYTICS_ID => 0,
+		self::XAPP_RESOURCE_CONFIG => 0
 	);
 
 	/**
@@ -314,7 +321,8 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		self::XAPP_CONF => null,
 		self::STORE_CONF => null,
 		self::STORE => null,
-		self::GOOGLE_ANALYTICS_ID => null
+		self::GOOGLE_ANALYTICS_ID => null,
+		self::XAPP_RESOURCE_CONFIG => null
 	);
 
 	/**
@@ -963,26 +971,39 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 
 			//clients resource config path
 			$XAPP_RESOURCE_CONFIG_PATH = '' . xapp_get_option(self::APPDIR, $this) . DIRECTORY_SEPARATOR;
-			if ($XAPP_RUN_TIME_CONFIGURATION === 'debug') {
-				$XAPP_RESOURCE_CONFIG_PATH .= 'lib' . DIRECTORY_SEPARATOR . xapp_get_option(
-						self::APP_NAME,
-						$this
-					) . DIRECTORY_SEPARATOR . 'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(
-						self::RESOURCE_CONFIG_SUFFIX,
-						$this
-					) . '.json';
-			} else {
-				if ($XAPP_RUN_TIME_CONFIGURATION === 'release') {
-					$XAPP_RESOURCE_CONFIG_PATH .= DIRECTORY_SEPARATOR . xapp_get_option(
-							self::APP_FOLDER,
-							$this
-						) . DIRECTORY_SEPARATOR . xapp_get_option(
-							self::APP_NAME,
-							$this
-						) . DIRECTORY_SEPARATOR . 'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(
-							self::RESOURCE_CONFIG_SUFFIX,
-							$this
-						) . '.json';
+			$XAPP_RESOURCE_CONFIG  =  xapp_get_option(self::XAPP_RESOURCE_CONFIG, $this);
+
+			error_log('$XAPP_RESOURCE_CONFIG ' . $XAPP_RESOURCE_CONFIG);
+
+
+			if(strlen($XAPP_RESOURCE_CONFIG)){
+
+				if ($XAPP_RUN_TIME_CONFIGURATION === 'debug') {
+					$XAPP_RESOURCE_CONFIG_PATH .= 'lib' . DIRECTORY_SEPARATOR .
+						xapp_get_option(self::APP_NAME,$this) . DIRECTORY_SEPARATOR .
+						$XAPP_RESOURCE_CONFIG . xapp_get_option(self::RESOURCE_CONFIG_SUFFIX,$this) . '.json';
+				} else {
+					if ($XAPP_RUN_TIME_CONFIGURATION === 'release') {
+						$XAPP_RESOURCE_CONFIG_PATH .= DIRECTORY_SEPARATOR .
+							xapp_get_option(self::APP_FOLDER,$this) . DIRECTORY_SEPARATOR .
+							xapp_get_option(self::APP_NAME,$this) . DIRECTORY_SEPARATOR .
+							$XAPP_RESOURCE_CONFIG . xapp_get_option(self::RESOURCE_CONFIG_SUFFIX,$this) . '.json';
+					}
+				}
+
+			}else {
+
+				if ($XAPP_RUN_TIME_CONFIGURATION === 'debug') {
+					$XAPP_RESOURCE_CONFIG_PATH .= 'lib' . DIRECTORY_SEPARATOR .
+						xapp_get_option(self::APP_NAME,$this) . DIRECTORY_SEPARATOR .
+						'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(self::RESOURCE_CONFIG_SUFFIX,$this) . '.json';
+				} else {
+					if ($XAPP_RUN_TIME_CONFIGURATION === 'release') {
+						$XAPP_RESOURCE_CONFIG_PATH .= DIRECTORY_SEPARATOR .
+							xapp_get_option(self::APP_FOLDER,$this) . DIRECTORY_SEPARATOR .
+							xapp_get_option(self::APP_NAME,$this) . DIRECTORY_SEPARATOR .
+							'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(self::RESOURCE_CONFIG_SUFFIX,$this) . '.json';
+					}
 				}
 			}
 		}
@@ -1416,29 +1437,50 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 		//clients resource config path
 		$XAPP_RESOURCE_CONFIG_PATH = '' . xapp_get_option(self::APPDIR, $this) . DIRECTORY_SEPARATOR;
 
-		if ($XAPP_RUN_TIME_CONFIGURATION === 'debug') {
+		$XAPP_RESOURCE_CONFIG  =  xapp_get_option(self::XAPP_RESOURCE_CONFIG, $this);
 
-			$XAPP_RESOURCE_CONFIG_PATH .= 'lib' . DIRECTORY_SEPARATOR . xapp_get_option(
-					self::APP_NAME,
-					$this
-				) . DIRECTORY_SEPARATOR . 'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(
-					self::RESOURCE_CONFIG_SUFFIX,
-					$this
-				) . '.json';
-		} else if ($XAPP_RUN_TIME_CONFIGURATION === 'release') {
+		if(strlen($XAPP_RESOURCE_CONFIG)){
 
-			$XAPP_RESOURCE_CONFIG_PATH .= DIRECTORY_SEPARATOR . xapp_get_option(
-						self::APP_FOLDER,
-						$this
-					) . DIRECTORY_SEPARATOR . xapp_get_option(
+			if ($XAPP_RUN_TIME_CONFIGURATION === 'debug') {
+				$XAPP_RESOURCE_CONFIG_PATH .= 'lib' . DIRECTORY_SEPARATOR .
+					xapp_get_option(self::APP_NAME,$this) . DIRECTORY_SEPARATOR .
+					$XAPP_RESOURCE_CONFIG . xapp_get_option(self::RESOURCE_CONFIG_SUFFIX,$this) . '.json';
+			} else {
+				if ($XAPP_RUN_TIME_CONFIGURATION === 'release') {
+					$XAPP_RESOURCE_CONFIG_PATH .= DIRECTORY_SEPARATOR .
+						xapp_get_option(self::APP_FOLDER,$this) . DIRECTORY_SEPARATOR .
+						xapp_get_option(self::APP_NAME,$this) . DIRECTORY_SEPARATOR .
+						$XAPP_RESOURCE_CONFIG . xapp_get_option(self::RESOURCE_CONFIG_SUFFIX,$this) . '.json';
+				}
+			}
+
+		}else {
+			if ($XAPP_RUN_TIME_CONFIGURATION === 'debug') {
+
+				$XAPP_RESOURCE_CONFIG_PATH .= 'lib' . DIRECTORY_SEPARATOR . xapp_get_option(
 						self::APP_NAME,
 						$this
 					) . DIRECTORY_SEPARATOR . 'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(
 						self::RESOURCE_CONFIG_SUFFIX,
 						$this
 					) . '.json';
-		}
+			} else {
+				if ($XAPP_RUN_TIME_CONFIGURATION === 'release') {
 
+					$XAPP_RESOURCE_CONFIG_PATH .= DIRECTORY_SEPARATOR . xapp_get_option(
+							self::APP_FOLDER,
+							$this
+						) . DIRECTORY_SEPARATOR . xapp_get_option(
+							self::APP_NAME,
+							$this
+						) . DIRECTORY_SEPARATOR . 'resources-' . $XAPP_RUN_TIME_CONFIGURATION . xapp_get_option(
+							self::RESOURCE_CONFIG_SUFFIX,
+							$this
+						) . '.json';
+				}
+			}
+		}
+		//error_log('$XAPP_RESOURCE_CONFIG ' . $XAPP_RESOURCE_CONFIG . "   =  " . $XAPP_RESOURCE_CONFIG_PATH);
 		if (!file_exists($XAPP_RESOURCE_CONFIG_PATH)) {
 			$this->log('have no core resources, ' . $XAPP_RESOURCE_CONFIG_PATH . ' doesnt exists');
 			return null;
@@ -1554,6 +1596,10 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 				$XAPP_DOJO_PACKAGES = $dojoPackagesStr;
 
 			} else {
+
+
+				$packageSuffix = "";
+
 				$dojoPackages = array();
 				array_push($dojoPackages, array('name' => 'dojo', 'location' => 'dojo'));
 				array_push($dojoPackages, array('name' => 'dojox', 'location' => 'dojox'));
@@ -1564,14 +1610,22 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 				array_push($dojoPackages, array('name' => 'xwordpress', 'location' => 'xwordpress'));
 				array_push($dojoPackages, array('name' => 'xbox', 'location' => 'xbox'));
 				array_push($dojoPackages, array('name' => 'xjoomla', 'location' => 'xjoomla'));
-				//error_log('plugins : '.json_decode($javascriptPlugins));
+
 				foreach ($javascriptPlugins as $plugin) {
 					if (is_object($plugin)) {
+
+						if(property_exists($plugin,'packageSuffix')){
+							$packageSuffix = $plugin->{'packageSuffix'};
+						}
+						$packageLocation = $XAPP_DOJO_PACKAGE_LOCATION_PREFIX . $plugin->name . '/client/';
+						if(strlen($packageSuffix)){
+							$packageLocation.=$packageSuffix . '/';
+						}
 						array_push(
 							$dojoPackages,
 							array(
 								'name' => $plugin->name,
-								'location' => $XAPP_DOJO_PACKAGE_LOCATION_PREFIX . $plugin->name . '/client/'
+								'location' => $packageLocation
 							)
 						);
 					}
@@ -1585,6 +1639,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 			$javaScriptHeaderStr .= 'var xappPluginResources=';
 			$javaScriptHeaderStr .= json_encode($javascriptPlugins) . ';';
 			$javaScriptHeaderStr .= '';
+
 			$xappResourceRenderer->registerRelative('XAPP_PLUGIN_RESOURCES', json_encode($javascriptPlugins));
 
 			//important: get the resource variables before adding 'head' otherwise it breaks the JSON structure!
@@ -1592,7 +1647,7 @@ class XApp_Commander_Bootstrap extends XApp_Bootstrap implements Xapp_Singleton_
 				xapp_get_option(XApp_Resource_Renderer::RELATIVE_REGISTRY_NAMESPACE, $xappResourceRenderer)
 			);
 			$resourceVariables['HTML_HEADER'] = array();
-			$resourceVariables['XAPP_PLUGIN_RESOURCES'] = array();
+			$resourceVariables['XAPP_PLUGIN_RESOURCES'] = $javascriptPlugins;
 			$resourceVariables['DOJOPACKAGES'] = array();
 			$resourceVariables['XFILE_CONFIG_MIXIN'] = array();
 			$resourceVariables['RESOURCE_VARIABLES'] = array();

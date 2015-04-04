@@ -42,7 +42,15 @@
                      "path": "ImageEdit/xfile/main",
                      "type": "JS-PLUGIN",
                      "url": "",
-                     "urlOri": ""
+                     "urlOri": "",
+                     "packageSuffix":""
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": true,
+                     "type": "JS-HEADER-INCLUDE",
+                     "url": "%XASWEB%/xfile/ext/easyXDM.js"
+
                  }
              ]
          },
@@ -58,9 +66,15 @@
                      "path": "ImageEdit/xfile/main",
                      "type": "JS-PLUGIN",
                      "url": "",
-                     "urlOri": ""
+                     "urlOri": "",
+                     "packageSuffix":""
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": true,
+                     "type": "JS-HEADER-INCLUDE",
+                     "url": "%XASWEB%/xfile/ext/easyXDM.js"
                  }
-
              ]
          }
      }

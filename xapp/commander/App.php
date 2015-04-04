@@ -72,7 +72,8 @@ function xapp_commander_render_app(
 	$XAPP_SALT_KEY,
 	$RELATIVE_VARIABLES,
 	$_DEBUG,
-	$XAPP_COMPONENTS
+	$XAPP_COMPONENTS,
+	$XAPP_RESOURCE_CONFIG
 ) {
 
 	$_REQUEST_TYPE = XApp_Service_Entry_Utils::getServiceType();
@@ -498,7 +499,8 @@ function xapp_commander_render_app(
 			XAPP_BOOTSTRAP_NEEDS_AUTHENTICATION
 			//XAPP_BOOTSTRAP_ENABLE_GOOGLE_ANALYTICS
 		),
-		XApp_Commander_Bootstrap::USER_CONF => $XAPP_USER_CONFIG_PATH
+		XApp_Commander_Bootstrap::USER_CONF => $XAPP_USER_CONFIG_PATH,
+		XApp_Commander_Bootstrap::XAPP_RESOURCE_CONFIG => $XAPP_RESOURCE_CONFIG
 	);
 
 
@@ -551,7 +553,8 @@ function xapp_commander_render_standalone(
 	$XAPP_SALT_KEY,
 	$XF_PROHIBITED_PLUGINS,
 	$RELATIVE_VARIABLES,
-	$XAPP_COMPONENTS
+	$XAPP_COMPONENTS,
+	$XAPP_RESOURCE_CONFIG
 ) {
 	/***
 	 * prepare and adjust bootstrapper for stand-alone
@@ -671,6 +674,10 @@ function xapp_commander_render_standalone(
 
 	$extraParams = count($urlParams) ? '&' . http_build_query($urlParams) : '';
 
+	if(!$XAPP_RESOURCE_CONFIG){
+		$XAPP_RESOURCE_CONFIG='';
+	}
+
 	$renderStruct = xapp_commander_render_app(
 		XAPP_BASEDIR,
 		'xbox',
@@ -705,7 +712,8 @@ function xapp_commander_render_standalone(
 		$XAPP_SALT_KEY,
 		$RELATIVE_VARIABLES,
 		XApp_Service_Entry_Utils::isDebug() === true,
-		$XAPP_COMPONENTS
+		$XAPP_COMPONENTS,
+		$XAPP_RESOURCE_CONFIG
 	);
 
 

@@ -177,7 +177,7 @@ class XApp_CIUtils {
      * @param $CI_Obj
      * @param $value
      */
-    public static function getValue(&$CI_Obj) {
+    public static function getValue($CI_Obj) {
         return self::get($CI_Obj,self::CI_FIELD_VALUE);
     }
 
