@@ -41,7 +41,7 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 = Required =
 
 * PHP 5.3
-* PHP MBString,PCRE, ICONV extension
+* PHP MBString, PCRE, ICONV extension
 * Supported servers: Linux based server, Macintosh and Windows
 * Supported browsers: Chrome, Firefox and maybe Opera and basic support for IE9+
 * See installation for more
@@ -131,8 +131,7 @@ XFile is a multi-talent file manager. Perfect for quick editing and managing fil
 
 == Frequently Asked Questions ==
 
-* Where to change remote sources : you can manage remote sites in wp-content/plugins/xfile/xapp/commander/vfs.php
-* In case you have trouble with XFile, you can also purchase the stand-alone version and upload it to your Wordpress site. The stand-alone version has usually less problems. You can buy it from here : www.codecanyon.net/item/xfile/9294082
+* On a white page result, you must delete this extension by deleting 'wp-content/plugins/xfile'!
 
 == Screenshots ==
 1. More recent screenshot of the coding utils. The editor understands lots of languages and has auto-completion by default.
