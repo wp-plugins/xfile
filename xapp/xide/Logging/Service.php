@@ -25,6 +25,14 @@ class XIDE_Log_Service extends XIDE_Service implements Xapp_Singleton_Interface,
     public function ls($which){
         return $this->getObject()->ls($which);
     }
+    /***
+     * Returns all registered services
+     * @link http://192.168.1.37:81/x4mm/Code/trunk/xide-php/xapp/xcf/index.php?debug=true&view=smdCall&service=XIDE_Log_Service.ls&callback=asd
+     * @return mixed
+     */
+    public function clear($which){
+        return $this->getObject()->clear($which);
+    }
     /**
      * class constructor
      * call parent constructor for class initialization

@@ -144,12 +144,6 @@ $xappCommanderRenderer = $xappBootrapper->setup();
 
 //extract resource renderer
 $xappResourceRender = xapp_get_option(XApp_App_Commander::RESOURCE_RENDERER,$xappCommanderRenderer);
-/*
-$XAPP_FILE_SERVICE = "../../..'" . $WP_PLUGIN_LOCATION_REL . $XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php";
-if(!XApp_Service_Entry_Utils::isDebug()){
-    $XAPP_FILE_SERVICE = ".." .$WP_PLUGIN_LOCATION_REL . $XAPP_PLUGIN_DIR_NAME . "/server/service/index_wordpress_admin.php";
-}
-*/
 
 $XAPP_FILE_SERVICE = admin_url('admin-ajax.php?action=xfile-rpc&view=rpc');
 //////////////////////////////////////////////////////////////////////////////////
@@ -168,6 +162,11 @@ $xappResourceRender->registerRelative('XCOM_ROOT',$XAPP_PLUGIN_URL);
 $xappResourceRender->registerRelative('SITEURL',$XAPP_SITE_URL.'/');
 $xappResourceRender->registerRelative('XCOM_PLUGINS_WEB_URL',$XAPP_PLUGIN_URL . '/xapp/commander/plugins/');
 $xappResourceRender->registerRelative('JQUERY_THEME',$XAPP_JQUERY_THEME);
+if( isset($_SERVER['HTTPS'] )) {
+    $xappResourceRender->registerRelative('APP.JS', 'https://x4dojo.org/xfilewp/1.9/xcom/client/src//xfile/dojo/dojowp.js');
+}else{
+    $xappResourceRender->registerRelative('APP.JS', 'http://x4dojo.org/xfilewp/1.9/xcom/client/src//xfile/dojo/dojowp.js');
+}
 
 
 $javaScriptHeader = '<script type="application/javascript">';

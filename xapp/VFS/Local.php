@@ -331,6 +331,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 
 		xapp_import('xapp.Xapp.Hook');
 		xapp_import('xapp.File.Utils');
+		xapp_import('xapp.Commons.ErrorHandler');
 
 		$options = (array)$options;
 
@@ -383,6 +384,7 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 		}
 
 
+		//XApp_ErrorHandler::start();
 		$list = $this->getFilteredDirList($path, $inclusionMask, $exclusionMask, $get_list_options);
 		$ret_list = Array();
 		/***
@@ -428,6 +430,10 @@ class XApp_VFS_Local extends XApp_VFS_Base implements Xapp_VFS_Interface_Access
 			}
 			$ret_list[] = $item;
 		}
+/*
+		error_log('test',E_WARNING);
+		$error = XApp_ErrorHandler::stop();
+		xapp_clog($error);*/
 
 
 		return $ret_list;

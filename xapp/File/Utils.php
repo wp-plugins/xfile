@@ -479,6 +479,7 @@ class XApp_File_Utils
 	 */
 	public static function set($path, $content)
 	{
+		xapp_import('xapp.Utils.Strings');
 
 		$realPath = '' . $path;
 		$return = null;
@@ -497,6 +498,16 @@ class XApp_File_Utils
 						vsprintf('File: %s is not writable', array(basename($realPath))), 1640102
 					);
 				} else {
+
+
+					if( XApp_Utils_Strings::startsWith($content,'data:image/')){
+						$ifp = fopen($realPath, "wb");
+						$data = explode(',', $content);
+						fwrite($ifp, base64_decode($data[1]));
+						fclose($ifp);
+						return true;
+					}
+
 
 					//write out
 					$fp = fopen($realPath, "w");

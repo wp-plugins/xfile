@@ -66,6 +66,22 @@ class XIDE_Log_Manager extends XIDE_Manager{
     (
        self::LOG_PATH              => 'logs/all.log'
     );
+    public function clear($which=''){
+
+        $path       = realpath(xo_get(self::LOG_PATH,$this));
+        if(!file_exists($path)){
+            $this->log('log file path : ' . xo_get(self::LOG_PATH,$this)  .' doesnt exists');
+            return '{}';
+        }
+        $result = array();
+        if(file_exists($path) && @is_writeable($path)){
+            file_put_contents($path,"");
+        }else{
+            $this->log('log file path : ' . $path  .' doesnt exists or is not writable for clear');
+            return '{}';
+        }
+        return $result;
+    }
 
     public function ls($which=''){
 

@@ -65,7 +65,12 @@ class XIDE_BeanManager extends XIDE_Manager
         xapp_import('xapp.Path.Utils');
         xapp_import('xapp.VFS.Local');
         xapp_import('xapp.Commons.Exceptions');
+
         $fullPath = $this->resolvePath($scope,$path,null,true,false);
+
+        xapp_clog('create driver group : ' . $fullPath. ' for scope '  . $scope . ' and path ' . $path);
+
+
         return XApp_File_Utils::mkDir(XApp_Path_Utils::securePath($fullPath));
 
     }
@@ -230,9 +235,10 @@ class XIDE_BeanManager extends XIDE_Manager
      * @return mixed|null|string
      */
     public function resolvePath($scopeName,$path,$rootVariable='__ROOT__',$secure=true,$merge=true){
+
         xapp_import('xapp.Path.Utils');
         $scope = $this->getScope($scopeName);
-        $rootVariable = $rootVariable?:'__ROOT__';
+        $rootVariable = $rootVariable ?: '__ROOT__';
         $path = XApp_Path_Utils::securePath($path);
         if($scope){
 
@@ -241,10 +247,10 @@ class XIDE_BeanManager extends XIDE_Manager
                 if($merge==true){
                     return XApp_Path_Utils::securePath(XApp_Path_Utils::merge($root,XApp_Path_Utils::normalizePath($path)));
                 }else{
-                    return XApp_Path_Utils::securePath($root . XApp_Path_Utils::normalizePath($path));
+                    return XApp_Path_Utils::securePath($root . XApp_Path_Utils::normalizePath($path,false,false));
                 }
             }else{
-                return XApp_Path_Utils::merge($root,XApp_Path_Utils::normalizePath($path));
+                return XApp_Path_Utils::merge($root,XApp_Path_Utils::normalizePath($path,false,false));
             }
         }else{
 	        throw new ErrorException("scope:" .  $scopeName . "does not exist", 1390101);

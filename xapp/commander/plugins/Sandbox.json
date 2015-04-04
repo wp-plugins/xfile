@@ -37,7 +37,7 @@
              "items": [
                  {
                      "class": "cmx.types.Resource",
-                     "enabled": true,
+                     "enabled": false,
                      "name": "Sandbox",
                      "path": "Sandbox/xfile/main",
                      "type": "JS-PLUGIN",
@@ -46,9 +46,15 @@
                  },
                  {
                      "class": "cmx.types.Resource",
-                     "enabled": true,
+                     "enabled": false,
                      "type": "CSS",
                      "url": "%XCOM_PLUGINS_WEB_URL%/Sandbox/client/xfile/css/Sandbox.css"
+                 },
+                 {
+                     "class": "cmx.types.Resource",
+                     "enabled": true,
+                     "type": "JS-HEADER-INCLUDE",
+                     "url": "%XCOM_PLUGINS_WEB_URL%/ImageEdit/client/xfile/ext/easyXDM.js"
                  }
              ]
          },
@@ -59,7 +65,7 @@
              "items": [
                  {
                      "class": "cmx.types.Resource",
-                     "enabled": true,
+                     "enabled": false,
                      "name": "Sandbox",
                      "path": "Sandbox/xfile/main",
                      "type": "JS-PLUGIN",
@@ -68,7 +74,7 @@
                  },
                  {
                      "class": "cmx.types.Resource",
-                     "enabled": true,
+                     "enabled": false,
                      "type": "CSS",
                      "url": "%XCOM_PLUGINS_WEB_URL%/Sandbox/client/xfile/css/Sandbox.css"
                  }

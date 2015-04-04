@@ -42,7 +42,8 @@
                      "path": "Shell/xfile/main",
                      "type": "JS-PLUGIN",
                      "url": "",
-                     "urlOri": ""
+                     "urlOri": "",
+                     "packageSuffix":""
                  },
                  {
                      "class": "cmx.types.Resource",
@@ -61,10 +62,11 @@
                      "class": "cmx.types.Resource",
                      "enabled": true,
                      "name": "Shell",
-                     "path": "Shell/xfile/main",
+                     "path": "Shell/main",
                      "type": "JS-PLUGIN",
                      "url": "",
-                     "urlOri": ""
+                     "urlOri": "",
+                     "packageSuffix":"xfile-release"
                  },
                  {
                      "class": "cmx.types.Resource",
